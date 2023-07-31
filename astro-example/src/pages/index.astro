@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Button from '../components/Button/Button.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -59,6 +60,7 @@ import Card from '../components/Card.astro';
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
 		</ul>
+		<Button className="btn-submit">Submit</Button>
 	</main>
 </Layout>
 
@@ -119,4 +121,15 @@ import Card from '../components/Card.astro';
 		gap: 2rem;
 		padding: 0;
 	}
+	.btn-submit {
+		background-color: rgb(96, 96, 226);
+		border-radius: 8px;
+		display: flex;
+		justify-content: center;
+		margin: 20px auto;
+	}
+  .btn-submit:hover {
+    background-color: #fff;
+    color: #000;
+  }
 </style>
