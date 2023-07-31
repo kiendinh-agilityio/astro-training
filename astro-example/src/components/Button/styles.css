@@ -1,0 +1,13 @@
+.btn {
+    padding: 15px 30px;
+    background: var(--bgButton);
+    color: var(--colorText);
+    border-radius: var(--borderRadiusBase);
+    font-family: var(--fontFamilyPrimary);
+    font-weight: var(--fontWeightMedium);
+    min-width: 192px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+}
