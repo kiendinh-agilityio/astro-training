@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Metropolis Regular';
+    font-style: 'normal';
+    font-weight: 400;
+    font-display: swap;
+    src: url('/astro-example/public/assets/fonts/metropolis-regular.woff') format('woff'),
+} 
