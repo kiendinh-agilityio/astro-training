@@ -1,11 +1,11 @@
 ---
-  export interface CardProps {
-    className?: string;
-    title?: string;
-    body: string;
-  }
+export interface CardProps {
+  className?: string;
+  title?: string;
+  body: string;
+}
 
-  const { className = '', href, title, body } = Astro.props;
+const { className = '', href, title, body } = Astro.props;
 ---
 
 <li class={`${className} flex text-secondary bg-primary w-[188px] p-5 border border-solid rounded-[20px]`}>
