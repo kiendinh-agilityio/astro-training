@@ -1,0 +1,22 @@
+---
+export interface InputProps {
+  className?: string;
+  placeholder?: string;
+  name?: string;
+  type: string;
+}
+
+const {
+  className = '',
+  name = '',
+  type = 'text',
+  placeholder = '',
+} = Astro.props;
+---
+
+<input
+  type={type}
+  name={name}
+  placeholder={placeholder}
+  class={`w-full font-primary text-input text-sm leading-normal md:text-xl ${className}`}
+/>
