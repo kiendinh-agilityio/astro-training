@@ -4,14 +4,12 @@ export interface ButtonProps {
   type: ButtonType;
   className?: string;
   onclick: () => void;
-  id?: string;
 }
 
 const {
   className = '',
   onclick = () => { },
   type = 'primary',
-  id,
 } = Astro.props;
 const theme = {
   primary: 'bg-primary',
@@ -19,7 +17,7 @@ const theme = {
 };
 ---
 
-<button id={id} class={`${theme[type as ButtonType]} py-5 px-[25px] flex items-center items-center text-secondary
+<button class={`${theme[type as ButtonType]} py-5 px-[25px] flex items-center items-center text-secondary
   text-sm leading-normal font-bold rounded-[20px] ${className}`} {onclick}>
   <slot />
 </button>
