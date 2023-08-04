@@ -13,11 +13,11 @@ const {
 } = Astro.props;
 const theme = {
   primary: 'bg-primary',
-  secondary: 'bg-tertiary',
+  secondary: 'bg-secondary',
 };
 ---
 
-<button class={`${theme[type as ButtonType]} py-5 px-[25px] flex items-center items-center text-secondary
+<button class={`${theme[type as ButtonType]} py-5 px-[25px] flex items-center text-white
   text-sm leading-normal font-bold rounded-[20px] ${className}`} {onclick}>
   <slot />
 </button>
