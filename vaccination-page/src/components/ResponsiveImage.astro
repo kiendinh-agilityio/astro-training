@@ -1,0 +1,96 @@
+---
+export interface ImageProps {
+  className?: string;
+  alt: string;
+  width: {
+    mobile?: string;
+    tablet?: string;
+    desktop?: string;
+    default: string;
+  };
+  height: {
+    mobile?: string;
+    tablet?: string;
+    desktop?: string;
+    default: string;
+  };
+  url: {
+    mobile?: string;
+    mobile2x?: string;
+    tablet?: string;
+    desktop?: string;
+    default: string;
+  };
+  imageClass?: string;
+  isLazyLoading?: boolean;
+}
+
+const {
+  alt,
+  width,
+  height,
+  url,
+  className,
+  isLazyLoading = false,
+  imageClass,
+} = Astro.props as ImageProps;
+
+const { mobile, mobile2x, tablet, desktop, default: urlDefault } = url || {};
+
+const {
+  default: widthDefault,
+  tablet: tabletWidth,
+  desktop: desktopWidth,
+} = width || {};
+
+const {
+  default: heightDefault,
+  tablet: tabletHeight,
+  desktop: desktopHeight,
+} = height || {};
+---
+
+<picture class={className}>
+  {
+    desktop && (
+      <source
+        media="(min-width: 1200px)"
+        width={desktopWidth}
+        height={desktopHeight}
+        srcset={desktop}
+        type="image/webp"
+      />
+    )
+  }
+  {
+    tablet && (
+      <source
+        media="(min-width: 768px)"
+        width={tabletWidth}
+        height={tabletHeight}
+        srcset={tablet}
+        type="image/webp"
+      />
+    )
+  }
+  {
+    mobile && (
+      <source
+        media="(max-width: 767px)"
+        srcset={`${mobile} 1x, ${mobile2x} 2x`}
+        type="image/webp"
+        width={mobile}
+        height={mobile}
+        type="image/webp"
+      />
+    )
+  }
+  <img
+    class={imageClass}
+    src={urlDefault}
+    alt={alt}
+    width={widthDefault}
+    height={heightDefault}
+    loading={isLazyLoading ? 'lazy' : 'eager'}
+  />
+</picture>
