@@ -7,8 +7,7 @@ module.exports = {
       },
       colors: {
         primary: '#0b153c',
-        secondary: '#fff',
-        tertiary: '#17c2ec',
+        secondary: '#17c2ec',
         input: 'rgba(0, 0, 0, 0.25)',
       },
       screens: {
