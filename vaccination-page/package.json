@@ -1,0 +1,46 @@
+{
+  "name": "vaccination-page",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "prepare": "cd .. && husky install vaccination-page/.husky",
+    "pre-commit-lint": "pnpm lint-staged"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^4.0.0",
+    "astro": "^2.9.7"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.46.0",
+    "eslint-plugin-astro": "^0.28.0",
+    "husky": "^8.0.3",
+    "postcss": "^8.4.27",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.11.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,astro}": [
+      "pnpm prettier -w src/**/*.astro"
+    ],
+    "*.{js,ts,tsx}": [
+      "eslint src/*.{js,ts} --fix-dry-run --no-error-on-unmatched-pattern"
+    ],
+    "*.css": [
+      "pnpm prettier -w"
+    ]
+  }
+}

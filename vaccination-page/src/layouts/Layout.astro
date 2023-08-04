@@ -1,0 +1,41 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="bg-primary">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="public/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <meta name="description"
+    content="Vaccination.ng will help you find the nearest centre for vaccination, in all 36 states in Nigeria." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Vaccination.ng - COVID-19 Vaccination Got Easier" />
+  <meta property="og:description"
+    content="Vaccination.ng will help you find the nearest centre for vaccination, in all 36 states in Nigeria." />
+  <meta name="twitter:title" content="Vaccination.ng - COVID-19 Vaccination Got Easier">
+  <meta name="twitter:description"
+    content="Vaccination.ng will help you find the nearest centre for vaccination, in all 36 states in Nigeria.">
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+</head>
+
+<body class="min-h-screen m-0 font-primary text-white text-xl">
+  <!-- Header -->
+
+  <!-- Main -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+</body>
+
+</html>

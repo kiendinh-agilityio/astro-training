@@ -1,0 +1,11 @@
+---
+export interface ContainerProps {
+  className?: string;
+}
+
+const { className = '' } = Astro.props as ContainerProps;
+---
+
+<div class={`container px-6 sm:px-[35px] md:px-[50px] mx-auto xxl:px-[70px] ${className}`}>
+  <slot />
+</div>

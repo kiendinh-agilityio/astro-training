@@ -1,0 +1,14 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*.astro"],
+      "sections/*": ["src/sections/*.astro"],
+      "layouts/*": ["src/layouts/*.astro"]
+    }
+  },
+  "include": [".", "**/*.ts", "**/*.tsx", "**/*.astro"],
+  "exclude": ["node_modules"]
+}
