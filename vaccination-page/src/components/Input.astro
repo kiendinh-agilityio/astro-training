@@ -3,8 +3,7 @@ export interface InputProps {
   className?: string;
   placeholder?: string;
   name?: string;
-  type?: string;
-  value?: string;
+  type: string;
 }
 
 const {
@@ -12,7 +11,6 @@ const {
   name = '',
   type = 'text',
   placeholder = '',
-  value = '',
 } = Astro.props;
 ---
 
@@ -21,5 +19,4 @@ const {
   name={name}
   placeholder={placeholder}
   class={`w-full font-primary text-input text-sm leading-normal md:text-xl ${className}`}
-  value={value}
 />
