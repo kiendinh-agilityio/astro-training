@@ -6,7 +6,8 @@
     "paths": {
       "components/*": ["src/components/*.astro"],
       "sections/*": ["src/sections/*.astro"],
-      "layouts/*": ["src/layouts/*.astro"]
+      "layouts/*": ["src/layouts/*.astro"],
+      "constants/*": ["src/constants/*"],
     }
   },
   "include": [".", "**/*.ts", "**/*.tsx", "**/*.astro"],

@@ -9,6 +9,10 @@ module.exports = {
         primary: '#0b153c',
         secondary: '#17c2ec',
         input: 'rgba(0, 0, 0, 0.25)',
+        overlay: '#000000b3',
+        darker: 'rgba(196, 196, 196, 0.10)',
+        'navbar': 'rgba(255, 255, 255, 0.50)',
+        'toggle': 'rgba(196, 196, 196, 0.15)',
       },
       screens: {
         xs: '320px',
