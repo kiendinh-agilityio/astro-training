@@ -1,5 +1,5 @@
-export const NAVIGATION = {
-  HOME: './',
+export const SECTION = {
+  HOME: '/#home',
   SERVICES: '/#services',
   SCHEDULE: '/#schedule',
   CONTACT: '/#contact-us',

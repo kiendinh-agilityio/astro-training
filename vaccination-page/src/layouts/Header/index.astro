@@ -1,7 +1,7 @@
 ---
 import Container from 'components/Container';
 import ResponsiveImage from 'components/ResponsiveImage';
-import { NAVIGATION } from 'constants/navigation';
+import { SECTION } from 'constants/navigation';
 
 export interface HeaderProps {
   className?: string;
@@ -59,23 +59,23 @@ export interface HeaderProps {
         class="font-menium text-navbar hidden lg:text-text-reversal lg:flex lg:justify-center lg:gap-[25px] lg:text-2xl lg:px-1 nav-list"
       >
         <li class="flex flex-col items-center">
-          <a class="font-bold text-white" href={NAVIGATION.HOME}>Home</a>
+          <a class="font-bold text-white" href={SECTION.HOME}>Home</a>
           <span class="w-[10px] h-[10px] bg-secondary border-secondary rounded-full border"></span>
         </li>
         <li>
-          <a class="hover:text-white" href={NAVIGATION.SERVICES}>Services</a>
+          <a class="hover:text-white" href={SECTION.SERVICES}>Services</a>
         </li>
         <li>
-          <a class="hover:text-white" href={NAVIGATION.SCHEDULE}>Schedule</a
+          <a class="hover:text-white" href={SECTION.SCHEDULE}>Schedule</a
           >
         </li>
         <li>
-          <a class="hover:text-white" href={NAVIGATION.CONTACT}>Contact us</a>
+          <a class="hover:text-white" href={SECTION.CONTACT}>Contact us</a>
         </li>
       </ul>
       <a
         class="bg-darker text-2xl leading-base text-secondary font-bold rounded-[20px] hidden lg:py-5 lg:px-[26px] lg:block hover:bg-white"
-        href={NAVIGATION.CHECKSTATUS}
+        href={SECTION.CHECKSTATUS}
       >
         Check Status
       </a>
@@ -91,30 +91,30 @@ export interface HeaderProps {
           <li class="py-3 border-b border-border-primary">
             <a
               class="block"
-              href={NAVIGATION.HOME}>Home</a
+              href={SECTION.HOME}>Home</a
             >
           </li>
           <li class="py-3 border-b border-border-primary">
             <a
               class="block"
-              href={NAVIGATION.SERVICES}>Services</a
+              href={SECTION.SERVICES}>Services</a
             >
           </li>
           <li class="py-3 border-b border-border-primary">
             <a
               class="block"
-              href={NAVIGATION.SCHEDULE}>Schedule</a
+              href={SECTION.SCHEDULE}>Schedule</a
             >
           </li>
           <li class="py-3 border-b border-border-primary">
             <a
               class="block"
-              href={NAVIGATION.CONTACT}>Contact us</a
+              href={SECTION.CONTACT}>Contact us</a
             >
           </li>
         </ul>
         <a
-          href={NAVIGATION.CHECKSTATUS}
+          href={SECTION.CHECKSTATUS}
           class="bg-primary block font-bold text-secondary py-[20px] rounded-[20px] w-fit py-tiny px-[26px] mx-[35px] mt-3 mb-[21px] md:block hover:bg-primary-40"
         >
           Check Status
