@@ -1,0 +1,166 @@
+---
+import Container from 'components/Container';
+import ResponsiveImage from 'components/ResponsiveImage';
+import { SECTION } from 'constants/navigation';
+---
+
+<footer class="min-h-[351px] md:min-h-[500px] bg-[url('assets/images/webp/bg-footer-mobile.webp')] bg-no-repeat bg-cover md:bg-[url('assets/images/webp/bg-footer-tablet.webp')] lg:bg-[url('assets/images/webp/bg-footer-desktop.webp')]">
+  <Container>
+    <div class="pt-[95px] pb-[30px] flex flex-col gap-5 gap-10 lg:flex-row lg:justify-between md:pt-[200px] md:pb-[50px] lg:pt-[300px] lg:pb-[133px]">
+      <a href="./">
+        <ResponsiveImage
+          alt="Vaccination Logo"
+          url={{
+            default: 'assets/images/svg/logo-default.svg',
+            mobile: 'assets/images/svg/logo-mobile.svg',
+            mobile2x: 'assets/images/svg/logo-mobile.svg',
+            tablet: 'assets/images/svg/logo-tablet.svg',
+            desktop: 'assets/images/svg/logo-desktop.svg',
+          }}
+          width={{
+            default: '200px',
+            mobile: '200px',
+            mobile2x: '400px',
+            tablet: '200px',
+            desktop: '251px',
+          }}
+          height={{
+            default: '31px',
+            mobile: '31px',
+            mobile2x: '62px',
+            tablet: '35px',
+            desktop: '44px',
+          }}
+          imageClass="cursor-pointer"
+        />
+      </a>
+      <ul
+        class="flex flex-col gap-2.5 md:flex-row md:gap-[25px] md:text-xl font-menium text-navbar text-sm leading-base lg:justify-center lg:gap-[25px] lg:text-2xl"
+      >
+        <li>
+          <a class="font-bold text-white" href={SECTION.HOME}>Home</a>
+        </li>
+        <li>
+          <a class="hover:text-white" href={SECTION.SERVICES}>Services</a>
+        </li>
+        <li>
+          <a class="hover:text-white" href={SECTION.SCHEDULE}>Schedule</a
+          >
+        </li>
+        <li>
+          <a class="hover:text-white" href={SECTION.CONTACT}>Contact us</a>
+        </li>
+      </ul>
+      <div class="flex flex-row gap-1 md:gap-[7px] lg:gap-2.5">
+        <a href="#youtube">
+          <ResponsiveImage
+            alt="Youtube"
+            url={{
+              default: 'assets/images/svg/youtube.svg',
+              mobile: 'assets/images/svg/youtube.svg',
+              mobile2x: 'assets/images/svg/youtube.svg',
+              tablet: 'assets/images/svg/youtube-tablet.svg',
+              desktop: 'assets/images/svg/youtube-desktop.svg',
+            }}
+            width={{
+              default: '18px',
+              mobile: '18px',
+              mobile2x: '36px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            height={{
+              default: '18px',
+              mobile: '18px',
+              mobile2x: '36px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            imageClass="cursor-pointer"
+          />
+        </a>
+        <a href="#instagram">
+          <ResponsiveImage
+            alt="Instagram"
+            url={{
+              default: 'assets/images/svg/instagram.svg',
+              mobile: 'assets/images/svg/instagram.svg',
+              mobile2x: 'assets/images/svg/instagram.svg',
+              tablet: 'assets/images/svg/instagram-tablet.svg',
+              desktop: 'assets/images/svg/instagram-desktop.svg',
+            }}
+            width={{
+              default: '18px',
+              mobile: '18px',
+              mobile2x: '36px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            height={{
+              default: '18px',
+              mobile: '18px',
+              mobile2x: '36px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            imageClass="cursor-pointer"
+          />
+        </a>
+        <a href="#twitter">
+          <ResponsiveImage
+            alt="Twitter"
+            url={{
+              default: 'assets/images/svg/twitter.svg',
+              mobile: 'assets/images/svg/twitter.svg',
+              mobile2x: 'assets/images/svg/twitter.svg',
+              tablet: 'assets/images/svg/twitter-tablet.svg',
+              desktop: 'assets/images/svg/twitter-desktop.svg',
+            }}
+            width={{
+              default: '18px',
+              mobile: '18px',
+              mobile2x: '36px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            height={{
+              default: '18px',
+              mobile: '18px',
+              mobile2x: '36px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            imageClass="cursor-pointer"
+          />
+        </a>
+        <a href="#facebook">
+          <ResponsiveImage
+            alt="Facebook"
+            url={{
+              default: 'assets/images/svg/facebook.svg',
+              mobile: 'assets/images/svg/facebook.svg',
+              mobile2x: 'assets/images/svg/facebook.svg',
+              tablet: 'assets/images/svg/facebook-tablet.svg',
+              desktop: 'assets/images/svg/facebook-desktop.svg',
+            }}
+            width={{
+              default: '18px',
+              mobile: '18px',
+              mobile2x: '36px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            height={{
+              default: '18px',
+              mobile: '18px',
+              mobile2x: '36px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            imageClass="cursor-pointer"
+          />
+        </a>
+      </div>
+    </div>
+  </Container>
+</footer>
