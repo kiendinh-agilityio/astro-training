@@ -1,0 +1,158 @@
+---
+import Container from 'components/Container';
+import ResponsiveImage from 'components/ResponsiveImage';
+
+export interface HeaderProps {
+  className?: string;
+}
+---
+
+<header
+  class="sticky top-0 z-50"
+>
+  <Container>
+    <!-- Nav-menu -->
+    <nav class="flex items-center justify-between header-menu pt-[50px] pb-8 lg:py-[41px]">
+      <!-- Logo -->
+      <div
+        class="flex flex-row items-center justify-between w-full h-[45px] lg:w-[251px]"
+      >
+        <a href="./" class="header-nav-logo">
+          <ResponsiveImage
+            alt="Vaccination Logo"
+            url={{
+              default: 'assets/images/svg/logo-default.svg',
+              mobile: 'assets/images/svg/logo-mobile.svg',
+              mobile2x: 'assets/images/svg/logo-mobile.svg',
+              tablet: 'assets/images/svg/logo-tablet.svg',
+              desktop: 'assets/images/svg/logo-desktop.svg',
+            }}
+            width={{
+              default: '200px',
+              mobile: '200px',
+              mobile2x: '400px',
+              tablet: '200px',
+              desktop: '251px',
+            }}
+            height={{
+              default: '31px',
+              mobile: '31px',
+              mobile2x: '62px',
+              tablet: '35px',
+              desktop: '44px',
+            }}
+            imageClass="cursor-pointer"
+          />
+        </a>
+        <!-- Button toggler -->
+        <div id="nav-toggle">
+          <button aria-label="open-menu-mobile" id="open-btn" class="lg:hidden">
+            <img width="30px" height="30px" src="assets/images/svg/open-menu.svg" alt="Button Open Menu">
+          </button>
+          <button id="close-btn" class="hidden lg:hidden">
+            <img width="30px" height="30px" src="assets/images/svg/close-menu.svg" alt="Button Close Menu">
+          </button>
+        </div>
+      </div>
+      <ul
+        class="font-menium text-navbar hidden lg:text-text-reversal lg:flex lg:justify-center lg:gap-[25px] lg:text-2xl lg:px-1 nav-list"
+      >
+        <li class="flex flex-col items-center">
+          <a class="font-bold text-white" href="./">Home</a>
+          <span class="w-[10px] h-[10px] bg-secondary border-secondary rounded-full border"></span>
+        </li>
+        <li>
+          <a class="hover:text-white" href="/#Services">Services</a>
+        </li>
+        <li>
+          <a class="hover:text-white" href="/#Schedule">Schedule</a
+          >
+        </li>
+        <li>
+          <a class="hover:text-white" href="/#Contact-us">Contact us</a>
+        </li>
+      </ul>
+      <a
+        class="bg-btn-checkstatus text-2xl leading-base text-secondary font-bold rounded-[20px] hidden lg:py-5 lg:px-[26px] lg:block hover:bg-white"
+        href="/#Check-Status"
+      >
+        Check Status
+      </a>
+      <!-- Mobile menu, show/hide based on menu state. -->
+    </nav>
+    <!-- Navbar menu mobile -->
+    <div
+      class="fixed hidden insert-0 left-0 top-32 bg-overlay bg-opacity-50 overflow-y-auto h-full w-full lg:hidden"
+      id="modal"
+    >
+      <div class="relative mx-auto border bg-white lg:hidden">
+        <ul class="px-[35px] font-medium text-primary nav-list">
+          <li class="py-3 border-b border-border-primary">
+            <a
+              class="block"
+              href="/#Home">Home</a
+            >
+          </li>
+          <li class="py-3 border-b border-border-primary">
+            <a
+              class="block"
+              href="/#Services">Services</a
+            >
+          </li>
+          <li class="py-3 border-b border-border-primary">
+            <a
+              class="block"
+              href="/#Schedule">Schedule</a
+            >
+          </li>
+          <li class="py-3 border-b border-border-primary">
+            <a
+              class="block"
+              href="/#Contact us">Contact us</a
+            >
+          </li>
+        </ul>
+        <a
+          href="/#Check-Status"
+          class="bg-primary block font-bold text-secondary py-[20px] rounded-[20px] w-fit py-tiny px-[26px] mx-[35px] mt-3 mb-[21px] md:block hover:bg-primary-40"
+        >
+          Check Status
+        </a>
+      </div>
+    </div>
+  </Container>
+  <script>
+    const modal = document.getElementById('modal');
+    const openBtn = document.getElementById('open-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const logo = document.getElementById('logo');
+    // Click show navbar mobile
+    openBtn.onclick = function () {
+      modal?.classList.toggle('hidden');
+      openBtn?.classList.add('xs:hidden');
+      closeBtn?.classList.add('xs:block');
+    };
+    // Click hide navbar mobile
+    closeBtn.onclick = function () {
+      modal?.classList.toggle('hidden');
+      openBtn?.classList.remove('xs:hidden');
+      closeBtn?.classList.remove('xs:block');
+    };
+    //Click all modal and menu
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal?.classList.toggle('hidden');
+        openBtn?.classList.remove('xs:hidden');
+        closeBtn?.classList.remove('xs:block');
+      }
+    };
+    // Clicking on the logo will scroll to the top of the page
+    logo.onclick = function (e) {
+      e.preventDefault();
+      if (window.location.pathname !== '/') {
+        window.location = '/';
+      }
+      window.scrollTo(0, 0);
+    };
+  </script>
+</header>
