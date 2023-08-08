@@ -1,0 +1,201 @@
+---
+import Container from 'components/Container';
+import ResponsiveImage from 'components/ResponsiveImage';
+import Button from 'components/Button';
+import { HERO_BANNER } from 'constants/images';
+---
+
+<section>
+  <Container className="lg:pt-[59px]">
+    <div class="flex flex-col mb-[43px] md:mb-[39px] lg:flex-row lg:justify-between xl:mb-0">
+      <div class="md:max-w-[502px] xl:max-w-hero-content">
+        <p class="font-bold text-xs leading-base text-secondary mb-5 md:text-lg md:mb-10 lg:text-2xl">
+          Get Vaccinated. Boost your Immune System
+        </p>
+        <h1
+          class="font-extrabold text-2xl leading-base mb-5 md:text-4xl md:mb-10 lg:text-5xl lg:mb-[50px]"
+        >
+          COVID-19 Vaccination Got Easier With, <span class="text-secondary">Vaccination.ng</span>
+        </h1>
+        <p
+          class="font-bold text-sm leading-base text-white/70 mb-10 md:text-xl lg:text-2xl lg:mb-[50px]"
+        >
+          Vaccination.ng will help you find the nearest centre for vaccination, in all 36 states in Nigeria.
+        </p>
+        <div class="flex gap-5 mb-[50px] md:mb-[55px] lg:mb-0">
+          <Button
+            type="secondary"
+            className="rounded-[20px] border-2 border-secondary hover:bg-primary"
+          >
+            Get Vaccine
+          </Button>
+          <Button
+            className="rounded-[20px] border-2 border-secondary hover:bg-secondary"
+          >
+            Help Centre
+          </Button>
+        </div>
+      </div>
+      <ResponsiveImage
+        alt="Hero"
+        width={{
+          default: '306px',
+          mobile: '306px',
+          mobile2x: '612px',
+          tablet: '622px',
+          desktop: '617px',
+        }}
+        height={{
+          default: '309px',
+          mobile: '309px',
+          mobile2x: '618px',
+          tablet: '617px',
+          desktop: '617px',
+        }}
+        url={{
+          default: HERO_BANNER.default,
+          mobile: HERO_BANNER.mobile,
+          mobile2x: HERO_BANNER.mobile2x,
+          tablet: HERO_BANNER.tablet,
+          desktop: HERO_BANNER.desktop,
+        }}
+      />
+    </div>
+    <div class="flex gap-2.5 items-center mb-5 md:gap-5 md:mb-8 lg:mb-2.5">
+      <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
+        <ResponsiveImage
+          alt="Clock"
+          width={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          height={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          url={{
+            default: 'assets/images/svg/clock.svg',
+            mobile: 'assets/images/svg/clock.svg',
+            mobile2x: 'assets/images/svg/clock.svg',
+            tablet: 'assets/images/svg/clock-tablet.svg',
+          }}
+        />
+      </div>
+      <h3 class="font-bold text-sm leading-base md:text-2xl">
+        Schedule your Vaccination
+      </h3>
+    </div>
+    <div
+        class="relative z-20 flex flex-col gap-[17px] w-full rounded-card-schedule bg-darker px-2.5 pt-6 pb-2.5 md:flex-row md:flex-wrap md:justify-between md:gap-[31px] md:pt-[41px] md:px-3 md:pb-[45px] lg:px-10 lg:py-[50px] xl:flex-nowrap"
+      >
+        <div class="flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit">
+          <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
+            <ResponsiveImage
+              alt="Map pin"
+              width={{
+                default: '20px',
+                mobile: '20px',
+                mobile2x: '40px',
+                tablet: '30px',
+              }}
+              height={{
+                default: '20px',
+                mobile: '20px',
+                mobile2x: '40px',
+                tablet: '30px',
+              }}
+              url={{
+                default: 'assets/images/svg/map-pin.svg',
+                mobile: 'assets/images/svg/map-pin.svg',
+                mobile2x: 'assets/images/svg/map-pin.svg',
+                tablet: 'assets/images/svg/map-pin-tablet.svg',
+              }}
+            />
+          </div>
+          <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
+            <li class="font-semibold text-white/50">
+              Location
+            </li>
+            <li>
+              Ikeja Lagos, Nigeria
+            </li>
+          </ul>
+        </div>
+        <div class="flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit">
+          <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
+            <ResponsiveImage
+              alt="Calendar"
+              width={{
+                default: '20px',
+                mobile: '20px',
+                mobile2x: '40px',
+                tablet: '30px',
+              }}
+              height={{
+                default: '20px',
+                mobile: '20px',
+                mobile2x: '40px',
+                tablet: '30px',
+              }}
+              url={{
+                default: 'assets/images/svg/calendar.svg',
+                mobile: 'assets/images/svg/calendar.svg',
+                mobile2x: 'assets/images/svg/calendar.svg',
+                tablet: 'assets/images/svg/calendar-tablet.svg',
+              }}
+            />
+          </div>
+          <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
+            <li class="font-semibold text-white/50">
+              Date
+            </li>
+            <li>
+              29 February, 2022
+            </li>
+          </ul>
+        </div>
+        <div class="flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit">
+          <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
+            <ResponsiveImage
+              alt="Shield"
+              width={{
+                default: '20px',
+                mobile: '20px',
+                mobile2x: '40px',
+                tablet: '30px',
+              }}
+              height={{
+                default: '20px',
+                mobile: '20px',
+                mobile2x: '40px',
+                tablet: '30px',
+              }}
+              url={{
+                default: 'assets/images/svg/shield.svg',
+                mobile: 'assets/images/svg/shield.svg',
+                mobile2x: 'assets/images/svg/shield.svg',
+                tablet: 'assets/images/svg/shield-tablet.svg',
+              }}
+            />
+          </div>
+          <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
+            <li class="font-semibold text-white/50">
+              Vaccine Type
+            </li>
+            <li>
+              Mordena
+            </li>
+          </ul>
+        </div>
+        <div class="md:w-schedule-content-md xxl:w-fit">
+          <Button type="secondary" className="rounded-[10px] flex justify-center w-[150px] h-[50px] mt-1 md:w-[253px] md:h-[64px] md:rounded-[20px] lg:w-[142px] lg:h-[69px]">
+          Submit
+          </Button>
+        </div>
+      </div>
+  </Container>
+</section>
