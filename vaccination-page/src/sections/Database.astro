@@ -1,0 +1,39 @@
+---
+import Container from 'components/Container';
+import Button from 'components/Button';
+import Input from 'components/Input';
+---
+
+<section class="bg-database-mobile min-h-[497px] bg-no-repeat bg-cover pt-[84px] pb-8 md:bg-database-tablet md:min-h-[596px] md:py-[57px] lg:min-h-[466px] lg:bg-database-desktop lg:py-[63px]">
+  <Container>
+    <form class="w-full bg-darker rounded-[20px] border-darker pb-8 md:pb-[45px] lg:pb-[31px]">
+      <div class="text-xs text-center font-bold leading-base rounded-card-sm bg-dark py-3.5 md:rounded-card-md md:pt-[18px] md:pb-[13px] md:text-xl lg:text-left lg:text-2xl lg:py-9 lg:px-[93px]">
+        <label>
+          Check your COVID-19 result on our Database
+        </label>
+      </div>
+      <div class="pt-[21px] px-3 md:pt-10 md:px-[61px] lg:px-[93px] lg:pt-[35px]">
+        <div class="flex flex-col gap-5 md:px-12 lg:flex-row lg:px-0 lg:justify-between">
+          <Input
+          className='bg-transparent h-[50px] border-[3px] border-toggle rounded-[10px] py-4 px-[18px] text-white focus:border-[3px] focus:border-secondary focus:outline-none placeholder:font-medium md:pt-5 md:pb-[25px] md:px-[25px] md:h-[69px] md:rounded-[20px] lg:max-w-[450px]'
+          type='text'
+          placeholder='Okeowo'
+          />
+          <Input
+            className='bg-transparent h-[50px] border-[3px] border-toggle rounded-[10px] py-4 px-[18px] text-white focus:border-[3px] focus:border-secondary focus:outline-none placeholder:font-medium md:pt-5 md:pb-[25px] md:px-[25px] md:h-[69px] md:rounded-[20px] lg:max-w-[450px]'
+            type='text'
+            placeholder='NIK Number'
+          />
+          <Button className='w-[150px] h-[50px] flex justify-center bg-transparent border-[3px] border-secondary text-secondary rounded-[10px] md:text-xl md:rounded-[20px] md:w-[172px] md:h-[64px] lg:w-[173px] lg:h-[69px]'>
+            Check
+          </Button>
+        </div>
+        <div class="flex text-center items-center justify-center h-[50px] font-bold text-secondary py-[13px] text-xs bg-dark rounded-[10px] mt-12 md:text-sm md:pt-3.5 md:pb-[19px] md:rounded-[20px] lg:min-h-[70px] lg:mt-[35px] lg:pt-5 lg:pb-[21px] lg:text-xl xl:text-2xl">
+          <p>
+            Need a certificate for your COVID-19 result? Please click <a class="underline" href="#">here</a>
+          </p>
+        </div>
+      </div>
+    </form>
+  </Container>
+</section>

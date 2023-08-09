@@ -10,10 +10,10 @@ module.exports = {
         secondary: '#17c2ec',
         input: 'rgba(0, 0, 0, 0.25)',
         overlay: '#000000b3',
+        dark: 'rgba(196, 196, 196, 0.05)',
         darker: 'rgba(196, 196, 196, 0.10)',
         'navbar': 'rgba(255, 255, 255, 0.50)',
         'toggle': 'rgba(196, 196, 196, 0.15)',
-        'card-schedule': 'rgba(196, 196, 196, 0.05)',
       },
       screens: {
         xs: '320px',
@@ -40,10 +40,17 @@ module.exports = {
       },
       width: {
         'schedule-content-md': 'calc(50% - 25px)', //subtract for the distance between 2 content in the schedule
+        'input-database-lg': 'calc(100% - 120px)', // subtracts 120px is the margin and the distance between the two inputs and the button
       },
       borderRadius: {
-        'card-schedule': '20px 20px 0px 0px',
+        'card-sm': '10px 10px 0px 0px;',
+        'card-md': '20px 20px 0px 0px',
       },
+      backgroundImage: {
+        'database-mobile': "url('assets/images/webp/bg-database-mobile.webp')",
+        'database-tablet': "url('assets/images/webp/bg-database-tablet.webp')",
+        'database-desktop': "url('assets/images/webp/bg-database-desktop.webp')",
+      }
     },
   },
   plugins: [],
