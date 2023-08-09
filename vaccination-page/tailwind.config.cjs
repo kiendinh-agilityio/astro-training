@@ -13,6 +13,7 @@ module.exports = {
         darker: 'rgba(196, 196, 196, 0.10)',
         'navbar': 'rgba(255, 255, 255, 0.50)',
         'toggle': 'rgba(196, 196, 196, 0.15)',
+        'card-schedule': 'rgba(196, 196, 196, 0.05)',
       },
       screens: {
         xs: '320px',
@@ -23,7 +24,9 @@ module.exports = {
         xxl: '1440px',
       },
       fontSize: {
+        xs: '12px',
         sm: '14px',
+        lg: '18px',
         xl: '20px',
         '2xl': '24px',
         '4xl': '36px',
@@ -31,6 +34,15 @@ module.exports = {
       },
       lineHeight: {
         base: 'normal',
+      },
+      maxWidth: {
+        'hero-content': 'calc(100% - 622px - 74px)', // subtract for the width of the hero banner and the distance between the hero content and the hero banner
+      },
+      width: {
+        'schedule-content-md': 'calc(50% - 25px)', //subtract for the distance between 2 content in the schedule
+      },
+      borderRadius: {
+        'card-schedule': '20px 20px 0px 0px',
       },
     },
   },
