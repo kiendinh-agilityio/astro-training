@@ -1,0 +1,121 @@
+---
+import Container from 'components/Container';
+import ResponsiveImage from 'components/ResponsiveImage';
+import {
+  COMPANY_MODERNA,
+  COMPANY_PFIZER,
+  COMPANY_ASTRAZENECA,
+  COMPANY_SINOVAC
+} from 'constants/images';
+---
+
+<section class="bg-white">
+  <Container>
+    <ul class="flex items-center justify-center gap-3 py-[5px] md:py-3 md:gap-6 lg:py-[22px] lg:gap-12">
+      <li>
+        <ResponsiveImage
+          alt="Moderna Company"
+          width={{
+            default: '72px',
+            mobile: '72px',
+            mobile2x: '144px',
+            tablet: '148px',
+            desktop: '289px',
+          }}
+          height={{
+            default: '17px',
+            mobile: '17px',
+            mobile2x: '34px',
+            tablet: '34px',
+            desktop: '67px',
+          }}
+          url={{
+            default: COMPANY_MODERNA.default,
+            mobile: COMPANY_MODERNA.mobile,
+            mobile2x: COMPANY_MODERNA.mobile2x,
+            tablet: COMPANY_MODERNA.tablet,
+            desktop: COMPANY_MODERNA.desktop,
+          }}
+        />
+      </li>
+      <li>
+        <ResponsiveImage
+          alt="Pfizer Company"
+          width={{
+            default: '72px',
+            mobile: '72px',
+            mobile2x: '144px',
+            tablet: '148px',
+            desktop: '289px',
+          }}
+          height={{
+            default: '30px',
+            mobile: '30px',
+            mobile2x: '60px',
+            tablet: '61px',
+            desktop: '118px',
+          }}
+          url={{
+            default: COMPANY_PFIZER.default,
+            mobile: COMPANY_PFIZER.mobile,
+            mobile2x: COMPANY_PFIZER.mobile2x,
+            tablet: COMPANY_PFIZER.tablet,
+            desktop: COMPANY_PFIZER.desktop,
+          }}
+        />
+      </li>
+      <li>
+        <ResponsiveImage
+          alt="AstraZeneca Company"
+          width={{
+            default: '72px',
+            mobile: '72px',
+            mobile2x: '144px',
+            tablet: '148px',
+            desktop: '289px',
+          }}
+          height={{
+            default: '21px',
+            mobile: '21px',
+            mobile2x: '42px',
+            tablet: '42px',
+            desktop: '82px',
+          }}
+          url={{
+            default: COMPANY_ASTRAZENECA.default,
+            mobile: COMPANY_ASTRAZENECA.mobile,
+            mobile2x: COMPANY_ASTRAZENECA.mobile2x,
+            tablet: COMPANY_ASTRAZENECA.tablet,
+            desktop: COMPANY_ASTRAZENECA.desktop,
+          }}
+        />
+      </li>
+      <li>
+        <ResponsiveImage
+          alt="Sinovac Company"
+          width={{
+            default: '72px',
+            mobile: '72px',
+            mobile2x: '144px',
+            tablet: '148px',
+            desktop: '289px',
+          }}
+          height={{
+            default: '15px',
+            mobile: '15px',
+            mobile2x: '30px',
+            tablet: '30px',
+            desktop: '58px',
+          }}
+          url={{
+            default: COMPANY_SINOVAC.default,
+            mobile: COMPANY_SINOVAC.mobile,
+            mobile2x: COMPANY_SINOVAC.mobile2x,
+            tablet: COMPANY_SINOVAC.tablet,
+            desktop: COMPANY_SINOVAC.desktop,
+          }}
+        />
+      </li>
+    </ul>
+  </Container>
+</section>
