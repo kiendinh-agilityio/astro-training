@@ -14,6 +14,13 @@ module.exports = {
         darker: 'rgba(196, 196, 196, 0.10)',
         'navbar': 'rgba(255, 255, 255, 0.50)',
         'toggle': 'rgba(196, 196, 196, 0.15)',
+        tertiary: {
+          5: 'rgba(196, 196, 196, 0.05)',
+          10: 'rgba(196, 196, 196, 0.10)',
+          15: 'rgba(196, 196, 196, 0.15)',      
+          20: 'rgba(196, 196, 196, 0.20)',
+          50: 'rgba(196, 196, 196, 0.50)',
+        },
       },
       screens: {
         xs: '320px',
@@ -45,11 +52,18 @@ module.exports = {
       borderRadius: {
         'card-sm': '10px 10px 0px 0px;',
         'card-md': '20px 20px 0px 0px',
+        'card-lg': '20px 80px 20px 20px',
+        'card-xl': '50px 150px 50px 50px',
       },
       backgroundImage: {
+      // Database section
         'database-mobile': "url('assets/images/webp/bg-database-mobile.webp'), url('assets/images/png/bg-database-mobile.png')",
         'database-tablet': "url('assets/images/webp/bg-database-tablet.webp'), url('assets/images/png/bg-database-tablet.png')",
         'database-desktop': "url('assets/images/webp/bg-database-desktop.webp'), url('assets/images/png/bg-database-desktop.png')",
+      // Get Vaccinated section
+        'get-vaccinated-mobile': "url('assets/images/webp/bg-get-vaccinated-mobile.webp'), url('assets/images/png/bg-get-vaccinated-mobile.png')",
+        'get-vaccinated-tablet': "url('assets/images/webp/bg-get-vaccinated.webp'), url('assets/images/png/bg-get-vaccinated-tablet.png')",
+        'get-vaccinated-desktop': "url('assets/images/webp/bg-get-vaccinated.webp'), url('assets/images/png/bg-get-vaccinated-desktop.png')",
       }
     },
   },
