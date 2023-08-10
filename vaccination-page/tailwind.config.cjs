@@ -52,7 +52,8 @@ module.exports = {
       borderRadius: {
         'card-sm': '10px 10px 0px 0px;',
         'card-md': '20px 20px 0px 0px',
-        'card-get-vaccinated': '20px 80px 20px 20px',
+        'card-lg': '20px 80px 20px 20px',
+        'card-xl': '50px 150px 50px 50px',
       },
       backgroundImage: {
       // Database section
