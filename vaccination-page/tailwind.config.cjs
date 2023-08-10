@@ -47,9 +47,9 @@ module.exports = {
         'card-md': '20px 20px 0px 0px',
       },
       backgroundImage: {
-        'database-mobile': "url('assets/images/webp/bg-database-mobile.webp')",
-        'database-tablet': "url('assets/images/webp/bg-database-tablet.webp')",
-        'database-desktop': "url('assets/images/webp/bg-database-desktop.webp')",
+        'database-mobile': "url('assets/images/webp/bg-database-mobile.webp'), url('assets/images/png/bg-database-mobile.png')",
+        'database-tablet': "url('assets/images/webp/bg-database-tablet.webp'), url('assets/images/png/bg-database-tablet.png')",
+        'database-desktop': "url('assets/images/webp/bg-database-desktop.webp'), url('assets/images/png/bg-database-desktop.png')",
       }
     },
   },
