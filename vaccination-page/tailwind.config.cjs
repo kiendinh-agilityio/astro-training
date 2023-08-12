@@ -21,6 +21,7 @@ module.exports = {
           20: 'rgba(196, 196, 196, 0.20)',
           50: 'rgba(196, 196, 196, 0.50)',
         },
+        'input-registration': 'rgba(11, 21, 60, 0.15)',
       },
       screens: {
         xs: '320px',
@@ -62,8 +63,12 @@ module.exports = {
         'database-desktop': "url('assets/images/webp/bg-database-desktop.webp'), url('assets/images/png/bg-database-desktop.png')",
       // Get Vaccinated section
         'get-vaccinated-mobile': "url('assets/images/webp/bg-get-vaccinated-mobile.webp'), url('assets/images/png/bg-get-vaccinated-mobile.png')",
-        'get-vaccinated-tablet': "url('assets/images/webp/bg-get-vaccinated.webp'), url('assets/images/png/bg-get-vaccinated-tablet.png')",
-        'get-vaccinated-desktop': "url('assets/images/webp/bg-get-vaccinated.webp'), url('assets/images/png/bg-get-vaccinated-desktop.png')",
+        'get-vaccinated-tablet': "url('assets/images/webp/bg-get-vaccinated-tablet.webp'), url('assets/images/png/bg-get-vaccinated-tablet.png')",
+        'get-vaccinated-desktop': "url('assets/images/webp/bg-get-vaccinated-desktop.webp'), url('assets/images/png/bg-get-vaccinated-desktop.png')",
+      // Vaccine Registration section
+        'vaccine-registration-mobile': "url('assets/images/webp/bg-vaccine-registration-mobile.webp'), url('assets/images/png/bg-vaccine-registration-mobile.png')",
+        'vaccine-registration-tablet': "url('assets/images/webp/bg-vaccine-registration-tablet.webp'), url('assets/images/png/bg-vaccine-registration-tablet.png')",
+        'vaccine-registration-desktop': "url('assets/images/webp/bg-vaccine-registration-desktop.webp'), url('assets/images/png/bg-vaccine-registration-desktop.png')",
       }
     },
   },
