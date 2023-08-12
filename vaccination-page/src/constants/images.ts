@@ -38,3 +38,12 @@ export const COMPANY_SINOVAC = {
   tablet: 'assets/images/webp/sinovac-tablet.webp',
   desktop: 'assets/images/webp/sinovac-desktop.webp',
 };
+
+// Vaccine Registration section
+export const VACCINE_REGISTRATION = {
+  default: 'assets/images/png/vaccine-registration.png',
+  mobile: 'assets/images/webp/vaccine-registration.webp',
+  mobile2x: 'assets/images/webp/vaccine-registration-mobile-2x.webp',
+  tablet: 'assets/images/webp/vaccine-registration-tablet.webp',
+  desktop: 'assets/images/webp/vaccine-registration-desktop.webp',
+};
