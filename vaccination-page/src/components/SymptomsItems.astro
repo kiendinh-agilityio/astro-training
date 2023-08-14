@@ -1,0 +1,42 @@
+---
+import ResponsiveImage from 'components/ResponsiveImage';
+
+export interface SymptomsItemsProps {
+  className?: string;
+  description: string;
+}
+
+const { className = '', description } = Astro.props;
+---
+
+<ul class={`${className} flex items-center border-tertiary-20 bg-tertiary-20 rounded-[5px] h-[22px] py-1.5 relative pl-[18px] md:h-[45px] md:py-3 md:pl-[33px] xl:h-[70px] lg:justify-center`}>
+  <li class="absolute left-[-18px] top-[-6px] md:left-[-35px] md:top-[-10px] lg:left-[-25px] lg:top-[-10px] xl:left-[-20px] xl:top-[-15px]">
+    <ResponsiveImage
+      alt="Corona Virus"
+      width={{
+        default: '35px',
+        mobile: '35px',
+        mobile2x: '70px',
+        tablet: '70px',
+        desktop: '108px',
+      }}
+      height={{
+        default: '35px',
+        mobile: '35px',
+        mobile2x: '70px',
+        tablet: '70px',
+        desktop: '108px',
+      }}
+      url={{
+        default: 'assets/images/svg/corona-virus.svg',
+        mobile: 'assets/images/svg/corona-virus.svg',
+        mobile2x: 'assets/images/svg/corona-virus.svg',
+        tablet: 'assets/images/svg/corona-virus-tablet.svg',
+        desktop: 'assets/images/svg/corona-virus-desktop.svg',
+      }}
+    />
+  </li>
+  <li class="font-semibold text-tiny text-secondary leading-base md:text-lg">
+    {description}
+  </li>
+</ul>
