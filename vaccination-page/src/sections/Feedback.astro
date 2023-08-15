@@ -1,0 +1,53 @@
+---
+import Container from "components/Container";
+import Heading from "components/Heading";
+import Card from "components/Card";
+---
+
+<section class="bg-feedback-mobile bg-no-repeat bg-cover pt-[30px] pb-11 md:pt-[46px] md:pb-[59px] md:bg-feedback-tablet lg:bg-feedback-desktop lg:pb-[106px] lg:pt-[57px] lg:bg-center lg:min-h-[750px]">
+  <Container>
+    <ul class="flex flex-col text-center items-center mb-4 md:mb-[60px]">
+      <li class="font-bold text-sm text-secondary mb-5 md:text-xl lg:text-2xl">
+        FEEDBACK
+      </li>
+      <li>
+        <Heading className="font-extrabold text-black mb-2.5 md:mb-10">
+          What our Patients Think
+        </Heading>
+      </li>
+      <li class="font-medium text-xs text-black/50 px-[35px] md:text-lg lg:text-2xl lg:px-0 lg:max-w-[963px] ">
+        Adipiscing nec etiam tortor elit quisque. Arcu aliquet convallis aenean eu velit. Mi vestibulum, ullamcorper venenatis imperdiet augue arcu ue.
+      </li>
+    </ul>
+    <div class="flex flex-col gap-[30px] mx-auto max-w-[305px] md:max-w-[400px] lg:flex-row lg:gap-[45px] lg:max-w-full">
+      <Card
+        className="flex leading-base text-center bg-tertiary-50 text-black/60"
+        src="assets/images/svg/oyindamola-maja.svg"
+        atl="Oyindamola Maja"
+        name="Oyindamola Maja"
+        country="Badagry, Lagos"
+      >
+        <p class="text-xs px-[20px] md:text-lg md:px-0">“Been stressing about a close centre to get the <span class="text-secondary">covid-19</span> vaccine, until i tried Vaccination.ng”</p>
+      </Card>
+      <Card
+        className="flex text-center bg-secondary text-white"
+        src="assets/images/svg/okeowo-lekan.svg"
+        atl="Okeowo Lekan"
+        name="Okeowo Lekan"
+        country="Ikeja, Lagos"
+        type="secondary"
+      >
+        <p class="text-white/75 text-xs md:text-lg">“Got my vaccine very close to my house. Was very easy scheduling an appointment.”</p>
+      </Card>
+      <Card
+        className="flex text-center bg-tertiary-50 text-black/60"
+        src="assets/images/svg/kafaru-temitope.svg"
+        atl="Kafaru Temitope"
+        name="Kafaru Temitope"
+        country="Kafaru Temitope"
+      >
+        <p class="text-xs md:text-lg">“Been stressing about a close centre to get the <span class="text-secondary">covid-19</span> vaccine, until i tried Vaccination.ng”</p>
+      </Card>
+    </div>
+  </Container>
+</section>
