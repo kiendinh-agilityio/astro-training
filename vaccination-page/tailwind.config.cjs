@@ -21,6 +21,7 @@ module.exports = {
           20: 'rgba(196, 196, 196, 0.20)',
           50: 'rgba(196, 196, 196, 0.50)',
         },
+        'input-registration': 'rgba(11, 21, 60, 0.15)',
       },
       screens: {
         xs: '320px',
@@ -31,6 +32,7 @@ module.exports = {
         xxl: '1440px',
       },
       fontSize: {
+        tiny: '8px',
         xs: '12px',
         sm: '14px',
         lg: '18px',
@@ -62,8 +64,25 @@ module.exports = {
         'database-desktop': "url('assets/images/webp/bg-database-desktop.webp'), url('assets/images/png/bg-database-desktop.png')",
       // Get Vaccinated section
         'get-vaccinated-mobile': "url('assets/images/webp/bg-get-vaccinated-mobile.webp'), url('assets/images/png/bg-get-vaccinated-mobile.png')",
-        'get-vaccinated-tablet': "url('assets/images/webp/bg-get-vaccinated.webp'), url('assets/images/png/bg-get-vaccinated-tablet.png')",
-        'get-vaccinated-desktop': "url('assets/images/webp/bg-get-vaccinated.webp'), url('assets/images/png/bg-get-vaccinated-desktop.png')",
+        'get-vaccinated-tablet': "url('assets/images/webp/bg-get-vaccinated-tablet.webp'), url('assets/images/png/bg-get-vaccinated-tablet.png')",
+        'get-vaccinated-desktop': "url('assets/images/webp/bg-get-vaccinated-desktop.webp'), url('assets/images/png/bg-get-vaccinated-desktop.png')",
+      // Vaccine Registration section
+        'vaccine-registration-mobile': "url('assets/images/webp/bg-vaccine-registration-mobile.webp'), url('assets/images/png/bg-vaccine-registration-mobile.png')",
+        'vaccine-registration-tablet': "url('assets/images/webp/bg-vaccine-registration-tablet.webp'), url('assets/images/png/bg-vaccine-registration-tablet.png')",
+        'vaccine-registration-desktop': "url('assets/images/webp/bg-vaccine-registration-desktop.webp'), url('assets/images/png/bg-vaccine-registration-desktop.png')",
+      // Prevention section
+        /// Prevention background
+        'prevention-mobile': "url('assets/images/webp/bg-prevention-mobile.webp'), url('assets/images/png/bg-prevention-mobile.png')",
+        'prevention-tablet': "url('assets/images/webp/bg-prevention-tablet.webp'), url('assets/images/png/bg-prevention-tablet.png')",
+        'prevention-desktop': "url('assets/images/webp/bg-prevention-desktop.webp'), url('assets/images/png/bg-prevention-desktop.png')",
+        /// Symptoms background
+        'symptoms-mobile': "url('assets/images/webp/symptoms.webp'), url('assets/images/png/symptoms.png')",
+        'symptoms-tablet': "url('assets/images/webp/symptoms-tablet.webp'), url('assets/images/png/symptoms-tablet.png')",
+        'symptoms-desktop': "url('assets/images/webp/symptoms-desktop.webp'), url('assets/images/png/symptoms-desktop.png')",
+      // Feedback section
+        'feedback-mobile': "url('assets/images/webp/bg-feedback.webp'), url('assets/images/png/bg-feedback.png')",
+        'feedback-tablet': "url('assets/images/webp/bg-feedback-tablet.webp'), url('assets/images/png/bg-feedback-tablet.png')",
+        'feedback-desktop': "url('assets/images/webp/bg-feedback-desktop.webp'), url('assets/images/png/bg-feedback-desktop.png')",
       }
     },
   },

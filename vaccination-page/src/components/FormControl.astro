@@ -1,0 +1,66 @@
+---
+import Button from 'components/Button';
+import Input from 'components/Input';
+
+export interface HeadingProps {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<form class={`${className} flex flex-col gap-5 max-w-[668px]`}>
+  <div class="flex flex-col gap-5 md:gap-[25px]">
+    <label class="font-bold leading-base text-black text-sm md:text-xl">
+      Patient’s Full Name
+    </label>
+    <Input
+      type="text"
+      placeholder="Full name"
+      className="bg-input-registration text-primary rounded-[10px] py-4 px-5 focus:outline-none placeholder:font-medium placeholder:text-black/25 text-sm md:text-xl md:rounded-[20px] md:py-[23px] md:px-[30px] lg:py-5"
+    />
+  </div>
+  <div class="flex flex-col gap-5 md:gap-[25px]">
+    <label class="font-bold leading-base text-black text-sm md:text-xl">
+      Mobile Number
+    </label>
+    <p class="text-sm text-black/50 font-medium leading-base md:text-xl">
+      Notifications for appointment and reminders will be sent to this provided number
+    </p>
+    <div class="flex flex-col gap-5 md:flex-row md:items-center md:gap-[50px] lg:gap-9">
+      <div class="relative flex items-center w-full">
+        <ul class="flex gap-[5px] px-5 absolute">
+          <li>
+            <img class="cursor-pointer" width="40px" height="40px" src="assets/images/svg/nigeria.svg" alt="Nigeria">
+          </li>
+          <li class="flex">
+            <img class="cursor-pointer" width="24px" height="24px" src="assets/images/svg/chevron-down.svg" alt="Chevron-down">
+          </li>
+          <li class="border-r-2 border-black/10"></li>
+        </ul>
+        <Input
+          type="number"
+          placeholder="Phone number"
+          className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-input-registration text-primary rounded-[10px] py-4 px-5 pl-[114px] focus:outline-none placeholder:font-medium placeholder:text-black/25 text-sm md:text-xl md:rounded-[20px] md:py-[23px] md:px-[30px] md:pl-[134px] lg:py-5"
+        />
+      </div>
+      <Button
+        type="secondary"
+        className="flex justify-center w-[150px] h-[50px] px-[70px] rounded-[10px] md:w-[201px] md:h-[70px] md:rounded-[20px] md:text-xl lg:text-2xl"
+      >
+        Verify
+      </Button>
+    </div>
+  </div>
+  <Button type="secondary" className="flex justify-center rounded-[10px] text-sm mt-10 md:text-xl md:mt-5 md:rounded-[20px] lg:text-2xl">
+    Submit
+  </Button>
+  <ul class="flex justify-between text-sm md:text-xl md:mt-5 md:justify-center md:gap-[46px]">
+    <li class="font-semibold text-black/50">
+      Already registered ?
+    </li>
+    <li class="font-bold text-secondary">
+      Check your status
+    </li>
+  </ul>
+</form>
