@@ -3,18 +3,18 @@ type TextType = 'primary' | 'secondary';
 export interface CardProps {
   className?: string;
   alt: string;
-  name?: string;
+  title?: string;
   type: TextType;
-  country?: string;
+  description?: string;
 }
 
 const {
   className = '',
   src,
   alt,
-  name,
+  title,
   type = 'primary',
-  country,
+  description,
 } = Astro.props;
 
 const textColor = {
@@ -27,8 +27,8 @@ const textColor = {
   <div class="flex gap-[15px] md:gap-5">
     <img width="100%" height="100%" src={src} alt={alt} class="w-[54px] h-[54px] md:w-[70px] md:h-[70px]">
     <ul class="flex flex-col text-left gap-[3px] justify-center font-bold leading-base md:justify-end">
-      <li class="text-sm md:text-xl lg:text-2xl">{name}</li>
-      <li class={`${textColor[type as TextType]} text-xs md:text-sm`}>{country}</li>
+      <li class="text-sm md:text-xl lg:text-2xl">{title}</li>
+      <li class={`${textColor[type as TextType]} text-xs md:text-sm`}>{description}</li>
     </ul>
   </div>
   <slot/>
