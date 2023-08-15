@@ -79,6 +79,10 @@ module.exports = {
         'symptoms-mobile': "url('assets/images/webp/symptoms.webp'), url('assets/images/png/symptoms.png')",
         'symptoms-tablet': "url('assets/images/webp/symptoms-tablet.webp'), url('assets/images/png/symptoms-tablet.png')",
         'symptoms-desktop': "url('assets/images/webp/symptoms-desktop.webp'), url('assets/images/png/symptoms-desktop.png')",
+      // Feedback section
+        'feedback-mobile': "url('assets/images/webp/bg-feedback.webp'), url('assets/images/png/bg-feedback.png')",
+        'feedback-tablet': "url('assets/images/webp/bg-feedback-tablet.webp'), url('assets/images/png/bg-feedback-tablet.png')",
+        'feedback-desktop': "url('assets/images/webp/bg-feedback-desktop.webp'), url('assets/images/png/bg-feedback-desktop.png')",
       }
     },
   },
