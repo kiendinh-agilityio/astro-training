@@ -4,6 +4,7 @@
     "isolatedModules": false,
     "baseUrl": ".",
     "paths": {
+      "assets/*": ["public/assets/"],
       "components/*": ["src/components/*.astro"],
       "sections/*": ["src/sections/*.astro"],
       "layouts/*": ["src/layouts/*.astro"],

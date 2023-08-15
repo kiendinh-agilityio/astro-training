@@ -1,0 +1,77 @@
+---
+import Container from 'components/Container';
+import Heading from 'components/Heading';
+import SymptomsItems from 'components/BasicList';
+---
+
+<section class="bg-prevention-mobile bg-no-repeat bg-cover md:bg-prevention-tablet lg:bg-prevention-desktop">
+  <Container>
+    <ul class="flex flex-col text-center items-center leading-base pt-[25px] gap-2.5 mb-[30px] md:pt-10 md:mb-[60px] lg:pt-[67px] lg:gap-5 lg:mb-24">
+      <li class="font-bold text-xs md:text-xl lg:text-2xl">
+        Covid-19 Prevention
+      </li>
+      <li class="md:mb-10 lg:mb-5">
+        <Heading>
+          <span class="text-secondary">COVID-19</span> Symptoms
+        </Heading>
+      </li>
+      <li class="font-medium text-xs text-white/50 max-w-[296px] md:text-lg md:max-w-[553px] lg:text-2xl lg:max-w-full lg:px-40 xl:pb-[83px]">
+        Adipiscing nec etiam tortor elit quisque. Arcu aliquet convallis aenean eu velit. Mi vestibulum, ullamcorper venenatis imperdiet augue arcu donec neque.
+      </li>
+    </ul>
+  </Container>
+  <div class="bg-symptoms-mobile bg-no-repeat bg-center md:bg-symptoms-tablet xl:bg-symptoms-desktop">
+    <div class="flex flex-col max-w-[375px] mx-auto pt-[13px] pb-11 gap-[22px] md:pt-[26px] md:pb-[91px] md:gap-[46px] md:max-w-[768px] xl:gap-28 xl:pt-[34px] xl:pb-[61px] xl:max-w-[1440px]">
+      <ul class="flex w-full justify-between pl-[76px] pr-7 md:pr-[57px] xl:pl-24">
+        <li class="md:pl-[78px] xl:pl-24">
+          <SymptomsItems
+            className="w-[72px] md:w-[150px] lg:w-[200px] xl:w-[300px]"
+            description= "High Fever"
+          />
+        </li>
+        <li class="xl:pr-[79px]">
+          <SymptomsItems
+            className="w-[109px] md:w-[224px] lg:w-[250px] xl:w-[363px]"
+            description= "Loss sense of taste"
+          />
+        </li>
+      </ul>
+      <ul class="flex w-full justify-between pl-11 pr-3 md:pr-[25px] xl:pl-12 xl:pr-[81px]">
+        <li class="md:pl-11">
+          <SymptomsItems
+            className="w-[72px] md:w-[150px] lg:w-[200px] lg:hidden xl:w-[300px]"
+            description= "Dry Cough"
+          />
+          <SymptomsItems
+            className="hidden w-[109px] md:w-[224px] lg:w-[250px] lg:flex xl:w-[300px] xl:pl-[52px]"
+            description= "Loss sense of smell"
+          />
+        </li>
+        <li>
+          <SymptomsItems
+            className="w-[109px] md:w-[224px] lg:w-[250px] xl:w-[327px]"
+            description= "Difficulty Breathing"
+          />
+        </li>
+      </ul>
+      <ul class="flex w-full justify-between pl-[22px] pr-1.5 md:pl-[43px] md:pr-[11px] xl:pl-[42px] xl:pr-[46px]">
+        <li>
+          <SymptomsItems
+            className="w-[109px] md:w-[224px] lg:w-[250px] lg:hidden"
+            description= "Loss sense of smell"
+          />
+          <SymptomsItems
+            className="hidden w-[72px] md:w-[150px] lg:w-[200px] lg:flex xl:w-[300px]"
+            description= "Dry Cough"
+          />
+        </li>
+        <li>
+          <SymptomsItems
+            className="w-[82px] md:w-[168px] lg:w-[200px] xl:w-[300px]"
+            description= "Sore Throat"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

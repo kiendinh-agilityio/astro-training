@@ -1,21 +1,35 @@
 ---
+type TextType = 'primary' | 'secondary';
 export interface CardProps {
   className?: string;
+  alt: string;
   title?: string;
-  body: string;
+  type: TextType;
+  description?: string;
 }
 
-const { className = '', href, title, body } = Astro.props;
+const {
+  className = '',
+  src,
+  alt,
+  title,
+  type = 'primary',
+  description,
+} = Astro.props;
+
+const textColor = {
+  primary: 'text-black/50',
+  secondary: 'text-white/75'
+}
 ---
 
-<li class={`${className} flex text-white bg-primary w-[188px] p-5 border border-solid rounded-[20px]`}>
-  <a href={href}>
-    <h2>
-      {title}
-      <span>&rarr;</span>
-    </h2>
-    <p>
-      {body}
-    </p>
-  </a>
-</li>
+<article class={`${className} flex flex-col gap-[30px] leading-base w-full min-h-[191px] pt-[23px] px-[23px] pb-[34px] border-tertiary-50 rounded-[14px] md:px-[30px] md:pt-[30px] md:pb-11 md:gap-10 md:rounded-[20px]`}>
+  <div class="flex gap-[15px] md:gap-5">
+    <img width="100%" height="100%" src={src} alt={alt} class="w-[54px] h-[54px] md:w-[70px] md:h-[70px]">
+    <ul class="flex flex-col text-left gap-[3px] justify-center font-bold leading-base md:justify-end">
+      <li class="text-sm md:text-xl lg:text-2xl">{title}</li>
+      <li class={`${textColor[type as TextType]} text-xs md:text-sm`}>{description}</li>
+    </ul>
+  </div>
+  <slot/>
+</article>
