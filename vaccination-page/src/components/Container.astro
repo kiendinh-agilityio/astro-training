@@ -6,6 +6,6 @@ export interface ContainerProps {
 const { className = '' } = Astro.props as ContainerProps;
 ---
 
-<div class={`container xs:max-w-full px-6 sm:px-[35px] md:px-[50px] lg:px-6 mx-auto xxl:max-w-[1440px] xxl:px-[70px] ${className}`}>
+<div class={`container xs:max-w-full px-6 sm:px-[30px] md:px-[50px] lg:px-6 mx-auto xxl:max-w-[1440px] xxl:px-[70px] ${className}`}>
   <slot />
 </div>
