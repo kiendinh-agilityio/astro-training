@@ -7,8 +7,8 @@ module.exports = {
       },
       colors: {
         primary: '#0b153c',
-        secondary: '#17c2ec',
-        input: 'rgba(0, 0, 0, 0.25)',
+        secondary: '#0e80a5',
+        input: 'rgba(0, 0, 0, 0.75)',
         overlay: '#000000b3',
         dark: 'rgba(196, 196, 196, 0.05)',
         darker: 'rgba(196, 196, 196, 0.10)',
