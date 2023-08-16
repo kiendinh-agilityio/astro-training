@@ -54,8 +54,6 @@ module.exports = {
       borderRadius: {
         'card-sm': '10px 10px 0px 0px;',
         'card-md': '20px 20px 0px 0px',
-        'card-2md': '0px 20px 20px 0px',
-        'card-3md': '0px 30px 30px 0px;',
         'card-lg': '20px 80px 20px 20px',
         'card-xl': '50px 150px 50px 50px',
       },
@@ -85,6 +83,9 @@ module.exports = {
         'feedback-mobile': "url('assets/images/webp/bg-feedback.webp'), url('assets/images/png/bg-feedback.png')",
         'feedback-tablet': "url('assets/images/webp/bg-feedback-tablet.webp'), url('assets/images/png/bg-feedback-tablet.png')",
         'feedback-desktop': "url('assets/images/webp/bg-feedback-desktop.webp'), url('assets/images/png/bg-feedback-desktop.png')",
+      },
+      boxShadow: {
+        quaternary: '0px 4px 4px 0px rgba(0, 0, 0, 0.10)'
       }
     },
   },
