@@ -8,7 +8,7 @@ export interface HeaderProps {
 }
 ---
 
-<header class="sticky top-0 z-50 bg-primary">
+<header class="absolute w-full">
   <Container>
     <!-- Nav-menu -->
     <nav class="flex items-center justify-between header-menu pt-[50px] pb-8 lg:py-[41px]">
@@ -72,7 +72,7 @@ export interface HeaderProps {
         </li>
       </ul>
       <a
-        class="bg-darker text-2xl leading-base text-secondary font-bold rounded-[20px] hidden lg:py-5 lg:px-[26px] lg:block hover:bg-white"
+        class="bg-darker text-2xl leading-base text-secondary font-bold rounded-[20px] hidden lg:py-5 lg:px-[26px] lg:block shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
         href={SECTION.CHECKSTATUS}
       >
         Check Status
@@ -81,7 +81,7 @@ export interface HeaderProps {
     </nav>
     <!-- Navbar menu mobile -->
     <div
-      class="fixed hidden insert-0 left-0 top-32 bg-overlay bg-opacity-50 overflow-y-auto h-full w-full lg:hidden"
+      class="absolute hidden insert-0 left-0 top-32 h-screen bg-overlay bg-opacity-50 overflow-y-auto h-full w-full lg:hidden"
       id="modal"
     >
       <div class="relative mx-auto border bg-white lg:hidden">
@@ -113,7 +113,7 @@ export interface HeaderProps {
         </ul>
         <a
           href={SECTION.CHECKSTATUS}
-          class="bg-primary block font-bold text-secondary py-[20px] rounded-[20px] w-fit py-tiny px-[26px] mx-[35px] mt-3 mb-[21px] md:block hover:bg-primary-40"
+          class="bg-primary block font-bold text-secondary py-[20px] rounded-[20px] w-fit py-tiny px-[26px] mx-[35px] mt-3 mb-[21px] md:block hover:bg-primary-40 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
         >
           Check Status
         </a>
