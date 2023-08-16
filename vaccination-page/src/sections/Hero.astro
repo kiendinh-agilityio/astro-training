@@ -5,9 +5,9 @@ import Button from 'components/Button';
 import { HERO_BANNER } from 'constants/images';
 ---
 
-<section>
-  <Container className="lg:pt-[59px]">
-    <div class="flex flex-col mb-[43px] md:mb-[39px] lg:flex-row lg:justify-between xl:mb-0">
+<section class="bg-hero-mobile bg-no-repeat bg-cover md:bg-hero-tablet lg:bg-hero-desktop">
+  <Container className="pt-[94px] lg:pt-32">
+    <div class="flex flex-col mb-[43px] pt-8 md:mb-[39px] lg:flex-row lg:justify-between lg:pt-[83px] xl:mb-0">
       <div class="md:max-w-[502px] xl:max-w-hero-content">
         <p class="font-bold text-xs leading-base text-secondary mb-5 md:text-lg md:mb-10 lg:text-2xl">
           Get Vaccinated. Boost your Immune System
@@ -22,21 +22,22 @@ import { HERO_BANNER } from 'constants/images';
         >
           Vaccination.ng will help you find the nearest centre for vaccination, in all 36 states in Nigeria.
         </p>
-        <div class="flex gap-5 mb-[50px] md:mb-[55px] lg:mb-0">
+        <div class="flex justify-center gap-5 mb-[50px] md:mb-[55px] lg:mb-0 md:justify-start">
           <Button
             type="secondary"
-            className="rounded-[20px] border-2 border-secondary hover:bg-primary"
+            className="h-[50px] rounded-[20px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:h-[64px] md:w-[175px] lg:h-[69px] lg:w-[200px]"
           >
             Get Vaccine
           </Button>
           <Button
-            className="rounded-[20px] border-2 border-secondary hover:bg-secondary"
+            className="h-[50px] rounded-[20px] border-2 border-secondary shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:h-[64px] md:w-[175px] lg:w-[200px] lg:h-[69px]"
           >
             Help Centre
           </Button>
         </div>
       </div>
       <ResponsiveImage
+        className="flex justify-center"
         alt="Hero"
         width={{
           default: '306px',
