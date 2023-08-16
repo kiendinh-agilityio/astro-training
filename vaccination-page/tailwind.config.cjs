@@ -69,7 +69,7 @@ module.exports = {
       // Get Vaccinated section
         'get-vaccinated-mobile': "url('/assets/images/webp/bg-get-vaccinated-mobile.webp'), url('assets/images/png/bg-get-vaccinated-mobile.png')",
         'get-vaccinated-tablet': "url('/assets/images/webp/bg-get-vaccinated-tablet.webp'), url('assets/images/png/bg-get-vaccinated-tablet.png')",
-        'get-vaccinated-desktop': "url('assets/images/webp/bg-get-vaccinated-desktop.webp'), url('assets/images/png/bg-get-vaccinated-desktop.png')",
+        'get-vaccinated-desktop': "url('/assets/images/webp/bg-get-vaccinated-desktop.webp'), url('assets/images/png/bg-get-vaccinated-desktop.png')",
       // Vaccine Registration section
         'vaccine-registration-mobile': "url('/assets/images/webp/bg-vaccine-registration-mobile.webp'), url('assets/images/png/bg-vaccine-registration-mobile.png')",
         'vaccine-registration-tablet': "url('/assets/images/webp/bg-vaccine-registration-tablet.webp'), url('assets/images/png/bg-vaccine-registration-tablet.png')",
