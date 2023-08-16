@@ -83,6 +83,9 @@ module.exports = {
         'feedback-mobile': "url('assets/images/webp/bg-feedback.webp'), url('assets/images/png/bg-feedback.png')",
         'feedback-tablet': "url('assets/images/webp/bg-feedback-tablet.webp'), url('assets/images/png/bg-feedback-tablet.png')",
         'feedback-desktop': "url('assets/images/webp/bg-feedback-desktop.webp'), url('assets/images/png/bg-feedback-desktop.png')",
+      },
+      boxShadow: {
+        quaternary: '0px 4px 4px 0px rgba(0, 0, 0, 0.10)'
       }
     },
   },
