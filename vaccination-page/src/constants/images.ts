@@ -10,7 +10,7 @@ export const HERO_BANNER = {
 export const COMPANY_MODERNA = {
   default: 'assets/images/png/moderna.png',
   mobile: 'assets/images/webp/moderna.webp',
-  mobile2x: 'assets/images/webp/moderna-mobile-2x.webp',
+  mobile2x: 'assets/images/webp/moderna.webp',
   tablet: 'assets/images/webp/moderna-tablet.webp',
   desktop: 'assets/images/webp/moderna-desktop.webp',
 };
