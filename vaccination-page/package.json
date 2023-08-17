@@ -16,7 +16,8 @@
   "dependencies": {
     "@astrojs/tailwind": "^4.0.0",
     "@astrojs/vercel": "^3.8.1",
-    "astro": "^2.9.7"
+    "astro": "^2.9.7",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
@@ -30,7 +31,6 @@
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",
     "prettier-plugin-astro": "^0.11.0",
-    "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
   },
   "lint-staged": {
