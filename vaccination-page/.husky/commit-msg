@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 cd vaccination-page/
-pnpm exec -- commitlint --edit "$1"
+pnpm exec -- commitlint --edit "${1}"
