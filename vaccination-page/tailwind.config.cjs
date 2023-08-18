@@ -7,17 +7,20 @@ module.exports = {
       },
       colors: {
         primary: '#0b153c',
-        secondary: '#0e80a5',
+        secondary: {
+          light: '#17c2ec',
+          dark: '#0e80a5',
+        },
         input: 'rgba(0, 0, 0, 0.75)',
         overlay: '#000000b3',
         dark: 'rgba(196, 196, 196, 0.05)',
         darker: 'rgba(196, 196, 196, 0.10)',
-        'navbar': 'rgba(255, 255, 255, 0.50)',
-        'toggle': 'rgba(196, 196, 196, 0.15)',
+        navbar: 'rgba(255, 255, 255, 0.50)',
+        toggle: 'rgba(196, 196, 196, 0.15)',
         tertiary: {
           5: 'rgba(196, 196, 196, 0.05)',
           10: 'rgba(196, 196, 196, 0.10)',
-          15: 'rgba(196, 196, 196, 0.15)',      
+          15: 'rgba(196, 196, 196, 0.15)',
           20: 'rgba(196, 196, 196, 0.20)',
           50: 'rgba(196, 196, 196, 0.50)',
         },
@@ -58,43 +61,54 @@ module.exports = {
         'card-xl': '50px 150px 50px 50px',
       },
       backgroundImage: {
-      // Hero section
+        // Hero section
         'hero-mobile': "url('/assets/images/webp/bg-hero-mobile.webp')",
         'hero-tablet': "url('/assets/images/webp/bg-hero-tablet.webp')",
         'hero-desktop': "url('/assets/images/webp/bg-hero-desktop.webp')",
-      // Database section
+        // Database section
         'database-mobile': "url('/assets/images/webp/bg-database-mobile.webp')",
         'database-tablet': "url('/assets/images/webp/bg-database-tablet.webp')",
-        'database-desktop': "url('/assets/images/webp/bg-database-desktop.webp')",
-      // Get Vaccinated section
-        'get-vaccinated-mobile': "url('/assets/images/webp/bg-get-vaccinated-mobile.webp')",
-        'get-vaccinated-tablet': "url('/assets/images/webp/bg-get-vaccinated-tablet.webp')",
-        'get-vaccinated-desktop': "url('/assets/images/webp/bg-get-vaccinated-desktop.webp')",
-      // Vaccine Registration section
-        'vaccine-registration-mobile': "url('/assets/images/webp/bg-vaccine-registration-mobile.webp')",
-        'vaccine-registration-tablet': "url('/assets/images/webp/bg-vaccine-registration-tablet.webp')",
-        'vaccine-registration-desktop': "url('/assets/images/webp/bg-vaccine-registration-desktop.webp')",
-      // Prevention section
+        'database-desktop':
+          "url('/assets/images/webp/bg-database-desktop.webp')",
+        // Get Vaccinated section
+        'get-vaccinated-mobile':
+          "url('/assets/images/webp/bg-get-vaccinated-mobile.webp')",
+        'get-vaccinated-tablet':
+          "url('/assets/images/webp/bg-get-vaccinated-tablet.webp')",
+        'get-vaccinated-desktop':
+          "url('/assets/images/webp/bg-get-vaccinated-desktop.webp')",
+        // Vaccine Registration section
+        'vaccine-registration-mobile':
+          "url('/assets/images/webp/bg-vaccine-registration-mobile.webp')",
+        'vaccine-registration-tablet':
+          "url('/assets/images/webp/bg-vaccine-registration-tablet.webp')",
+        'vaccine-registration-desktop':
+          "url('/assets/images/webp/bg-vaccine-registration-desktop.webp')",
+        // Prevention section
         /// Prevention background
-        'prevention-mobile': "url('/assets/images/webp/bg-prevention-mobile.webp')",
-        'prevention-tablet': "url('/assets/images/webp/bg-prevention-tablet.webp')",
-        'prevention-desktop': "url('/assets/images/webp/bg-prevention-desktop.webp')",
+        'prevention-mobile':
+          "url('/assets/images/webp/bg-prevention-mobile.webp')",
+        'prevention-tablet':
+          "url('/assets/images/webp/bg-prevention-tablet.webp')",
+        'prevention-desktop':
+          "url('/assets/images/webp/bg-prevention-desktop.webp')",
         /// Symptoms background
         'symptoms-mobile': "url('/assets/images/webp/symptoms.webp')",
         'symptoms-tablet': "url('/assets/images/webp/symptoms-tablet.webp')",
         'symptoms-desktop': "url('/assets/images/webp/symptoms-desktop.webp')",
-      // Feedback section
+        // Feedback section
         'feedback-mobile': "url('/assets/images/webp/bg-feedback.webp')",
         'feedback-tablet': "url('/assets/images/webp/bg-feedback-tablet.webp')",
-        'feedback-desktop': "url('/assets/images/webp/bg-feedback-desktop.webp')",
-      // Footer 
+        'feedback-desktop':
+          "url('/assets/images/webp/bg-feedback-desktop.webp')",
+        // Footer
         'footer-mobile': "url('/assets/images/webp/bg-footer-mobile.webp')",
         'footer-tablet': "url('/assets/images/webp/bg-footer-tablet.webp')",
         'footer-desktop': "url('/assets/images/webp/bg-footer-desktop.webp')",
       },
       boxShadow: {
-        quaternary: '0px 4px 4px 0px rgba(0, 0, 0, 0.10)'
-      }
+        quaternary: '0px 4px 4px 0px rgba(0, 0, 0, 0.10)',
+      },
     },
   },
   plugins: [],
