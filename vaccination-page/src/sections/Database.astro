@@ -2,15 +2,18 @@
 import Container from 'components/Container';
 import Button from 'components/Button';
 import Input from 'components/Input';
+import Paragraph from 'components/Paragraph';
 ---
 
 <section class="bg-database-mobile min-h-[497px] bg-no-repeat bg-cover pt-[84px] pb-8 md:bg-database-tablet md:min-h-[596px] md:py-[57px] lg:min-h-[466px] lg:bg-database-desktop lg:py-[63px] lg:mb-[-1px]">
   <Container>
     <form class="w-full bg-darker rounded-[20px] border-darker pb-8 md:pb-[45px] lg:pb-[31px]">
       <div class="text-xs text-center font-bold leading-base rounded-card-sm bg-dark py-3.5 md:rounded-card-md md:pt-[18px] md:pb-[13px] md:text-xl lg:text-left lg:text-2xl lg:py-9 lg:px-[93px]">
-        <label>
-          Check your COVID-19 result on our Database
-        </label>
+        <Paragraph
+          type="sub_heading"
+          tag="p"
+          content="Check your COVID-19 result on our Database"
+        />
       </div>
       <div class="pt-[21px] px-3 md:pt-10 md:px-[61px] lg:px-[93px] lg:pt-[35px]">
         <div class="flex flex-col gap-5 md:px-12 lg:flex-row lg:px-0 lg:justify-between">
