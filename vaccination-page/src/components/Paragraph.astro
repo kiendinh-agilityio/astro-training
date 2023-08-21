@@ -1,0 +1,31 @@
+---
+type TypographyTypes = 'main_heading' | 'heading' | 'sub_heading' | 'description'
+export interface TextProps {
+  className?: string;
+  content: string;
+  tag: 'h1' | 'h2' | 'h3' | 'p';
+  type: TypographyTypes;
+}
+
+type TypographyStyles = Record<TypographyTypes, string>;
+
+const {
+  className = '',
+  content = '',
+  tag = '',
+  type = ''
+} = Astro.props;
+
+const styles: TypographyStyles = {
+  main_heading: `font-extrabold text-2xl leading-base mb-5 md:text-4xl lg:text-5xl`,
+  heading: `font-primary font-bold text-2xl md:text-4xl lg:text-5xl leading-base`,
+  sub_heading: `font-bold text-xs leading-small md:text-xl lg:text-2xl`,
+  description: `font-medium text-xs md:text-lg lg:text-2xl`
+};
+const Tag = tag;
+---
+
+<Tag class={`${styles[type]} ${className}`}>
+  {content}
+  <slot />
+</Tag>
