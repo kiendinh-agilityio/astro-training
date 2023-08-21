@@ -2,6 +2,7 @@
 import Container from 'components/Container';
 import ResponsiveImage from 'components/ResponsiveImage';
 import Button from 'components/Button';
+import Paragraph from 'components/Paragraph';
 import { HERO_IMAGES } from 'constants/images';
 
 const { HERO_BANNER, CLOCK_ICON } = HERO_IMAGES;
@@ -11,19 +12,25 @@ const { HERO_BANNER, CLOCK_ICON } = HERO_IMAGES;
   <Container className="pt-[94px] lg:pt-32">
     <div class="flex flex-col mb-[43px] pt-8 md:mb-[39px] lg:flex-row lg:justify-between lg:pt-[83px] xl:mb-0">
       <div class="md:max-w-[502px] xl:max-w-hero-content">
-        <p class="font-bold text-xs leading-base text-secondary-light mb-5 md:text-lg md:mb-10 lg:text-2xl">
-          Get Vaccinated. Boost your Immune System
-        </p>
-        <h1
-          class="font-extrabold text-2xl leading-base mb-5 md:text-4xl md:mb-10 lg:text-5xl lg:mb-[50px]"
+        <Paragraph
+          className="sm:font-bold text-secondary-light mb-5 md:mb-10"
+          type="description"
+          tag="p"
+          content="Get Vaccinated. Boost your Immune System"
+        />
+        <Paragraph
+          className="mb-5 md:mb-10 lg:mb-[50px]"
+          type="main_heading"
+          tag="h1"
         >
           COVID-19 Vaccination Got Easier With, <span class="text-secondary-light min-w-[191px] min-h-[29px]">Vaccination.ng</span>
-        </h1>
-        <p
-          class="font-bold text-sm leading-base text-white/70 mb-10 md:text-xl lg:text-2xl lg:mb-[50px]"
-        >
-          Vaccination.ng will help you find the nearest centre for vaccination, in all 36 states in Nigeria.
-        </p>
+        </Paragraph>
+        <Paragraph
+          className="sm:text-sm text-white/70 mb-10 lg:mb-[50px]"
+          type="sub_heading"
+          tag="p"
+          content="Vaccination.ng will help you find the nearest centre for vaccination, in all 36 states in Nigeria."
+        />
         <div class="flex justify-center gap-5 mb-[50px] md:mb-[55px] lg:mb-0 md:justify-start">
           <Button
             type="secondary"
