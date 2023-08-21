@@ -2,7 +2,11 @@
 import Container from 'components/Container';
 import ResponsiveImage from 'components/ResponsiveImage';
 import { SECTION } from 'constants/navigation';
-import { SOCIAL_LINKS } from 'constants/social';
+import { SOCIAL_LINKS } from 'constants/link';
+import { SOCIAL_IMAGES, LOGO } from 'constants/images';
+
+const { YOUTUBE, INSTAGRAM, TWITTER, FACEBOOK } = SOCIAL_IMAGES;
+
 ---
 
 <footer class="min-h-[351px] md:min-h-[500px] bg-footer-mobile bg-no-repeat bg-cover md:bg-footer-tablet lg:bg-footer-desktop">
@@ -12,11 +16,11 @@ import { SOCIAL_LINKS } from 'constants/social';
         <ResponsiveImage
           alt="Vaccination Logo"
           url={{
-            default: 'assets/images/svg/logo-default.svg',
-            mobile: 'assets/images/svg/logo-mobile.svg',
-            mobile2x: 'assets/images/svg/logo-mobile.svg',
-            tablet: 'assets/images/svg/logo-tablet.svg',
-            desktop: 'assets/images/svg/logo-desktop.svg',
+            default: LOGO.DEFAULT,
+            mobile: LOGO.MOBILE,
+            mobile2x: LOGO.MOBILE2X,
+            tablet: LOGO.TABLET,
+            desktop: LOGO.DESKTOP,
           }}
           width={{
             default: '200px',
@@ -53,15 +57,15 @@ import { SOCIAL_LINKS } from 'constants/social';
         </li>
       </ul>
       <div class="flex flex-row gap-2 md:gap-[7px] lg:gap-2.5">
-        <a target="_blank" href={SOCIAL_LINKS.Youtube}>
+        <a target="_blank" href={SOCIAL_LINKS.YOUTUBE}>
           <ResponsiveImage
             alt="Youtube"
             url={{
-              default: 'asssets/images/svg/youtube.svg',
-              mobile: 'assets/images/svg/youtube.svg',
-              mobile2x: 'assets/images/svg/youtube.svg',
-              tablet: 'assets/images/svg/youtube-tablet.svg',
-              desktop: 'assets/images/svg/youtube-desktop.svg',
+              default: YOUTUBE.DEFAULT,
+              mobile: YOUTUBE.MOBILE,
+              mobile2x: YOUTUBE.MOBILE2X,
+              tablet: YOUTUBE.TABLET,
+              desktop: YOUTUBE.DESKTOP,
             }}
             width={{
               default: '25px',
@@ -80,15 +84,15 @@ import { SOCIAL_LINKS } from 'constants/social';
             imageClass="cursor-pointer"
           />
         </a>
-        <a target="_blank" href={SOCIAL_LINKS.Instagram}>
+        <a target="_blank" href={SOCIAL_LINKS.INSTAGRAM}>
           <ResponsiveImage
             alt="Instagram"
             url={{
-              default: 'assets/images/svg/instagram.svg',
-              mobile: 'assets/images/svg/instagram.svg',
-              mobile2x: 'assets/images/svg/instagram.svg',
-              tablet: 'assets/images/svg/instagram-tablet.svg',
-              desktop: 'assets/images/svg/instagram-desktop.svg',
+              default: INSTAGRAM.DEFAULT,
+              mobile: INSTAGRAM.MOBILE,
+              mobile2x: INSTAGRAM.MOBILE2X,
+              tablet: INSTAGRAM.TABLET,
+              desktop: INSTAGRAM.DESKTOP,
             }}
             width={{
               default: '25px',
@@ -107,15 +111,15 @@ import { SOCIAL_LINKS } from 'constants/social';
             imageClass="cursor-pointer"
           />
         </a>
-        <a target="_blank" href={SOCIAL_LINKS.Twitter}>
+        <a target="_blank" href={SOCIAL_LINKS.TWITTER}>
           <ResponsiveImage
             alt="Twitter"
             url={{
-              default: 'assets/images/svg/twitter.svg',
-              mobile: 'assets/images/svg/twitter.svg',
-              mobile2x: 'assets/images/svg/twitter.svg',
-              tablet: 'assets/images/svg/twitter-tablet.svg',
-              desktop: 'assets/images/svg/twitter-desktop.svg',
+              default: TWITTER.DEFAULT,
+              mobile: TWITTER.MOBILE,
+              mobile2x: TWITTER.MOBILE2X,
+              tablet: TWITTER.TABLET,
+              desktop: TWITTER.DESKTOP,
             }}
             width={{
               default: '25px',
@@ -134,15 +138,15 @@ import { SOCIAL_LINKS } from 'constants/social';
             imageClass="cursor-pointer"
           />
         </a>
-        <a target="_blank" href={SOCIAL_LINKS.Facebook}>
+        <a target="_blank" href={SOCIAL_LINKS.FACEBOOK}>
           <ResponsiveImage
             alt="Facebook"
             url={{
-              default: 'assets/images/svg/facebook.svg',
-              mobile: 'assets/images/svg/facebook.svg',
-              mobile2x: 'assets/images/svg/facebook.svg',
-              tablet: 'assets/images/svg/facebook-tablet.svg',
-              desktop: 'assets/images/svg/facebook-desktop.svg',
+              default: FACEBOOK.DEFAULT,
+              mobile: FACEBOOK.MOBILE,
+              mobile2x: FACEBOOK.MOBILE2X,
+              tablet: FACEBOOK.TABLET,
+              desktop: FACEBOOK.DESKTOP,
             }}
             width={{
               default: '25px',

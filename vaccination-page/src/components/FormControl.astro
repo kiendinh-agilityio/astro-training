@@ -57,10 +57,14 @@ const { className = '' } = Astro.props;
   </Button>
   <ul class="flex justify-between text-sm md:text-xl md:mt-5 md:justify-center md:gap-[46px]">
     <li class="font-semibold text-black/50">
-      Already registered ?
+      <a href="#" aria-label="Already registered">
+        Already registered ?
+      </a>
     </li>
-    <li class="font-bold text-secondary">
-      Check your status
+    <li class="font-bold text-secondary-light">
+      <a href="#" aria-label="Check your status">
+        Check your status
+      </a>
     </li>
   </ul>
 </form>

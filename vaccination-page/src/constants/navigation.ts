@@ -1,5 +1,5 @@
 export const SECTION = {
-  HOME: '/#home',
+  HOME: './',
   SERVICES: '/#services',
   SCHEDULE: '/#schedule',
   CONTACT: '/#contact-us',
