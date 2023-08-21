@@ -2,6 +2,9 @@
 import Container from "components/Container";
 import Heading from "components/Heading";
 import Card from "components/Card";
+import { FEEDBACK_IMAGES } from "constants/images";
+
+const { AVATAR_ONE, AVATAR_TWO, AVATAR_THREE } = FEEDBACK_IMAGES;
 ---
 
 <section class="bg-feedback-mobile bg-no-repeat bg-cover pt-[30px] pb-11 md:pt-[46px] md:pb-[59px] md:bg-feedback-tablet lg:bg-feedback-desktop lg:pb-[106px] lg:pt-[57px] lg:bg-center lg:min-h-[750px]">
@@ -22,7 +25,7 @@ import Card from "components/Card";
     <div class="flex flex-col gap-[30px] mx-auto max-w-[305px] md:max-w-[400px] lg:flex-row lg:gap-[45px] lg:max-w-full">
       <Card
         className="flex leading-base text-center bg-tertiary-50 text-black/60"
-        src="assets/images/svg/oyindamola-maja.svg"
+        src={AVATAR_ONE.URL}
         alt="Oyindamola Maja"
         title="Oyindamola Maja"
         description="Badagry, Lagos"
@@ -31,7 +34,7 @@ import Card from "components/Card";
       </Card>
       <Card
         className="flex text-center bg-secondary-dark text-white"
-        src="assets/images/svg/okeowo-lekan.svg"
+        src={AVATAR_TWO.URL}
         alt="Okeowo Lekan"
         title="Okeowo Lekan"
         description="Ikeja, Lagos"
@@ -41,7 +44,7 @@ import Card from "components/Card";
       </Card>
       <Card
         className="flex text-center bg-tertiary-50 text-black/60"
-        src="assets/images/svg/kafaru-temitope.svg"
+        src={AVATAR_THREE.URL}
         alt="Kafaru Temitope"
         title="Kafaru Temitope"
         description="Obanikoro, Lago"
