@@ -22,6 +22,24 @@ export const HERO_IMAGES = {
     MOBILE2X: 'assets/images/svg/clock.svg',
     TABLET: 'assets/images/svg/clock-tablet.svg',
   },
+  LOCATION: {
+    DEFAULT: 'assets/images/svg/map-pin.svg',
+    MOBILE: 'assets/images/svg/map-pin.svg',
+    MOBILE2X: 'assets/images/svg/map-pin.svg',
+    TABLET: 'assets/images/svg/map-pin-tablet.svg',
+  },
+  CALENDAR: {
+    DEFAULT: 'assets/images/svg/calendar.svg',
+    MOBILE: 'assets/images/svg/calendar.svg',
+    MOBILE2X: 'assets/images/svg/calendar.svg',
+    TABLET: 'assets/images/svg/calendar-tablet.svg',
+  },
+  SHIELD: {
+    DEFAULT: 'assets/images/svg/shield.svg',
+    MOBILE: 'assets/images/svg/shield.svg',
+    MOBILE2X: 'assets/images/svg/shield.svg',
+    TABLET: 'assets/images/svg/shield-tablet.svg',
+  }
 }
 
 // Company Section

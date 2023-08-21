@@ -3,9 +3,10 @@ import Container from 'components/Container';
 import ResponsiveImage from 'components/ResponsiveImage';
 import Button from 'components/Button';
 import Paragraph from 'components/Paragraph';
+import SimpleList from 'components/SimpleList';
 import { HERO_IMAGES } from 'constants/images';
 
-const { HERO_BANNER, CLOCK_ICON } = HERO_IMAGES;
+const { HERO_BANNER, CLOCK_ICON, LOCATION, CALENDAR, SHIELD } = HERO_IMAGES;
 ---
 
 <section class="bg-hero-mobile bg-no-repeat bg-cover md:bg-hero-tablet lg:bg-hero-desktop">
@@ -103,105 +104,72 @@ const { HERO_BANNER, CLOCK_ICON } = HERO_IMAGES;
       <div
         class="flex flex-col gap-[17px] w-full rounded-card-md bg-darker px-2.5 pt-6 pb-2.5 md:flex-row md:flex-wrap md:justify-between md:gap-[31px] md:pt-[41px] md:px-3 md:pb-[45px] lg:px-10 lg:py-[50px] xl:flex-nowrap"
       >
-        <div class="flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit">
-          <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
-            <ResponsiveImage
-              alt="Map pin"
-              width={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              height={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              url={{
-                default: 'assets/images/svg/map-pin.svg',
-                mobile: 'assets/images/svg/map-pin.svg',
-                mobile2x: 'assets/images/svg/map-pin.svg',
-                tablet: 'assets/images/svg/map-pin-tablet.svg',
-              }}
-            />
-          </div>
-          <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
-            <li class="font-semibold text-white/50">
-              Location
-            </li>
-            <li>
-              Ikeja Lagos, Nigeria
-            </li>
-          </ul>
-        </div>
-        <div class="flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit">
-          <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
-            <ResponsiveImage
-              alt="Calendar"
-              width={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              height={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              url={{
-                default: 'assets/images/svg/calendar.svg',
-                mobile: 'assets/images/svg/calendar.svg',
-                mobile2x: 'assets/images/svg/calendar.svg',
-                tablet: 'assets/images/svg/calendar-tablet.svg',
-              }}
-            />
-          </div>
-          <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
-            <li class="font-semibold text-white/50">
-              Date
-            </li>
-            <li>
-              29 February, 2022
-            </li>
-          </ul>
-        </div>
-        <div class="flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit">
-          <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
-            <ResponsiveImage
-              alt="Shield"
-              width={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              height={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              url={{
-                default: 'assets/images/svg/shield.svg',
-                mobile: 'assets/images/svg/shield.svg',
-                mobile2x: 'assets/images/svg/shield.svg',
-                tablet: 'assets/images/svg/shield-tablet.svg',
-              }}
-            />
-          </div>
-          <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
-            <li class="font-semibold text-white/50">
-              Vaccine Type
-            </li>
-            <li>
-              Mordena
-            </li>
-          </ul>
-        </div>
+        <SimpleList
+          title="Location"
+          description="Ikeja Lagos, Nigeria"
+          imageWidth={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageHeight={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageUrl={{
+            default: LOCATION.DEFAULT,
+            mobile: LOCATION.MOBILE,
+            mobile2x: LOCATION.MOBILE2X,
+            tablet: LOCATION.TABLET,
+          }}
+        />
+        <SimpleList
+          title="Date"
+          description="29 February, 2022"
+          imageWidth={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageHeight={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageUrl={{
+            default: CALENDAR.DEFAULT,
+            mobile: CALENDAR.MOBILE,
+            mobile2x: CALENDAR.MOBILE2X,
+            tablet: CALENDAR.TABLET,
+          }}
+        />
+        <SimpleList
+          title="Vaccine Type"
+          description="Mordena"
+          imageWidth={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageHeight={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageUrl={{
+            default: SHIELD.DEFAULT,
+            mobile: SHIELD.MOBILE,
+            mobile2x: SHIELD.MOBILE2X,
+            tablet: SHIELD.TABLET,
+          }}
+        />
         <div class="md:w-schedule-content-md xxl:w-fit">
           <Button type="secondary" className="rounded-[10px] flex justify-center w-[150px] h-[50px] mt-1 md:text-xl md:w-[253px] md:h-[64px] md:rounded-[20px] lg:text-2xl lg:w-[142px] lg:h-[69px]">
             Submit
