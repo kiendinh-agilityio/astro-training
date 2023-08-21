@@ -1,7 +1,7 @@
 ---
 import Container from 'components/Container';
 import ResponsiveImage from 'components/ResponsiveImage';
-import Heading from 'components/Heading';
+import Paragraph from 'components/Paragraph';
 import { VACCINATED_IMAGES } from 'constants/images';
 
 const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
@@ -11,9 +11,12 @@ const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
   <Container>
     <div class="py-[42px] md:pt-[58px] md:pb-[45px] lg:pb-20">
       <div class="flex flex-col gap-[17px] mb-10 md:gap-10 md:mb-[50px] lg:flex-row lg:justify-between lg:mb-10">
-        <Heading className="max-w-[504px]">
-          Why get vaccinated today?
-        </Heading>
+        <Paragraph
+          className="max-w-[504px]"
+          type="heading"
+          tag="h2"
+          content='Why get vaccinated today?'
+        />
         <p class="text-sm leading base text-white/50 max-w-[536px] md:text-xl">
           Magna adipiscing at elit at ornare lectus nibh lorem. Ac, sed ac lorem pellentesque vestibulum risus matti. In molestie condimentum malesuada non.
         </p>
