@@ -1,7 +1,7 @@
 ---
 import Container from 'components/Container';
 import FormControl from 'components/FormControl';
-import Heading from 'components/Heading';
+import Paragraph from 'components/Paragraph';
 import ResponsiveImage from 'components/ResponsiveImage';
 import { VACCINE_REGISTRATION } from 'constants/images';
 ---
@@ -9,9 +9,12 @@ import { VACCINE_REGISTRATION } from 'constants/images';
 <section class="bg-vaccine-registration-mobile bg-no-repeat bg-cover md:bg-vaccine-registration-tablet lg:bg-vaccine-registration-desktop">
   <Container>
     <div class="flex flex-col pt-[35px] pb-[41px] md:pt-10 md:pb-[49px] lg:pb-[33px] lg:flex-row-reverse lg:justify-between">
-      <Heading className="flex text-center text-black md:text-left md:max-w-[586px] lg:hidden">
-        Get your vaccine registration today
-      </Heading>
+      <Paragraph
+        className="flex text-center text-black md:text-left md:max-w-[586px] lg:hidden"
+        type="heading"
+        tag="h2"
+        title="Get your vaccine registration today"
+      />
       <ResponsiveImage
         alt="Hero"
         width={{
@@ -38,9 +41,12 @@ import { VACCINE_REGISTRATION } from 'constants/images';
         className="mt-5 mb-[38px] md:mt-10 md:mb-[70px] lg:my-0"
       />
       <div class="flex flex-col lg:gap-10">
-        <Heading className="hidden text-black lg:flex lg:text-left lg:max-w-[452px]">
-          Get your vaccine registration today
-        </Heading>
+        <Paragraph
+          className="hidden text-black lg:flex lg:text-left lg:max-w-[452px]"
+          type="heading"
+          tag="h2"
+          title="Get your vaccine registration today"
+        />
         <FormControl />
       </div>
     </div>

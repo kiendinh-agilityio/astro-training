@@ -1,6 +1,6 @@
 ---
 import Input from 'components/Input';
-import Heading from 'components/Heading';
+import Paragraph from 'components/Paragraph';
 import Container from 'components/Container';
 ---
 
@@ -11,10 +11,18 @@ import Container from 'components/Container';
         class="absolute top-0 bg-tertiary-15 border-tertiary-15 rounded-[20px] px-3 pt-[31px] pb-7 md:w-[709px] md:py-[28px] md:px-[25px] md:rounded-[50px] lg:px-[17px] lg:py-[18px] xl:w-[1067px]">
         <div
           class="flex flex-col items-center bg-secondary-dark border-secondary-dark rounded-[10px] leading-base pt-4 pb-8 px-2.5 md:pb-14 md:pl-[62px] md:pr-12 md:rounded-[50px] lg:pt-[70px] lg:pb-[107px] lg:text-2xl">
-          <Heading className="text-lg mb-[5px] md:mb-5">
-            Get a quote
-          </Heading>
-          <p class="font-medium text-xs mb-6 md:mb-7 md:text-xl lg:mb-10">Please do enter your email address below</p>
+          <Paragraph
+            className="text-lg mb-[5px] md:mb-5"
+            type="heading"
+            tag="h2"
+            title="Get a quote"
+          />
+          <Paragraph
+            className="sm:font-medium mb-6 md:mb-7 lg:mb-10"
+            type="sub_heading"
+            tag="p"
+            title="Please do enter your email address below"
+          />
           <div class="relative w-full lg:max-w-[550px]">
             <Input
               className="shadow-quaternary focus:outline-none h-[40px] rounded-[20px] px-3 py-3.5 placeholder:text-xs placeholder:text-black/25 md:h-[75px] md:rounded-[30px] md:px-10 md:py-7 md:placeholder:text-xl"

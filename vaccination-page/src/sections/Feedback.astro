@@ -1,6 +1,6 @@
 ---
 import Container from "components/Container";
-import Heading from "components/Heading";
+import Paragraph from "components/Paragraph";
 import Card from "components/Card";
 import { FEEDBACK_IMAGES } from "constants/images";
 
@@ -10,16 +10,29 @@ const { AVATAR_ONE, AVATAR_TWO, AVATAR_THREE } = FEEDBACK_IMAGES;
 <section class="bg-feedback-mobile bg-no-repeat bg-cover pt-[30px] pb-11 md:pt-[46px] md:pb-[59px] md:bg-feedback-tablet lg:bg-feedback-desktop lg:pb-[106px] lg:pt-[57px] lg:bg-center lg:min-h-[750px]">
   <Container>
     <ul class="flex flex-col text-center items-center mb-4 md:mb-[60px]">
-      <li class="font-bold text-sm text-secondary-light mb-5 md:text-xl lg:text-2xl">
-        FEEDBACK
+      <li class="mb-5">
+        <Paragraph
+          className="text-secondary-light sm:text-sm"
+          type="sub_heading"
+          tag="p"
+          title="FEEDBACK"
+        />
       </li>
       <li>
-        <Heading className="font-extrabold text-black mb-2.5 md:mb-10">
-          What our Patients Think
-        </Heading>
+        <Paragraph
+          className="font-extrabold text-black mb-2.5 md:mb-10"
+          type="heading"
+          tag="h2"
+          title="What our Patients Think"
+        />
       </li>
-      <li class="font-medium text-xs text-black/50 px-[35px] md:text-lg lg:text-2xl lg:px-0 lg:max-w-[963px]">
-        Adipiscing nec etiam tortor elit quisque. Arcu aliquet convallis aenean eu velit. Mi vestibulum, ullamcorper venenatis imperdiet augue arcu ue.
+      <li class="px-[35px] lg:px-0 lg:max-w-[963px]">
+        <Paragraph
+          className="text-black/50"
+          type="description"
+          tag="p"
+          title="Adipiscing nec etiam tortor elit quisque. Arcu aliquet convallis aenean eu velit. Mi vestibulum, ullamcorper venenatis imperdiet augue arcu ue."
+        />
       </li>
     </ul>
     <div class="flex flex-col gap-[30px] mx-auto max-w-[305px] md:max-w-[400px] lg:flex-row lg:gap-[45px] lg:max-w-full">
