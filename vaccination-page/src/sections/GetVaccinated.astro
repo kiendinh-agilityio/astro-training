@@ -2,6 +2,9 @@
 import Container from 'components/Container';
 import ResponsiveImage from 'components/ResponsiveImage';
 import Heading from 'components/Heading';
+import { VACCINATED_IMAGES } from 'constants/images';
+
+const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
 ---
 
 <section class="bg-get-vaccinated-mobile bg-no-repeat bg-cover md:bg-get-vaccinated-tablet lg:bg-get-vaccinated-desktop">
@@ -33,10 +36,10 @@ import Heading from 'components/Heading';
                 tablet: '70px',
               }}
               url={{
-                default: 'assets/images/svg/shield.svg',
-                mobile: 'assets/images/svg/shield.svg',
-                mobile2x: 'assets/images/svg/shield.svg',
-                tablet: 'assets/images/svg/shield-tablet.svg',
+                default: SHIELD.DEFAULT,
+                mobile: SHIELD.MOBILE,
+                mobile2x: SHIELD.MOBILE2X,
+                tablet: SHIELD.TABLET,
               }}
             />
           </li>
@@ -65,10 +68,10 @@ import Heading from 'components/Heading';
                   tablet: '30px',
                 }}
                 url={{
-                  default: 'assets/images/svg/arrow-blue.svg',
-                  mobile: 'assets/images/svg/arrow-blue.svg',
-                  mobile2x: 'assets/images/svg/arrow-blue.svg',
-                  tablet: 'assets/images/svg/arrow-blue-tablet.svg',
+                  default: ARROW_BLUE.DEFAULT,
+                  mobile: ARROW_BLUE.MOBILE,
+                  mobile2x: ARROW_BLUE.MOBILE2X,
+                  tablet: ARROW_BLUE.TABLET,
                 }}
               />
             </a>
@@ -92,10 +95,10 @@ import Heading from 'components/Heading';
                   tablet: '50px',
                 }}
                 url={{
-                  default: 'assets/images/svg/users.svg',
-                  mobile: 'assets/images/svg/users.svg',
-                  mobile2x: 'assets/images/svg/users.svg',
-                  tablet: 'assets/images/svg/users-tablet.svg',
+                  default: USERS.DEFAULT,
+                  mobile: USERS.MOBILE,
+                  mobile2x: USERS.MOBILE2X,
+                  tablet: USERS.TABLET,
                 }}
               />
             </li>
@@ -120,10 +123,10 @@ import Heading from 'components/Heading';
                     tablet: '30px',
                   }}
                   url={{
-                    default: 'assets/images/svg/arrow.svg',
-                    mobile: 'assets/images/svg/arrow.svg',
-                    mobile2x: 'assets/images/svg/arrow.svg',
-                    tablet: 'assets/images/svg/arrow-tablet.svg',
+                    default: ARROW.DEFAULT,
+                    mobile: ARROW.MOBILE,
+                    mobile2x: ARROW.MOBILE2X,
+                    tablet: ARROW.TABLET,
                   }}
                 />
               </a>
@@ -146,10 +149,10 @@ import Heading from 'components/Heading';
                   tablet: '50px',
                 }}
                 url={{
-                  default: 'assets/images/svg/thermometer.svg',
-                  mobile: 'assets/images/svg/thermometer.svg',
-                  mobile2x: 'assets/images/svg/thermometer.svg',
-                  tablet: 'assets/images/svg/thermometer-tablet.svg',
+                  default: THER_M0METER.DEFAULT,
+                  mobile: THER_M0METER.MOBILE,
+                  mobile2x: THER_M0METER.MOBILE2X,
+                  tablet: THER_M0METER.TABLET,
                 }}
               />
             </li>
@@ -174,10 +177,10 @@ import Heading from 'components/Heading';
                     tablet: '30px',
                   }}
                   url={{
-                    default: 'assets/images/svg/arrow.svg',
-                    mobile: 'assets/images/svg/arrow.svg',
-                    mobile2x: 'assets/images/svg/arrow.svg',
-                    tablet: 'assets/images/svg/arrow-tablet.svg',
+                    default: ARROW.DEFAULT,
+                    mobile: ARROW.MOBILE,
+                    mobile2x: ARROW.MOBILE2X,
+                    tablet: ARROW.TABLET,
                   }}
                 />
               </a>
