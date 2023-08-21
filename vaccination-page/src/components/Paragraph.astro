@@ -1,8 +1,8 @@
 ---
 type TypographyTypes = 'main_heading' | 'heading' | 'sub_heading' | 'description'
-export interface TextProps {
+export interface ParagraphProps {
   className?: string;
-  content: string;
+  title: string;
   tag: 'h1' | 'h2' | 'h3' | 'p';
   type: TypographyTypes;
 }
@@ -11,9 +11,9 @@ type TypographyStyles = Record<TypographyTypes, string>;
 
 const {
   className = '',
-  content = '',
-  tag = '',
-  type = ''
+  title,
+  tag,
+  type,
 } = Astro.props;
 
 const styles: TypographyStyles = {
@@ -26,6 +26,6 @@ const Tag = tag;
 ---
 
 <Tag class={`${styles[type]} ${className}`}>
-  {content}
+  {title}
   <slot />
 </Tag>
