@@ -2,6 +2,7 @@
 import Container from 'components/Container';
 import ResponsiveImage from 'components/ResponsiveImage';
 import { SECTION } from 'constants/navigation';
+import { LOGO } from 'constants/images';
 
 export interface HeaderProps {
   className?: string;
@@ -20,11 +21,11 @@ export interface HeaderProps {
           <ResponsiveImage
             alt="Vaccination Logo"
             url={{
-              default: 'assets/images/svg/logo-default.svg',
-              mobile: 'assets/images/svg/logo-mobile.svg',
-              mobile2x: 'assets/images/svg/logo-mobile.svg',
-              tablet: 'assets/images/svg/logo-tablet.svg',
-              desktop: 'assets/images/svg/logo-desktop.svg',
+              default: LOGO.DEFAULT,
+              mobile: LOGO.MOBILE,
+              mobile2x: LOGO.MOBILE2X,
+              tablet: LOGO.TABLET,
+              desktop: LOGO.DESKTOP,
             }}
             width={{
               default: '200px',
