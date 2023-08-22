@@ -3,15 +3,22 @@ import ResponsiveImage from 'components/ResponsiveImage';
 
 export interface SimpleListProps {
   className?: string;
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
+  imageUrl: {
+    default: string;
+    mobile?: string;
+    mobile2x?: string;
+    tablet?: string;
+    desktop?: string;
+  },
 }
 
 const {
   className = '',
   title,
   description,
-  imageAlt = title,
+  imageAlt,
   imageWidth = {
     default: '',
     mobile: '',
@@ -43,6 +50,7 @@ const {
       width={imageWidth}
       height={imageHeight}
       url={imageUrl}
+      alt={imageAlt}
     />
   </div>
   <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
