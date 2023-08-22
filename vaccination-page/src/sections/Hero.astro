@@ -120,12 +120,7 @@ const { HERO_BANNER, CLOCK_ICON, LOCATION, CALENDAR, SHIELD } = HERO_IMAGES;
             mobile2x: '40px',
             tablet: '30px',
           }}
-          imageUrl={{
-            default: LOCATION.DEFAULT,
-            mobile: LOCATION.MOBILE,
-            mobile2x: LOCATION.MOBILE2X,
-            tablet: LOCATION.TABLET,
-          }}
+          imageUrl={LOCATION}
         />
         <SimpleList
           title="Date"
@@ -143,17 +138,12 @@ const { HERO_BANNER, CLOCK_ICON, LOCATION, CALENDAR, SHIELD } = HERO_IMAGES;
             mobile2x: '40px',
             tablet: '30px',
           }}
-          imageUrl={{
-            default: CALENDAR.DEFAULT,
-            mobile: CALENDAR.MOBILE,
-            mobile2x: CALENDAR.MOBILE2X,
-            tablet: CALENDAR.TABLET,
-          }}
+          imageUrl={CALENDAR}
         />
         <SimpleList
           title="Vaccine Type"
           description="Mordena"
-          imageAlt="Shield"
+          imageAlt="Shiel"
           imageWidth={{
             default: '20px',
             mobile: '20px',
@@ -166,12 +156,7 @@ const { HERO_BANNER, CLOCK_ICON, LOCATION, CALENDAR, SHIELD } = HERO_IMAGES;
             mobile2x: '40px',
             tablet: '30px',
           }}
-          imageUrl={{
-            default: SHIELD.DEFAULT,
-            mobile: SHIELD.MOBILE,
-            mobile2x: SHIELD.MOBILE2X,
-            tablet: SHIELD.TABLET,
-          }}
+          imageUrl={SHIELD}
         />
         <div class="md:w-schedule-content-md xxl:w-fit">
           <Button type="secondary" className="rounded-[10px] flex justify-center w-[150px] h-[50px] mt-1 md:text-xl md:w-[253px] md:h-[64px] md:rounded-[20px] lg:text-2xl lg:w-[142px] lg:h-[69px]">

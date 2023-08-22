@@ -5,7 +5,22 @@ export interface SimpleListProps {
   className?: string;
   title: string;
   description: string;
+  imageAlt?: string;
   imageUrl: {
+    default: string;
+    mobile?: string;
+    mobile2x?: string;
+    tablet?: string;
+    desktop?: string;
+  },
+  imageWidth: {
+    default: string;
+    mobile?: string;
+    mobile2x?: string;
+    tablet?: string;
+    desktop?: string;
+  },
+  imageHeight: {
     default: string;
     mobile?: string;
     mobile2x?: string;

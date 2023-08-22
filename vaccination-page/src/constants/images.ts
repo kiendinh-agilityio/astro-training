@@ -23,22 +23,22 @@ export const HERO_IMAGES = {
     TABLET: 'assets/images/svg/clock-tablet.svg',
   },
   LOCATION: {
-    DEFAULT: 'assets/images/svg/map-pin.svg',
-    MOBILE: 'assets/images/svg/map-pin.svg',
-    MOBILE2X: 'assets/images/svg/map-pin.svg',
-    TABLET: 'assets/images/svg/map-pin-tablet.svg',
+    default: 'assets/images/svg/map-pin.svg',
+    mobile: 'assets/images/svg/map-pin.svg',
+    mobile2x: 'assets/images/svg/map-pin.svg',
+    tablet: 'assets/images/svg/map-pin-tablet.svg',
   },
   CALENDAR: {
-    DEFAULT: 'assets/images/svg/calendar.svg',
-    MOBILE: 'assets/images/svg/calendar.svg',
-    MOBILE2X: 'assets/images/svg/calendar.svg',
-    TABLET: 'assets/images/svg/calendar-tablet.svg',
+    default: 'assets/images/svg/calendar.svg',
+    mobile: 'assets/images/svg/calendar.svg',
+    mobile2x: 'assets/images/svg/calendar.svg',
+    tablet: 'assets/images/svg/calendar-tablet.svg',
   },
   SHIELD: {
-    DEFAULT: 'assets/images/svg/shield.svg',
-    MOBILE: 'assets/images/svg/shield.svg',
-    MOBILE2X: 'assets/images/svg/shield.svg',
-    TABLET: 'assets/images/svg/shield-tablet.svg',
+    default: 'assets/images/svg/shield.svg',
+    mobile: 'assets/images/svg/shield.svg',
+    mobile2x: 'assets/images/svg/shield.svg',
+    tablet: 'assets/images/svg/shield-tablet.svg',
   }
 }
 
