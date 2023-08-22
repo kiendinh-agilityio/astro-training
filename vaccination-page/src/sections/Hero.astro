@@ -3,9 +3,10 @@ import Container from 'components/Container';
 import ResponsiveImage from 'components/ResponsiveImage';
 import Button from 'components/Button';
 import Paragraph from 'components/Paragraph';
+import SimpleList from 'components/SimpleList';
 import { HERO_IMAGES } from 'constants/images';
 
-const { HERO_BANNER, CLOCK_ICON } = HERO_IMAGES;
+const { HERO_BANNER, CLOCK_ICON, LOCATION, CALENDAR, SHIELD } = HERO_IMAGES;
 ---
 
 <section class="bg-hero-mobile bg-no-repeat bg-cover md:bg-hero-tablet lg:bg-hero-desktop">
@@ -62,13 +63,7 @@ const { HERO_BANNER, CLOCK_ICON } = HERO_IMAGES;
           tablet: '617px',
           desktop: '617px',
         }}
-        url={{
-          default: HERO_BANNER.DEFAULT,
-          mobile: HERO_BANNER.MOBILE,
-          mobile2x: HERO_BANNER.MOBILE2X,
-          tablet: HERO_BANNER.TABLET,
-          desktop: HERO_BANNER.DESKTOP,
-        }}
+        url={HERO_BANNER}
       />
     </div>
     <div class="flex gap-2.5 items-center mb-5 min-w-[315px] min-h-[30px] md:gap-5 md:mb-8 lg:mb-2.5">
@@ -87,12 +82,7 @@ const { HERO_BANNER, CLOCK_ICON } = HERO_IMAGES;
             mobile2x: '40px',
             tablet: '30px',
           }}
-          url={{
-            default: CLOCK_ICON.DEFAULT,
-            mobile: CLOCK_ICON.MOBILE,
-            mobile2x: CLOCK_ICON.MOBILE2X,
-            tablet: CLOCK_ICON.TABLET,
-          }}
+          url={CLOCK_ICON}
         />
       </div>
       <p class="font-bold text-sm leading-base md:text-2xl">
@@ -103,105 +93,60 @@ const { HERO_BANNER, CLOCK_ICON } = HERO_IMAGES;
       <div
         class="flex flex-col gap-[17px] w-full rounded-card-md bg-darker px-2.5 pt-6 pb-2.5 md:flex-row md:flex-wrap md:justify-between md:gap-[31px] md:pt-[41px] md:px-3 md:pb-[45px] lg:px-10 lg:py-[50px] xl:flex-nowrap"
       >
-        <div class="flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit">
-          <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
-            <ResponsiveImage
-              alt="Map pin"
-              width={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              height={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              url={{
-                default: 'assets/images/svg/map-pin.svg',
-                mobile: 'assets/images/svg/map-pin.svg',
-                mobile2x: 'assets/images/svg/map-pin.svg',
-                tablet: 'assets/images/svg/map-pin-tablet.svg',
-              }}
-            />
-          </div>
-          <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
-            <li class="font-semibold text-white/50">
-              Location
-            </li>
-            <li>
-              Ikeja Lagos, Nigeria
-            </li>
-          </ul>
-        </div>
-        <div class="flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit">
-          <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
-            <ResponsiveImage
-              alt="Calendar"
-              width={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              height={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              url={{
-                default: 'assets/images/svg/calendar.svg',
-                mobile: 'assets/images/svg/calendar.svg',
-                mobile2x: 'assets/images/svg/calendar.svg',
-                tablet: 'assets/images/svg/calendar-tablet.svg',
-              }}
-            />
-          </div>
-          <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
-            <li class="font-semibold text-white/50">
-              Date
-            </li>
-            <li>
-              29 February, 2022
-            </li>
-          </ul>
-        </div>
-        <div class="flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit">
-          <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
-            <ResponsiveImage
-              alt="Shield"
-              width={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              height={{
-                default: '20px',
-                mobile: '20px',
-                mobile2x: '40px',
-                tablet: '30px',
-              }}
-              url={{
-                default: 'assets/images/svg/shield.svg',
-                mobile: 'assets/images/svg/shield.svg',
-                mobile2x: 'assets/images/svg/shield.svg',
-                tablet: 'assets/images/svg/shield-tablet.svg',
-              }}
-            />
-          </div>
-          <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
-            <li class="font-semibold text-white/50">
-              Vaccine Type
-            </li>
-            <li>
-              Mordena
-            </li>
-          </ul>
-        </div>
+        <SimpleList
+          title="Location"
+          description="Ikeja Lagos, Nigeria"
+          imageAlt="Map pin"
+          imageWidth={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageHeight={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageUrl={LOCATION}
+        />
+        <SimpleList
+          title="Date"
+          description="29 February, 2022"
+          imageAlt="Calendar"
+          imageWidth={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageHeight={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageUrl={CALENDAR}
+        />
+        <SimpleList
+          title="Vaccine Type"
+          description="Mordena"
+          imageAlt="Shiel"
+          imageWidth={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageHeight={{
+            default: '20px',
+            mobile: '20px',
+            mobile2x: '40px',
+            tablet: '30px',
+          }}
+          imageUrl={SHIELD}
+        />
         <div class="md:w-schedule-content-md xxl:w-fit">
           <Button type="secondary" className="rounded-[10px] flex justify-center w-[150px] h-[50px] mt-1 md:text-xl md:w-[253px] md:h-[64px] md:rounded-[20px] lg:text-2xl lg:w-[142px] lg:h-[69px]">
             Submit

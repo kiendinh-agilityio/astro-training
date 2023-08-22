@@ -1,0 +1,79 @@
+---
+import ResponsiveImage from 'components/ResponsiveImage';
+
+export interface SimpleListProps {
+  className?: string;
+  title: string;
+  description: string;
+  imageAlt?: string;
+  imageUrl: {
+    default: string;
+    mobile?: string;
+    mobile2x?: string;
+    tablet?: string;
+    desktop?: string;
+  },
+  imageWidth: {
+    default: string;
+    mobile?: string;
+    mobile2x?: string;
+    tablet?: string;
+    desktop?: string;
+  },
+  imageHeight: {
+    default: string;
+    mobile?: string;
+    mobile2x?: string;
+    tablet?: string;
+    desktop?: string;
+  },
+}
+
+const {
+  className = '',
+  title,
+  description,
+  imageAlt,
+  imageWidth = {
+    default: '',
+    mobile: '',
+    mobile2x: '',
+    tablet: '',
+    desktop: '',
+  },
+  imageHeight = {
+    default: '',
+    mobile: '',
+    mobile2x: '',
+    tablet: '',
+    desktop: '',
+  },
+  imageUrl = {
+    default: '',
+    mobile: '',
+    mobile2x: '',
+    tablet: '',
+    desktop: '',
+  },
+} = Astro.props;
+---
+
+<div class={`flex gap-2.5 items-center md:gap-5 md:w-schedule-content-md xxl:w-fit ${className}`}>
+  <div class="flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
+    <ResponsiveImage
+      alt={imageAlt}
+      width={imageWidth}
+      height={imageHeight}
+      url={imageUrl}
+      alt={imageAlt}
+    />
+  </div>
+  <ul class="font-bold text-sm leading-base md:text-xl xxl:text-2xl">
+    <li class="font-semibold text-white/50">
+      {title}
+    </li>
+    <li>
+      {description}
+    </li>
+  </ul>
+</div>

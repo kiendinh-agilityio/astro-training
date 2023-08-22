@@ -28,13 +28,7 @@ const { className = '', description } = Astro.props;
         tablet: '70px',
         desktop: '108px',
       }}
-      url={{
-        default: CORONA_IMAGE.DEFAULT,
-        mobile: CORONA_IMAGE.MOBILE,
-        mobile2x: CORONA_IMAGE.MOBILE2X,
-        tablet: CORONA_IMAGE.TABLET,
-        desktop: CORONA_IMAGE.DESKTOP,
-      }}
+      url={CORONA_IMAGE}
     />
   </li>
   <li class="font-semibold text-tiny text-secondary-light leading-base md:text-lg">
