@@ -1,26 +1,26 @@
 // Logo
 export const LOGO = {
-  DEFAULT: 'assets/images/svg/logo-default.svg',
-  MOBILE: 'assets/images/svg/logo-mobile.svg',
-  MOBILE2X: 'assets/images/svg/logo-mobile.svg',
-  TABLET: 'assets/images/svg/logo-tablet.svg',
-  DESKTOP: 'assets/images/svg/logo-desktop.svg',
+  default: 'assets/images/svg/logo-default.svg',
+  mobile: 'assets/images/svg/logo-mobile.svg',
+  mobile2x: 'assets/images/svg/logo-mobile.svg',
+  tablet: 'assets/images/svg/logo-tablet.svg',
+  desktop: 'assets/images/svg/logo-desktop.svg',
 };
 
 // Hero Section
 export const HERO_IMAGES = {
   HERO_BANNER: {
-    DEFAULT: 'assets/images/png/hero.png',
-    MOBILE: 'assets/images/webp/hero-mobile.webp',
-    MOBILE2X: 'assets/images/webp/hero-mobile-2x.webp',
-    TABLET: 'assets/images/webp/hero-tablet.webp',
-    DESKTOP: 'assets/images/webp/hero-desktop.webp',
+    default: 'assets/images/png/hero.png',
+    mobile: 'assets/images/webp/hero-mobile.webp',
+    mobile2x: 'assets/images/webp/hero-mobile-2x.webp',
+    tablet: 'assets/images/webp/hero-tablet.webp',
+    desktop: 'assets/images/webp/hero-desktop.webp',
   },
   CLOCK_ICON: {
-    DEFAULT: 'assets/images/svg/clock.svg',
-    MOBILE: 'assets/images/svg/clock.svg',
-    MOBILE2X: 'assets/images/svg/clock.svg',
-    TABLET: 'assets/images/svg/clock-tablet.svg',
+    default: 'assets/images/svg/clock.svg',
+    mobile: 'assets/images/svg/clock.svg',
+    mobile2x: 'assets/images/svg/clock.svg',
+    tablet: 'assets/images/svg/clock-tablet.svg',
   },
   LOCATION: {
     default: 'assets/images/svg/map-pin.svg',
@@ -45,128 +45,128 @@ export const HERO_IMAGES = {
 // Company Section
 export const COMPANY_IMAGES = {
   COMPANY_MODERNA: {
-    DEFAULT: 'assets/images/png/moderna.png',
-    MOBILE: 'assets/images/webp/moderna.webp',
-    MOBILE2X: 'assets/images/webp/moderna.webp',
-    TABLET: 'assets/images/webp/moderna-tablet.webp',
-    DESKTOP: 'assets/images/webp/moderna-desktop.webp',
+    default: 'assets/images/png/moderna.png',
+    mobile: 'assets/images/webp/moderna.webp',
+    mobile2x: 'assets/images/webp/moderna.webp',
+    tablet: 'assets/images/webp/moderna-tablet.webp',
+    desktop: 'assets/images/webp/moderna-desktop.webp',
   },
   COMPANY_PFIZER: {
-    DEFAULT: 'assets/images/png/pfizer.png',
-    MOBILE: 'assets/images/webp/pfizer.webp',
-    MOBILE2X: 'assets/images/webp/pfizer-mobile-2x.webp',
-    TABLET: 'assets/images/webp/pfizer-tablet.webp',
-    DESKTOP: 'assets/images/webp/pfizer-desktop.webp',
+    default: 'assets/images/png/pfizer.png',
+    mobile: 'assets/images/webp/pfizer.webp',
+    mobile2x: 'assets/images/webp/pfizer-mobile-2x.webp',
+    tablet: 'assets/images/webp/pfizer-tablet.webp',
+    desktop: 'assets/images/webp/pfizer-desktop.webp',
   },
   COMPANY_ASTRAZENECA: {
-    DEFAULT: 'assets/images/png/astra.png',
-    MOBILE: 'assets/images/webp/astra.webp',
-    MOBILE2X: 'assets/images/webp/astra-mobile-2x.webp',
-    TABLET: 'assets/images/webp/astra-tablet.webp',
-    DESKTOP: 'assets/images/webp/astra-desktop.webp',
+    default: 'assets/images/png/astra.png',
+    mobile: 'assets/images/webp/astra.webp',
+    mobile2x: 'assets/images/webp/astra-mobile-2x.webp',
+    tablet: 'assets/images/webp/astra-tablet.webp',
+    desktop: 'assets/images/webp/astra-desktop.webp',
   },
   COMPANY_SINOVAC: {
-    DEFAULT: 'assets/images/png/sinovac.png',
-    MOBILE: 'assets/images/webp/sinovac.webp',
-    MOBILE2X: 'assets/images/webp/sinovac-mobile-2x.webp',
-    TABLET: 'assets/images/webp/sinovac-tablet.webp',
-    DESKTOP: 'assets/images/webp/sinovac-desktop.webp',
+    default: 'assets/images/png/sinovac.png',
+    mobile: 'assets/images/webp/sinovac.webp',
+    mobile2x: 'assets/images/webp/sinovac-mobile-2x.webp',
+    tablet: 'assets/images/webp/sinovac-tablet.webp',
+    desktop: 'assets/images/webp/sinovac-desktop.webp',
   },
 }
 
 // Vaccine Registration section
 export const VACCINE_REGISTRATION = {
-  DEFAULT: 'assets/images/png/vaccine-registration.png',
-  MOBILE: 'assets/images/webp/vaccine-registration.webp',
-  MOBILE2X: 'assets/images/webp/vaccine-registration-mobile-2x.webp',
-  TABLET: 'assets/images/webp/vaccine-registration-tablet.webp',
-  DESKTOP: 'assets/images/webp/vaccine-registration-desktop.webp',
+  default: 'assets/images/png/vaccine-registration.png',
+  mobile: 'assets/images/webp/vaccine-registration.webp',
+  mobile2x: 'assets/images/webp/vaccine-registration-mobile-2x.webp',
+  tablet: 'assets/images/webp/vaccine-registration-tablet.webp',
+  desktop: 'assets/images/webp/vaccine-registration-desktop.webp',
 };
 
 // Vaccinated section
 export const VACCINATED_IMAGES = {
   SHIELD: {
-    DEFAULT: 'assets/images/svg/shield.svg',
-    MOBILE: 'assets/images/svg/shield.svg',
-    MOBILE2X: 'assets/images/svg/shield.svg',
-    TABLET: 'assets/images/svg/shield-tablet.svg',
+    default: 'assets/images/svg/shield.svg',
+    mobile: 'assets/images/svg/shield.svg',
+    mobile2x: 'assets/images/svg/shield.svg',
+    tablet: 'assets/images/svg/shield-tablet.svg',
   },
   ARROW_BLUE: {
-    DEFAULT: 'assets/images/svg/arrow-blue.svg',
-    MOBILE: 'assets/images/svg/arrow-blue.svg',
-    MOBILE2X: 'assets/images/svg/arrow-blue.svg',
-    TABLET: 'assets/images/svg/arrow-blue-tablet.svg',
+    default: 'assets/images/svg/arrow-blue.svg',
+    mobile: 'assets/images/svg/arrow-blue.svg',
+    mobile2x: 'assets/images/svg/arrow-blue.svg',
+    tablet: 'assets/images/svg/arrow-blue-tablet.svg',
   },
   USERS: {
-    DEFAULT: 'assets/images/svg/users.svg',
-    MOBILE: 'assets/images/svg/users.svg',
-    MOBILE2X: 'assets/images/svg/users.svg',
-    TABLET: 'assets/images/svg/users-tablet.svg',
+    default: 'assets/images/svg/users.svg',
+    mobile: 'assets/images/svg/users.svg',
+    mobile2x: 'assets/images/svg/users.svg',
+    tablet: 'assets/images/svg/users-tablet.svg',
   },
   THER_M0METER: {
-    DEFAULT: 'assets/images/svg/thermometer.svg',
-    MOBILE: 'assets/images/svg/thermometer.svg',
-    MOBILE2X: 'assets/images/svg/thermometer.svg',
-    TABLET: 'assets/images/svg/thermometer-tablet.svg',
+    default: 'assets/images/svg/thermometer.svg',
+    mobile: 'assets/images/svg/thermometer.svg',
+    mobile2x: 'assets/images/svg/thermometer.svg',
+    tablet: 'assets/images/svg/thermometer-tablet.svg',
   },
   ARROW: {
-    DEFAULT: 'assets/images/svg/arrow.svg',
-    MOBILE: 'assets/images/svg/arrow.svg',
-    MOBILE2X: 'assets/images/svg/arrow.svg',
-    TABLET: 'assets/images/svg/arrow-tablet.svg',
+    default: 'assets/images/svg/arrow.svg',
+    mobile: 'assets/images/svg/arrow.svg',
+    mobile2x: 'assets/images/svg/arrow.svg',
+    tablet: 'assets/images/svg/arrow-tablet.svg',
   },
 };
 
 // Corona Image
 export const CORONA_IMAGE = {
-  DEFAULT: 'assets/images/svg/corona-virus.svg',
-  MOBILE: 'assets/images/svg/corona-virus.svg',
-  MOBILE2X: 'assets/images/svg/corona-virus.svg',
-  TABLET: 'assets/images/svg/corona-virus-tablet.svg',
-  DESKTOP: 'assets/images/svg/corona-virus-desktop.svg',
+  default: 'assets/images/svg/corona-virus.svg',
+  mobile: 'assets/images/svg/corona-virus.svg',
+  mobile2x: 'assets/images/svg/corona-virus.svg',
+  tablet: 'assets/images/svg/corona-virus-tablet.svg',
+  desktop: 'assets/images/svg/corona-virus-desktop.svg',
 };
 
 // Social Images
 export const SOCIAL_IMAGES = {
   YOUTUBE: {
-    DEFAULT: 'asssets/images/svg/youtube.svg',
-    MOBILE: 'assets/images/svg/youtube.svg',
-    MOBILE2X: 'assets/images/svg/youtube.svg',
-    TABLET: 'assets/images/svg/youtube-tablet.svg',
-    DESKTOP: 'assets/images/svg/youtube-desktop.svg',
+    default: 'asssets/images/svg/youtube.svg',
+    mobile: 'assets/images/svg/youtube.svg',
+    mobile2x: 'assets/images/svg/youtube.svg',
+    tablet: 'assets/images/svg/youtube-tablet.svg',
+    desktop: 'assets/images/svg/youtube-desktop.svg',
   },
   INSTAGRAM: {
-    DEFAULT: 'assets/images/svg/instagram.svg',
-    MOBILE: 'assets/images/svg/instagram.svg',
-    MOBILE2X: 'assets/images/svg/instagram.svg',
-    TABLET: 'assets/images/svg/instagram-tablet.svg',
-    DESKTOP: 'assets/images/svg/instagram-desktop.svg',
+    default: 'assets/images/svg/instagram.svg',
+    mobile: 'assets/images/svg/instagram.svg',
+    mobile2x: 'assets/images/svg/instagram.svg',
+    tablet: 'assets/images/svg/instagram-tablet.svg',
+    desktop: 'assets/images/svg/instagram-desktop.svg',
   },
   TWITTER: {
-    DEFAULT: 'assets/images/svg/twitter.svg',
-    MOBILE: 'assets/images/svg/twitter.svg',
-    MOBILE2X: 'assets/images/svg/twitter.svg',
-    TABLET: 'assets/images/svg/twitter-tablet.svg',
-    DESKTOP: 'assets/images/svg/twitter-desktop.svg',
+    default: 'assets/images/svg/twitter.svg',
+    mobile: 'assets/images/svg/twitter.svg',
+    mobile2x: 'assets/images/svg/twitter.svg',
+    tablet: 'assets/images/svg/twitter-tablet.svg',
+    desktop: 'assets/images/svg/twitter-desktop.svg',
   },
   FACEBOOK: {
-    DEFAULT: 'assets/images/svg/facebook.svg',
-    MOBILE: 'assets/images/svg/facebook.svg',
-    MOBILE2X: 'assets/images/svg/facebook.svg',
-    TABLET: 'assets/images/svg/facebook-tablet.svg',
-    DESKTOP: 'assets/images/svg/facebook-desktop.svg',
+    default: 'assets/images/svg/facebook.svg',
+    mobile: 'assets/images/svg/facebook.svg',
+    mobile2x: 'assets/images/svg/facebook.svg',
+    tablet: 'assets/images/svg/facebook-tablet.svg',
+    desktop: 'assets/images/svg/facebook-desktop.svg',
   },
 }
 
 // Feedback section
 export const FEEDBACK_IMAGES = {
   AVATAR_ONE: {
-    URL: 'assets/images/svg/oyindamola-maja.svg',
+    url: 'assets/images/svg/oyindamola-maja.svg',
   },
   AVATAR_TWO: {
-    URL: 'assets/images/svg/okeowo-lekan.svg',
+    url: 'assets/images/svg/okeowo-lekan.svg',
   },
   AVATAR_THREE: {
-    URL: 'assets/images/svg/kafaru-temitope.svg',
+    url: 'assets/images/svg/kafaru-temitope.svg',
   },
 }
