@@ -7,7 +7,7 @@ import { VACCINATED_IMAGES } from 'constants/images';
 const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
 ---
 
-<section class="bg-get-vaccinated-mobile bg-no-repeat bg-cover md:bg-get-vaccinated-tablet lg:bg-get-vaccinated-desktop">
+<section class="bg-get-vaccinated-mobile dark:bg-tertiary-15 dark:bg-none bg-no-repeat bg-cover md:bg-get-vaccinated-tablet lg:bg-get-vaccinated-desktop">
   <Container>
     <div class="py-[42px] md:pt-[58px] md:pb-[45px] lg:pb-20">
       <div class="flex flex-col gap-[17px] mb-10 md:gap-10 md:mb-[50px] lg:flex-row lg:justify-between lg:mb-10">
@@ -17,12 +17,12 @@ const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
           tag="h2"
           title='Why get vaccinated today?'
         />
-        <p class="text-sm leading base text-white/50 max-w-[536px] md:text-xl">
+        <p class="dark:text-primary text-sm leading base text-white/50 max-w-[536px] md:text-xl">
           Magna adipiscing at elit at ornare lectus nibh lorem. Ac, sed ac lorem pellentesque vestibulum risus matti. In molestie condimentum malesuada non.
         </p>
       </div>
       <div class="flex flex-col gap-[30px] md:gap-10 xl:flex-row xl:items-end xl:gap-[74px]">
-        <ul class="flex flex-col gap-5 leading-base bg-tertiary-20 max-w-[276px] px-5 pt-5 pb-[30px] rounded-card-lg md:rounded-card-xl md:px-10 md:pt-10 md:pb-[73px] md:max-w-[450px]">
+        <ul class="flex flex-col gap-5 leading-base bg-tertiary-20 dark:bg-primary max-w-[276px] px-5 pt-5 pb-[30px] rounded-card-lg md:rounded-card-xl md:px-10 md:pt-10 md:pb-[73px] md:max-w-[450px]">
           <li class="flex items-center justify-center w-[50px] h-[50px] rounded-[10px] bg-darker md:w-[100px] md:h-[100px] md:mb-5">
             <ResponsiveImage
               alt="Shield"
@@ -41,16 +41,16 @@ const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
               url={SHIELD}
             />
           </li>
-          <li class="font-bold text-sm text-secondary-light pr-10 md:mb-2.5 md:text-2xl">
+          <li class="font-bold text-sm text-secondary pr-10 md:mb-2.5 md:text-2xl">
             Protects your immune system against viruses
           </li>
-          <li class="flex flex-col font-medium text-xs mb-1.5 md:text-lg md:mb-5">
+          <li class="dark:text-white flex flex-col font-medium text-xs mb-1.5 md:text-lg md:mb-5">
             <span>Velit ut consectetur mauris, orci amet, faucibus. </span>
             <span>Sit turpis fringilla ipsum pretium, dictum. Dolor eget vel nulla lorem ac.</span>
           </li>
           <li>
             <a href="#" class="flex gap-[5px] items-center md:gap-2.5">
-              <span class="font-bold text-secondary-light text-xs md:text-lg">Read More</span>
+              <span class="font-bold text-secondary text-xs md:text-lg">Read More</span>
               <ResponsiveImage
                 alt="Arrow Blue"
                 width={{
@@ -71,7 +71,7 @@ const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
           </li>
         </ul>
         <div class="flex flex-col gap-[30px] md:flex-row md:gap-[37px] lg:h-[349px] xxl:gap-[74px]">
-          <ul class="flex flex-col justify-between w-[188px] min-h-[202px] border-[3px] border-white/50 rounded-[20px] pr-5 pl-3 pt-5 pb-[26px] md:pl-10 md:pt-10 md:pb-[35px] md:w-[295px] md:rounded-[50px] md:min-h-[290px] xxl:w-[349px]">
+          <ul class="dark:bg-primary dark:border-primary flex flex-col justify-between w-[188px] min-h-[202px] border-[3px] border-white/50 rounded-[20px] pr-5 pl-3 pt-5 pb-[26px] md:pl-10 md:pt-10 md:pb-[35px] md:w-[295px] md:rounded-[50px] md:min-h-[290px] xxl:w-[349px]">
             <li class="flex items-center justify-center w-[50px] h-[50px] rounded-[10px] bg-darker md:w-[70px] md:h-[70px] md:rounded-[20px]">
               <ResponsiveImage
                 alt="Users"
@@ -90,7 +90,7 @@ const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
                 url={USERS}
               />
             </li>
-            <li class="text-sm font-bold leading-base mt-2.5 md:text-xl md:mt-5 xl:text-2xl">
+            <li class="dark:text-white text-sm font-bold leading-base mt-2.5 md:text-xl md:mt-5 xl:text-2xl">
               Minimize the spread of the Virus
             </li>
             <li>
@@ -115,7 +115,7 @@ const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
               </a>
             </li>
           </ul>
-          <ul class="flex flex-col justify-between w-[188px] min-h-[202px] border-[3px] border-white/50 rounded-[20px] pr-5 pl-3 pt-5 pb-[26px] md:w-[295px] md:pl-10 md:pt-10 md:pb-[35px] md:rounded-[50px] md:min-h-[290px] xxl:w-[349px]">
+          <ul class="dark:bg-primary dark:border-primary flex flex-col justify-between w-[188px] min-h-[202px] border-[3px] border-white/50 rounded-[20px] pr-5 pl-3 pt-5 pb-[26px] md:w-[295px] md:pl-10 md:pt-10 md:pb-[35px] md:rounded-[50px] md:min-h-[290px] xxl:w-[349px]">
             <li class="flex items-center justify-center w-[50px] h-[50px] rounded-[10px] bg-darker md:w-[70px] md:h-[70px] md:rounded-[20px]">
               <ResponsiveImage
                 alt="TherMometer"
@@ -134,7 +134,7 @@ const { SHIELD, ARROW_BLUE, USERS, THER_M0METER, ARROW } = VACCINATED_IMAGES;
                 url={THER_M0METER}
               />
             </li>
-            <li class="text-sm font-bold leading-base mt-2.5 md:text-xl md:mt-5 xl:text-2xl">
+            <li class="dark:text-white text-sm font-bold leading-base mt-2.5 md:text-xl md:mt-5 xl:text-2xl">
               Protect yourself
             </li>
             <li>
