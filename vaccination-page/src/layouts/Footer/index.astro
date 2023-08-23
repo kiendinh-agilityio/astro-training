@@ -5,17 +5,26 @@ import { SECTION } from 'constants/navigation';
 import { SOCIAL_LINKS } from 'constants/link';
 import { SOCIAL_IMAGES, LOGO } from 'constants/images';
 
-const { YOUTUBE, INSTAGRAM, TWITTER, FACEBOOK } = SOCIAL_IMAGES;
+const {
+  YOUTUBE,
+  YOUTUBE_SECONDARY,
+  INSTAGRAM,
+  INSTAGRAM_SECONDARY,
+  TWITTER,
+  TWITTER_SECONDARY,
+  FACEBOOK,
+  FACEBOOK_SECONDARY
+} = SOCIAL_IMAGES;
 
 ---
 
-<footer class="min-h-[351px] md:min-h-[500px] bg-footer-mobile bg-no-repeat bg-cover md:bg-footer-tablet lg:bg-footer-desktop">
+<footer class="dark:bg-none dark:bg-tertiary-15 min-h-[351px] md:min-h-[500px] bg-footer-mobile bg-no-repeat bg-cover md:bg-footer-tablet lg:bg-footer-desktop">
   <Container>
     <div class="min-h-[351px] pt-[41px] pb-[30px] flex flex-col justify-end gap-[15px] md:gap-10 md:pb-[54px] md:min-h-[500px] lg:flex-row lg:justify-between lg:pb-[113px] lg:items-end">
       <a href="./">
         <ResponsiveImage
           alt="Vaccination Logo"
-          url={LOGO}
+          url={LOGO.PRIMARY}
           width={{
             default: '200px',
             mobile: '200px',
@@ -30,24 +39,43 @@ const { YOUTUBE, INSTAGRAM, TWITTER, FACEBOOK } = SOCIAL_IMAGES;
             tablet: '35px',
             desktop: '44px',
           }}
-          imageClass="cursor-pointer"
+          imageClass="cursor-pointer dark:hidden"
+        />
+        <ResponsiveImage
+          alt="Vaccination Logo"
+          url={LOGO.SECONDARY}
+          width={{
+            default: '200px',
+            mobile: '200px',
+            mobile2x: '400px',
+            tablet: '200px',
+            desktop: '251px',
+          }}
+          height={{
+            default: '31px',
+            mobile: '31px',
+            mobile2x: '62px',
+            tablet: '35px',
+            desktop: '44px',
+          }}
+          imageClass="cursor-pointer hidden dark:block"
         />
       </a>
       <ul
-        class="flex flex-col gap-1 md:flex-row md:gap-[25px] md:text-xl font-menium text-navbar text-sm leading-base lg:justify-center lg:gap-[25px] lg:text-2xl lg:p-[5px] xl:p-2.5"
+        class="dark:text-gray-500 flex flex-col gap-1 md:flex-row md:gap-[25px] md:text-xl font-menium text-navbar text-sm leading-base lg:justify-center lg:gap-[25px] lg:text-2xl lg:p-[5px] xl:p-2.5"
       >
         <li class="py-1">
-          <a class="font-bold text-white" href={SECTION.HOME}>Home</a>
+          <a class="font-bold text-white dark:text-primary" href={SECTION.HOME}>Home</a>
         </li>
-        <li class="py-1">
-          <a class="hover:text-white" href={SECTION.SERVICES}>Services</a>
+        <li class="py-1 w-[98px]">
+          <a class="hover:text-white dark:hover:text-primary" href={SECTION.SERVICES}>Services</a>
         </li>
-        <li class="py-1">
-          <a class="hover:text-white" href={SECTION.SCHEDULE}>Schedule</a
+        <li class="py-1 w-[114px]">
+          <a class="hover:text-white dark:hover:text-primary" href={SECTION.SCHEDULE}>Schedule</a
           >
         </li>
-        <li class="py-1">
-          <a class="hover:text-white" href={SECTION.CONTACT}>Contact us</a>
+        <li class="py-1 w-[140px]">
+          <a class="hover:text-white dark:hover:text-primary" href={SECTION.CONTACT}>Contact us</a>
         </li>
       </ul>
       <div class="flex flex-row gap-2 md:gap-[7px] lg:gap-2.5">
@@ -69,7 +97,26 @@ const { YOUTUBE, INSTAGRAM, TWITTER, FACEBOOK } = SOCIAL_IMAGES;
               tablet: '32px',
               desktop: '50px',
             }}
-            imageClass="cursor-pointer"
+            imageClass="cursor-pointer dark:hidden"
+          />
+          <ResponsiveImage
+            alt="Youtube"
+            url={YOUTUBE_SECONDARY}
+            width={{
+              default: '25px',
+              mobile: '25px',
+              mobile2x: '50px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            height={{
+              default: '25px',
+              mobile: '25px',
+              mobile2x: '50px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            imageClass="cursor-pointer hidden dark:block"
           />
         </a>
         <a target="_blank" href={SOCIAL_LINKS.INSTAGRAM}>
@@ -90,7 +137,26 @@ const { YOUTUBE, INSTAGRAM, TWITTER, FACEBOOK } = SOCIAL_IMAGES;
               tablet: '32px',
               desktop: '50px',
             }}
-            imageClass="cursor-pointer"
+            imageClass="cursor-pointer dark:hidden"
+          />
+          <ResponsiveImage
+            alt="Instagram"
+            url={INSTAGRAM_SECONDARY}
+            width={{
+              default: '25px',
+              mobile: '25px',
+              mobile2x: '50px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            height={{
+              default: '25px',
+              mobile: '25px',
+              mobile2x: '50px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            imageClass="cursor-pointer hidden dark:block"
           />
         </a>
         <a target="_blank" href={SOCIAL_LINKS.TWITTER}>
@@ -111,7 +177,26 @@ const { YOUTUBE, INSTAGRAM, TWITTER, FACEBOOK } = SOCIAL_IMAGES;
               tablet: '32px',
               desktop: '50px',
             }}
-            imageClass="cursor-pointer"
+            imageClass="cursor-pointer dark:hidden"
+          />
+          <ResponsiveImage
+            alt="Twitter"
+            url={TWITTER_SECONDARY}
+            width={{
+              default: '25px',
+              mobile: '25px',
+              mobile2x: '50px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            height={{
+              default: '25px',
+              mobile: '25px',
+              mobile2x: '50px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            imageClass="cursor-pointer hidden dark:block"
           />
         </a>
         <a target="_blank" href={SOCIAL_LINKS.FACEBOOK}>
@@ -132,7 +217,26 @@ const { YOUTUBE, INSTAGRAM, TWITTER, FACEBOOK } = SOCIAL_IMAGES;
               tablet: '32px',
               desktop: '50px',
             }}
-            imageClass="cursor-pointer"
+            imageClass="cursor-pointer dark:hidden"
+          />
+          <ResponsiveImage
+            alt="Facebook"
+            url={FACEBOOK_SECONDARY}
+            width={{
+              default: '25px',
+              mobile: '25px',
+              mobile2x: '50px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            height={{
+              default: '25px',
+              mobile: '25px',
+              mobile2x: '50px',
+              tablet: '32px',
+              desktop: '50px',
+            }}
+            imageClass="cursor-pointer hidden dark:block"
           />
         </a>
       </div>
