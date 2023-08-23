@@ -12,7 +12,7 @@ export interface HeaderProps {
 <header class="absolute w-full">
   <Container>
     <!-- Nav-menu -->
-    <nav class="flex items-center justify-between header-menu pt-[50px] pb-8 lg:py-[41px]">
+    <nav class="relative flex items-center justify-between header-menu pt-[50px] pb-8 lg:py-[41px]">
       <!-- Logo -->
       <div
         class="flex flex-row items-center justify-between w-full h-[45px] lg:w-[251px]"
@@ -20,7 +20,7 @@ export interface HeaderProps {
         <a href="./" class="header-nav-logo">
           <ResponsiveImage
             alt="Vaccination Logo"
-            url={LOGO}
+            url={LOGO.PRIMARY}
             width={{
               default: '200px',
               mobile: '200px',
@@ -35,11 +35,30 @@ export interface HeaderProps {
               tablet: '35px',
               desktop: '44px',
             }}
-            imageClass="cursor-pointer"
+            imageClass="cursor-pointer dark:hidden"
+          />
+          <ResponsiveImage
+            alt="Vaccination Logo"
+            url={LOGO.SECONDARY}
+            width={{
+              default: '200px',
+              mobile: '200px',
+              mobile2x: '400px',
+              tablet: '200px',
+              desktop: '251px',
+            }}
+            height={{
+              default: '31px',
+              mobile: '31px',
+              mobile2x: '62px',
+              tablet: '35px',
+              desktop: '44px',
+            }}
+            imageClass="cursor-pointer hidden dark:block"
           />
         </a>
         <!-- Button toggler -->
-        <div id="nav-toggle" class="flex justify-center w-[45px] h-[45px] rounded-[10px] bg-toggle border-toggle lg:hidden">
+        <div id="nav-toggle" class="flex justify-center w-[45px] h-[45px] rounded-[10px] bg-toggle border-toggle dark:bg-primary lg:hidden">
           <button aria-label="open-menu-mobile" id="open-btn" class="lg:hidden">
             <img width="30px" height="30px" src="assets/images/svg/open-menu.svg" alt="Button Open Menu">
           </button>
@@ -49,25 +68,34 @@ export interface HeaderProps {
         </div>
       </div>
       <ul
-        class="font-menium text-navbar hidden lg:text-text-reversal lg:flex lg:justify-center lg:gap-[25px] lg:text-2xl lg:px-1 nav-list"
+        class="dark:text-gray-500 font-menium text-navbar hidden lg:text-text-reversal lg:flex lg:justify-center lg:gap-[15px] xl:gap-[25px] lg:text-2xl lg:px-1 nav-list"
       >
         <li class="flex flex-col items-center">
-          <a class="font-bold text-white" href={SECTION.HOME}>Home</a>
-          <span class="w-[10px] h-[10px] bg-secondary-light border-secondary-light rounded-full border"></span>
+          <a class="font-bold text-white dark:text-primary" href={SECTION.HOME}>Home</a>
+          <span class="w-[10px] h-[10px] bg-secondary border-secondary rounded-full border"></span>
         </li>
-        <li>
-          <a class="hover:text-white" href={SECTION.SERVICES}>Services</a>
+        <li class="w-[98px]">
+          <a class="hover:text-white hover:font-bold dark:hover:text-primary" href={SECTION.SERVICES}>Services</a>
         </li>
-        <li>
-          <a class="hover:text-white" href={SECTION.SCHEDULE}>Schedule</a
+        <li class="w-[114px]">
+          <a class="hover:text-white hover:font-bold dark:hover:text-primary" href={SECTION.SCHEDULE}>Schedule</a
           >
         </li>
-        <li>
-          <a class="hover:text-white" href={SECTION.CONTACT}>Contact us</a>
+        <li class="w-[140px]">
+          <a class="hover:text-white hover:font-bold dark:hover:text-primary" href={SECTION.CONTACT}>Contact us</a>
         </li>
       </ul>
+      <!-- Button toggle dark/light theme -->
+      <button aria-label="button-theme-toggle" id="theme-toggle" type="button" class="absolute top-[50px] right-[60px] lg:right-[174px] xl:mr-[30px] xxl:mr-14 text-gray-500 dark:text-gray-400 bg-tertiary-5 dark:bg-white dark:border-[3px] dark:border-secondary focus:outline-none rounded-lg p-2.5 w-[46px] h-[46px] flex justify-center items-center">
+        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5">
+          <image xlink:href="assets/images/svg/moon.svg" class="w-5 h-5"/>
+        </svg>
+        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5">
+          <image xlink:href="assets/images/svg/sun.svg" class="w-5 h-5"/>
+        </svg>
+      </button>
       <a
-        class="bg-darker text-2xl leading-base text-secondary-light font-bold rounded-[20px] hidden lg:py-5 lg:px-[26px] lg:block shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
+        class="bg-tertiary-10 dark text-2xl leading-base text-secondary font-bold rounded-[20px] hidden lg:ml-[50px] lg:py-5 lg:px-[17px] xl:px-[26px] xl:ml-0 lg:block shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] lg:text-lg xxl:text-2xl dark:border-[3px] dark:border-secondary"
         href={SECTION.CHECKSTATUS}
       >
         Check Status
@@ -108,7 +136,7 @@ export interface HeaderProps {
         </ul>
         <a
           href={SECTION.CHECKSTATUS}
-          class="bg-primary block font-bold text-secondary-light py-[20px] rounded-[20px] w-fit py-tiny px-[26px] mx-[35px] mt-3 mb-[21px] md:block hover:bg-primary-40 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
+          class="bg-primary block font-bold text-secondary py-[20px] rounded-[20px] w-fit py-tiny px-[26px] mx-[35px] mt-3 mb-[21px] md:block hover:bg-primary-40 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
         >
           Check Status
         </a>
