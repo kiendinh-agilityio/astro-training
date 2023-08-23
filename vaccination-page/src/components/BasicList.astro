@@ -10,7 +10,7 @@ export interface SymptomsItemsProps {
 const { className = '', description } = Astro.props;
 ---
 
-<ul class={`${className} flex items-center border-tertiary-20 bg-tertiary-20 rounded-[5px] h-[22px] py-1.5 relative pl-[18px] md:h-[45px] md:py-3 md:pl-[33px] xl:h-[70px] lg:justify-center`}>
+<ul class={`${className} dark:bg-tertiary-50 dark:border-tertiary-50 flex items-center border-tertiary-20 bg-tertiary-20 rounded-[5px] h-[22px] py-1.5 relative pl-[18px] md:h-[45px] md:py-3 md:pl-[33px] xl:h-[70px] lg:justify-center`}>
   <li class="absolute left-[-18px] top-[-6px] md:left-[-35px] md:top-[-10px] lg:left-[-25px] lg:top-[-10px] xl:left-[-20px] xl:top-[-15px]">
     <ResponsiveImage
       alt="Corona Virus"
@@ -31,7 +31,7 @@ const { className = '', description } = Astro.props;
       url={CORONA_IMAGE}
     />
   </li>
-  <li class="font-semibold text-tiny text-secondary-light leading-base md:text-lg">
+  <li class="font-semibold text-tiny text-secondary leading-base md:text-lg">
     {description}
   </li>
 </ul>
