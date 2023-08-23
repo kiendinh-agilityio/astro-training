@@ -9,10 +9,7 @@ module.exports = {
       },
       colors: {
         primary: '#0b153c',
-        secondary: {
-          light: '#17c2ec',
-          dark: '#0e80a5',
-        },
+        secondary: '#1b6ff3',
         input: 'rgba(0, 0, 0, 0.75)',
         overlay: '#000000b3',
         dark: 'rgba(196, 196, 196, 0.05)',
