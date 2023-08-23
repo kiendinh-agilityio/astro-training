@@ -1,10 +1,19 @@
 // Logo
 export const LOGO = {
-  default: 'assets/images/svg/logo-default.svg',
-  mobile: 'assets/images/svg/logo-mobile.svg',
-  mobile2x: 'assets/images/svg/logo-mobile.svg',
-  tablet: 'assets/images/svg/logo-tablet.svg',
-  desktop: 'assets/images/svg/logo-desktop.svg',
+  PRIMARY: {
+    default: 'assets/images/svg/logo-default.svg',
+    mobile: 'assets/images/svg/logo-mobile.svg',
+    mobile2x: 'assets/images/svg/logo-mobile.svg',
+    tablet: 'assets/images/svg/logo-tablet.svg',
+    desktop: 'assets/images/svg/logo-desktop.svg',
+  },
+  SECONDARY: {
+    default: 'assets/images/svg/logo-secondary.svg',
+    mobile: 'assets/images/svg/logo-secondary.svg',
+    mobile2x: 'assets/images/svg/logo-secondary.svg',
+    tablet: 'assets/images/svg/logo-secondary-tablet.svg',
+    desktop: 'assets/images/svg/logo-secondary-desktop.svg',
+  }
 };
 
 // Hero Section
@@ -135,12 +144,26 @@ export const SOCIAL_IMAGES = {
     tablet: 'assets/images/svg/youtube-tablet.svg',
     desktop: 'assets/images/svg/youtube-desktop.svg',
   },
+  YOUTUBE_SECONDARY: {
+    default: 'asssets/images/svg/youtube-secondary.svg',
+    mobile: 'assets/images/svg/youtube-secondary.svg',
+    mobile2x: 'assets/images/svg/youtube-secondary.svg',
+    tablet: 'assets/images/svg/youtube-secondary-tablet.svg',
+    desktop: 'assets/images/svg/youtube-secondary-desktop.svg',
+  },
   INSTAGRAM: {
     default: 'assets/images/svg/instagram.svg',
     mobile: 'assets/images/svg/instagram.svg',
     mobile2x: 'assets/images/svg/instagram.svg',
     tablet: 'assets/images/svg/instagram-tablet.svg',
     desktop: 'assets/images/svg/instagram-desktop.svg',
+  },
+  INSTAGRAM_SECONDARY: {
+    default: 'assets/images/svg/instagram-secondary.svg',
+    mobile: 'assets/images/svg/instagram-secondary.svg',
+    mobile2x: 'assets/images/svg/instagram-secondary.svg',
+    tablet: 'assets/images/svg/instagram-secondary-tablet.svg',
+    desktop: 'assets/images/svg/instagram-secondary-desktop.svg',
   },
   TWITTER: {
     default: 'assets/images/svg/twitter.svg',
@@ -149,12 +172,26 @@ export const SOCIAL_IMAGES = {
     tablet: 'assets/images/svg/twitter-tablet.svg',
     desktop: 'assets/images/svg/twitter-desktop.svg',
   },
+  TWITTER_SECONDARY: {
+    default: 'assets/images/svg/twitter-secondary.svg',
+    mobile: 'assets/images/svg/twitter-secondary.svg',
+    mobile2x: 'assets/images/svg/twitter-secondary.svg',
+    tablet: 'assets/images/svg/twitter-secondary-tablet.svg',
+    desktop: 'assets/images/svg/twitter-secondary-desktop.svg',
+  },
   FACEBOOK: {
     default: 'assets/images/svg/facebook.svg',
     mobile: 'assets/images/svg/facebook.svg',
     mobile2x: 'assets/images/svg/facebook.svg',
     tablet: 'assets/images/svg/facebook-tablet.svg',
     desktop: 'assets/images/svg/facebook-desktop.svg',
+  },
+  FACEBOOK_SECONDARY: {
+    default: 'assets/images/svg/facebook-secondary.svg',
+    mobile: 'assets/images/svg/facebook-secondary.svg',
+    mobile2x: 'assets/images/svg/facebook-secondary.svg',
+    tablet: 'assets/images/svg/facebook-secondary-tablet.svg',
+    desktop: 'assets/images/svg/facebook-secondary-desktop.svg',
   },
 }
 
