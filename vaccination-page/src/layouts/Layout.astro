@@ -52,40 +52,43 @@ const { title } = Astro.props;
   const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
   const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
   const themeToggleBtn = document.getElementById('theme-toggle');
+  const documentElementClassList = document.documentElement.classList;
+  const themeToggleLightIconClassList = themeToggleLightIcon.classList;
+  const themeToggleDarkIconClassList = themeToggleDarkIcon.classList;
 
   // Develop switch theme color
   if (isUsingDarkMode) {
-    document.documentElement.classList.add('dark');
-    themeToggleLightIcon.classList.remove('hidden');
+    documentElementClassList.add('dark');
+    themeToggleLightIconClassList.remove('hidden');
   } else {
-    document.documentElement.classList.remove('dark')
-    themeToggleDarkIcon.classList.remove('hidden');
+    documentElementClassList.remove('dark')
+    themeToggleDarkIconClassList.remove('hidden');
   }
 
   // Change the icons inside the button based on previous settings
   themeToggleBtn.addEventListener('click', function() {
     const colorTheme = localStorage.getItem('color-theme');
     // toggle icons inside button
-    themeToggleDarkIcon.classList.toggle('hidden');
-    themeToggleLightIcon.classList.toggle('hidden');
+    themeToggleDarkIconClassList.toggle('hidden');
+    themeToggleLightIconClassList.toggle('hidden');
 
     // if set via local storage previously
     if (colorTheme) {
       if (colorTheme === 'light') {
-        document.documentElement.classList.add('dark');
+        documentElementClassList.add('dark');
         localStorage.setItem('color-theme', 'dark');
       } else {
-        document.documentElement.classList.remove('dark');
+        documentElementClassList.remove('dark');
         localStorage.setItem('color-theme', 'light');
       }
 
     // if NOT set via local storage previously
     } else {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
+      if (documentElementClassList.contains('dark')) {
+        documentElementClassList.remove('dark');
         localStorage.setItem('color-theme', 'light');
       } else {
-        document.documentElement.classList.add('dark');
+        documentElementClassList.add('dark');
         localStorage.setItem('color-theme', 'dark');
       }
     }
