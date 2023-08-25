@@ -1,7 +1,6 @@
 ---
 import Header from 'layouts/Header/index';
 import Footer from 'layouts/Footer/index';
-import { CLASS_NAME } from 'constants/index';
 export interface Props {
   title: string;
 }
@@ -49,7 +48,10 @@ const { title } = Astro.props;
 </body>
 <script defer>
   const colorThemeKey = 'color-theme';
-  const isUsingDarkMode = localStorage.getItem(colorThemeKey) === 'dark' ||
+  const darkClass = 'dark';
+  const lightClass = 'light';
+  const hiddenClass = 'hidden';
+  const isUsingDarkMode = localStorage.getItem(colorThemeKey) === darkClass ||
     (!localStorage.getItem(colorThemeKey) && window.matchMedia('(prefers-color-scheme: dark)').matches)
   const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
   const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -59,38 +61,38 @@ const { title } = Astro.props;
   const themeToggleDarkIconClassList = themeToggleDarkIcon.classList;
   // Develop switch theme color
   if (isUsingDarkMode) {
-    documentElementClassList.add(CLASS_NAME.THEME.dark);
-    themeToggleLightIconClassList.remove('hidden');
+    documentElementClassList.add(darkClass);
+    themeToggleLightIconClassList.remove(hiddenClass);
   } else {
-    documentElementClassList.remove(CLASS_NAME.THEME.dark)
-    themeToggleDarkIconClassList.remove('hidden');
+    documentElementClassList.remove(darkClass)
+    themeToggleDarkIconClassList.remove(hiddenClass);
   }
 
   // Change the icons inside the button based on previous settings
   themeToggleBtn.addEventListener('click', function() {
     const colorTheme = localStorage.getItem(colorThemeKey);
     // toggle icons inside button
-    themeToggleDarkIconClassList.toggle('hidden');
-    themeToggleLightIconClassList.toggle('hidden');
+    themeToggleDarkIconClassList.toggle(hiddenClass);
+    themeToggleLightIconClassList.toggle(hiddenClass);
 
     // if set via local storage previously
     if (colorTheme) {
-      if (colorTheme === 'light') {
-        documentElementClassList.add('dark');
-        localStorage.setItem(colorThemeKey, 'dark');
+      if (colorTheme === lightClass) {
+        documentElementClassList.add(darkClass);
+        localStorage.setItem(colorThemeKey, darkClass);
       } else {
-        documentElementClassList.remove('dark');
-        localStorage.setItem(colorThemeKey, 'light');
+        documentElementClassList.remove(darkClass);
+        localStorage.setItem(colorThemeKey, lightClass);
       }
 
     // if NOT set via local storage previously
     } else {
-      if (documentElementClassList.contains('dark')) {
-        documentElementClassList.remove('dark');
-        localStorage.setItem(colorThemeKey, 'light');
+      if (documentElementClassList.contains(darkClass)) {
+        documentElementClassList.remove(darkClass);
+        localStorage.setItem(colorThemeKey, lightClass);
       } else {
-        documentElementClassList.add('dark');
-        localStorage.setItem(colorThemeKey, 'dark');
+        documentElementClassList.add(darkClass);
+        localStorage.setItem(colorThemeKey, darkClass);
       }
     }
   });
