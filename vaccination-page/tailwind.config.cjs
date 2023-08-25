@@ -1,3 +1,4 @@
+const plugin = require('tailwindcss/plugin');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
@@ -5,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Montserrat', 'sans-serif'],
+        primary: ['Montserrat'],
       },
       colors: {
         primary: '#0b153c',
@@ -110,5 +111,56 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addBase }) {
+      addBase({
+        '@font-face': {
+          fontFamily: 'Montserrat',
+          fontWheight: '400',
+          src: 'url(/assets/fonts/Montserrat-Regular.woff2)',
+          fontDisplay: 'swap',
+        },
+      });
+    }),
+    plugin(function ({ addBase }) {
+      addBase({
+        '@font-face': {
+          fontFamily: 'Montserrat',
+          fontWheight: '500',
+          src: 'url(/assets/fonts/Montserrat-Medium.woff2)',
+          fontDisplay: 'swap',
+        },
+      });
+    }),
+    plugin(function ({ addBase }) {
+      addBase({
+        '@font-face': {
+          fontFamily: 'Montserrat',
+          fontWheight: '600',
+          src: 'url(/assets/fonts/Montserrat-SemiBold.woff2)',
+          fontDisplay: 'swap',
+        },
+      });
+    }),
+    plugin(function ({ addBase }) {
+      addBase({
+        '@font-face': {
+          fontFamily: 'Montserrat',
+          fontWheight: '800',
+          src: 'url(/assets/fonts/Montserrat-ExtraBold.woff2)',
+          fontDisplay: 'swap',
+        },
+      });
+    }),
+    plugin(function ({ addBase }) {
+      addBase({
+        '@font-face': {
+          fontFamily: 'Montserrat',
+          fontWheight: '700',
+          src: 'url(/assets/fonts/Montserrat-Bold.woff2)',
+          fontDisplay: 'swap',
+        },
+      });
+    }),
+  ],
 };
