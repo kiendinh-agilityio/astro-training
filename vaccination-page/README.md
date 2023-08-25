@@ -21,7 +21,7 @@
 
 ## Design:
 
-- [Marketing Banking](https://www.figma.com/file/E1BQQVFCdGYoLJp87gIevm/Responsive-Landing-Page-(Community)?node-id=34%3A539&mode=dev)
+- [Vaccination Page](<https://www.figma.com/file/E1BQQVFCdGYoLJp87gIevm/Responsive-Landing-Page-(Community)?node-id=34%3A539&mode=dev>)
 
 ## TECH STACKS
 
@@ -56,11 +56,12 @@
 2. In the project directory
 
 ### Build and Run app
-| Syntax                                                                   Description                                |
-| ----------------------------------------------------------------------- | ----------------------------------------- |
-| `git clone git@gitlab.asoft-python.com:kien.dinh/astro-training.git`    | Clone repository                          |
-| `git checkout feature/implement-astro-practice`                         | Checkout branch                           |
-| `cd vaccination-page`                                                   | Change directory                          |
-| `pnpm install`                                                          | Install dependencies                      |
-| `pnpm start`                                                            | Starts local dev server at localhost:3000 |
-| `pnpm build`                                                            | Build your app for production             |
+
+| Syntax                                                               | Description                               |
+| -------------------------------------------------------------------- | ----------------------------------------- |
+| `git clone git@gitlab.asoft-python.com:kien.dinh/astro-training.git` | Clone repository                          |
+| `git checkout feature/implement-astro-practice`                      | Checkout branch                           |
+| `cd vaccination-page`                                                | Change directory                          |
+| `pnpm install`                                                       | Install dependencies                      |
+| `pnpm start`                                                         | Starts local dev server at localhost:3000 |
+| `pnpm build`                                                         | Build your app for production             |
