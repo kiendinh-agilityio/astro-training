@@ -1,6 +1,7 @@
 ---
 import Header from 'layouts/Header/index';
 import Footer from 'layouts/Footer/index';
+import { CLASS_NAME } from 'constants/index';
 export interface Props {
   title: string;
 }
@@ -49,20 +50,19 @@ const { title } = Astro.props;
 <script defer>
   const colorThemeKey = 'color-theme';
   const isUsingDarkMode = localStorage.getItem(colorThemeKey) === 'dark' ||
-    (!!localStorage.getItem(colorThemeKey) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    (!localStorage.getItem(colorThemeKey) && window.matchMedia('(prefers-color-scheme: dark)').matches)
   const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
   const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
   const themeToggleBtn = document.getElementById('theme-toggle');
   const documentElementClassList = document.documentElement.classList;
   const themeToggleLightIconClassList = themeToggleLightIcon.classList;
   const themeToggleDarkIconClassList = themeToggleDarkIcon.classList;
-
   // Develop switch theme color
   if (isUsingDarkMode) {
-    documentElementClassList.add('dark');
+    documentElementClassList.add(CLASS_NAME.THEME.dark);
     themeToggleLightIconClassList.remove('hidden');
   } else {
-    documentElementClassList.remove('dark')
+    documentElementClassList.remove(CLASS_NAME.THEME.dark)
     themeToggleDarkIconClassList.remove('hidden');
   }
 
