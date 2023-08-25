@@ -12,7 +12,7 @@ const { HERO_BANNER, CLOCK_ICON, LOCATION, CALENDAR, SHIELD } = HERO_IMAGES;
 <section class="bg-hero-mobile dark:bg-tertiary-15 dark:bg-none bg-no-repeat bg-cover md:bg-hero-tablet lg:bg-hero-desktop">
   <Container className="pt-[94px] lg:pt-32">
     <div class="flex flex-col mb-[43px] pt-8 md:mb-[39px] lg:flex-row lg:justify-between lg:pt-[83px] xl:mb-0">
-      <div class="md:max-w-[502px] xl:max-w-hero-content">
+      <div class="flex flex-col xs:max-w-full sm:max-w-[375px] md:max-w-[502px] xl:max-w-hero-content">
         <Paragraph
           className="sm:font-bold text-secondary mb-5 md:mb-10"
           type="description"
@@ -20,27 +20,27 @@ const { HERO_BANNER, CLOCK_ICON, LOCATION, CALENDAR, SHIELD } = HERO_IMAGES;
           title="Get Vaccinated. Boost your Immune System"
         />
         <Paragraph
-          className="mb-5 md:mb-10 lg:mb-[50px]"
+          className="mb-5 md:mb-10 lg:mb-[50px] xs:max-w-full sm:max-w-[276px] sm:min-h-[87px] md:max-w-[414px] lg:max-w-[552px]"
           type="main_heading"
           tag="h1"
         >
-          COVID-19 Vaccination Got Easier With, <span class="text-secondary min-w-[191px] min-h-[29px]">Vaccination.ng</span>
+          COVID-19 Vaccination Got Easier With, <span class="text-secondary xs:w-full sm:min-w-[191px] sm:min-h-[29px] md:w-full">Vaccination.ng</span>
         </Paragraph>
         <Paragraph
-          className="sm:text-sm text-white/70 dark:text-primary mb-10 lg:mb-[50px]"
+          className="sm:text-sm text-white/70 dark:text-primary mb-10 xs:max-w-full sm:max-w-[271px] sm:min-h-[51px] md:max-w-[502px] lg:max-w-[603px] lg:mb-[50px]"
           type="sub_heading"
           tag="p"
           title="Vaccination.ng will help you find the nearest centre for vaccination, in all 36 states in Nigeria."
         />
-        <div class="flex justify-center gap-5 mb-[50px] md:mb-[55px] lg:mb-0 md:justify-start">
+        <div class="flex gap-5 mb-[50px] md:mb-[55px] lg:mb-0 md:justify-start">
           <Button
             type="secondary"
-            className="h-[50px] rounded-[20px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:h-[64px] md:w-[175px] md:text-xl lg:text-2xl lg:h-[69px] lg:w-[200px]"
+            className="h-[50px] rounded-[20px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] xs:w-full sm:w-[138px] sm:h-[50px] md:h-[64px] md:w-[175px] md:text-xl lg:text-2xl lg:h-[69px] lg:w-[200px]"
           >
             Get Vaccine
           </Button>
           <Button
-            className="dark:bg-transparent h-[50px] rounded-[20px] border-2 border-secondary shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:h-[64px] md:w-[175px] md:text-xl lg:text-2xl lg:w-[200px] lg:h-[69px] md:px-5"
+            className="dark:bg-transparent h-[50px] rounded-[20px] border-2 border-secondary shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] xs:w-full sm:w-[138px] sm:h-[50px] sm:px-5 md:h-[64px] md:w-[175px] md:text-xl lg:text-2xl lg:w-[200px] lg:h-[69px] md:px-5"
           >
             Help Centre
           </Button>
@@ -66,7 +66,7 @@ const { HERO_BANNER, CLOCK_ICON, LOCATION, CALENDAR, SHIELD } = HERO_IMAGES;
         url={HERO_BANNER}
       />
     </div>
-    <div class="flex gap-2.5 items-center mb-5 min-w-[315px] min-h-[30px] md:gap-5 md:mb-8 lg:mb-2.5">
+    <div class="flex gap-2.5 items-center mb-5 md:gap-5 md:mb-8 lg:mb-2.5">
       <div class="dark:bg-primary flex items-center justify-center w-[30px] h-[30px] rounded-[10px] bg-darker md:w-[50px] md:h-[50px]">
         <ResponsiveImage
           alt="Clock"
