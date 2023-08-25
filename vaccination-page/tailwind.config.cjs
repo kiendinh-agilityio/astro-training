@@ -1,5 +1,7 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -7,12 +9,9 @@ module.exports = {
       },
       colors: {
         primary: '#0b153c',
-        secondary: {
-          light: '#17c2ec',
-          dark: '#0e80a5',
-        },
+        secondary: '#1b6ff3',
         input: 'rgba(0, 0, 0, 0.75)',
-        overlay: '#000000b3',
+        overlay: '#00003b',
         dark: 'rgba(196, 196, 196, 0.05)',
         darker: 'rgba(196, 196, 196, 0.10)',
         navbar: 'rgba(255, 255, 255, 0.50)',

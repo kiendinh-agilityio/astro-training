@@ -11,7 +11,7 @@ const { title } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -32,19 +32,69 @@ const { title } = Astro.props;
     content="Vaccination.ng will help you find the nearest centre for vaccination, in all 36 states in Nigeria.">
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
-</head>
+</html>
 
-<body class="min-h-screen m-0 font-primary text-white text-xl">
+<body class="min-h-screen m-0 font-primary text-white dark:text-primary text-xl">
   <!-- Header -->
   <Header />
 
   <!-- Main -->
-  <main>
+  <main class="bg-white">
     <slot />
   </main>
 
   <!-- Footer -->
   <Footer />
 </body>
+<script defer>
+  const colorThemeKey = 'color-theme';
+  const darkClass = 'dark';
+  const lightClass = 'light';
+  const hiddenClass = 'hidden';
+  const isUsingDarkMode = localStorage.getItem(colorThemeKey) === darkClass ||
+    (!localStorage.getItem(colorThemeKey) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const documentElementClassList = document.documentElement.classList;
+  const themeToggleLightIconClassList = themeToggleLightIcon.classList;
+  const themeToggleDarkIconClassList = themeToggleDarkIcon.classList;
+  // Develop switch theme color
+  if (isUsingDarkMode) {
+    documentElementClassList.add(darkClass);
+    themeToggleLightIconClassList.remove(hiddenClass);
+  } else {
+    documentElementClassList.remove(darkClass)
+    themeToggleDarkIconClassList.remove(hiddenClass);
+  }
 
+  // Change the icons inside the button based on previous settings
+  themeToggleBtn.addEventListener('click', function() {
+    const colorTheme = localStorage.getItem(colorThemeKey);
+    // toggle icons inside button
+    themeToggleDarkIconClassList.toggle(hiddenClass);
+    themeToggleLightIconClassList.toggle(hiddenClass);
+
+    // if set via local storage previously
+    if (colorTheme) {
+      if (colorTheme === lightClass) {
+        documentElementClassList.add(darkClass);
+        localStorage.setItem(colorThemeKey, darkClass);
+      } else {
+        documentElementClassList.remove(darkClass);
+        localStorage.setItem(colorThemeKey, lightClass);
+      }
+
+    // if NOT set via local storage previously
+    } else {
+      if (documentElementClassList.contains(darkClass)) {
+        documentElementClassList.remove(darkClass);
+        localStorage.setItem(colorThemeKey, lightClass);
+      } else {
+        documentElementClassList.add(darkClass);
+        localStorage.setItem(colorThemeKey, darkClass);
+      }
+    }
+  });
+</script>
 </html>

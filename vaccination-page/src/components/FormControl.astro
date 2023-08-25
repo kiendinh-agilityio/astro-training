@@ -46,13 +46,13 @@ const { className = '' } = Astro.props;
       </div>
       <Button
         type="secondary"
-        className="flex justify-center w-[150px] h-[50px] px-[70px] rounded-[10px] md:w-[201px] md:h-[70px] md:rounded-[20px] md:text-xl lg:text-2xl"
+        className="dark:bg-transparent dark:border-[3px] dark:border-secondary flex justify-center w-[150px] h-[50px] px-[70px] rounded-[10px] md:w-[201px] md:h-[70px] md:rounded-[20px] md:text-xl lg:text-2xl"
       >
         Verify
       </Button>
     </div>
   </div>
-  <Button type="secondary" className="flex justify-center rounded-[10px] text-sm mt-10 md:text-xl md:mt-5 md:rounded-[20px] lg:text-2xl">
+  <Button type="secondary" className="dark:bg-transparent dark:border-[3px] dark:border-secondary flex justify-center rounded-[10px] text-sm mt-10 md:text-xl md:mt-5 md:rounded-[20px] lg:text-2xl">
     Submit
   </Button>
   <ul class="flex justify-between text-sm md:text-xl md:mt-5 md:justify-center md:gap-[46px]">
@@ -61,7 +61,7 @@ const { className = '' } = Astro.props;
         Already registered ?
       </a>
     </li>
-    <li class="font-bold text-secondary-light">
+    <li class="font-bold text-secondary">
       <a href="#" aria-label="Check your status">
         Check your status
       </a>
