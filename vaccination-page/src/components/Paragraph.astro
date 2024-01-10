@@ -5,6 +5,7 @@ export interface ParagraphProps {
   title: string;
   tag: 'h1' | 'h2' | 'h3' | 'p';
   type: TypographyTypes;
+  id?: string;
 }
 
 type TypographyStyles = Record<TypographyTypes, string>;
@@ -14,6 +15,7 @@ const {
   title,
   tag,
   type,
+  id,
 } = Astro.props;
 
 const styles: TypographyStyles = {
@@ -25,7 +27,7 @@ const styles: TypographyStyles = {
 const Tag = tag;
 ---
 
-<Tag class={`${styles[type]} ${className}`}>
+<Tag id={id} class={`${styles[type]} ${className}`}>
   {title}
   <slot />
 </Tag>
