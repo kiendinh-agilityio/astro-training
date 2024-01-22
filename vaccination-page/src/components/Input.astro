@@ -4,6 +4,7 @@ export interface InputProps {
   placeholder?: string;
   name?: string;
   type: string;
+  id?: string;
 }
 
 const {
@@ -11,10 +12,12 @@ const {
   name = '',
   type = 'text',
   placeholder = '',
+  id,
 } = Astro.props;
 ---
 
 <input
+  id={id}
   type={type}
   name={name}
   placeholder={placeholder}
