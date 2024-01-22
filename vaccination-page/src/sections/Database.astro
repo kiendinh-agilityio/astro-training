@@ -17,18 +17,20 @@ import Paragraph from 'components/Paragraph';
         />
       </div>
       <div class="pt-[21px] px-3 md:pt-10 md:px-[61px] lg:px-[93px] lg:pt-[35px]">
-        <div class="flex flex-col gap-5 md:px-12 lg:flex-row lg:px-0 lg:justify-between">
+        <div id='form-database' class="flex flex-col gap-5 md:px-12 lg:flex-row lg:px-0 lg:justify-between">
           <Input
+            id='user-name'
             className='bg-transparent h-[50px] border-[3px] border-toggle rounded-[10px] py-4 px-[18px] text-white focus:border-[3px] focus:border-secondary focus:outline-none placeholder:font-medium md:pt-5 md:pb-[25px] md:px-[25px] md:h-[69px] md:rounded-[20px] lg:max-w-[450px]'
             type='text'
             placeholder='Okeowo'
           />
           <Input
+            id='phone-number'
             className='bg-transparent h-[50px] border-[3px] border-toggle rounded-[10px] py-4 px-[18px] text-white focus:border-[3px] focus:border-secondary focus:outline-none placeholder:font-medium md:pt-5 md:pb-[25px] md:px-[25px] md:h-[69px] md:rounded-[20px] lg:max-w-[450px]'
             type='text'
             placeholder='NIK Number'
           />
-          <Button className='dark:text-white w-[150px] h-[50px] flex justify-center bg-transparent border-[3px] border-secondary text-secondary rounded-[10px] md:text-xl md:rounded-[20px] md:w-[172px] md:h-[64px] lg:w-[173px] lg:h-[69px]'>
+          <Button id='btn-check' className='dark:text-white w-[150px] h-[50px] flex justify-center bg-transparent border-[3px] border-secondary text-secondary rounded-[10px] md:text-xl md:rounded-[20px] md:w-[172px] md:h-[64px] lg:w-[173px] lg:h-[69px]'>
             Check
           </Button>
         </div>
