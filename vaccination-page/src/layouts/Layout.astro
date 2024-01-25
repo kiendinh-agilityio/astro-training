@@ -54,7 +54,8 @@ const { title } = Astro.props;
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       'event': 'login',
-      'userId': 'some_user_id'
+      'clientType': 'vip',
+      'loginMethod': 'email'
     });
   </script>
 
