@@ -58,6 +58,10 @@ const { title } = Astro.props;
       'accessCountry': 'Viet Nam',
       'accessMethod': 'email'
     });
+    window.dataLayer.push({
+      'event': 'click',
+      'submitMethod': 'email',
+    });
   </script>
 
   <!-- Google Tag Manager (noscript) -->
