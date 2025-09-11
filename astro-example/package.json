@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@astrojs/react": "4.3.1",
+    "@prismicio/client": "^7.20.1",
+    "@prismicio/helpers": "^2.3.9",
     "@rive-app/canvas": "^2.31.5",
     "@rive-app/react-canvas": "^4.23.3",
     "@types/react": "^19.1.12",
