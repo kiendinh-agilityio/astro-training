@@ -1,16 +1,36 @@
 ---
+import { createPrismicClient } from "../lib/prismic";
 import Layout from "../layouts/Layout.astro";
 import RiveNetworkAnimation from "../components/RiveNetworkAnimation";
-import ResponsiveImage from "../components/ResponsiveImage.astro";
+import Hero from "../components/slices/Hero.astro";
+
+const client = createPrismicClient();
+let landing: any = null;
+try {
+  landing = await client.getSingle("landingpage");
+} catch {}
+
+const slices = landing?.data?.slices ?? landing?.data?.body ?? [];
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <!-- Example usage of the responsive image component -->
-    <ResponsiveImage
-      src="../../public/images/main-bg.png"
-      alt="Sample responsive image"
-    />
+    {
+      slices.length ? (
+        <>
+          {slices.map((slice: any) => (
+            <Fragment>
+              {slice.slice_type === "hero" && <Hero slice={slice} />}
+            </Fragment>
+          ))}
+        </>
+      ) : (
+        <p>
+          No content yet. Create and publish the `LandingPage` singleton with a
+          `hero` slice.
+        </p>
+      )
+    }
 
     <!-- Background network animation powered by Rive (client-only to skip SSR) -->
     <RiveNetworkAnimation client:only="react" className="network-bg" />
