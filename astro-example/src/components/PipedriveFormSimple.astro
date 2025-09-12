@@ -1,0 +1,172 @@
+---
+export interface PipedriveFormSimpleProps {
+  className?: string;
+}
+
+const { className = "" } = Astro.props as PipedriveFormSimpleProps;
+---
+
+<div class={`pipedrive-form-simple ${className}`}>
+  <div class="pipedriveWebForms" data-pd-webforms="https://webforms.pipedrive.com/f/6FASQsndJecuE3h3OCnHKla4KUekCjEDQSWinwJjuybwESPRrUGRTAYk8rwFaw04Th">
+    <script src="https://webforms.pipedrive.com/f/loader"></script>
+  </div>
+</div>
+
+<style>
+  .pipedrive-form-simple {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Custom styling for Pipedrive form */
+  .pipedriveWebForms {
+    background: #1a1a2e;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Override Pipedrive form styles to match design */
+  .pipedriveWebForms :global(.pd-webform) {
+    background: transparent !important;
+    color: white !important;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .pipedriveWebForms :global(.pd-webform h1),
+  .pipedriveWebForms :global(.pd-webform h2),
+  .pipedriveWebForms :global(.pd-webform h3) {
+    color: white !important;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    grid-column: 1 / -1;
+  }
+
+  .pipedriveWebForms :global(.pd-webform label) {
+    color: white !important;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    display: block;
+  }
+
+  .pipedriveWebForms :global(.pd-webform input),
+  .pipedriveWebForms :global(.pd-webform textarea) {
+    background: white !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 6px !important;
+    padding: 0.75rem !important;
+    font-size: 1rem !important;
+    color: #1a1a2e !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .pipedriveWebForms :global(.pd-webform input:focus),
+  .pipedriveWebForms :global(.pd-webform textarea:focus) {
+    outline: none !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  }
+
+  .pipedriveWebForms :global(.pd-webform button),
+  .pipedriveWebForms :global(.pd-webform input[type="submit"]) {
+    background: #3b82f6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 1rem 2rem !important;
+    border-radius: 6px !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s !important;
+    width: auto !important;
+    margin-top: 1rem !important;
+    justify-self: start !important;
+  }
+
+  .pipedriveWebForms :global(.pd-webform button:hover),
+  .pipedriveWebForms :global(.pd-webform input[type="submit"]:hover) {
+    background: #2563eb !important;
+  }
+
+  /* Custom grid layout to match design */
+  .pipedriveWebForms :global(.pd-webform) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* First row: First Name | Last Name */
+  .pipedriveWebForms :global(.pd-webform .pd-field:nth-child(2)),
+  .pipedriveWebForms :global(.pd-webform .pd-field:nth-child(3)) {
+    display: contents;
+  }
+
+  /* Second row: Title | Municipality or Company */
+  .pipedriveWebForms :global(.pd-webform .pd-field:nth-child(4)),
+  .pipedriveWebForms :global(.pd-webform .pd-field:nth-child(5)) {
+    display: contents;
+  }
+
+  /* Third row: Business Email | Phone Number */
+  .pipedriveWebForms :global(.pd-webform .pd-field:nth-child(6)),
+  .pipedriveWebForms :global(.pd-webform .pd-field:nth-child(7)) {
+    display: contents;
+  }
+
+  /* Fourth row: Zip Code (full width) */
+  .pipedriveWebForms :global(.pd-webform .pd-field:nth-child(8)) {
+    grid-column: 1 / -1;
+  }
+
+  /* Fifth row: Message (full width) */
+  .pipedriveWebForms :global(.pd-webform .pd-field:nth-child(9)) {
+    grid-column: 1 / -1;
+  }
+
+  /* Submit button */
+  .pipedriveWebForms :global(.pd-webform button),
+  .pipedriveWebForms :global(.pd-webform input[type="submit"]) {
+    grid-column: 1 / -1;
+    justify-self: start !important;
+  }
+
+  /* Character counter for textarea */
+  .pipedriveWebForms :global(.pd-webform textarea + div) {
+    color: #9ca3af !important;
+    font-size: 0.8rem !important;
+    text-align: right !important;
+    margin-top: 0.25rem !important;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .pipedriveWebForms :global(.pd-webform) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .pipedriveWebForms {
+      padding: 2rem 1.5rem;
+    }
+    
+    .pipedriveWebForms :global(.pd-webform h1),
+    .pipedriveWebForms :global(.pd-webform h2),
+    .pipedriveWebForms :global(.pd-webform h3) {
+      font-size: 2rem;
+    }
+
+    /* Reset all field layouts to single column on mobile */
+    .pipedriveWebForms :global(.pd-webform .pd-field) {
+      grid-column: 1 !important;
+    }
+  }
+</style>
