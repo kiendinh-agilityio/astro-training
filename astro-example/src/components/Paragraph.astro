@@ -1,0 +1,11 @@
+---
+export interface ParagraphProps {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props as ParagraphProps;
+---
+
+<p class={className}>
+  <slot />
+</p>
