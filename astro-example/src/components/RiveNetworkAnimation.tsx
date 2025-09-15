@@ -32,7 +32,6 @@ export default function RiveNetworkAnimation(props: RiveNetworkAnimationProps) {
     canvas.height = height;
 
     // Drawing configuration (match design)
-    const backgroundColor = "#0C2C3A";
     const baseLineColor = "rgba(255, 255, 255, 0.22)";
     const baseLineWidth = 2.5;
     const runnerColor = "rgba(255,255,255,0.95)";
@@ -463,11 +462,7 @@ export default function RiveNetworkAnimation(props: RiveNetworkAnimationProps) {
 
     function animate() {
       ctx.clearRect(0, 0, width, height);
-      // background
-      if (backgroundColor) {
-        ctx.fillStyle = backgroundColor;
-        ctx.fillRect(0, 0, width, height);
-      }
+      // background - removed to let parent handle background
 
       // Draw all base lines first (faint)
       connectionsBase.forEach(([fromIdx, toIdx]) => {
