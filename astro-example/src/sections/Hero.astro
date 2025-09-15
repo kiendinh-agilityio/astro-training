@@ -1,0 +1,17 @@
+---
+import Heading from "../components/Heading.astro";
+import RiveNetworkAnimation from "../components/RiveNetworkAnimation.tsx";
+---
+
+<section
+  class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden"
+>
+  <RiveNetworkAnimation client:only="react" />
+  <Heading
+    level={1}
+    class="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-md"
+  >
+    Turning Municipal Data<br />
+    into Smarter Decisions
+  </Heading>
+</section>
