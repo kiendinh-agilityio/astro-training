@@ -1,9 +1,9 @@
 ---
 // import { createPrismicClient } from "../lib/prismic";
 import Layout from "../layouts/Layout.astro";
-import Hero from "../sections/Hero.astro";
+// import Hero from "../sections/Hero.astro";
 import MunicipalDataSection from "../sections/MunicipalDataSection.astro";
-// import PipedriveFormSimple from "../components/PipedriveFormSimple.astro";
+import ContactForm from "../components/ContactForm.tsx";
 
 // const client = createPrismicClient();
 // let landing: any = null;
@@ -17,7 +17,7 @@ import MunicipalDataSection from "../sections/MunicipalDataSection.astro";
 <Layout title="Welcome to Astro.">
   <main>
     <!-- Hero Section -->
-    <Hero />
+    <!-- <Hero /> -->
 
     <!-- Municipal Data Section -->
     <MunicipalDataSection />
@@ -39,9 +39,7 @@ import MunicipalDataSection from "../sections/MunicipalDataSection.astro";
       )
     } -->
 
-    <!-- Pipedrive Form -->
-    <!-- <section class="form-section">
-      <PipedriveFormSimple />
-    </section> -->
+    <!-- Contact Form -->
+    <ContactForm client:only="react" />
   </main>
 </Layout>
