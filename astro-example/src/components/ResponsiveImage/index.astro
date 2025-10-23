@@ -1,0 +1,123 @@
+---
+import { cn } from "../../utils/common";
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+
+interface ResponsiveImageProps {
+  src: {
+    mobile: ImageMetadata | string;
+    tablet: ImageMetadata | string;
+    desktop: ImageMetadata | string;
+  };
+  alt: string;
+  width: { mobile: number; tablet: number; desktop: number };
+  height: { mobile: number; tablet: number; desktop: number };
+  className?: string;
+  innerClass?: string;
+  fallbackImage?: ImageMetadata;
+}
+
+const { src, alt, width, height, className, innerClass, fallbackImage } =
+  Astro.props as ResponsiveImageProps;
+
+// Fallback helpers
+const getFallbackImageUrl = (fallback?: ImageMetadata) => fallback?.src ?? "";
+const generateFallbackImage = (fallback?: ImageMetadata) => ({
+  standardRes: { src: getFallbackImageUrl(fallback) },
+  highRes: { src: getFallbackImageUrl(fallback) },
+});
+
+/**
+ * Creates responsive image variants:
+ * - Validates URL if input is string.
+ * - Generates WebP images at 1x and 2x width if ImageMetadata.
+ * - Falls back to a fallback image on error.
+ */
+const generateImageVariants = async (
+  image: ImageMetadata | string,
+  width: number,
+  fallbackImageData?: ImageMetadata
+) => {
+  try {
+    if (typeof image === "string") {
+      if (!image.trim()) throw new Error("Invalid image URL");
+      new URL(image);
+      return { standardRes: { src: image }, highRes: { src: image } };
+    }
+
+    // Generate standard (1x) and high-res (2x) versions in parallel.
+    const [standardRes, highRes] = await Promise.all([
+      getImage({ src: image, width, format: "webp", quality: 75 }),
+      getImage({ src: image, width: width * 2, format: "webp", quality: 75 }),
+    ]);
+
+    return { standardRes, highRes };
+  } catch {
+    return generateFallbackImage(fallbackImageData);
+  }
+};
+
+// Generates image sets for mobile, tablet, and desktop concurrently.
+const [mobile, tablet, desktop] = await Promise.all([
+  generateImageVariants(src.mobile, width.mobile, fallbackImage),
+  generateImageVariants(src.tablet, width.tablet, fallbackImage),
+  generateImageVariants(src.desktop, width.desktop, fallbackImage),
+]);
+
+const fallbackImageData = fallbackImage ?? mobile.standardRes;
+const fallbackImageUrl = getFallbackImageUrl(fallbackImage);
+
+// Sources array for <picture>
+const sources = [
+  {
+    media: "(min-width: 1440px)",
+    images: desktop,
+    width: width.desktop,
+    height: height.desktop,
+  },
+  {
+    media: "(min-width: 768px)",
+    images: tablet,
+    width: width.tablet,
+    height: height.tablet,
+  },
+  {
+    media: "(min-width: 375px)",
+    images: mobile,
+    width: width.mobile,
+    height: height.mobile,
+  },
+];
+
+// Tailwind aspect ratio classes matching intrinsic sizes
+const aspectClasses = cn(
+  `aspect-[${height.mobile}/${width.mobile}]`,
+  `md:aspect-[${height.tablet}/${width.tablet}]`,
+  `2xl:aspect-[${height.desktop}/${width.desktop}]`
+);
+---
+
+<picture class={cn("relative size-full", aspectClasses, className)}>
+  {
+    sources.map(({ media, images, width, height }) => (
+      <source
+        srcset={`${images.standardRes.src} 1x, ${images.highRes.src} 2x`}
+        media={media}
+        width={width}
+        height={height}
+        type="image/webp"
+      />
+    ))
+  }
+  <img
+    src={fallbackImageData.src}
+    alt={alt}
+    width={width.mobile}
+    height={height.mobile}
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+    class={cn("object-cover", innerClass)}
+    onerror={`this.onerror=null;this.src='${fallbackImageUrl}';`}
+  />
+</picture>
