@@ -18,3 +18,48 @@ export const ACCORDION_DATA = [
     ],
   },
 ];
+
+export const GALLERY_DATA = [
+  {
+    id: 1,
+    title: "Landscape Photography",
+    description: "Beautiful mountain landscape captured at sunset",
+    category: "nature",
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "Urban Architecture",
+    description: "Modern city skyline with glass buildings",
+    category: "architecture",
+    featured: false,
+  },
+  {
+    id: 3,
+    title: "Portrait Session",
+    description: "Professional portrait in natural lighting",
+    category: "portrait",
+    featured: true,
+  },
+  {
+    id: 4,
+    title: "Street Photography",
+    description: "Candid moments in the city streets",
+    category: "street",
+    featured: false,
+  },
+  {
+    id: 5,
+    title: "Nature Close-up",
+    description: "Macro photography of flowers and insects",
+    category: "nature",
+    featured: false,
+  },
+  {
+    id: 6,
+    title: "Abstract Art",
+    description: "Creative abstract compositions",
+    category: "abstract",
+    featured: true,
+  },
+];
