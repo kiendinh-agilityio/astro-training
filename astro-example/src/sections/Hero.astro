@@ -1,0 +1,27 @@
+---
+import Heading from "../components/Heading.astro";
+// import RiveNetworkAnimation from "../components/RiveNetworkAnimation.tsx";
+import LottieAnimation from "../components/LottieAnimation.tsx";
+---
+
+<section
+  class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden text-center"
+>
+  <!-- Animation -->
+  <LottieAnimation client:only="react" />
+
+  <div class="absolute bottom-0 mx-auto pb-[64px]">
+    <Heading
+      level={1}
+      class="text-white text-4xl md:text-5xl lg:leading-[64px] font-bold leading-tight drop-shadow-md text-center mb-6"
+    >
+      Turning Municipal Data into Smarter Decisions
+    </Heading>
+    <p
+      class="text-white text-lg md:text-xl text-center max-w-[592px] mx-auto font-normal"
+    >
+      Our mission is to help municipalities of all sizes make smarter, faster,
+      and more confident financial decisions.
+    </p>
+  </div>
+</section>
