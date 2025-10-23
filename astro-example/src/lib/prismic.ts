@@ -1,6 +1,6 @@
-import * as prismic from '@prismicio/client';
+import * as prismic from "@prismicio/client";
 
-const repositoryName = 'example-astro';
+const repositoryName = "example-astro";
 
 export function createPrismicClient(options?: prismic.ClientConfig) {
   const endpoint = prismic.getRepositoryEndpoint(repositoryName);
