@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// This page is protected by authentication middleware
+const requestId = Astro.locals.requestId;
+---
+
+<Layout title="Admin Dashboard">
+  <main class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">
+          🔒 Admin Dashboard
+        </h1>
+
+        <div
+          class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6"
+        >
+          <strong>Success!</strong> You have successfully accessed the protected
+          admin area.
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 p-4 rounded">
+            <h2 class="text-lg font-semibold mb-2">Authentication Status</h2>
+            <p class="text-green-600">✅ Authenticated</p>
+            <p class="text-sm text-gray-600">Request ID: {requestId}</p>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded">
+            <h2 class="text-lg font-semibold mb-2">Middleware Protection</h2>
+            <p class="text-blue-600">🛡️ Protected by auth middleware</p>
+            <p class="text-sm text-gray-600">
+              Only accessible with valid token
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <h2 class="text-xl font-semibold mb-4">How to Access This Page</h2>
+          <div class="bg-gray-100 p-4 rounded">
+            <p class="mb-2">
+              This page is protected by the authentication middleware. To access
+              it:
+            </p>
+            <ol class="list-decimal list-inside space-y-1 text-sm">
+              <li>
+                Set the <code class="bg-gray-200 px-1 rounded"
+                  >Authorization</code
+                > header to <code class="bg-gray-200 px-1 rounded"
+                  >valid-token-123</code>
+              </li>
+              <li>
+                Or set a cookie named <code class="bg-gray-200 px-1 rounded"
+                  >auth-token</code
+                > with value <code class="bg-gray-200 px-1 rounded"
+                  >valid-token-123</code>
+              </li>
+              <li>
+                Or modify the middleware to use your preferred authentication
+                method
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <a
+            href="/blog"
+            class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            ← Back to Middleware Examples
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
