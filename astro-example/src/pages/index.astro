@@ -3,7 +3,9 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../sections/Hero.astro";
 import MunicipalDataSection from "../sections/MunicipalDataSection.astro";
+import Gallery from "../sections/Gallery.astro";
 import ContactForm from "../components/ContactForm.tsx";
+import SimpleContactForm from "../components/SimpleContactForm.astro";
 
 // const client = createPrismicClient();
 // let landing: any = null;
@@ -21,6 +23,9 @@ import ContactForm from "../components/ContactForm.tsx";
 
     <!-- Municipal Data Section -->
     <MunicipalDataSection />
+
+    <!-- Gallery Section -->
+    <Gallery />
 
     <!-- {
       slices.length ? (
@@ -41,5 +46,90 @@ import ContactForm from "../components/ContactForm.tsx";
 
     <!-- Contact Form -->
     <ContactForm client:only="react" />
+
+    <!-- Astro Actions Demo -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Astro Actions Examples
+          </h2>
+          <p class="text-xl text-gray-600">
+            Demonstrating different ways to use Astro Actions
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-2xl font-semibold mb-4 text-center">HTML Form</h3>
+          <SimpleContactForm />
+        </div>
+      </div>
+    </section>
+
+    <!-- Middleware Examples -->
+    <section class="py-16 bg-blue-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            🛡️ Astro Middleware Examples
+          </h2>
+          <p class="text-xl text-gray-600 mb-8">
+            Comprehensive examples of middleware usage in Astro
+          </p>
+          <a
+            href="/blog"
+            class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
+          >
+            View Blogs Examples →
+          </a>
+        </div>
+
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <li class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2 text-blue-600">
+              Authentication
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Protect routes with authentication middleware
+            </p>
+          </li>
+
+          <li class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2 text-green-600">
+              Rate Limiting
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Limit API requests per IP address
+            </p>
+          </li>
+
+          <li class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2 text-purple-600">CORS</h3>
+            <p class="text-gray-600 text-sm">Handle cross-origin requests</p>
+          </li>
+
+          <li class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2 text-red-600">
+              Security Headers
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Add security headers to responses
+            </p>
+          </li>
+
+          <li class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2 text-orange-600">Logging</h3>
+            <p class="text-gray-600 text-sm">Log requests and response times</p>
+          </li>
+
+          <li class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2 text-teal-600">
+              Geo Location
+            </h3>
+            <p class="text-gray-600 text-sm">Detect user location from IP</p>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
 </Layout>

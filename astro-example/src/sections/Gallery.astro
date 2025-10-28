@@ -1,0 +1,157 @@
+---
+import OptimizedImage from '../components/OptimizedImage/index.astro';
+import Picture from '../components/Picture/index.astro';
+import { GALLERY_DATA } from '../data/data';
+
+
+// Generate placeholder images with different parameters
+const getPlaceholderImage = (id: number, width: number = 400, height: number = 300) => 
+   `https://picsum.photos/${width}/${height}?random=${id}`;
+
+---
+
+<section class="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">
+        Our Gallery
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Explore our collection of stunning images captured with the latest Astro assets optimization
+      </p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <ul class="flex flex-wrap justify-center gap-4 mb-8">
+      <li class="filter-btn active px-6 py-2 rounded-full bg-blue-600 text-white font-medium transition-all duration-300 hover:bg-blue-700">
+        All
+      </li>
+      <li class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-medium border border-gray-300 transition-all duration-300 hover:bg-gray-50">
+        Nature
+      </li>
+      <li class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-medium border border-gray-300 transition-all duration-300 hover:bg-gray-50">
+        Architecture
+      </li>
+      <li class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-medium border border-gray-300 transition-all duration-300 hover:bg-gray-50">
+        Portrait
+      </li>
+      <li class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-medium border border-gray-300 transition-all duration-300 hover:bg-gray-50">
+        Street
+      </li>
+    </ul>
+
+    <!-- Gallery Grid -->
+    <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
+      {GALLERY_DATA.map((item, index) => (
+        <li class={`gallery-item group relative overflow-hidden rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${item.featured ? 'md:col-span-2 xl:col-span-1' : ''}`}>
+          <!-- Featured items use ResponsivePicture for better optimization -->
+          {item.featured ? (
+            <Picture
+              src={getPlaceholderImage(item.id, 600, 400)}
+              alt={item.title}
+              widths={[320, 480, 640, 768, 1024]}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              formats={["avif", "webp", "jpeg"]}
+              quality={85}
+              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          ) : (
+            <OptimizedImage
+              src={getPlaceholderImage(item.id, 400, 300)}
+              alt={item.title}
+              width={400}
+              height={300}
+              format="webp"
+              quality={80}
+              fit="cover"
+              position="center"
+              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          )}
+          
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+              <h3 class="text-xl font-semibold mb-2">{item.title}</h3>
+              <p class="text-sm opacity-90 mb-3">{item.description}</p>
+              <span class="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full">
+                {item.category}
+              </span>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Image Comparison Section -->
+    <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+      <h3 class="text-2xl font-bold text-center mb-8 text-gray-900">
+        Image Optimization Comparison
+      </h3>
+      
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        <!-- OptimizedImage Example -->
+        <div class="space-y-4">
+          <h4 class="text-lg font-semibold text-gray-800">Using OptimizedImage (&lt;Image /&gt;)</h4>
+          <div class="relative">
+            <OptimizedImage
+              src={getPlaceholderImage(10, 500, 350)}
+              alt="Optimized Image Example"
+              width={500}
+              height={350}
+              format="webp"
+              quality={90}
+              fit="cover"
+              position="center"
+              class="w-full h-64 rounded-lg shadow-md"
+            />
+            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-medium">
+              WebP Format
+            </div>
+          </div>
+          <p class="text-sm text-gray-600">
+            Single format optimization with precise dimensions and quality control.
+          </p>
+        </div>
+
+        <!-- ResponsivePicture Example -->
+        <div class="space-y-4">
+          <h4 class="text-lg font-semibold text-gray-800">Using ResponsivePicture (&lt;Picture /&gt;)</h4>
+          <div class="relative">
+            <Picture
+              src={getPlaceholderImage(11, 500, 350)}
+              alt="Responsive Picture Example"
+              widths={[320, 480, 640, 768, 1024]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              formats={["avif", "webp", "jpeg"]}
+              quality={85}
+              class="w-full h-64 rounded-lg shadow-md"
+            />
+            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
+              Multi-Format
+            </div>
+          </div>
+          <p class="text-sm text-gray-600">
+            Multiple formats and responsive sizes for optimal performance across devices.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .filter-btn.active {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  }
+  
+  .gallery-item {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+  }
+  
+  .gallery-item:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+</style>

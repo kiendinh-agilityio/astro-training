@@ -1,0 +1,377 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Access middleware data from context
+const requestId = Astro.locals.requestId;
+const geoData = Astro.locals.geo;
+---
+
+<Layout title="Astro Middleware Examples">
+  <main class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          Astro Middleware Examples
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Comprehensive examples of middleware usage in Astro
+        </p>
+
+        <!-- Display middleware data -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 class="text-2xl font-semibold mb-4">Middleware Data</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+            <div>
+              <strong>Request ID:</strong>
+              {requestId}
+            </div>
+            <div>
+              <strong>Geo Location:</strong>
+              {geoData?.country}, {geoData?.city}
+            </div>
+            <div>
+              <strong>IP Address:</strong>
+              {geoData?.ip}
+            </div>
+            <div>
+              <strong>Timezone:</strong>
+              {geoData?.timezone}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Middleware Examples Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Logging Middleware -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold mb-4 text-blue-600">
+            1. Logging Middleware
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Logs all requests with method, URL, and response time. Check the
+            console to see the logs.
+          </p>
+          <div class="bg-gray-100 p-3 rounded text-sm font-mono">
+            <div>Method: GET</div>
+            <div>URL: /blog</div>
+            <div>Response Time: ~Xms</div>
+          </div>
+        </div>
+
+        <!-- Authentication Middleware -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold mb-4 text-green-600">
+            2. Authentication Middleware
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Protects routes that start with /admin, /dashboard, or /profile.
+          </p>
+          <div class="space-y-2">
+            <a
+              href="/admin"
+              class="block bg-red-100 text-red-800 px-3 py-2 rounded text-sm hover:bg-red-200"
+            >
+              Try /admin (Protected)
+            </a>
+            <a
+              href="/dashboard"
+              class="block bg-red-100 text-red-800 px-3 py-2 rounded text-sm hover:bg-red-200"
+            >
+              Try /dashboard (Protected)
+            </a>
+          </div>
+        </div>
+
+        <!-- CORS Middleware -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold mb-4 text-purple-600">
+            3. CORS Middleware
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Handles Cross-Origin Resource Sharing for API endpoints.
+          </p>
+          <div class="bg-gray-100 p-3 rounded text-sm font-mono">
+            <div>Access-Control-Allow-Origin: *</div>
+            <div>
+              Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+            </div>
+          </div>
+        </div>
+
+        <!-- Rate Limiting Middleware -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold mb-4 text-orange-600">
+            4. Rate Limiting Middleware
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Limits API requests to 100 per 15-minute window per IP.
+          </p>
+          <button
+            id="rateLimitTest"
+            class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
+          >
+            Test Rate Limit
+          </button>
+          <div id="rateLimitResult" class="mt-2 text-sm"></div>
+        </div>
+
+        <!-- Security Headers Middleware -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold mb-4 text-red-600">
+            5. Security Headers
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Adds security headers to all responses.
+          </p>
+          <div class="bg-gray-100 p-3 rounded text-sm font-mono">
+            <div>X-Content-Type-Options: nosniff</div>
+            <div>X-Frame-Options: DENY</div>
+            <div>X-XSS-Protection: 1; mode=block</div>
+          </div>
+        </div>
+
+        <!-- Request ID Middleware -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold mb-4 text-indigo-600">
+            6. Request ID Middleware
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Adds unique request ID for tracking and debugging.
+          </p>
+          <div class="bg-gray-100 p-3 rounded text-sm font-mono">
+            <div>X-Request-ID: {requestId}</div>
+          </div>
+        </div>
+
+        <!-- Cache Control Middleware -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold mb-4 text-teal-600">
+            7. Cache Control
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Sets appropriate cache headers based on route type.
+          </p>
+          <div class="bg-gray-100 p-3 rounded text-sm font-mono">
+            <div>HTML: max-age=300</div>
+            <div>Assets: max-age=31536000</div>
+            <div>API: no-cache</div>
+          </div>
+        </div>
+
+        <!-- Geo Location Middleware -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold mb-4 text-pink-600">
+            8. Geo Location
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Detects user location based on IP address.
+          </p>
+          <div class="bg-gray-100 p-3 rounded text-sm">
+            <div>Country: {geoData?.country}</div>
+            <div>City: {geoData?.city}</div>
+            <div>IP: {geoData?.ip}</div>
+          </div>
+        </div>
+
+        <!-- Maintenance Mode -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold mb-4 text-yellow-600">
+            9. Maintenance Mode
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Redirects to maintenance page when enabled.
+          </p>
+          <div class="bg-gray-100 p-3 rounded text-sm">
+            <div>Set MAINTENANCE_MODE=true</div>
+            <div>to enable maintenance mode</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- API Testing Section -->
+      <div class="mt-12 bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-6">API Testing</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Test API Endpoint -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Test API Endpoint</h3>
+            <p class="text-gray-600 mb-3">Test the middleware with API calls</p>
+            <button
+              id="testApi"
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Call Test API
+            </button>
+            <div
+              id="apiResult"
+              class="mt-3 p-3 bg-gray-100 rounded text-sm font-mono"
+            >
+            </div>
+          </div>
+
+          <!-- Headers Inspection -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Response Headers</h3>
+            <p class="text-gray-600 mb-3">
+              Inspect the response headers added by middleware
+            </p>
+            <button
+              id="inspectHeaders"
+              class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            >
+              Inspect Headers
+            </button>
+            <div
+              id="headersResult"
+              class="mt-3 p-3 bg-gray-100 rounded text-sm font-mono max-h-40 overflow-y-auto"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Code Examples -->
+      <div class="mt-12 bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-6">Code Examples</h2>
+        <div class="space-y-6">
+          <!-- Basic Middleware -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">
+              Basic Middleware Structure
+            </h3>
+            <div class="bg-gray-100 p-4 rounded text-sm font-mono">
+              <div>import type {`{`} MiddlewareHandler {`}`} from 'astro';</div>
+              <br />
+              <div>
+                export const onRequest: MiddlewareHandler = async (context,
+                next) =&gt; {`{`}
+              </div>
+              <div>console.log('Request:', context.request.method);</div>
+              <div>const response = await next();</div>
+              <div>console.log('Response status:', response.status);</div>
+              <div>return response;</div>
+              <div>{`}`};</div>
+            </div>
+          </div>
+
+          <!-- Authentication Example -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">
+              Authentication Middleware
+            </h3>
+            <div class="bg-gray-100 p-4 rounded text-sm font-mono">
+              <div>
+                export const authMiddleware: MiddlewareHandler = async (context,
+                next) =&gt; {`{`}
+              </div>
+              <div>const protectedRoutes = ['/admin', '/dashboard'];</div>
+              <div>const isProtected = protectedRoutes.some(route =&gt;</div>
+              <div>context.url.pathname.startsWith(route)</div>
+              <div>);</div>
+              <br />
+              <div>if (isProtected) {`{`}</div>
+              <div>
+                const token = context.request.headers.get('authorization');
+              </div>
+              <div>if (!token || token !== 'valid-token-123') {`{`}</div>
+              <div>
+                return new Response('Unauthorized', {`{`} status: 401 {`}`});
+              </div>
+              <div>{`}`}</div>
+              <div>{`}`}</div>
+              <br />
+              <div>return next();</div>
+              <div>{`}`};</div>
+            </div>
+          </div>
+
+          <!-- Rate Limiting Example -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Rate Limiting Middleware</h3>
+            <div class="bg-gray-100 p-4 rounded text-sm font-mono">
+              <div>const rateLimitStore = new Map();</div>
+              <br />
+              <div>
+                export const rateLimitMiddleware: MiddlewareHandler = async
+                (context, next) =&gt; {`{`}
+              </div>
+              <div>
+                const clientIP = context.request.headers.get('x-forwarded-for');
+              </div>
+              <div>
+                const key = `${`{`}clientIP{`}`}:${`{`}context.url.pathname{
+                  `}`
+                }`;
+              </div>
+              <br />
+              <div>const current = rateLimitStore.get(key);</div>
+              <div>if (current && current.count >= 100) {`{`}</div>
+              <div>
+                return new Response('Too Many Requests', {`{`} status: 429 {
+                  `}`
+                });
+              </div>
+              <div>{`}`}</div>
+              <br />
+              <div>return next();</div>
+              <div>{`}`};</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Test API endpoint
+    document.getElementById("testApi")?.addEventListener("click", async () => {
+      const resultDiv = document.getElementById("apiResult");
+      if (!resultDiv) return;
+
+      try {
+        const response = await fetch("/api/test");
+        const data = await response.json();
+        resultDiv.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        resultDiv.textContent = `Error: ${error.message}`;
+      }
+    });
+
+    // Test rate limiting
+    document
+      .getElementById("rateLimitTest")
+      ?.addEventListener("click", async () => {
+        const resultDiv = document.getElementById("rateLimitResult");
+        if (!resultDiv) return;
+
+        try {
+          const response = await fetch("/api/test");
+          const remaining = response.headers.get("X-RateLimit-Remaining");
+          const limit = response.headers.get("X-RateLimit-Limit");
+          resultDiv.textContent = `Remaining: ${remaining}/${limit}`;
+        } catch (error) {
+          resultDiv.textContent = `Error: ${error.message}`;
+        }
+      });
+
+    // Inspect headers
+    document
+      .getElementById("inspectHeaders")
+      ?.addEventListener("click", async () => {
+        const resultDiv = document.getElementById("headersResult");
+        if (!resultDiv) return;
+
+        try {
+          const response = await fetch("/api/test");
+          const headers = {};
+          response.headers.forEach((value, key) => {
+            headers[key] = value;
+          });
+          resultDiv.textContent = JSON.stringify(headers, null, 2);
+        } catch (error) {
+          resultDiv.textContent = `Error: ${error.message}`;
+        }
+      });
+  </script>
+</Layout>
