@@ -1,0 +1,17 @@
+---
+import { Icons, Link } from '@/components';
+import { ROUTER } from '@/constants';
+import { cn } from '@/utils';
+
+interface Props {
+  alt?: string;
+  className?: string;
+  innerClass?: string;
+}
+
+const { alt = 'Blog Template Logo', className, innerClass } = Astro.props;
+---
+
+<Link href={ROUTER.HOME} target="_self" aria-label={alt} class={cn(className)}>
+  <Icons.Logo className={cn(innerClass)} role="img" aria-label={alt} />
+</Link>
