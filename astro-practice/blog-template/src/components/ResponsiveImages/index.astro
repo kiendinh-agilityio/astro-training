@@ -1,0 +1,99 @@
+---
+import { cn } from '@/utils';
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+
+interface ResponsiveImageProps {
+  src: {
+    mobile: ImageMetadata;
+    tablet: ImageMetadata;
+    desktop: ImageMetadata;
+  };
+  alt: string;
+  width: { mobile: number; tablet: number; desktop: number };
+  height: { mobile: number; tablet: number; desktop: number };
+  className?: string;
+  innerClass?: string;
+}
+
+const { src, alt, width, height, className, innerClass } =
+  Astro.props as ResponsiveImageProps;
+
+/**
+ * Creates responsive image variants for ImageMetadata:
+ * - Generates WebP images at 1x and 2x width.
+ * - If error occurs, returns empty strings (so <img> alt text shows instead).
+ */
+const generateImageVariants = async (image: ImageMetadata, width: number) => {
+  try {
+    const [standardRes, highRes] = await Promise.all([
+      getImage({ src: image, width, format: 'webp', quality: 75 }),
+      getImage({ src: image, width: width * 2, format: 'webp', quality: 75 }),
+    ]);
+
+    return { standardRes, highRes };
+  } catch {
+    return { standardRes: { src: '' }, highRes: { src: '' } };
+  }
+};
+
+// Generates image sets for mobile, tablet, and desktop concurrently.
+const [mobile, tablet, desktop] = await Promise.all([
+  generateImageVariants(src.mobile, width.mobile),
+  generateImageVariants(src.tablet, width.tablet),
+  generateImageVariants(src.desktop, width.desktop),
+]);
+
+// Sources array for <picture>
+const sources = [
+  {
+    media: '(min-width: 1440px)',
+    images: desktop,
+    width: width.desktop,
+    height: height.desktop,
+  },
+  {
+    media: '(min-width: 768px)',
+    images: tablet,
+    width: width.tablet,
+    height: height.tablet,
+  },
+  {
+    media: '(min-width: 375px)',
+    images: mobile,
+    width: width.mobile,
+    height: height.mobile,
+  },
+];
+
+// Tailwind aspect ratio classes matching intrinsic sizes
+const aspectClasses = cn(
+  `aspect-[${height.mobile}/${width.mobile}]`,
+  `md:aspect-[${height.tablet}/${width.tablet}]`,
+  `2xl:aspect-[${height.desktop}/${width.desktop}]`,
+);
+---
+
+<picture class={cn('size-full', aspectClasses, className)}>
+  {
+    sources.map(({ media, images, width, height }) => (
+      <source
+        srcset={`${images.standardRes.src} 1x, ${images.highRes.src} 2x`}
+        media={media}
+        width={width}
+        height={height}
+        type="image/webp"
+      />
+    ))
+  }
+  <img
+    src={mobile.standardRes.src}
+    alt={alt}
+    width={width.mobile}
+    height={height.mobile}
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+    class={cn('object-cover', innerClass)}
+  />
+</picture>

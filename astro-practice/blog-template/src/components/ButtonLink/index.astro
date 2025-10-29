@@ -1,0 +1,30 @@
+---
+import { Link } from '@/components';
+import { cn } from '@/utils';
+
+export interface ButtonLinkProps {
+  href: string;
+  ariaLabel: string;
+  className?: string;
+  target?: '_self' | '_blank' | '_parent' | '_top';
+}
+
+const {
+  href,
+  className,
+  ariaLabel,
+  target = '_blank',
+} = Astro.props as ButtonLinkProps;
+---
+
+<Link
+  href={href}
+  ariaLabel={ariaLabel}
+  target={target}
+  className={cn(
+    'bg-secondary px-2.5 py-4 text-base leading-6 font-medium hover:bg-gray-200',
+    className,
+  )}
+>
+  <slot />
+</Link>
