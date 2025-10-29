@@ -1,6 +1,62 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-primary: #212121;
+  --color-secondary: #f4f4f4;
+  --color-tertiary: #757575;
+  --color-navy: #383838;
+  --color-dark: #30333c;
+
+  --color-gray-450: #a8a8a8;
+
+  /* Font family */
+  --font-primary: Montserrat, 'sans-serif';
+
+  /* Breakpoint */
+  --breakpoint-2xl: 90rem;
+}
+
+/* MonaSans: 400 Regular, 500 Medium, 600 SemiBold, 700 Bold */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
+  html {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--color-primary);
+  }
+
   html,
   body {
     margin: 0;
