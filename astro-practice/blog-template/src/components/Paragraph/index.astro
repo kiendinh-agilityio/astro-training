@@ -1,0 +1,23 @@
+---
+import { cn } from '@/utils';
+
+interface ParagraphProps {
+  size?: 'tiny' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  className?: string;
+}
+
+const { size = 'sm', className } = Astro.props as ParagraphProps;
+
+const sizeClasses = {
+  tiny: 'text-xs leading-4' /* font-size: 14px, line-height: 16px */,
+  xs: 'text-xs leading-[21px]' /* font-size: 14px, line-height: 21px */,
+  sm: 'text-xs leading-5 lg:text-base lg:leading-6' /* font-size: 14px, line-height: 20px, lg:font-size: 16px, lg:line-height: 24px */,
+  md: 'text-xs leading-6 lg:text-base' /* font-size: 14px, line-height: 24px, md:font-size: 16px, md:line-height: 24px */,
+  lg: 'text-base leading-6 lg:text-2xl' /* font-size: 16px, line-height: 24px, lg:font-size: 18px, lg:line-height: 24px */,
+  xl: 'text-xs leading-5 lg:text-2xl lg:leading-8' /* font-size: 14px, line-height: 20px, lg:font-size: 24px, lg:line-height: 32px */,
+};
+
+const computedClass = cn(sizeClasses[size], className);
+---
+
+<p class={computedClass}><slot /></p>
