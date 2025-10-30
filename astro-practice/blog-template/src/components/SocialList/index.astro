@@ -1,0 +1,43 @@
+---
+import { Icons, Link } from '@/components';
+import { cn } from '@/utils';
+import { socialItems } from '@/mockData/common';
+import type { SVGAttributes, ReactElement } from 'react';
+import type { SocialIconKey } from '@/types';
+
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props as Props;
+
+type IconComponent = (props: SVGAttributes<SVGElement>) => ReactElement;
+
+const iconMap: Record<SocialIconKey, IconComponent> = {
+  Instagram: Icons.Instagram,
+  Twitter: Icons.Twitter,
+  Linkedin: Icons.Linkedin,
+  Facebook: Icons.Facebook,
+  Youtube: Icons.Youtube,
+};
+---
+
+<ul class={cn('flex items-center gap-[18px]', className)}>
+  {
+    socialItems.map((item) => {
+      const IconComponent = iconMap[item.icon];
+
+      return (
+        <li>
+          <Link
+            href={item.href}
+            ariaLabel={item.ariaLabel}
+            className="inline-flex"
+          >
+            <IconComponent />
+          </Link>
+        </li>
+      );
+    })
+  }
+</ul>

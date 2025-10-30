@@ -5,3 +5,5 @@ export { default as Link } from './Link/index.astro';
 export { default as Logo } from './Logo/index.astro';
 export { default as Navbar } from './Navbar/index';
 export { default as Paragraph } from './Paragraph/index.astro';
+export { default as SocialList } from './SocialList/index.astro';
+export { default as LegalList } from './LegalList/index.astro';
