@@ -52,8 +52,6 @@
 @layer base {
   html {
     font-family: var(--font-primary);
-    font-weight: 400;
-    font-size: 14px;
     color: var(--color-primary);
   }
 
