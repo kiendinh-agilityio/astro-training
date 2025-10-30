@@ -12,6 +12,11 @@ interface Props {
 const { alt = 'Blog Template Logo', className, innerClass } = Astro.props;
 ---
 
-<Link href={ROUTER.HOME} target="_self" aria-label={alt} class={cn(className)}>
+<Link
+  href={ROUTER.HOME}
+  target="_self"
+  aria-label={alt}
+  className={cn(className)}
+>
   <Icons.Logo className={cn(innerClass)} role="img" aria-label={alt} />
 </Link>
