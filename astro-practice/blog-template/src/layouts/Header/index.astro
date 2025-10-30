@@ -1,7 +1,16 @@
 ---
-import { Logo } from '@/components';
+import { Logo, Navbar } from '@/components';
+import { LayoutContainer } from '@/layouts';
+import { NAVBAR_ITEMS } from '@/constants';
 ---
 
-<header class="w-full">
-  <h1><Logo /></h1>
+<header class="sticky top-0 z-50 w-full bg-white">
+  <LayoutContainer className="py-3 md:py-4">
+    <div class="flex items-center justify-between">
+      <h1 class="max-w-fit">
+        <Logo />
+      </h1>
+      <Navbar items={NAVBAR_ITEMS} client:load />
+    </div>
+  </LayoutContainer>
 </header>
