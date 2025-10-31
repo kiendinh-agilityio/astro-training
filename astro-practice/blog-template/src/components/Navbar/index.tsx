@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
+import { ROUTER } from '@/constants/router';
 import { useDocumentListeners } from '@/hooks/useDocumentListeners';
+import { logout } from '@/services/auth';
 import type { NavbarItem as NavbarItemType } from '@/types';
 import { cn } from '@/utils';
 
@@ -14,6 +16,7 @@ export interface NavbarProps {
 
 const Navbar = ({ items, className }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
@@ -37,11 +40,19 @@ const Navbar = ({ items, className }: NavbarProps) => {
     ['click', handleClickOutside],
   ]);
 
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    logout();
+
+    await new Promise((r) => setTimeout(r, 600));
+    window.location.href = ROUTER.LOGIN;
+  };
+
   return (
     <div data-navbar className="relative">
       {/* Desktop Navigation */}
       <nav
-        className={cn('hidden lg:flex', className)}
+        className={cn('hidden items-center gap-6 lg:flex', className)}
         aria-label="Global navigation"
       >
         <ul className="flex items-center">
@@ -49,6 +60,14 @@ const Navbar = ({ items, className }: NavbarProps) => {
             <NavbarItem key={item.href} item={item} onCloseMenu={closeMenu} />
           ))}
         </ul>
+        <button
+          className="bg-secondary w-32 cursor-pointer rounded px-3 py-2 text-sm font-medium hover:bg-gray-200"
+          onClick={handleLogout}
+          aria-label="Logout Button"
+          disabled={isLoggingOut}
+        >
+          {isLoggingOut ? 'Logging out...' : 'Logout'}
+        </button>
       </nav>
 
       {/* Mobile/Tablet Toggle */}
@@ -77,6 +96,16 @@ const Navbar = ({ items, className }: NavbarProps) => {
                   onCloseMenu={closeMenu}
                 />
               ))}
+              <li>
+                <button
+                  className="bg-secondary w-full cursor-pointer rounded px-3 py-2 text-center text-sm font-medium hover:bg-gray-200 disabled:opacity-50"
+                  onClick={handleLogout}
+                  aria-label="Logout Button"
+                  disabled={isLoggingOut}
+                >
+                  {isLoggingOut ? 'Logging out...' : 'Logout'}
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
