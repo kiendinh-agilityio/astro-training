@@ -3,10 +3,12 @@ import { Footer, Header } from '@/layouts';
 import '@/styles/global.css';
 
 const {
-  title = 'Blog Template - Exploring New Articles',
+  title = 'Blog Template',
   description = 'A Foodie’s Guide to Europe: Best Culinary Experiences by Country',
   image = '',
   url = '',
+  hideNavbar = false,
+  hideFooter = false,
 } = Astro.props;
 ---
 
@@ -16,7 +18,7 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Blog Template</title>
+    <title>{title}</title>
 
     <!-- Basic SEO -->
     <meta name="description" content={description} />
@@ -40,10 +42,10 @@ const {
   </head>
 
   <body>
-    <Header />
+    <Header hideNavbar={hideNavbar} />
     <main class="min-h-screen">
       <slot />
     </main>
-    <Footer />
+    <Footer hideFooter={hideFooter} />
   </body>
 </html>
