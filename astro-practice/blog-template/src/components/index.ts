@@ -1,9 +1,11 @@
 export { default as ButtonLink } from './ButtonLink/index.astro';
 export { default as Heading } from './Heading/index.astro';
 export { default as Icons } from './Icons/index';
+export { default as InputField } from './InputField/index';
+export { default as LegalList } from './LegalList/index.astro';
 export { default as Link } from './Link/index.astro';
+export { default as LoginForm } from './LoginForm/index';
 export { default as Logo } from './Logo/index.astro';
 export { default as Navbar } from './Navbar/index';
 export { default as Paragraph } from './Paragraph/index.astro';
 export { default as SocialList } from './SocialList/index.astro';
-export { default as LegalList } from './LegalList/index.astro';
