@@ -2,15 +2,17 @@
 import { Logo, Navbar } from '@/components';
 import { LayoutContainer } from '@/layouts';
 import { NAVBAR_ITEMS } from '@/constants';
+
+const { hideNavbar = false } = Astro.props;
 ---
 
-<header class="sticky top-0 z-50 w-full bg-white">
+<header class="sticky top-0 z-50 w-full bg-white shadow-lg">
   <LayoutContainer className="py-3 md:py-4">
     <div class="flex items-center justify-between">
       <h1 class="max-w-fit">
         <Logo />
       </h1>
-      <Navbar items={NAVBAR_ITEMS} client:load />
+      {!hideNavbar && <Navbar items={NAVBAR_ITEMS} client:load />}
     </div>
   </LayoutContainer>
 </header>
