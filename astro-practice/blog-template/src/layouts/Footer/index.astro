@@ -1,52 +1,61 @@
 ---
 import { Logo, SocialList, Paragraph, Link, LegalList } from '@/components';
 import { LayoutContainer } from '@/layouts';
+
+const { hideFooter = false } = Astro.props;
 ---
 
-<footer class="bg-white">
-  <LayoutContainer className="py-8 lg:py-14">
-    <div class="flex flex-col lg:flex-row lg:items-center lg:gap-8">
-      <div class="flex flex-col gap-3">
-        <Logo className="w-[343px]" />
-        <SocialList />
-      </div>
-      <div
-        class="mt-8 flex flex-col gap-5 md:flex-row md:justify-between lg:mt-0 lg:w-full lg:gap-8"
-      >
-        <div class="text-dark flex flex-col gap-1">
-          <Paragraph size="xs" className="font-semibold">Address</Paragraph>
-          <address class="text-sm leading-[21px] font-normal not-italic">
-            Level 1, 12 Sample St, Sydney NSW 2000
-          </address>
+{
+  !hideFooter && (
+    <footer class="border-t border-gray-200 bg-white shadow-[0_-4px_6px_rgba(0,0,0,0.1)]">
+      <LayoutContainer className="py-8 lg:py-14">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:gap-8">
+          <div class="flex flex-col gap-3">
+            <Logo className="w-[343px]" />
+            <SocialList />
+          </div>
+          <div class="mt-8 flex flex-col gap-5 md:flex-row md:justify-between lg:mt-0 lg:w-full lg:gap-8">
+            <div class="text-dark flex flex-col gap-1">
+              <Paragraph size="xs" className="font-semibold">
+                Address
+              </Paragraph>
+              <address class="text-sm leading-[21px] font-normal not-italic">
+                Level 1, 12 Sample St, Sydney NSW 2000
+              </address>
+            </div>
+            <div class="text-dark flex flex-col gap-1">
+              <Paragraph size="xs" className="font-semibold">
+                Phone Number
+              </Paragraph>
+              <Link
+                href="tel:+18001234567"
+                target="_self"
+                className="text-sm leading-[21px] font-normal"
+              >
+                1800 123 4567
+              </Link>
+            </div>
+            <div class="text-dark flex flex-col gap-1">
+              <Paragraph size="xs" className="font-semibold">
+                Email
+              </Paragraph>
+              <Link
+                href="mailto:blog@template.io"
+                target="_self"
+                className="text-sm leading-[21px] font-normal"
+              >
+                blog@template.io
+              </Link>
+            </div>
+          </div>
         </div>
-        <div class="text-dark flex flex-col gap-1">
-          <Paragraph size="xs" className="font-semibold">
-            Phone Number
+        <div class="mt-12 flex flex-col gap-3 md:flex-col-reverse lg:flex-row-reverse lg:justify-between">
+          <LegalList />
+          <Paragraph size="xs" className="text-dark font-medium">
+            &copy; 2025 Blog Template. All rights reserved.
           </Paragraph>
-          <Link
-            href="tel:+18001234567"
-            target="_self"
-            className="text-sm leading-[21px] font-normal">1800 123 4567</Link
-          >
         </div>
-        <div class="text-dark flex flex-col gap-1">
-          <Paragraph size="xs" className="font-semibold">Email</Paragraph>
-          <Link
-            href="mailto:blog@template.io"
-            target="_self"
-            className="text-sm leading-[21px] font-normal"
-            >blog@template.io</Link
-          >
-        </div>
-      </div>
-    </div>
-    <div
-      class="mt-12 flex flex-col gap-3 md:flex-col-reverse lg:flex-row-reverse lg:justify-between"
-    >
-      <LegalList />
-      <Paragraph size="xs" className="text-dark font-medium"
-        >&copy; 2025 Blog Template. All rights reserved.</Paragraph
-      >
-    </div>
-  </LayoutContainer>
-</footer>
+      </LayoutContainer>
+    </footer>
+  )
+}
