@@ -14,6 +14,9 @@
 
   /* Breakpoint */
   --breakpoint-2xl: 90rem;
+
+  /* Box shadow */
+  --shadow-base: 5px 5px 34px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* MonaSans: 400 Regular, 500 Medium, 600 SemiBold, 700 Bold */
