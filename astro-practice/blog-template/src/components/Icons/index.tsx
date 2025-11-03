@@ -237,5 +237,70 @@ const Icons = {
       />
     </svg>
   ),
+
+  Calendar: (props: IconProps) => (
+    <svg
+      width={18}
+      height={18}
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M13.5 1.5V3M4.5 1.5V3"
+        stroke="#757575"
+        strokeWidth={1.125}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M1.875 9.1824C1.875 5.91446 1.875 4.28046 2.81409 3.26523C3.75318 2.25 5.26462 2.25 8.2875 2.25H9.7125C12.7354 2.25 14.2469 2.25 15.1859 3.26523C16.125 4.28046 16.125 5.91446 16.125 9.1824V9.5676C16.125 12.8356 16.125 14.4695 15.1859 15.4848C14.2469 16.5 12.7354 16.5 9.7125 16.5H8.2875C5.26462 16.5 3.75318 16.5 2.81409 15.4848C1.875 14.4695 1.875 12.8356 1.875 9.5676V9.1824Z"
+        stroke="#757575"
+        strokeWidth={1.125}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M2.25 6H15.75"
+        stroke="#757575"
+        strokeWidth={1.125}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+
+  Book: (props: IconProps) => (
+    <svg
+      width={18}
+      height={18}
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M15 16.5001H4.875C3.83947 16.5001 3 15.6606 3 14.6251M3 14.6251V8.01277C3 5.77435 3 4.65511 3.56746 3.86893C3.75538 3.60858 3.98387 3.38009 4.24421 3.19217C5.03041 2.62471 6.14964 2.62471 8.38808 2.62471C9.12038 2.62471 10.0122 2.66329 10.7519 2.6733C11.4263 2.68242 11.7634 2.68699 12.3916 2.57598C13.0198 2.46497 13.0869 2.43945 13.2212 2.38841C13.7987 2.16882 14.3454 1.82731 15 1.5V8.62508C15 10.0229 15 10.7219 14.7716 11.2732C14.4671 12.0082 13.8831 12.5923 13.148 12.8968C12.5967 13.1251 11.8979 13.1251 10.5 13.1251H4.5C3.67157 13.1251 3 13.7967 3 14.6251Z"
+        stroke="#757575"
+        strokeWidth={1.125}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13.5 12.75V16.5"
+        stroke="#757575"
+        strokeWidth={1.125}
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6 3V6"
+        stroke="#757575"
+        strokeWidth={1.125}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 };
 export default Icons;
