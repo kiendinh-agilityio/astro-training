@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import { Link, Heading, Paragraph } from '@/components';
+import type { BlogPost } from '@/types';
+import { cn } from '@/utils';
+
+interface BlogCardProps {
+  post: BlogPost;
+  className?: string;
+}
+
+const { post, className } = Astro.props as BlogCardProps;
+---
+
+<Link
+  href={`/blog/${post.slug}`}
+  className={cn(
+    'group block overflow-hidden rounded-xl transition-transform hover:scale-[1.02]',
+    className,
+  )}
+  aria-label={`Read article: ${post.title}`}
+  target="_self"
+>
+  <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+    <Image
+      src={post.image}
+      alt={post.title}
+      width={400}
+      height={300}
+      class="h-full w-full object-cover transition-transform group-hover:scale-110"
+      loading="lazy"
+      format="webp"
+    />
+  </div>
+  <>
+    <Heading
+      title={post.title}
+      variant="h3"
+      className="text-primary mt-4 mb-3 font-bold lg:my-5"
+    />
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <Image
+          src={post.author.avatar}
+          alt={post.author.name}
+          width={32}
+          height={32}
+          loading="lazy"
+          format="webp"
+        />
+        <Paragraph size="xs" className="text-primary">
+          {post.author.name}
+        </Paragraph>
+      </div>
+      <Paragraph size="tiny" className="text-tertiary">{post.date}</Paragraph>
+    </div>
+  </>
+</Link>

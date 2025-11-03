@@ -1,0 +1,15 @@
+export { default as HeroBanner } from './hero-banner.webp';
+export { default as UltimateGuideSolo } from './thumbnail/thumbnail-01.png';
+export { default as AFoodLover } from './thumbnail/thumbnail-02.png';
+export { default as AdventureAwaits } from './thumbnail/thumbnail-03.png';
+export { default as IslandEscapes } from './thumbnail/thumbnail-04.png';
+export { default as CulturalJourneys } from './thumbnail/thumbnail-05.png';
+export { default as LuxuryBudget } from './thumbnail/thumbnail-06.png';
+export { default as AFoodLoverBaner } from './thumbnail/banner-thumbnail-02.png';
+export { default as CruzMcintyreAvatar } from './avatar/cruz-mcintyre.svg';
+export { default as EmilyFosterAvatar } from './avatar/emily-foster.svg';
+export { default as ClaraWilsonAvatar } from './avatar/clara-wilson.svg';
+export { default as SophiaTurnerAvatar } from './avatar/sophia-turner.svg';
+export { default as EthanWalkerAvatar } from './avatar/ethan-walker.svg';
+export { default as LauraMartinezAvatar } from './avatar/laura-martinez.svg';
+export { default as LiamTaylorAvatar } from './avatar/liam-taylor.svg';

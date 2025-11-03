@@ -1,0 +1,32 @@
+---
+import { LayoutContainer } from '@/layouts';
+import { Heading, BlogCard } from '@/components';
+import { Paragraph } from '@/components';
+import { getAllBlogPosts } from '@/utils';
+
+const { currentPage = 1, postsPerPage = 6 } = Astro.props;
+
+const allPosts = getAllBlogPosts();
+const currentPageNum = Number(currentPage) || 1;
+const startIndex = (currentPageNum - 1) * postsPerPage;
+const endIndex = startIndex + postsPerPage;
+const postsToShow = allPosts.slice(startIndex, endIndex);
+---
+
+<LayoutContainer className="py-8 lg:py-14">
+  <section class="w-full">
+    <div class="mb-8 text-center lg:mb-12">
+      <Heading
+        variant="h2"
+        title="Trending Post"
+        className="text-primary mb-3 font-bold"
+      />
+      <Paragraph size="lg">
+        Discover how innovation and creativity drive meaningful change
+      </Paragraph>
+    </div>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {postsToShow.map((post) => <BlogCard post={post} />)}
+    </div>
+  </section>
+</LayoutContainer>

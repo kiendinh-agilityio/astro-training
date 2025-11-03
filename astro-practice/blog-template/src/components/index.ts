@@ -1,3 +1,4 @@
+export { default as BlogCard } from './BlogCard/index.astro';
 export { default as ButtonLink } from './ButtonLink/index.astro';
 export { default as Heading } from './Heading/index.astro';
 export { default as Icons } from './Icons/index';
@@ -8,4 +9,5 @@ export { default as LoginForm } from './LoginForm/index';
 export { default as Logo } from './Logo/index.astro';
 export { default as Navbar } from './Navbar/index';
 export { default as Paragraph } from './Paragraph/index.astro';
+export { default as ResponsiveImages } from './ResponsiveImages/index.astro';
 export { default as SocialList } from './SocialList/index.astro';

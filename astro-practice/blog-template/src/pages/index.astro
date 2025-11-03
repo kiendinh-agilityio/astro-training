@@ -1,11 +1,13 @@
 ---
 import { MainLayout } from '@/layouts';
-import { Heading, Paragraph } from '@/components';
+import { Hero, Blog } from '@/sections';
+
+const page = Number(Astro.url.searchParams.get('page')) || 1;
 ---
 
 <MainLayout>
   <>
-    <Heading title="Exploring New Articles" className="font-bold" />
-    <Paragraph>Ideas, trends, and inspiration for a brighter future</Paragraph>
+    <Hero />
+    <Blog currentPage={page} />
   </>
 </MainLayout>

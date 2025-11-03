@@ -3,13 +3,14 @@ import { Icons, Link } from '@/components';
 import { cn } from '@/utils';
 import { socialItems } from '@/mockData/common';
 import type { SVGAttributes, ReactElement } from 'react';
-import type { SocialIconKey } from '@/types';
+import type { SocialIconKey, SocialItem } from '@/types';
 
 interface Props {
   className?: string;
+  items?: SocialItem[];
 }
 
-const { className } = Astro.props as Props;
+const { className, items = socialItems } = Astro.props as Props;
 
 type IconComponent = (props: SVGAttributes<SVGElement>) => ReactElement;
 
@@ -24,7 +25,7 @@ const iconMap: Record<SocialIconKey, IconComponent> = {
 
 <ul class={cn('flex items-center gap-[18px]', className)}>
   {
-    socialItems.map((item) => {
+    items.map((item) => {
       const IconComponent = iconMap[item.icon];
 
       return (
