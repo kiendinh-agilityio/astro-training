@@ -1,0 +1,65 @@
+---
+import { LayoutContainer } from '@/layouts';
+import { HeroBanner, CruzMcintyreAvatar } from '@/assets/images';
+import { Image } from 'astro:assets';
+import { Heading, Paragraph } from '@/components';
+---
+
+<LayoutContainer>
+  <section class="relative w-full pt-8 lg:pt-[72px]">
+    <div class="relative w-full overflow-hidden rounded-2xl">
+      <div class="relative w-full md:aspect-[768/400] lg:aspect-[1216/400]">
+        <Image
+          src={HeroBanner}
+          alt="Greek island landscape"
+          width={1216}
+          height={400}
+          class="h-[400px] w-full object-cover md:h-full"
+          quality={75}
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div
+          class="absolute inset-0 flex h-full flex-col justify-between px-4 py-7 lg:px-12 lg:pt-12 lg:pb-[42px]"
+        >
+          <Heading
+            variant="h2"
+            title="A Foodie’s Guide to Europe: Best Culinary Experiences by Country"
+            className="font-bold text-white lg:max-w-3xl"
+          />
+          <div
+            class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+          >
+            <Paragraph
+              size="tiny"
+              className="font-medium text-white lg:text-lg lg:leading-4"
+            >
+              Nov 29, 2024
+            </Paragraph>
+            <div class="flex items-center gap-3">
+              <Image
+                src={CruzMcintyreAvatar}
+                alt="Cruz Mcintyre Avatar"
+                width={40}
+                height={40}
+                quality={75}
+                loading="eager"
+                fetchpriority="high"
+              />
+              <div class="flex flex-col">
+                <Paragraph
+                  className="text-base leading-5 font-medium text-white"
+                >
+                  Cruz Mcintyre
+                </Paragraph>
+                <Paragraph className="text-sm leading-5 text-white">
+                  Author
+                </Paragraph>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</LayoutContainer>
