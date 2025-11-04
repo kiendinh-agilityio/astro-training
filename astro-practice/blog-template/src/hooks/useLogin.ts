@@ -16,6 +16,8 @@ export const useLogin = () => {
     formState: { errors },
   } = useForm<LoginFields>({
     resolver: zodResolver(loginSchema),
+    mode: 'onSubmit',
+    reValidateMode: 'onChange',
   });
 
   const [loginError, setLoginError] = useState('');
