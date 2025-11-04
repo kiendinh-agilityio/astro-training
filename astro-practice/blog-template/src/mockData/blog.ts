@@ -1,8 +1,8 @@
 import {
   AFoodLover,
-  AFoodLoverBaner,
+  AFoodLoverBanner,
   AdventureAwaits,
-  AdventureAwaitsBaner,
+  AdventureAwaitsBanner,
   ClaraWilsonAvatar,
   CulturalJourneys,
   EmilyFosterAvatar,
@@ -73,7 +73,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '5 Mins Read',
     introduction:
       'Europe is a treasure trove of culinary delights, offering food enthusiasts an incredible journey through diverse flavors, traditions, and cooking techniques. From the sophisticated haute cuisine of France to the comforting simplicity of Italian dishes, each country presents its own unique gastronomic identity.',
-    mainImage: AFoodLoverBaner,
+    mainImage: AFoodLoverBanner,
     subtitle:
       "Here's a country-by-country guide to some of the best culinary experiences in Europe.",
     content: {
@@ -162,7 +162,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '6 Mins Read',
     introduction:
       "National parks are nature's greatest treasures, offering breathtaking landscapes, diverse wildlife, and opportunities for adventure that can transform your perspective on the natural world. As we look ahead to 2025, here are the most spectacular national parks around the globe that deserve a spot on your travel bucket list.",
-    mainImage: AdventureAwaitsBaner,
+    mainImage: AdventureAwaitsBanner,
     subtitle:
       "Discover the world's most stunning protected areas and plan your next outdoor adventure.",
     content: {
