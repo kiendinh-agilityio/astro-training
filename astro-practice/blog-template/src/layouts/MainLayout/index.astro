@@ -5,11 +5,20 @@ import '@/styles/global.css';
 const {
   title = 'Blog Template',
   description = 'A Foodie’s Guide to Europe: Best Culinary Experiences by Country',
-  image = '',
-  url = '',
+  image = '/banner.webp',
   hideNavbar = false,
   hideFooter = false,
 } = Astro.props;
+
+const siteUrl =
+  import.meta.env.PUBLIC_SITE_URL ||
+  Astro.site?.toString() ||
+  'http://localhost:4321';
+const canonicalUrl = new URL(
+  Astro.url.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/'),
+  siteUrl,
+).href;
+const url = canonicalUrl;
 ---
 
 <!doctype html>
@@ -17,11 +26,13 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>{title}</title>
 
     <!-- Basic SEO -->
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href={`${Astro.site}sitemap-index.xml`} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
