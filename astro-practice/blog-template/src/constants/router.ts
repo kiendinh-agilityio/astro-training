@@ -1,6 +1,6 @@
 export const ROUTER = {
   HOME: '/',
-  BLOG: '/blog',
+  BLOG: '#blog',
   SINGLE_POST: '/single-post',
   LOGIN: '/login',
 };

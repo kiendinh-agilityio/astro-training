@@ -5,6 +5,7 @@ export interface NavbarItem {
   href: string;
   ariaLabel: string;
   isExternal?: boolean;
+  disabled?: boolean;
 }
 
 export interface SocialItem {

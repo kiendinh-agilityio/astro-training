@@ -17,5 +17,6 @@ export const NAVBAR_ITEMS: NavbarItem[] = [
     label: 'Single Post',
     href: ROUTER.SINGLE_POST,
     ariaLabel: 'Navigate to single post page',
+    disabled: true,
   },
 ];
