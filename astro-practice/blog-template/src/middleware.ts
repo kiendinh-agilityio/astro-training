@@ -4,14 +4,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const token = context.cookies.get('token')?.value;
   const pathname = new URL(context.request.url).pathname;
 
-  // Route/public file does not need auth
+  const PUBLIC_PATHS = ['/login', '/robots.txt'];
+
+  const PUBLIC_PREFIXES = [
+    '/sitemap',
+    '/_astro',
+    '/favicon',
+    '/public',
+    '/assets',
+  ];
+
+  const PUBLIC_EXTENSIONS = /\.(css|js|png|jpg|jpeg|svg|ico|webp|gif|xml)$/;
+
   const isPublicRoute =
-    pathname === '/login' ||
-    pathname.startsWith('/_astro') ||
-    pathname.startsWith('/favicon') ||
-    pathname.startsWith('/public') ||
-    pathname.startsWith('/assets') ||
-    pathname.match(/\.(css|js|png|jpg|jpeg|svg|ico|webp|gif)$/);
+    PUBLIC_PATHS.includes(pathname) ||
+    PUBLIC_PREFIXES.some((prefix) => pathname.startsWith(prefix)) ||
+    PUBLIC_EXTENSIONS.test(pathname);
 
   if (!token && !isPublicRoute) {
     return context.redirect('/login');

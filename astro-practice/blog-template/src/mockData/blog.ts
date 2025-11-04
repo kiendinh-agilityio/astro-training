@@ -2,6 +2,7 @@ import {
   AFoodLover,
   AFoodLoverBaner,
   AdventureAwaits,
+  AdventureAwaitsBaner,
   ClaraWilsonAvatar,
   CulturalJourneys,
   EmilyFosterAvatar,
@@ -161,7 +162,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '6 Mins Read',
     introduction:
       "National parks are nature's greatest treasures, offering breathtaking landscapes, diverse wildlife, and opportunities for adventure that can transform your perspective on the natural world. As we look ahead to 2025, here are the most spectacular national parks around the globe that deserve a spot on your travel bucket list.",
-    mainImage: AdventureAwaits,
+    mainImage: AdventureAwaitsBaner,
     subtitle:
       "Discover the world's most stunning protected areas and plan your next outdoor adventure.",
     content: {

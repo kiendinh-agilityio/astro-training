@@ -11,10 +11,10 @@ import { LayoutContainer } from '@/layouts';
       class="shadow-base w-fit rounded-xl border border-[#d9d9d9] bg-white p-16 lg:w-[578px]"
     >
       <Heading size="md" title="Welcome" className="font-bold" />
-      <Paragraph className="text-gray-450 my-[15px] font-bold">
+      <Paragraph className="text-tertiary my-[15px] font-bold">
         Enter your email and password to log in
       </Paragraph>
-      <LoginForm client:only="react" />
+      <LoginForm client:visible />
     </div>
   </LayoutContainer>
 </section>
