@@ -1,20 +1,15 @@
 import { defineMiddleware } from 'astro:middleware';
 
+import {
+  PUBLIC_EXTENSIONS,
+  PUBLIC_PATHS,
+  PUBLIC_PREFIXES,
+  ROUTER,
+} from '@/constants';
+
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = context.cookies.get('token')?.value;
   const pathname = new URL(context.request.url).pathname;
-
-  const PUBLIC_PATHS = ['/login', '/robots.txt'];
-
-  const PUBLIC_PREFIXES = [
-    '/sitemap',
-    '/_astro',
-    '/favicon',
-    '/public',
-    '/assets',
-  ];
-
-  const PUBLIC_EXTENSIONS = /\.(css|js|png|jpg|jpeg|svg|ico|webp|gif|xml)$/;
 
   const isPublicRoute =
     PUBLIC_PATHS.includes(pathname) ||
@@ -22,7 +17,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     PUBLIC_EXTENSIONS.test(pathname);
 
   if (!token && !isPublicRoute) {
-    return context.redirect('/login');
+    return context.redirect(ROUTER.LOGIN);
   }
 
   return next();
