@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { cn, generateBlurPlaceholder } from '@/utils';
+import BlurImageWrapper from '@/components/BlurImageWrapper/index';
+
+interface LazyImageProps {
+  src: ImageMetadata;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+  imageClassName?: string;
+  loading?: 'lazy' | 'eager';
+  priority?: boolean;
+  quality?: number;
+  format?: 'webp' | 'jpeg' | 'png' | 'avif';
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  className,
+  imageClassName,
+  loading = 'lazy',
+  priority = false,
+  quality = 75,
+  format = 'webp',
+} = Astro.props as LazyImageProps;
+
+const blurPlaceholder = await generateBlurPlaceholder(src, width, height);
+---
+
+<BlurImageWrapper
+  client:visible
+  blurPlaceholderSrc={blurPlaceholder}
+  wrapperClassName={className}
+>
+  <Image
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={priority ? 'high' : 'auto'}
+    quality={quality}
+    format={format}
+    class={cn(imageClassName, blurPlaceholder ? 'opacity-0' : 'opacity-100')}
+    data-main-image
+  />
+</BlurImageWrapper>

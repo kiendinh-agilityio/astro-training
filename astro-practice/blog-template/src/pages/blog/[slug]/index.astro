@@ -1,8 +1,7 @@
 ---
 import { MainLayout, LayoutContainer } from '@/layouts';
-import { Heading, Paragraph, Icons } from '@/components';
+import { Heading, Paragraph, Icons, LazyImage } from '@/components';
 import { getBlogPostBySlug } from '@/utils';
-import { Image as AstroImage } from 'astro:assets';
 
 // Get slug from params (works in SSR/hybrid mode)
 const { slug } = Astro.params;
@@ -29,12 +28,13 @@ if (!post) {
       <!-- Header Section -->
       <div class="flex flex-col border-b border-[#e3e3e3] pb-8">
         <div class="mb-6 flex flex-col items-center">
-          <AstroImage
+          <LazyImage
             src={post.author.avatar}
             alt={post.author.name}
             width={56}
             height={56}
             format="webp"
+            loading="lazy"
           />
           <Paragraph className="text-primary mt-3 mb-[2px] text-lg leading-6">
             {post.author.name}
@@ -69,13 +69,15 @@ if (!post) {
         {post.introduction}
       </Paragraph>
       <div class="mb-8 w-full overflow-hidden rounded-2xl lg:mb-12">
-        <AstroImage
+        <LazyImage
           src={post.mainImage}
           alt={post.title}
           width={1216}
           height={600}
-          class="h-[206px] w-full object-cover lg:h-[405px]"
+          className="h-[206px] w-full lg:h-[405px]"
+          imageClassName="object-cover"
           loading="eager"
+          priority={true}
           format="webp"
         />
       </div>
