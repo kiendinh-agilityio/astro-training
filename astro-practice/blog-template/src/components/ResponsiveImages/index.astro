@@ -1,7 +1,8 @@
 ---
-import { cn } from '@/utils';
+import { cn, generateBlurPlaceholder } from '@/utils';
 import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
+import BlurImageWrapper from '@/components/BlurImageWrapper/index';
 
 interface ResponsiveImageProps {
   src: {
@@ -14,10 +15,20 @@ interface ResponsiveImageProps {
   height: { mobile: number; tablet: number; desktop: number };
   className?: string;
   innerClass?: string;
+  loading?: 'lazy' | 'eager';
+  priority?: boolean;
 }
 
-const { src, alt, width, height, className, innerClass } =
-  Astro.props as ResponsiveImageProps;
+const {
+  src,
+  alt,
+  width,
+  height,
+  className,
+  innerClass,
+  loading = 'lazy',
+  priority = false,
+} = Astro.props as ResponsiveImageProps;
 
 /**
  * Creates responsive image variants for ImageMetadata:
@@ -43,6 +54,13 @@ const [mobile, tablet, desktop] = await Promise.all([
   generateImageVariants(src.tablet, width.tablet),
   generateImageVariants(src.desktop, width.desktop),
 ]);
+
+// Generate blur placeholder for mobile image (smallest)
+const blurPlaceholder = await generateBlurPlaceholder(
+  src.mobile,
+  width.mobile,
+  height.mobile,
+);
 
 // Sources array for <picture>
 const sources = [
@@ -74,26 +92,37 @@ const aspectClasses = cn(
 );
 ---
 
-<picture class={cn('size-full', aspectClasses, className)}>
-  {
-    sources.map(({ media, images, width, height }) => (
-      <source
-        srcset={`${images.standardRes.src} 1x, ${images.highRes.src} 2x`}
-        media={media}
-        width={width}
-        height={height}
-        type="image/webp"
-      />
-    ))
-  }
-  <img
-    src={mobile.standardRes.src}
-    alt={alt}
-    width={width.mobile}
-    height={height.mobile}
-    loading="eager"
-    decoding="async"
-    fetchpriority="high"
-    class={cn('object-cover', innerClass)}
-  />
-</picture>
+<BlurImageWrapper
+  client:visible
+  blurPlaceholderSrc={blurPlaceholder}
+  wrapperClassName={cn('size-full', aspectClasses, className)}
+>
+  <picture class="block size-full">
+    {
+      sources.map(({ media, images, width, height }) => (
+        <source
+          srcset={`${images.standardRes.src} 1x, ${images.highRes.src} 2x`}
+          media={media}
+          width={width}
+          height={height}
+          type="image/webp"
+        />
+      ))
+    }
+    <img
+      src={mobile.standardRes.src}
+      alt={alt}
+      width={width.mobile}
+      height={height.mobile}
+      loading={loading}
+      decoding="async"
+      fetchpriority={priority ? 'high' : 'auto'}
+      class={cn(
+        'object-cover',
+        blurPlaceholder ? 'opacity-0' : 'opacity-100',
+        innerClass,
+      )}
+      data-main-image
+    />
+  </picture>
+</BlurImageWrapper>

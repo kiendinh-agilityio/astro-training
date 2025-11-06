@@ -1,7 +1,7 @@
 ---
 import { LayoutContainer } from '@/layouts';
 import { HeroBanner, CruzMcintyreAvatar } from '@/assets/images';
-import { Image } from 'astro:assets';
+import { LazyImage } from '@/components';
 import { Heading, Paragraph } from '@/components';
 ---
 
@@ -9,22 +9,22 @@ import { Heading, Paragraph } from '@/components';
   <section class="relative w-full pt-8 lg:pt-[72px]">
     <div class="relative w-full overflow-hidden rounded-2xl">
       <div class="relative w-full md:aspect-[768/400] lg:aspect-[1216/400]">
-        <Image
+        <LazyImage
           src={HeroBanner}
           alt="Greek island landscape"
           width={1216}
           height={400}
-          class="h-[400px] w-full object-cover md:h-full"
+          imageClassName="h-[400px] w-full lg:h-full object-cover"
           quality={75}
           loading="eager"
-          fetchpriority="high"
+          priority={true}
         />
         <div
-          class="absolute inset-0 flex h-full flex-col justify-between px-4 py-7 lg:px-12 lg:pt-12 lg:pb-[42px]"
+          class="absolute inset-0 z-40 flex h-full flex-col justify-between px-4 py-7 lg:px-12 lg:pt-12 lg:pb-[42px]"
         >
           <Heading
             variant="h2"
-            title="A Foodie’s Guide to Europe: Best Culinary Experiences by Country"
+            title="A Foodie's Guide to Europe: Best Culinary Experiences by Country"
             className="font-bold text-white lg:max-w-3xl"
           />
           <div
@@ -37,14 +37,14 @@ import { Heading, Paragraph } from '@/components';
               Nov 29, 2024
             </Paragraph>
             <div class="flex items-center gap-3">
-              <Image
+              <LazyImage
                 src={CruzMcintyreAvatar}
                 alt="Cruz Mcintyre Avatar"
                 width={40}
                 height={40}
                 quality={75}
                 loading="eager"
-                fetchpriority="high"
+                priority={true}
               />
               <div class="flex flex-col">
                 <Paragraph
