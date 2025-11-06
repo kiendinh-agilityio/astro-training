@@ -1,0 +1,30 @@
+---
+import { Paragraph } from '@/components';
+import { Image } from 'astro:assets';
+import { cn } from '@/utils';
+import type { BlogAuthor } from '@/types';
+
+interface Props {
+  author: BlogAuthor;
+  className?: string;
+}
+
+const { author, className }: Props = Astro.props;
+---
+
+<div class={cn('mb-6 flex flex-col items-center', className)}>
+  <Image
+    src={author.avatar}
+    alt={author.name}
+    width={56}
+    height={56}
+    format="webp"
+    loading="lazy"
+  />
+  <Paragraph className="text-primary mt-3 mb-[2px] text-lg leading-6">
+    {author.name}
+  </Paragraph>
+  <Paragraph className="text-tertiary text-base">
+    {author.role}
+  </Paragraph>
+</div>

@@ -1,0 +1,31 @@
+---
+import { Heading, Paragraph } from '@/components';
+import type { BlogContent } from '@/types/';
+
+interface Props {
+  sections: BlogContent[];
+}
+
+const { sections } = Astro.props;
+---
+
+{
+  sections.map((section: BlogContent) => (
+    <div class="mb-3 last:mb-0">
+      <Heading
+        variant="h3"
+        title={section.country}
+        className="mb-3 font-semibold text-primary"
+      />
+      <ul class="ml-6 list-disc space-y-1">
+        {section.listCountry.map((dish: string) => (
+          <li>
+            <Paragraph size="sm" className="text-primary">
+              {dish}
+            </Paragraph>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))
+}

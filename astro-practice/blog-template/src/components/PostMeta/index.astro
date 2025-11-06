@@ -1,0 +1,39 @@
+---
+import { Paragraph, LazyImage } from '@/components';
+import type { BlogAuthor } from '@/types';
+
+interface Props {
+  date: string;
+  author: BlogAuthor;
+}
+
+const { date, author }: Props = Astro.props;
+---
+
+<div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+  <Paragraph
+    size="tiny"
+    className="font-medium text-white lg:text-lg lg:leading-4"
+  >
+    {date}
+  </Paragraph>
+  <div class="flex items-center gap-3">
+    <LazyImage
+      src={author.avatar}
+      alt={`${author.name} Avatar`}
+      width={40}
+      height={40}
+      quality={75}
+      loading="eager"
+      priority={true}
+    />
+    <div class="flex flex-col">
+      <Paragraph className="text-base leading-5 font-medium text-white">
+        {author.name}
+      </Paragraph>
+      <Paragraph className="text-sm leading-5 text-white">
+        {author.role}
+      </Paragraph>
+    </div>
+  </div>
+</div>

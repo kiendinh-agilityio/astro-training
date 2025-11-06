@@ -1,0 +1,29 @@
+---
+import { AuthorInfo, BlogOverview, BlogContent } from '@/components';
+import { LayoutContainer } from '@/layouts';
+
+const { post } = Astro.props;
+---
+
+<section>
+  <LayoutContainer className="py-8 lg:py-[72px] 2xl:px-[360px]">
+    <article class="mx-auto max-w-4xl">
+      <div class="flex flex-col border-b border-[#e3e3e3] pb-8">
+        <AuthorInfo author={post.author} />
+        <BlogOverview
+          title={post.title}
+          readTime={post.readTime}
+          date={post.date}
+        />
+      </div>
+      <BlogContent
+        introduction={post.introduction}
+        mainImage={post.mainImage}
+        title={post.title}
+        subtitle={post.subtitle}
+        content={post.content}
+        conclusion={post.conclusion}
+      />
+    </article>
+  </LayoutContainer>
+</section>
