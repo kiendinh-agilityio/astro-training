@@ -1,122 +1,16 @@
 ---
-import { MainLayout, LayoutContainer } from '@/layouts';
-import { Heading, Paragraph, Icons, LazyImage } from '@/components';
+import { MainLayout } from '@/layouts';
 import { getBlogPostBySlug } from '@/utils';
+import { BlogDetail } from '@/sections';
 
-// Get slug from params (works in SSR/hybrid mode)
-const { slug } = Astro.params;
-
-if (!slug) {
-  return Astro.redirect('/404');
-}
-
-// Get post by slug
-const post = getBlogPostBySlug(slug);
-
-if (!post) {
-  return Astro.redirect('/404');
-}
+const slug = Astro.params.slug;
+const post = slug ? getBlogPostBySlug(slug) : null;
 ---
 
 <MainLayout
-  title={post.title}
-  description={post.introduction}
+  title={post?.title ?? 'Blog Template'}
+  description={post?.introduction ?? 'Welcome to our blog'}
   url={Astro.url.href}
 >
-  <LayoutContainer className="py-8 lg:py-[72px] 2xl:px-[360px]">
-    <article class="mx-auto max-w-4xl">
-      <!-- Header Section -->
-      <div class="flex flex-col border-b border-[#e3e3e3] pb-8">
-        <div class="mb-6 flex flex-col items-center">
-          <LazyImage
-            src={post.author.avatar}
-            alt={post.author.name}
-            width={56}
-            height={56}
-            format="webp"
-            loading="lazy"
-          />
-          <Paragraph className="text-primary mt-3 mb-[2px] text-lg leading-6">
-            {post.author.name}
-          </Paragraph>
-          <Paragraph className="text-tertiary text-base">
-            {post.author.role}
-          </Paragraph>
-        </div>
-
-        <div class="flex-1 text-center">
-          <Heading
-            variant="h2"
-            title={post.title}
-            className="text-primary mb-6 font-bold"
-          />
-          <div
-            class="text-tertiary flex flex-row items-center justify-center gap-6 font-medium"
-          >
-            <Paragraph className="flex gap-2"
-              ><Icons.Book />{post.readTime}</Paragraph
-            >
-            <span
-              class="h-[12px] w-[12px] rounded-full border-[#f2f2f2] bg-[#f2f2f2]"
-            ></span>
-            <Paragraph className="flex gap-2"
-              ><Icons.Calendar />{post.date}</Paragraph
-            >
-          </div>
-        </div>
-      </div>
-      <Paragraph size="md" className="text-primary mt-8 mb-10 text-base">
-        {post.introduction}
-      </Paragraph>
-      <div class="mb-8 w-full overflow-hidden rounded-2xl lg:mb-12">
-        <LazyImage
-          src={post.mainImage}
-          alt={post.title}
-          width={1216}
-          height={600}
-          className="h-[206px] w-full lg:h-[405px]"
-          imageClassName="object-cover"
-          loading="eager"
-          priority={true}
-          format="webp"
-        />
-      </div>
-      <div class="mb-3 lg:px-10">
-        {
-          post.subtitle && (
-            <Paragraph className="border-l-[3px] pl-6 border-[#ddd] my-[52px] font-medium text-primary font-base">
-              {post.subtitle}
-            </Paragraph>
-          )
-        }
-        {
-          post.content.type === 'countries' &&
-            post.content.sections.map((section) => (
-              <div class="mb-3 last:mb-0">
-                <Heading
-                  variant="h3"
-                  title={section.country}
-                  className="mb-3 font-semibold text-primary"
-                />
-                <ul class="ml-6 list-disc space-y-1">
-                  {section.listCountry.map((dish) => (
-                    <li>
-                      <Paragraph size="sm" className="text-primary">
-                        {dish}
-                      </Paragraph>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))
-        }
-        <div class="mt-3">
-          <Heading variant="h3" title="Conclusion" />
-          <Paragraph size="md" className="mt-3 text-base">
-            {post.conclusion}
-          </Paragraph>
-        </div>
-      </div>
-    </article>
-  </LayoutContainer>
+  {post ? <BlogDetail post={post} /> : null}
 </MainLayout>

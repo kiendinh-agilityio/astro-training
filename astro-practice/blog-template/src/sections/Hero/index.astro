@@ -1,8 +1,7 @@
 ---
 import { LayoutContainer } from '@/layouts';
 import { HeroBanner, CruzMcintyreAvatar } from '@/assets/images';
-import { LazyImage } from '@/components';
-import { Heading, Paragraph } from '@/components';
+import { LazyImage, Heading, PostMeta } from '@/components';
 ---
 
 <LayoutContainer>
@@ -27,37 +26,14 @@ import { Heading, Paragraph } from '@/components';
             title="A Foodie's Guide to Europe: Best Culinary Experiences by Country"
             className="font-bold text-white lg:max-w-3xl"
           />
-          <div
-            class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
-          >
-            <Paragraph
-              size="tiny"
-              className="font-medium text-white lg:text-lg lg:leading-4"
-            >
-              Nov 29, 2024
-            </Paragraph>
-            <div class="flex items-center gap-3">
-              <LazyImage
-                src={CruzMcintyreAvatar}
-                alt="Cruz Mcintyre Avatar"
-                width={40}
-                height={40}
-                quality={75}
-                loading="eager"
-                priority={true}
-              />
-              <div class="flex flex-col">
-                <Paragraph
-                  className="text-base leading-5 font-medium text-white"
-                >
-                  Cruz Mcintyre
-                </Paragraph>
-                <Paragraph className="text-sm leading-5 text-white">
-                  Author
-                </Paragraph>
-              </div>
-            </div>
-          </div>
+          <PostMeta
+            date="Nov 29, 2024"
+            author={{
+              name: 'Cruz Mcintyre',
+              avatar: CruzMcintyreAvatar,
+              role: 'Author',
+            }}
+          />
         </div>
       </div>
     </div>

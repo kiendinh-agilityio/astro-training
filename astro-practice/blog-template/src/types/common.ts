@@ -47,3 +47,5 @@ export interface BlogPost {
   };
   conclusion: string;
 }
+
+export type BlogContent = BlogPost['content']['sections'][number];
