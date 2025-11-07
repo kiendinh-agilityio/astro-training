@@ -1,0 +1,46 @@
+---
+const {
+  title = 'Blog Template',
+  description = 'A Foodie’s Guide to Europe: Best Culinary Experiences by Country',
+  image = '/banner.webp',
+} = Astro.props;
+
+const siteUrl =
+  import.meta.env.PUBLIC_SITE_URL ||
+  Astro.site?.toString() ||
+  'http://localhost:4321';
+const canonicalUrl = new URL(
+  Astro.url.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/'),
+  siteUrl,
+).href;
+const url = canonicalUrl;
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+
+  <!-- Basic SEO -->
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="sitemap" href={`${Astro.site}sitemap-index.xml`} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:url" content={url} />
+  <meta property="og:site_name" content="Blog Template" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+
+  <!-- Icon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
