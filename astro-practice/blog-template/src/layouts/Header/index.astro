@@ -3,7 +3,7 @@ import { Logo, Navbar } from '@/components';
 import { LayoutContainer } from '@/layouts';
 import { NAVBAR_ITEMS } from '@/constants';
 
-const { hideNavbar = false } = Astro.props;
+const { showNavbar = true } = Astro.props;
 ---
 
 <header class="sticky top-0 z-50 w-full bg-white shadow-lg">
@@ -12,7 +12,7 @@ const { hideNavbar = false } = Astro.props;
       <h1 class="max-w-fit">
         <Logo />
       </h1>
-      {!hideNavbar && <Navbar items={NAVBAR_ITEMS} client:load />}
+      {showNavbar && <Navbar items={NAVBAR_ITEMS} client:load />}
     </div>
   </LayoutContainer>
 </header>

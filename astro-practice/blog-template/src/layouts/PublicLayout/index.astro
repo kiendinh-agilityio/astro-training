@@ -1,6 +1,5 @@
 ---
-import { Footer, Header } from '@/layouts';
-import BaseHead from '@/layouts/BaseHead/index.astro';
+import { BaseHead, Header } from '@/layouts';
 import '@/styles/global.css';
 
 const headProps = Astro.props;
@@ -11,10 +10,9 @@ const headProps = Astro.props;
   <BaseHead {...headProps} />
 
   <body>
-    <Header />
+    <Header showNavbar={false} />
     <main class="min-h-screen">
       <slot />
     </main>
-    <Footer />
   </body>
 </html>
