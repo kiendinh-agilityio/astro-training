@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { ROUTER } from '@/constants/router';
-import { useDocumentListeners } from '@/hooks/useDocumentListeners';
 import { logout } from '@/services/auth';
 import type { NavbarItem as NavbarItemType } from '@/types';
 import { cn } from '@/utils';
@@ -17,35 +16,23 @@ export interface NavbarProps {
 const Navbar = ({ items, className }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
 
-  /** Close menu on Escape key or click outside */
-  const handleEscape: EventListener = (e) => {
-    const event = e as KeyboardEvent;
+  useEffect(() => {
+    if (!isMenuOpen || !menuContainerRef.current) return;
 
-    if (event.key === 'Escape') closeMenu();
-  };
-
-  const handleClickOutside: EventListener = (e) => {
-    const target = e.target as Element;
-
-    const navbar = target.closest('[data-navbar]');
-    if (!navbar) closeMenu();
-  };
-
-  useDocumentListeners(isMenuOpen, [
-    ['keydown', handleEscape],
-    ['click', handleClickOutside],
-  ]);
+    menuContainerRef.current.focus();
+  }, [isMenuOpen]);
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
     logout();
 
     await new Promise((r) => setTimeout(r, 600));
-    window.location.href = ROUTER.LOGIN;
+    globalThis.location.href = ROUTER.LOGIN;
   };
 
   return (
@@ -72,7 +59,7 @@ const Navbar = ({ items, className }: NavbarProps) => {
 
       {/* Mobile/Tablet Toggle */}
       <button
-        className="cursor-pointer p-2 lg:hidden"
+        className="relative z-100 cursor-pointer p-2 lg:hidden"
         onClick={toggleMenu}
         aria-label="Toggle navigation menu"
         aria-expanded={isMenuOpen}
@@ -82,32 +69,45 @@ const Navbar = ({ items, className }: NavbarProps) => {
 
       {/* Mobile/Tablet Dropdown */}
       {isMenuOpen && (
-        <div className="fixed inset-x-0 top-16 z-50 w-full bg-white shadow-lg lg:hidden">
-          <nav
-            aria-label="Mobile navigation"
-            className="container mx-auto px-5 pt-2 pb-6 md:px-8"
-          >
-            <ul className="flex flex-col gap-6">
-              {items.map((item) => (
-                <NavbarItem
-                  key={item.href}
-                  item={item}
-                  isMobile
-                  onCloseMenu={closeMenu}
-                />
-              ))}
-              <li>
-                <button
-                  className="bg-secondary w-full cursor-pointer rounded px-3 py-2 text-center text-sm font-medium hover:bg-gray-200 disabled:opacity-50"
-                  onClick={handleLogout}
-                  aria-label="Logout Button"
-                  disabled={isLoggingOut}
-                >
-                  {isLoggingOut ? 'Logging out...' : 'Logout'}
-                </button>
-              </li>
-            </ul>
-          </nav>
+        <div
+          ref={menuContainerRef}
+          className="fixed inset-0 z-50 m-0 w-full max-w-none overflow-visible bg-transparent p-0 lg:hidden"
+          aria-label="Mobile navigation menu"
+          tabIndex={-1}
+        >
+          <button
+            type="button"
+            className="absolute top-16 right-0 bottom-0 left-0 z-0 h-full w-full bg-black/20 backdrop-blur-sm"
+            aria-label="Close navigation menu"
+            onClick={closeMenu}
+          />
+          <div className="absolute inset-x-0 top-16 z-10">
+            <nav
+              aria-label="Mobile navigation"
+              className="w-full max-w-screen-lg bg-white shadow-lg"
+            >
+              <ul className="container mx-auto flex flex-col gap-6 px-5 pt-4 pb-6 md:px-8">
+                {items.map((item) => (
+                  <NavbarItem
+                    key={item.href}
+                    item={item}
+                    isMobile
+                    onCloseMenu={closeMenu}
+                  />
+                ))}
+                <li>
+                  <button
+                    className="bg-secondary w-full cursor-pointer rounded px-3 py-2 text-center text-sm font-medium hover:bg-gray-200 disabled:opacity-50"
+                    onClick={handleLogout}
+                    aria-label="Logout Button"
+                    disabled={isLoggingOut}
+                  >
+                    {isLoggingOut ? 'Logging out...' : 'Logout'}
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       )}
     </div>
