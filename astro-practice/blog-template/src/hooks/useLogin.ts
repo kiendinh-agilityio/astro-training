@@ -32,7 +32,8 @@ export const useLogin = () => {
     if (ok && token) {
       localStorage?.setItem('token', token);
       setCookie('token', token);
-      window.location.href = ROUTER.HOME;
+
+      globalThis.location.href = ROUTER.HOME;
     } else {
       const message = error || 'Invalid email or password';
       setLoginError(message);

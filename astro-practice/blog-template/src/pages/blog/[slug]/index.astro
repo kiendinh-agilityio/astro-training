@@ -1,7 +1,8 @@
 ---
+import { BlogSkeleton } from '@/components';
 import { MainLayout } from '@/layouts';
-import { getBlogPostBySlug } from '@/utils';
 import { BlogDetail } from '@/sections';
+import { getBlogPostBySlug } from '@/utils';
 
 const slug = Astro.params.slug;
 const post = slug ? getBlogPostBySlug(slug) : null;
@@ -12,5 +13,11 @@ const post = slug ? getBlogPostBySlug(slug) : null;
   description={post?.introduction ?? 'Welcome to our blog'}
   url={Astro.url.href}
 >
-  {post ? <BlogDetail post={post} /> : null}
+  {
+    post ? (
+      <BlogSkeleton client:load>
+        <BlogDetail post={post} />
+      </BlogSkeleton>
+    ) : null
+  }
 </MainLayout>

@@ -1,13 +1,14 @@
 ---
 import { MainLayout } from '@/layouts';
+import { HomeSkeleton } from '@/components';
 import { Hero, Blog } from '@/sections';
 
 const page = Number(Astro.url.searchParams.get('page')) || 1;
 ---
 
 <MainLayout>
-  <>
+  <HomeSkeleton client:load>
     <Hero />
     <Blog currentPage={page} />
-  </>
+  </HomeSkeleton>
 </MainLayout>
