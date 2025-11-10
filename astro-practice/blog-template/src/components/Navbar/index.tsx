@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { AuthProvider } from '@/components';
 import { ROUTER } from '@/constants/router';
-import { logout } from '@/services/auth';
+import { useAuth } from '@/hooks/useAuth';
 import type { NavbarItem as NavbarItemType } from '@/types';
 import { cn } from '@/utils';
 
@@ -13,10 +14,11 @@ export interface NavbarProps {
   className?: string;
 }
 
-const Navbar = ({ items, className }: NavbarProps) => {
+const NavbarContent = ({ items, className }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const menuContainerRef = useRef<HTMLDivElement | null>(null);
+  const auth = useAuth();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
@@ -29,7 +31,7 @@ const Navbar = ({ items, className }: NavbarProps) => {
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
-    logout();
+    await auth.logout();
 
     await new Promise((r) => setTimeout(r, 600));
     globalThis.location.href = ROUTER.LOGIN;
@@ -113,5 +115,11 @@ const Navbar = ({ items, className }: NavbarProps) => {
     </div>
   );
 };
+
+const Navbar = (props: NavbarProps) => (
+  <AuthProvider>
+    <NavbarContent {...props} />
+  </AuthProvider>
+);
 
 export default Navbar;

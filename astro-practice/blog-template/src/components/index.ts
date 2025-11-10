@@ -1,4 +1,5 @@
 export { default as AuthorInfo } from './AuthorInfo/index.astro';
+export { default as AuthProvider } from './AuthProvider/index';
 export { default as BlogCard } from './BlogCard/index.astro';
 export { default as BlogContent } from './BlogContent/index.astro';
 export { default as BlogOverview } from './BlogOverview/index.astro';
