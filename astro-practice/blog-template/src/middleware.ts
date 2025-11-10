@@ -1,24 +1,36 @@
 import { defineMiddleware } from 'astro:middleware';
 
 import {
-  PUBLIC_EXTENSIONS,
-  PUBLIC_PATHS,
-  PUBLIC_PREFIXES,
+  API_ROUTES,
+  HTTP_METHOD,
   ROUTER,
+  SESSION_COOKIE_NAME,
 } from '@/constants';
+import { isPublicRoute, parseSessionCookie } from '@/utils/session';
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  const token = context.cookies.get('token')?.value;
-  const pathname = new URL(context.request.url).pathname;
+  const { url, method } = context.request;
+  const pathname = new URL(url).pathname;
+  const sessionCookie = context.cookies.get(SESSION_COOKIE_NAME)?.value;
 
-  const isPublicRoute =
-    PUBLIC_PATHS.includes(pathname) ||
-    PUBLIC_PREFIXES.some((prefix) => pathname.startsWith(prefix)) ||
-    PUBLIC_EXTENSIONS.test(pathname);
+  const isSessionManagement =
+    pathname === API_ROUTES.SESSION &&
+    [HTTP_METHOD.POST, HTTP_METHOD.DELETE].includes(method);
+  const isPublic = isPublicRoute(pathname) || isSessionManagement;
 
-  if (!token && !isPublicRoute) {
-    return context.redirect(ROUTER.LOGIN);
+  const session = parseSessionCookie(sessionCookie);
+
+  if (session) {
+    context.locals.session = {
+      token: session.token,
+      expiresAt: session.expiresAt,
+    };
+    context.locals.user = session.user;
+  } else if (sessionCookie) {
+    context.cookies.delete(SESSION_COOKIE_NAME, { path: ROUTER.HOME });
   }
+
+  if (!session && !isPublic) return context.redirect(ROUTER.LOGIN);
 
   return next();
 });

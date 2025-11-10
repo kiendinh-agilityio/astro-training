@@ -26,10 +26,3 @@ export const loginAuth = async (
     return { ok: false, error: MESSAGE_AUTH_ERRORS.SYSTEM_ERROR };
   }
 };
-
-export const logout = (): void => {
-  if (typeof window === 'undefined') return;
-
-  localStorage.removeItem('token');
-  document.cookie = 'token=; Max-Age=0; path=/; samesite=lax';
-};

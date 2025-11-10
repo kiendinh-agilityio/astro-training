@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { ROUTER } from '@/constants';
+import { MESSAGE_AUTH_ERRORS, ROUTER } from '@/constants';
 import { loginAuth } from '@/services/auth';
 import type { LoginFields } from '@/types/';
-import { loginSchema, setCookie } from '@/utils';
+import { loginSchema } from '@/utils';
 
 export const useLogin = () => {
   const {
@@ -27,20 +27,34 @@ export const useLogin = () => {
     setLoginError('');
     setIsSubmitting(true);
 
-    const { ok, token, error } = await loginAuth(email, password);
+    try {
+      const { ok, token, user, error } = await loginAuth(email, password);
 
-    if (ok && token) {
-      localStorage?.setItem('token', token);
-      setCookie('token', token);
+      if (!ok || !token || !user) {
+        const message = error || MESSAGE_AUTH_ERRORS.INVALID_CREDENTIALS;
+        setLoginError(message);
+        setError('password', { message });
+        return;
+      }
+
+      const response = await fetch('/api/session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ token, user }),
+      });
+
+      if (!response.ok) {
+        throw new Error('SESSION_CREATE_FAILED');
+      }
 
       globalThis.location.href = ROUTER.HOME;
-    } else {
-      const message = error || 'Invalid email or password';
-      setLoginError(message);
-      setError('password', { message });
+    } catch {
+      setLoginError(MESSAGE_AUTH_ERRORS.SYSTEM_ERROR);
+      setError('password', { message: MESSAGE_AUTH_ERRORS.SYSTEM_ERROR });
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
   };
 
   return {
