@@ -1,4 +1,9 @@
 import { SESSION_COOKIE_NAME, SESSION_MAX_AGE_SECONDS } from '@/constants';
+import {
+  type CachedData,
+  deleteCacheForToken,
+  setCacheForToken,
+} from '@/services/cache';
 import type { User } from '@/types';
 
 import type { APIRoute } from 'astro';
@@ -16,9 +21,10 @@ const jsonResponse = (data: unknown, status: number) =>
 
 export const POST: APIRoute = async ({ request, cookies, locals }) => {
   try {
-    const { token, user } = (await request.json()) as {
+    const { token, user, cache } = (await request.json()) as {
       token?: string;
       user?: User;
+      cache?: CachedData;
     };
 
     if (!(token && user?.id))
@@ -28,6 +34,12 @@ export const POST: APIRoute = async ({ request, cookies, locals }) => {
 
     locals.session = { token, expiresAt };
     locals.user = user;
+    if (cache) {
+      setCacheForToken(token, cache);
+      locals.cache = cache;
+    } else {
+      locals.cache = undefined;
+    }
 
     cookies.set(
       SESSION_COOKIE_NAME,
@@ -45,9 +57,12 @@ export const POST: APIRoute = async ({ request, cookies, locals }) => {
 };
 
 export const DELETE: APIRoute = async ({ cookies, locals }) => {
+  const token = locals.session?.token;
   cookies.delete(SESSION_COOKIE_NAME, { path: SESSION_COOKIE_OPTIONS.path });
   locals.session = undefined;
   locals.user = undefined;
+  locals.cache = undefined;
+  if (token) deleteCacheForToken(token);
 
   return new Response(null, { status: 204 });
 };

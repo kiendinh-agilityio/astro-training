@@ -6,6 +6,7 @@ import {
   ROUTER,
   SESSION_COOKIE_NAME,
 } from '@/constants';
+import { getCacheForToken } from '@/services/cache';
 import { isPublicRoute, parseSessionCookie } from '@/utils/session';
 
 export const onRequest = defineMiddleware(async (context, next) => {
@@ -26,8 +27,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
       expiresAt: session.expiresAt,
     };
     context.locals.user = session.user;
+    context.locals.cache = getCacheForToken(session.token);
   } else if (sessionCookie) {
     context.cookies.delete(SESSION_COOKIE_NAME, { path: ROUTER.HOME });
+    context.locals.cache = undefined;
   }
 
   if (!session && !isPublic) return context.redirect(ROUTER.LOGIN);

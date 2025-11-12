@@ -4,7 +4,6 @@ export { default as BlogCard } from './BlogCard/index.astro';
 export { default as BlogContent } from './BlogContent/index.astro';
 export { default as BlogOverview } from './BlogOverview/index.astro';
 export { default as BlogSkeleton } from './BlogSkeleton/index';
-export { default as BlurImageWrapper } from './BlurImageWrapper/index';
 export { default as ButtonLink } from './ButtonLink/index.astro';
 export { default as Heading } from './Heading/index.astro';
 export { default as HomeSkeleton } from './HomeSkeleton/index';

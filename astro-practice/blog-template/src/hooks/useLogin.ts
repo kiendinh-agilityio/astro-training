@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import { MESSAGE_AUTH_ERRORS, ROUTER } from '@/constants';
 import { loginAuth } from '@/services/auth';
+import { getInitialCachedData } from '@/services/cache';
 import type { LoginFields } from '@/types/';
 import { loginSchema } from '@/utils';
 
@@ -37,11 +38,13 @@ export const useLogin = () => {
         return;
       }
 
+      const cache = getInitialCachedData();
+
       const response = await fetch('/api/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ token, user }),
+        body: JSON.stringify({ token, user, cache }),
       });
 
       if (!response.ok) {

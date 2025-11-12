@@ -50,7 +50,7 @@ const NavbarContent = ({ items, className }: NavbarProps) => {
           ))}
         </ul>
         <button
-          className="bg-secondary w-32 cursor-pointer rounded px-3 py-2 text-sm font-medium hover:bg-gray-200"
+          className="bg-primary text-secondary w-32 cursor-pointer rounded px-3 py-2 text-sm font-medium hover:bg-neutral-700"
           onClick={handleLogout}
           aria-label="Logout Button"
           disabled={isLoggingOut}

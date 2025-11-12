@@ -5,7 +5,8 @@ import { BlogDetail } from '@/sections';
 import { getBlogPostBySlug } from '@/utils';
 
 const slug = Astro.params.slug;
-const post = slug ? getBlogPostBySlug(slug) : null;
+const cachedPosts = Astro.locals.cache?.blogPosts;
+const post = slug ? getBlogPostBySlug(slug, cachedPosts) : null;
 ---
 
 <MainLayout

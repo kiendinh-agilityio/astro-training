@@ -3,10 +3,21 @@ import { LayoutContainer } from '@/layouts';
 import { Heading, BlogCard } from '@/components';
 import { Paragraph } from '@/components';
 import { getAllBlogPosts } from '@/utils';
+import type { BlogPost } from '@/types';
 
-const { currentPage = 1, postsPerPage = 6 } = Astro.props;
+interface BlogSectionProps {
+  currentPage?: number;
+  postsPerPage?: number;
+  posts?: BlogPost[];
+}
 
-const allPosts = getAllBlogPosts();
+const {
+  currentPage = 1,
+  postsPerPage = 6,
+  posts = [],
+} = Astro.props as BlogSectionProps;
+
+const allPosts = posts.length ? posts : getAllBlogPosts();
 const currentPageNum = Number(currentPage) || 1;
 const startIndex = (currentPageNum - 1) * postsPerPage;
 const endIndex = startIndex + postsPerPage;
