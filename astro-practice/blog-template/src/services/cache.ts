@@ -11,12 +11,9 @@ export const getInitialCachedData = (): CachedData => ({
   blogPosts: getAllBlogPosts(),
 });
 
-export const setCacheForToken = (token: string, data: CachedData) => {
+export const setCacheForToken = (token: string, data: CachedData) =>
   cacheStore.set(token, data);
-};
 
 export const getCacheForToken = (token: string) => cacheStore.get(token);
 
-export const deleteCacheForToken = (token: string) => {
-  cacheStore.delete(token);
-};
+export const deleteCacheForToken = (token: string) => cacheStore.delete(token);

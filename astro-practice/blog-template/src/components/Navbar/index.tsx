@@ -99,7 +99,7 @@ const NavbarContent = ({ items, className }: NavbarProps) => {
                 ))}
                 <li>
                   <button
-                    className="bg-secondary w-full cursor-pointer rounded px-3 py-2 text-center text-sm font-medium hover:bg-gray-200 disabled:opacity-50"
+                    className="bg-primary text-secondary hover:bg-neutral-70 w-full cursor-pointer rounded px-3 py-2 text-center text-sm font-medium disabled:opacity-50"
                     onClick={handleLogout}
                     aria-label="Logout Button"
                     disabled={isLoggingOut}
