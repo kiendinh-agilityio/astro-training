@@ -2,13 +2,15 @@
 import { MainLayout } from '@/layouts';
 import { HomeSkeleton } from '@/components';
 import { Hero, Blog } from '@/sections';
+import { getAllBlogPosts } from '@/utils';
 
 const page = Number(Astro.url.searchParams.get('page')) || 1;
+const cachedPosts = Astro.locals.cache?.blogPosts ?? getAllBlogPosts();
 ---
 
 <MainLayout>
   <HomeSkeleton client:load>
     <Hero />
-    <Blog currentPage={page} />
+    <Blog currentPage={page} posts={cachedPosts} />
   </HomeSkeleton>
 </MainLayout>

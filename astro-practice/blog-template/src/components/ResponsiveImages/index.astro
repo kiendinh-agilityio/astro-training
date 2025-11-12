@@ -1,8 +1,7 @@
 ---
-import { cn, generateBlurPlaceholder } from '@/utils';
+import { cn } from '@/utils';
 import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
-import BlurImageWrapper from '@/components/BlurImageWrapper/index';
 
 interface ResponsiveImageProps {
   src: {
@@ -55,13 +54,6 @@ const [mobile, tablet, desktop] = await Promise.all([
   generateImageVariants(src.desktop, width.desktop),
 ]);
 
-// Generate blur placeholder for mobile image (smallest)
-const blurPlaceholder = await generateBlurPlaceholder(
-  src.mobile,
-  width.mobile,
-  height.mobile,
-);
-
 // Sources array for <picture>
 const sources = [
   {
@@ -92,11 +84,7 @@ const aspectClasses = cn(
 );
 ---
 
-<BlurImageWrapper
-  client:visible
-  blurPlaceholderSrc={blurPlaceholder}
-  wrapperClassName={cn('size-full', aspectClasses, className)}
->
+<div class={cn('size-full', aspectClasses, className)}>
   <picture class="block size-full">
     {
       sources.map(({ media, images, width, height }) => (
@@ -117,12 +105,7 @@ const aspectClasses = cn(
       loading={loading}
       decoding="async"
       fetchpriority={priority ? 'high' : 'auto'}
-      class={cn(
-        'object-cover',
-        blurPlaceholder ? 'opacity-0' : 'opacity-100',
-        innerClass,
-      )}
-      data-main-image
+      class={cn('size-full object-cover', innerClass)}
     />
   </picture>
-</BlurImageWrapper>
+</div>

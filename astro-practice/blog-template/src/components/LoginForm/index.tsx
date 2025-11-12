@@ -35,7 +35,7 @@ const LoginForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="bg-secondary w-full cursor-pointer rounded-xl py-4 text-base font-semibold hover:bg-gray-200 disabled:opacity-50"
+        className="bg-primary text-secondary w-full cursor-pointer rounded-xl py-4 text-base font-semibold hover:bg-neutral-700 disabled:opacity-50"
         aria-label="Button Login"
       >
         {isSubmitting ? 'Logging in...' : 'Log In'}

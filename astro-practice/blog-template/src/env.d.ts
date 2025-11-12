@@ -21,5 +21,6 @@ declare namespace App {
   interface Locals {
     session?: Session;
     user?: User;
+    cache?: import('@/services/cache').CachedData;
   }
 }
