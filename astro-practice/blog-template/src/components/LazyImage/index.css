@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+@layer components {
+  .image-wrapper {
+    @apply relative overflow-hidden;
+  }
+
+  .image-wrapper::before {
+    content: '';
+    @apply absolute inset-0 bg-gray-100;
+    animation: fadeOut 0.5s ease-out forwards;
+  }
+
+  .fade-img {
+    @apply opacity-0 transition-opacity duration-500;
+  }
+
+  .fade-img.loaded {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}

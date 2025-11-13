@@ -1,4 +1,6 @@
 ---
+import './index.css';
+
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { cn } from '@/utils';
@@ -30,7 +32,7 @@ const {
 } = Astro.props as LazyImageProps;
 ---
 
-<div class={cn('block', className)}>
+<div class={cn('image-wrapper w-full h-full', className)}>
   <Image
     src={src}
     alt={alt}
