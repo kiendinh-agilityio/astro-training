@@ -2,7 +2,7 @@
 
 @layer components {
   .image-wrapper {
-    @apply relative overflow-hidden;
+    @apply relative overflow-hidden bg-gray-100;
   }
 
   .image-wrapper::before {

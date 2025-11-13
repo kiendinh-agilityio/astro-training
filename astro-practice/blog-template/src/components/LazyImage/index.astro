@@ -32,7 +32,12 @@ const {
 } = Astro.props as LazyImageProps;
 ---
 
-<div class={cn('image-wrapper w-full h-full', className)}>
+<div
+  class={cn(
+    `image-wrapper w-[${width}px] h-[${height}px] bg-gray-100`,
+    className,
+  )}
+>
   <Image
     src={src}
     alt={alt}
