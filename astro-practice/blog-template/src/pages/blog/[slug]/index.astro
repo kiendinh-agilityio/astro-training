@@ -2,11 +2,11 @@
 import { BlogSkeleton } from '@/components';
 import { MainLayout } from '@/layouts';
 import { BlogDetail } from '@/sections';
-import { getBlogPostBySlug } from '@/utils';
+import { getAllBlogPosts, getBlogPostBySlug } from '@/utils';
 
 const slug = Astro.params.slug;
-const cachedPosts = Astro.locals.cache?.blogPosts;
-const post = slug ? getBlogPostBySlug(slug, cachedPosts) : null;
+const posts = Astro.locals.cache?.blogPosts ?? getAllBlogPosts();
+const post = slug ? getBlogPostBySlug(slug, posts) : null;
 ---
 
 <MainLayout
