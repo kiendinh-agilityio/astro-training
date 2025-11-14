@@ -14,3 +14,11 @@ export const getBlogPostBySlug = (
 // Helper function to get all blog posts
 export const getAllBlogPosts = (posts?: BlogPost[]): BlogPost[] =>
   findPostsSource(posts);
+
+let blogCache: BlogPost[] | null = null;
+
+export const getCachedBlogPosts = (): BlogPost[] => {
+  blogCache ??= getAllBlogPosts();
+
+  return blogCache;
+};
