@@ -17,15 +17,17 @@ const { sections } = Astro.props;
         title={section.country}
         className="mb-3 font-semibold text-primary"
       />
-      <ul class="ml-6 list-disc space-y-1">
-        {section.listCountry.map((dish: string) => (
-          <li>
-            <Paragraph size="sm" className="text-primary">
-              {dish}
-            </Paragraph>
-          </li>
-        ))}
-      </ul>
+      {section.listCountry?.length ? (
+        <ul class="ml-6 list-disc space-y-1">
+          {section.listCountry.map((dish: string) => (
+            <li>
+              <Paragraph size="sm" className="text-primary">
+                {dish}
+              </Paragraph>
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </div>
   ))
 }

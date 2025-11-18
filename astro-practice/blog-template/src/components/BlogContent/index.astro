@@ -60,9 +60,9 @@ const {
       )
     }
     {
-      content.type === 'countries' && content.sections.length > 0 && (
+      content?.type === 'countries' && content.sections.length > 0 ? (
         <CountriesContent sections={content.sections} />
-      )
+      ) : null
     }
     {
       conclusion && (

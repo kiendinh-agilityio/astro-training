@@ -1,7 +1,15 @@
 ---
 import { LayoutContainer } from '@/layouts';
-import { HeroBanner, CruzMcintyreAvatar } from '@/assets/images';
+import { HeroBanner } from '@/assets/images';
 import { LazyImage, Heading, PostMeta } from '@/components';
+import type { BlogPost } from '@/types';
+
+interface HeroProps {
+  post?: BlogPost | null;
+}
+
+const { post }: HeroProps = Astro.props;
+const heroPost = post ?? null;
 ---
 
 <LayoutContainer>
@@ -9,8 +17,8 @@ import { LazyImage, Heading, PostMeta } from '@/components';
     <div class="relative w-full overflow-hidden rounded-2xl">
       <div class="relative w-full md:aspect-[768/400] lg:aspect-[1216/400]">
         <LazyImage
-          src={HeroBanner}
-          alt="Greek island landscape"
+          src={heroPost?.mainImage || heroPost?.image || HeroBanner}
+          alt={heroPost?.title ?? 'Featured article'}
           width={1216}
           height={400}
           imageClassName="h-[400px] w-full lg:h-full object-cover"
@@ -23,17 +31,21 @@ import { LazyImage, Heading, PostMeta } from '@/components';
         >
           <Heading
             variant="h2"
-            title="A Foodie's Guide to Europe: Best Culinary Experiences by Country"
+            title={heroPost?.title ?? 'Stay tuned for our next story'}
             className="font-bold text-white lg:max-w-3xl"
           />
-          <PostMeta
-            date="Nov 29, 2024"
-            author={{
-              name: 'Cruz Mcintyre',
-              avatar: CruzMcintyreAvatar,
-              role: 'Author',
-            }}
-          />
+          {
+            heroPost && (
+              <PostMeta
+                date={heroPost.date}
+                author={{
+                  name: heroPost.author.name,
+                  avatar: heroPost.author.avatar,
+                  role: heroPost.author.role ?? 'Author',
+                }}
+              />
+            )
+          }
         </div>
       </div>
     </div>

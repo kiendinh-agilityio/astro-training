@@ -4,8 +4,8 @@ import { cn } from '@/utils';
 
 interface Props {
   title: string;
-  readTime: string;
-  date: string;
+  readTime?: string;
+  date?: string;
   className?: string;
 }
 
@@ -17,9 +17,15 @@ const { title, readTime, date, className }: Props = Astro.props;
   <div
     class="text-tertiary flex flex-row items-center justify-center gap-6 font-medium"
   >
-    <Paragraph className="flex gap-2"><Icons.Book />{readTime}</Paragraph>
+    <Paragraph className="flex gap-2">
+      <Icons.Book />
+      {readTime || '—'}
+    </Paragraph>
     <span class="h-[12px] w-[12px] rounded-full border-[#f2f2f2] bg-[#f2f2f2]"
     ></span>
-    <Paragraph className="flex gap-2"><Icons.Calendar />{date}</Paragraph>
+    <Paragraph className="flex gap-2">
+      <Icons.Calendar />
+      {date || '—'}
+    </Paragraph>
   </div>
 </div>

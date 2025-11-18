@@ -5,12 +5,16 @@ import { Hero, Blog } from '@/sections';
 import { getCachedBlogPosts } from '@/utils';
 
 const page = Number(Astro.url.searchParams.get('page')) || 1;
-const cachedPosts = getCachedBlogPosts();
+const posts = await getCachedBlogPosts();
+const featuredPost = posts.find((post) => post.featured) ?? posts[0];
+const trendingPosts = featuredPost
+  ? posts.filter((post) => post.slug !== featuredPost.slug)
+  : posts;
 ---
 
 <MainLayout>
   <HomeSkeleton client:load>
-    <Hero />
-    <Blog currentPage={page} posts={cachedPosts} />
+    <Hero post={featuredPost} />
+    <Blog currentPage={page} posts={trendingPosts} />
   </HomeSkeleton>
 </MainLayout>
