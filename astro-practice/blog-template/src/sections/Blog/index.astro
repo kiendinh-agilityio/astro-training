@@ -2,7 +2,6 @@
 import { LayoutContainer } from '@/layouts';
 import { Heading, BlogCard } from '@/components';
 import { Paragraph } from '@/components';
-import { getAllBlogPosts } from '@/utils';
 import type { BlogPost } from '@/types';
 
 interface BlogSectionProps {
@@ -17,11 +16,10 @@ const {
   posts = [],
 } = Astro.props as BlogSectionProps;
 
-const allPosts = posts.length ? posts : getAllBlogPosts();
 const currentPageNum = Number(currentPage) || 1;
 const startIndex = (currentPageNum - 1) * postsPerPage;
 const endIndex = startIndex + postsPerPage;
-const postsToShow = allPosts.slice(startIndex, endIndex);
+const postsToShow = posts.slice(startIndex, endIndex);
 ---
 
 <LayoutContainer className="py-8 lg:py-14">
@@ -36,8 +34,18 @@ const postsToShow = allPosts.slice(startIndex, endIndex);
         Discover how innovation and creativity drive meaningful change
       </Paragraph>
     </div>
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {postsToShow.map((post) => <BlogCard post={post} />)}
-    </div>
+    {
+      postsToShow.length ? (
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {postsToShow.map((post) => (
+            <BlogCard post={post} />
+          ))}
+        </div>
+      ) : (
+        <Paragraph className="text-center text-primary">
+          No posts available yet. Please check back soon!
+        </Paragraph>
+      )
+    }
   </section>
 </LayoutContainer>

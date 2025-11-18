@@ -3,10 +3,12 @@ import './index.css';
 
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { cn } from '@/utils';
+
+import type { SupportedImageSource } from '@/types';
+import { cn, getSanityImageUrl } from '@/utils';
 
 interface LazyImageProps {
-  src: ImageMetadata;
+  src?: SupportedImageSource;
   alt: string;
   width: number;
   height: number;
@@ -30,6 +32,30 @@ const {
   quality = 75,
   format = 'webp',
 } = Astro.props as LazyImageProps;
+
+const isImageMetadata = (
+  value?: SupportedImageSource,
+): value is ImageMetadata =>
+  Boolean(
+    value &&
+      typeof value === 'object' &&
+      'src' in value &&
+      'width' in value &&
+      'height' in value,
+  );
+
+const resolveRemoteSrc = () => {
+  if (!src) return '';
+  if (typeof src === 'string') return src;
+  if (isImageMetadata(src)) return '';
+
+  return getSanityImageUrl(src, { width, height, quality, format });
+};
+
+const remoteSrc = resolveRemoteSrc();
+const shouldUseImageComponent = isImageMetadata(src);
+const fallbackSrc =
+  remoteSrc || `https://placehold.co/${width}x${height}?text=Image`;
 ---
 
 <div
@@ -38,15 +64,30 @@ const {
     className,
   )}
 >
-  <Image
-    src={src}
-    alt={alt}
-    width={width}
-    height={height}
-    loading={loading}
-    fetchpriority={priority ? 'high' : 'auto'}
-    quality={quality}
-    format={format}
-    class={cn('block h-full w-full object-cover', imageClassName)}
-  />
+  {
+    shouldUseImageComponent ? (
+      <Image
+        src={src as ImageMetadata}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        fetchpriority={priority ? 'high' : 'auto'}
+        quality={quality}
+        format={format}
+        class={cn('block h-full w-full object-cover', imageClassName)}
+      />
+    ) : (
+      <img
+        src={fallbackSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        fetchpriority={priority ? 'high' : 'auto'}
+        decoding="async"
+        class={cn('block h-full w-full object-cover', imageClassName)}
+      />
+    )
+  }
 </div>

@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { Paragraph, LazyImage } from '@/components';
 import type { BlogAuthor } from '@/types';
 
@@ -19,12 +18,13 @@ const { date, author }: Props = Astro.props;
     {date}
   </Paragraph>
   <div class="flex items-center gap-3">
-    <Image
+    <LazyImage
       src={author.avatar}
       alt={`${author.name} Avatar`}
       width={40}
       height={40}
-      quality={75}
+      className="overflow-hidden rounded-full"
+      imageClassName="rounded-full object-cover"
       loading="eager"
       priority={true}
     />
@@ -33,7 +33,7 @@ const { date, author }: Props = Astro.props;
         {author.name}
       </Paragraph>
       <Paragraph className="text-sm leading-5 text-white">
-        {author.role}
+        {author.role ?? 'Author'}
       </Paragraph>
     </div>
   </div>

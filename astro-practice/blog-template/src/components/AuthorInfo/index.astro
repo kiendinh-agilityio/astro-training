@@ -1,6 +1,5 @@
 ---
-import { Paragraph } from '@/components';
-import { Image } from 'astro:assets';
+import { Paragraph, LazyImage } from '@/components';
 import { cn } from '@/utils';
 import type { BlogAuthor } from '@/types';
 
@@ -13,18 +12,18 @@ const { author, className }: Props = Astro.props;
 ---
 
 <div class={cn('mb-6 flex flex-col items-center', className)}>
-  <Image
+  <LazyImage
     src={author.avatar}
     alt={author.name}
     width={56}
     height={56}
-    format="webp"
-    loading="lazy"
+    className="overflow-hidden rounded-full"
+    imageClassName="rounded-full"
   />
   <Paragraph className="text-primary mt-3 mb-[2px] text-lg leading-6">
     {author.name}
   </Paragraph>
   <Paragraph className="text-tertiary text-base">
-    {author.role}
+    {author.role ?? 'Author'}
   </Paragraph>
 </div>

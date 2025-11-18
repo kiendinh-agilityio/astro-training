@@ -68,3 +68,9 @@
 | `pnpm install`                                             | Install dependencies         |
 | `pnpm dev`                                                 | Start dev server             |
 | `pnpm build `                                              | Build for production         |
+
+## SANITY CMS
+
+- Create a `.env` file containing `SANITY_PROJECT_ID`, `SANITY_DATASET`, `SANITY_API_VERSION`, `SANITY_READ_TOKEN`, `PUBLIC_SANITY_PROJECT_ID`, `PUBLIC_SANITY_DATASET`.
+- Start the Studio with `pnpm studio` (available at http://localhost:3333/studio by default).
+- Deploy your Studio to Sanity Managed Hosting with `pnpm studio:deploy` when ready.

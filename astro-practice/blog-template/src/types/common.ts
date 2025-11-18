@@ -1,4 +1,12 @@
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import type { ImageMetadata } from 'astro';
+
+export type SupportedImageSource =
+  | ImageMetadata
+  | SanityImageSource
+  | string
+  | null
+  | undefined;
 
 export interface NavbarItem {
   label: string;
@@ -23,20 +31,20 @@ export type SocialIconKey =
 
 export interface BlogAuthor {
   name: string;
-  avatar: ImageMetadata;
-  role: string;
+  avatar?: SupportedImageSource;
+  role?: string;
 }
 
 export interface BlogPost {
   id: string;
   slug: string;
   title: string;
-  image: ImageMetadata;
+  image?: SupportedImageSource;
   author: BlogAuthor;
   date: string;
-  readTime: string;
-  introduction: string;
-  mainImage: ImageMetadata;
+  readTime?: string;
+  introduction?: string;
+  mainImage?: SupportedImageSource;
   subtitle?: string;
   content: {
     type: 'countries';
@@ -45,7 +53,8 @@ export interface BlogPost {
       listCountry: string[];
     }>;
   };
-  conclusion: string;
+  conclusion?: string;
+  featured?: boolean;
 }
 
 export type BlogContent = BlogPost['content']['sections'][number];
