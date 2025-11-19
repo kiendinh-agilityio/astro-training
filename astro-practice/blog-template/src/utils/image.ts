@@ -10,21 +10,21 @@ interface ImageOptions {
   width?: number;
   height?: number;
   quality?: number;
-  format?: 'webp' | 'jpeg' | 'png' | 'avif';
+  format?: 'webp' | 'jpg' | 'png';
 }
 
 export const getSanityImageUrl = (
   source?: SanityImageSource | null,
-  options?: ImageOptions,
+  { width, height, quality, format }: ImageOptions = {},
 ): string => {
   if (!source) return '';
 
   let pipeline = builder.image(source);
 
-  if (options?.width) pipeline = pipeline.width(options.width);
-  if (options?.height) pipeline = pipeline.height(options.height);
-  if (options?.format) pipeline = pipeline.format(options.format);
-  if (options?.quality) pipeline = pipeline.quality(options.quality);
+  if (width) pipeline = pipeline.width(width);
+  if (height) pipeline = pipeline.height(height);
+  if (quality) pipeline = pipeline.quality(quality);
+  if (format) pipeline = pipeline.format(format);
 
   return pipeline.fit('crop').url();
 };

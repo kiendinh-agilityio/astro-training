@@ -3,23 +3,25 @@ import type { BlogPost } from '@/types';
 
 let blogCache: BlogPost[] | null = null;
 
-export const getCachedBlogPosts = async (): Promise<BlogPost[]> => {
-  if (!blogCache) {
+const loadBlogPosts = async (): Promise<BlogPost[]> => {
+  if (import.meta.env.DEV || !blogCache) {
     blogCache = await fetchBlogPosts();
   }
 
   return blogCache;
 };
 
+export const getCachedBlogPosts = async (): Promise<BlogPost[]> =>
+  loadBlogPosts();
+
 export const getBlogPostBySlug = async (
   slug: string,
 ): Promise<BlogPost | null> => {
   if (!slug) return null;
 
-  if (blogCache) {
-    const cached = blogCache.find((post) => post.slug === slug);
-    if (cached) return cached;
-  }
+  const posts = await loadBlogPosts();
+  const cached = posts.find((post) => post.slug === slug);
+  if (cached) return cached;
 
   return fetchBlogPostBySlug(slug);
 };
