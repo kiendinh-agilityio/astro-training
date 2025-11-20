@@ -1,5 +1,5 @@
 ---
-import { Heading, Paragraph } from '@/components';
+import { PortableText } from '@/components';
 import type { BlogContent } from '@/types/';
 
 interface Props {
@@ -12,18 +12,23 @@ const { sections } = Astro.props;
 {
   sections.map((section: BlogContent) => (
     <div class="mb-3 last:mb-0">
-      <Heading
-        variant="h3"
-        title={section.country}
+      <PortableText
+        value={section.country}
+        fallback={section.country}
+        style="h3"
+        blockKey={`country-heading-${section.country}`}
         className="mb-3 font-semibold text-primary"
       />
       {section.listCountry?.length ? (
         <ul class="ml-6 list-disc space-y-1">
           {section.listCountry.map((dish: string) => (
             <li>
-              <Paragraph size="sm" className="text-primary">
-                {dish}
-              </Paragraph>
+              <PortableText
+                value={dish}
+                fallback={dish}
+                blockKey={`country-dish-${section.country}-${dish}`}
+                className="text-sm leading-5 lg:text-base lg:leading-6 text-primary"
+              />
             </li>
           ))}
         </ul>

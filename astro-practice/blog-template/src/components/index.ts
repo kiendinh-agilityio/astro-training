@@ -19,3 +19,4 @@ export { default as Paragraph } from './Paragraph/index.astro';
 export { default as PostMeta } from './PostMeta/index.astro';
 export { default as ResponsiveImages } from './ResponsiveImages/index.astro';
 export { default as SocialList } from './SocialList/index.astro';
+export { default as PortableText } from './PortableText/index.astro';

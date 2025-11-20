@@ -31,10 +31,13 @@ importers:
         version: 4.15.0(@babel/runtime@7.28.4)(@codemirror/lint@6.9.2)(@codemirror/theme-one-dark@6.1.3)(@emotion/is-prop-valid@1.2.2)(codemirror@6.0.2)(react-dom@19.1.1(react@19.1.1))(react-is@19.2.0)(react@19.1.1)(styled-components@6.1.19(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
       '@tailwindcss/vite':
         specifier: ^4.1.13
-        version: 4.1.13(vite@6.3.6(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1))
+        version: 4.1.13(vite@7.2.2(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1))
       astro:
         specifier: ^5.13.7
         version: 5.13.7(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.50.1)(typescript@5.9.2)(yaml@2.8.1)
+      astro-portabletext:
+        specifier: ^0.12.0
+        version: 0.12.0(astro@5.13.7(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.50.1)(typescript@5.9.2)(yaml@2.8.1))
       astro-robots-txt:
         specifier: ^1.0.0
         version: 1.0.0
@@ -3231,6 +3234,12 @@ packages:
   astro-eslint-parser@1.2.2:
     resolution: {integrity: sha512-JepyLROIad6f44uyqMF6HKE2QbunNzp3mYKRcPoDGt0QkxXmH222FAFC64WTyQu2Kg8NNEXHTN/sWuUId9sSxw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  astro-portabletext@0.12.0:
+    resolution: {integrity: sha512-pm1yyNwHHWVFsFj6pDSeAlPBA48Mk99SnB38K1Zu7xdMB2+SDA3XdT+N2qGwD0tJuf7ZI1gpsr/RBZEL1eZshQ==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
+    peerDependencies:
+      astro: '>=4.6.0'
 
   astro-robots-txt@1.0.0:
     resolution: {integrity: sha512-6JQSLid4gMhoWjOm85UHLkgrw0+hHIjnJVIUqxjU2D6feKlVyYukMNYjH44ZDZBK1P8hNxd33PgWlHzCASvedA==}
@@ -10590,12 +10599,12 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.1.13
       '@tailwindcss/oxide-win32-x64-msvc': 4.1.13
 
-  '@tailwindcss/vite@4.1.13(vite@6.3.6(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1))':
+  '@tailwindcss/vite@4.1.13(vite@7.2.2(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1))':
     dependencies:
       '@tailwindcss/node': 4.1.13
       '@tailwindcss/oxide': 4.1.13
       tailwindcss: 4.1.13
-      vite: 6.3.6(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1)
+      vite: 7.2.2(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1)
 
   '@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
@@ -11153,6 +11162,12 @@ snapshots:
       semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
+
+  astro-portabletext@0.12.0(astro@5.13.7(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.50.1)(typescript@5.9.2)(yaml@2.8.1)):
+    dependencies:
+      '@portabletext/toolkit': 4.0.0
+      '@portabletext/types': 3.0.0
+      astro: 5.13.7(@types/node@24.3.1)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.50.1)(typescript@5.9.2)(yaml@2.8.1)
 
   astro-robots-txt@1.0.0:
     dependencies:

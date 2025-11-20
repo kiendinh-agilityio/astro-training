@@ -1,5 +1,5 @@
 ---
-import { Heading, Paragraph, LazyImage } from '@/components';
+import { PortableText, LazyImage } from '@/components';
 import { cn } from '@/utils';
 import CountriesContent from './CountriesContent/index.astro';
 import type { ImageMetadata } from 'astro';
@@ -29,9 +29,12 @@ const {
 <div class={cn('mt-8', className)}>
   {
     introduction && (
-      <Paragraph size="md" className="text-primary mb-10 text-base">
-        {introduction}
-      </Paragraph>
+      <PortableText
+        value={introduction}
+        fallback={introduction}
+        blockKey={`blog-introduction-${title}`}
+        className="text-sm leading-6 lg:text-base text-primary mb-10"
+      />
     )
   }
   {
@@ -54,9 +57,12 @@ const {
   <div class="mb-3 lg:px-10">
     {
       subtitle && (
-        <Paragraph className="border-l-[3px] pl-6 border-[#ddd] my-[52px] font-medium text-primary font-base">
-          {subtitle}
-        </Paragraph>
+        <PortableText
+          value={subtitle}
+          fallback={subtitle}
+          blockKey={`blog-subtitle-${title}`}
+          className="text-sm leading-5 lg:text-base lg:leading-6 border-l-[3px] pl-6 border-[#ddd] my-[52px] font-medium text-primary font-base"
+        />
       )
     }
     {
@@ -67,10 +73,19 @@ const {
     {
       conclusion && (
         <div class="mt-3">
-          <Heading variant="h3" title="Conclusion" />
-          <Paragraph size="md" className="mt-3 text-base">
-            {conclusion}
-          </Paragraph>
+          <PortableText
+            value="Conclusion"
+            fallback="Conclusion"
+            style="h3"
+            blockKey={`blog-conclusion-heading-${title}`}
+            className="font-semibold"
+          />
+          <PortableText
+            value={conclusion}
+            fallback={conclusion}
+            blockKey={`blog-conclusion-${title}`}
+            className="text-sm leading-6 lg:text-base mt-3"
+          />
         </div>
       )
     }
