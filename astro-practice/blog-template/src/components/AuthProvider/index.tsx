@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
-import { API_ROUTES, HTTP_METHOD } from '@/constants';
+import { API_ROUTES, HTTP_METHOD, SHOW_HOME_SKELETON_FLAG } from '@/constants';
 import { AuthContext } from '@/types';
 import { clearSessionCookie, requestOptions } from '@/utils';
 
@@ -14,12 +14,18 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       });
     } finally {
       clearSessionCookie();
+      // Clear the skeleton flag on logout
+      try {
+        globalThis.sessionStorage?.removeItem(SHOW_HOME_SKELETON_FLAG);
+      } catch {
+        // sessionStorage might not be available in some environments
+      }
     }
   }, []);
 
-  return (
-    <AuthContext.Provider value={{ logout }}>{children}</AuthContext.Provider>
-  );
+  const value = useMemo(() => ({ logout }), [logout]);
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;

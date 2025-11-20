@@ -6,3 +6,4 @@ export * from './loginSchema';
 export * from './session';
 export * from './date';
 export * from './dataTransform';
+export * from './skeleton';

@@ -1,0 +1,96 @@
+---
+import { PortableText as PortableTextInternal } from 'astro-portabletext';
+import { H2Block, H3Block } from '@/components/Blocks';
+import { Paragraph } from '@/components';
+
+type PortableTextSpan = {
+  _key: string;
+  _type: 'span';
+  text: string;
+};
+
+type PortableTextBlock = {
+  _key: string;
+  _type: 'block';
+  style?: string;
+  markDefs?: Record<string, unknown>[];
+  children: PortableTextSpan[];
+};
+
+type PortableValue = PortableTextBlock[] | string | null | undefined;
+
+interface PortableTextProps {
+  value?: PortableValue;
+  fallback?: string;
+  style?: string;
+  blockKey?: string;
+  className?: string;
+}
+
+const {
+  value,
+  fallback = '',
+  style = 'normal',
+  blockKey = 'portable-text',
+  className,
+} = Astro.props as PortableTextProps;
+
+const buildPortableBlocks = (
+  source: PortableValue,
+  fallbackText: string,
+  blockStyle: PortableTextBlock['style'],
+  keyBase: string,
+): PortableTextBlock[] => {
+  if (Array.isArray(source) && source.length > 0) {
+    return source as PortableTextBlock[];
+  }
+
+  const textCandidate =
+    typeof source === 'string' && source.trim().length > 0
+      ? source
+      : fallbackText;
+
+  if (!textCandidate) return [];
+
+  return [
+    {
+      _key: `${keyBase}-block`,
+      _type: 'block',
+      style: blockStyle,
+      markDefs: [],
+      children: [
+        {
+          _key: `${keyBase}-span`,
+          _type: 'span',
+          text: textCandidate,
+        },
+      ],
+    },
+  ];
+};
+
+const normalizedValue = buildPortableBlocks(
+  value,
+  fallback,
+  style,
+  blockKey || 'portable-text',
+);
+
+const components = {
+  block: {
+    normal: Paragraph,
+    h2: H2Block,
+    h3: H3Block,
+  },
+};
+---
+
+{
+  className ? (
+    <div class={className}>
+      <PortableTextInternal value={normalizedValue} components={components} />
+    </div>
+  ) : (
+    <PortableTextInternal value={normalizedValue} components={components} />
+  )
+}

@@ -1,5 +1,5 @@
 ---
-import { Paragraph, LazyImage } from '@/components';
+import { PortableText, LazyImage } from '@/components';
 import { cn } from '@/utils';
 import type { BlogAuthor } from '@/types';
 
@@ -20,10 +20,16 @@ const { author, className }: Props = Astro.props;
     className="overflow-hidden rounded-full"
     imageClassName="rounded-full"
   />
-  <Paragraph className="text-primary mt-3 mb-[2px] text-lg leading-6">
-    {author.name}
-  </Paragraph>
-  <Paragraph className="text-tertiary text-base">
-    {author.role ?? 'Author'}
-  </Paragraph>
+  <PortableText
+    value={author.name}
+    fallback={author.name}
+    blockKey={`author-info-name-${author.name}`}
+    className="text-primary mt-3 mb-[2px] text-lg leading-6"
+  />
+  <PortableText
+    value={author.role ?? 'Author'}
+    fallback="Author"
+    blockKey={`author-info-role-${author.name}`}
+    className="text-tertiary text-base"
+  />
 </div>

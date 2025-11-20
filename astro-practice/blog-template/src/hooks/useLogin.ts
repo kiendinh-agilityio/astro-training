@@ -3,7 +3,11 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { MESSAGE_AUTH_ERRORS, ROUTER } from '@/constants';
+import {
+  MESSAGE_AUTH_ERRORS,
+  ROUTER,
+  SHOW_HOME_SKELETON_FLAG,
+} from '@/constants';
 import { loginAuth } from '@/services/auth';
 import type { LoginFields } from '@/types/';
 import { loginSchema } from '@/utils';
@@ -46,6 +50,13 @@ export const useLogin = () => {
 
       if (!response.ok) {
         throw new Error('SESSION_CREATE_FAILED');
+      }
+
+      // Set flag to show skeleton on Home page after login
+      try {
+        globalThis.sessionStorage?.setItem(SHOW_HOME_SKELETON_FLAG, 'true');
+      } catch {
+        // sessionStorage might not be available in some environments
       }
 
       globalThis.location.href = ROUTER.HOME;

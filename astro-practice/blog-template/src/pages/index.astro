@@ -13,7 +13,7 @@ const trendingPosts = featuredPost
 ---
 
 <MainLayout>
-  <HomeSkeleton client:load>
+  <HomeSkeleton client:only="react">
     <Hero post={featuredPost} />
     <Blog currentPage={page} posts={trendingPosts} />
   </HomeSkeleton>
