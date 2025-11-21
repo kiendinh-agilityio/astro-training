@@ -1,21 +1,19 @@
 import { createClient } from '@sanity/client';
 
-const projectId =
-  import.meta.env.SANITY_PROJECT_ID || import.meta.env.PUBLIC_SANITY_PROJECT_ID;
-const dataset =
-  import.meta.env.SANITY_DATASET || import.meta.env.PUBLIC_SANITY_DATASET;
+const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID;
+const dataset = import.meta.env.PUBLIC_SANITY_DATASET;
+const apiVersion = import.meta.env.PUBLIC_SANITY_API_VERSION || '2025-01-01';
+const token = import.meta.env.PUBLIC_SANITY_READ_TOKEN;
 
 if (!projectId || !dataset) {
-  throw new Error(
-    'Missing Sanity configuration. Please set SANITY_PROJECT_ID and SANITY_DATASET.',
-  );
+  throw new Error('Missing Sanity configuration for client. Check .env.');
 }
 
 export const sanityClient = createClient({
   projectId,
   dataset,
-  apiVersion: import.meta.env.SANITY_API_VERSION || '2025-01-01',
-  token: import.meta.env.SANITY_READ_TOKEN,
+  apiVersion,
+  token,
   useCdn: import.meta.env.PROD,
   perspective: 'published',
 });
