@@ -4,7 +4,6 @@ import { HomeSkeleton } from '@/components';
 import { Hero, Blog } from '@/sections';
 import { getCachedBlogPosts } from '@/utils';
 
-const page = Number(Astro.url.searchParams.get('page')) || 1;
 const posts = await getCachedBlogPosts();
 const featuredPost = posts.find((post) => post.featured) ?? posts[0];
 const trendingPosts = featuredPost
@@ -15,6 +14,6 @@ const trendingPosts = featuredPost
 <MainLayout>
   <HomeSkeleton client:only="react">
     <Hero post={featuredPost} />
-    <Blog currentPage={page} posts={trendingPosts} />
+    <Blog posts={trendingPosts} />
   </HomeSkeleton>
 </MainLayout>
