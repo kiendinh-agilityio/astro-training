@@ -26,3 +26,41 @@ export type SanityBlogPost = {
     sections?: SanityBlogSection[];
   };
 };
+
+export type SanityFaviconAsset = {
+  url?: string;
+  mimeType?: string;
+};
+
+export type SanitySiteFavicons = {
+  svg?: SanityFaviconAsset;
+  ico?: SanityFaviconAsset;
+  png192?: SanityFaviconAsset;
+  png512?: SanityFaviconAsset;
+  appleTouch?: SanityFaviconAsset;
+};
+
+export type SanitySiteSettings = {
+  title?: string;
+  description?: string;
+  favicons?: SanitySiteFavicons;
+};
+
+export type SiteFaviconAsset = {
+  url: string;
+  type?: string;
+};
+
+export type SiteFaviconSet = {
+  svg?: SiteFaviconAsset;
+  ico?: SiteFaviconAsset;
+  png192?: SiteFaviconAsset;
+  png512?: SiteFaviconAsset;
+  appleTouch?: SiteFaviconAsset;
+};
+
+export type SiteSettings = {
+  title: string;
+  description: string;
+  favicons: SiteFaviconSet;
+};

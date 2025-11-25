@@ -9,6 +9,7 @@ export default [
   {
     ignores: [
       '.astro/**',
+      '.sanity/**',
       '.vercel/**',
       'dist/**',
       'node_modules/**',
