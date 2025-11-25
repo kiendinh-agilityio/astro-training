@@ -68,3 +68,32 @@
 | `pnpm install`                                             | Install dependencies         |
 | `pnpm dev`                                                 | Start dev server             |
 | `pnpm build `                                              | Build for production         |
+
+## SANITY CMS
+
+- Create a `.env` file containing `PUBLIC_SANITY_PROJECT_ID`, `PUBLIC_SANITY_DATASET`, `PUBLIC_SANITY_API_VERSION`, `PUBLIC_SANITY_READ_TOKEN`, `SANITY_WEBHOOK_SECRET`.
+- Start the Studio with `pnpm studio` (available at http://localhost:3333/studio by default).
+- Deploy your Studio to Cloudflare Pages or Sanity Managed Hosting:
+  - Cloudflare Pages: use `pnpm studio:build` as the build command and `dist` as the output directory.
+  - Sanity hosting: run `pnpm studio:deploy`.
+
+## CLOUDFLARE + SANITY WORKFLOW
+
+1. **Astro site on Cloudflare Pages/Workers**
+   - Set all `PUBLIC_SANITY_*` variables and `SANITY_WEBHOOK_SECRET` in the project settings.
+   - The Astro server caches Sanity responses in memory per worker isolate for faster navigation.
+
+2. **Sanity Studio on Cloudflare Pages**
+   - Create a second Cloudflare Pages project pointing to the same repository.
+   - Set the **Root directory** to the repo root (where `sanity.config.ts` lives), build command `pnpm install && pnpm studio:build`, and output directory `dist`.
+   - Configure a custom domain or use the default `*.pages.dev` URL for editors.
+
+3. **Webhook-based cache invalidation**
+   - In the Astro repo a webhook endpoint is available at `/api/sanity-revalidate`.
+   - Set `SANITY_WEBHOOK_SECRET` in both Cloudflare projects (Astro + Studio).
+   - Inside Sanity Manage → Project Settings → API → Webhooks create a webhook:
+     - URL: `https://<your-astro-domain>/api/sanity-revalidate`
+     - HTTP method: `POST`
+     - Custom header: `Authorization: Bearer <SANITY_WEBHOOK_SECRET>`
+     - Trigger on create/update/delete of `blogPost`.
+   - When editors publish inside Studio, Sanity calls the webhook, the server invalidates its in-memory cache, and the next visitor automatically fetches fresh data without redeploying Astro.

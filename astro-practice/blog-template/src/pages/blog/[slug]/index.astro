@@ -1,24 +1,36 @@
 ---
+import type { GetStaticPaths } from 'astro';
+
 import { BlogSkeleton } from '@/components';
 import { MainLayout } from '@/layouts';
 import { BlogDetail } from '@/sections';
 import { getBlogPostBySlug, getCachedBlogPosts } from '@/utils';
+import { ROUTER } from '@/constants';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCachedBlogPosts();
+
+  return posts
+    .filter((post) => post.slug)
+    .map((post) => ({
+      params: { slug: post.slug },
+    }));
+}) satisfies GetStaticPaths;
 
 const slug = Astro.params.slug;
-const posts = getCachedBlogPosts();
-const post = slug ? getBlogPostBySlug(slug, posts) : null;
+const post = slug ? await getBlogPostBySlug(slug) : null;
+
+if (!post) {
+  return Astro.redirect(ROUTER.HOME);
+}
 ---
 
 <MainLayout
-  title={post?.title ?? 'Blog Template'}
-  description={post?.introduction ?? 'Welcome to our blog'}
+  title={post.title ?? 'Blog Template'}
+  description={post.introduction ?? 'Welcome to our blog'}
   url={Astro.url.href}
 >
-  {
-    post ? (
-      <BlogSkeleton client:load>
-        <BlogDetail post={post} />
-      </BlogSkeleton>
-    ) : null
-  }
+  <BlogSkeleton client:load>
+    <BlogDetail post={post} />
+  </BlogSkeleton>
 </MainLayout>

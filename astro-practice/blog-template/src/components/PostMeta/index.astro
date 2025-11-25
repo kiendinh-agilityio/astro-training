@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import { Paragraph, LazyImage } from '@/components';
+import { PortableText, LazyImage } from '@/components';
 import type { BlogAuthor } from '@/types';
 
 interface Props {
@@ -12,29 +11,36 @@ const { date, author }: Props = Astro.props;
 ---
 
 <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-  <Paragraph
-    size="tiny"
-    className="font-medium text-white lg:text-lg lg:leading-4"
-  >
-    {date}
-  </Paragraph>
+  <PortableText
+    value={date}
+    fallback={date}
+    blockKey={`post-meta-date-${date}`}
+    className="text-sm leading-4 font-medium text-white lg:text-lg lg:leading-4"
+  />
   <div class="flex items-center gap-3">
-    <Image
+    <LazyImage
       src={author.avatar}
       alt={`${author.name} Avatar`}
       width={40}
       height={40}
-      quality={75}
+      className="overflow-hidden rounded-full"
+      imageClassName="rounded-full object-cover"
       loading="eager"
       priority={true}
     />
     <div class="flex flex-col">
-      <Paragraph className="text-base leading-5 font-medium text-white">
-        {author.name}
-      </Paragraph>
-      <Paragraph className="text-sm leading-5 text-white">
-        {author.role}
-      </Paragraph>
+      <PortableText
+        value={author.name}
+        fallback={author.name}
+        blockKey={`post-meta-author-${author.name}`}
+        className="text-sm leading-5 font-medium text-white lg:text-base lg:leading-6"
+      />
+      <PortableText
+        value={author.role ?? 'Author'}
+        fallback="Author"
+        blockKey={`post-meta-role-${author.name}`}
+        className="text-sm leading-5 text-white"
+      />
     </div>
   </div>
 </div>

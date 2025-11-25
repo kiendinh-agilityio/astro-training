@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import { Link, Heading, Paragraph, LazyImage } from '@/components';
+import { Link, PortableText, LazyImage } from '@/components';
 import type { BlogPost } from '@/types';
 import { cn } from '@/utils';
 
@@ -33,26 +32,36 @@ const { post, className } = Astro.props as BlogCardProps;
     />
   </div>
   <>
-    <Heading
-      title={post.title}
-      variant="h3"
+    <PortableText
+      value={post.title}
+      fallback={post.title}
+      style="h3"
+      blockKey={`blog-card-title-${post.id}`}
       className="text-primary mt-4 mb-3 overflow-hidden font-bold text-ellipsis md:line-clamp-2 md:h-12 lg:my-5 lg:line-clamp-3 lg:h-24"
     />
     <div class="flex items-center justify-between gap-3">
       <div class="flex items-center gap-2">
-        <Image
+        <LazyImage
           src={post.author.avatar}
           alt={post.author.name}
           width={32}
           height={32}
-          loading="lazy"
-          format="webp"
+          className="overflow-hidden rounded-full"
+          imageClassName="rounded-full object-cover"
         />
-        <Paragraph size="xs" className="text-primary">
-          {post.author.name}
-        </Paragraph>
+        <PortableText
+          value={post.author.name}
+          fallback={post.author.name}
+          blockKey={`blog-card-author-${post.id}`}
+          className="text-primary text-sm leading-5"
+        />
       </div>
-      <Paragraph size="tiny" className="text-tertiary">{post.date}</Paragraph>
+      <PortableText
+        value={post.date}
+        fallback={post.date}
+        blockKey={`blog-card-date-${post.id}`}
+        className="text-tertiary text-sm leading-4"
+      />
     </div>
   </>
 </Link>

@@ -1,24 +1,31 @@
-import { blogPosts } from '@/mockData/blog';
+import { fetchBlogPostBySlug, fetchBlogPosts } from '@/services/blog';
 import type { BlogPost } from '@/types';
-
-const findPostsSource = (posts?: BlogPost[]) =>
-  Array.isArray(posts) && posts.length ? posts : blogPosts;
-
-// Helper function to get blog post by slug
-export const getBlogPostBySlug = (
-  slug: string,
-  posts?: BlogPost[],
-): BlogPost | undefined =>
-  findPostsSource(posts).find((post) => post.slug === slug);
-
-// Helper function to get all blog posts
-export const getAllBlogPosts = (posts?: BlogPost[]): BlogPost[] =>
-  findPostsSource(posts);
 
 let blogCache: BlogPost[] | null = null;
 
-export const getCachedBlogPosts = (): BlogPost[] => {
-  blogCache ??= getAllBlogPosts();
+const loadBlogPosts = async (): Promise<BlogPost[]> => {
+  if (import.meta.env.DEV || !blogCache) {
+    blogCache = await fetchBlogPosts();
+  }
 
   return blogCache;
+};
+
+export const getCachedBlogPosts = async (): Promise<BlogPost[]> =>
+  loadBlogPosts();
+
+export const getBlogPostBySlug = async (
+  slug: string,
+): Promise<BlogPost | null> => {
+  if (!slug) return null;
+
+  const posts = await loadBlogPosts();
+  const cached = posts.find((post) => post.slug === slug);
+  if (cached) return cached;
+
+  return fetchBlogPostBySlug(slug);
+};
+
+export const invalidateBlogCache = () => {
+  blogCache = null;
 };

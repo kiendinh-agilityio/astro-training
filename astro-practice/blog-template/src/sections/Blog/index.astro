@@ -1,43 +1,56 @@
 ---
 import { LayoutContainer } from '@/layouts';
-import { Heading, BlogCard } from '@/components';
-import { Paragraph } from '@/components';
-import { getAllBlogPosts } from '@/utils';
+import { PortableText, BlogCard, Paragraph, BlogList } from '@/components';
 import type { BlogPost } from '@/types';
 
 interface BlogSectionProps {
-  currentPage?: number;
-  postsPerPage?: number;
   posts?: BlogPost[];
+  postsPerPage?: number;
 }
 
-const {
-  currentPage = 1,
-  postsPerPage = 6,
-  posts = [],
-} = Astro.props as BlogSectionProps;
+const { posts = [], postsPerPage = 6 } = Astro.props as BlogSectionProps;
 
-const allPosts = posts.length ? posts : getAllBlogPosts();
-const currentPageNum = Number(currentPage) || 1;
-const startIndex = (currentPageNum - 1) * postsPerPage;
-const endIndex = startIndex + postsPerPage;
-const postsToShow = allPosts.slice(startIndex, endIndex);
+const totalPosts = posts.length;
 ---
 
 <LayoutContainer className="py-8 lg:py-14">
   <section id="blog" class="w-full">
     <div class="mb-8 text-center lg:mb-12">
-      <Heading
-        variant="h2"
-        title="Trending Post"
+      <PortableText
+        value="Trending Post"
+        fallback="Trending Post"
+        style="h2"
+        blockKey="blog-trending-heading"
         className="text-primary mb-3 font-bold"
       />
       <Paragraph size="lg">
         Discover how innovation and creativity drive meaningful change
       </Paragraph>
     </div>
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {postsToShow.map((post) => <BlogCard post={post} />)}
-    </div>
+    {
+      totalPosts > 0 ? (
+        <>
+          <div
+            class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:min-h-[1050px] lg:grid-cols-3"
+            data-blog-list-container
+          >
+            {posts.map((post, index) => (
+              <div data-blog-card class={index >= postsPerPage ? 'hidden' : ''}>
+                <BlogCard post={post} />
+              </div>
+            ))}
+          </div>
+          <BlogList
+            client:load
+            totalPosts={totalPosts}
+            postsPerPage={postsPerPage}
+          />
+        </>
+      ) : (
+        <Paragraph className="text-center text-primary">
+          No posts available yet. Please check back soon!
+        </Paragraph>
+      )
+    }
   </section>
 </LayoutContainer>
