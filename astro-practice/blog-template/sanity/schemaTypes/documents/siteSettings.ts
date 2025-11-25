@@ -1,16 +1,7 @@
 import { defineField, defineType } from 'sanity';
 
 const faviconDescription =
-  'Upload the favicon files generated from the Sanity guide (SVG, ICO, PNG and Apple touch).';
-
-const fileField = (name: string, title: string, accept: string) =>
-  defineField({
-    name,
-    title,
-    type: 'file',
-    options: { accept },
-    description: `${title} (${accept.replace(/\./g, '').toUpperCase()})`,
-  });
+  'Upload the favicon.svg file that should be used across the site.';
 
 export default defineType({
   name: 'siteSettings',
@@ -31,18 +22,12 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'favicons',
-      title: 'Favicons',
-      type: 'object',
+      name: 'favicon',
+      title: 'Favicon (SVG)',
+      type: 'file',
       description: faviconDescription,
-      options: { collapsible: true, collapsed: false },
-      fields: [
-        fileField('svg', 'favicon.svg', '.svg'),
-        fileField('ico', 'favicon.ico', '.ico'),
-        fileField('png192', 'favicon-192.png', '.png'),
-        fileField('png512', 'favicon-512.png', '.png'),
-        fileField('appleTouch', 'apple-touch-icon.png', '.png'),
-      ],
+      options: { accept: '.svg' },
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

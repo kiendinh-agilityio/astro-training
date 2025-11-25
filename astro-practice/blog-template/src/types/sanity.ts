@@ -32,18 +32,10 @@ export type SanityFaviconAsset = {
   mimeType?: string;
 };
 
-export type SanitySiteFavicons = {
-  svg?: SanityFaviconAsset;
-  ico?: SanityFaviconAsset;
-  png192?: SanityFaviconAsset;
-  png512?: SanityFaviconAsset;
-  appleTouch?: SanityFaviconAsset;
-};
-
 export type SanitySiteSettings = {
   title?: string;
   description?: string;
-  favicons?: SanitySiteFavicons;
+  favicon?: SanityFaviconAsset;
 };
 
 export type SiteFaviconAsset = {
@@ -51,16 +43,8 @@ export type SiteFaviconAsset = {
   type?: string;
 };
 
-export type SiteFaviconSet = {
-  svg?: SiteFaviconAsset;
-  ico?: SiteFaviconAsset;
-  png192?: SiteFaviconAsset;
-  png512?: SiteFaviconAsset;
-  appleTouch?: SiteFaviconAsset;
-};
-
 export type SiteSettings = {
   title: string;
   description: string;
-  favicons: SiteFaviconSet;
+  favicon?: SiteFaviconAsset;
 };

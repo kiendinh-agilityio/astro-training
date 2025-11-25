@@ -29,12 +29,6 @@ export const fetchSiteSettings = async (): Promise<SiteSettings> => {
   return {
     title: settings?.title ?? DEFAULT_SETTINGS.title,
     description: settings?.description ?? DEFAULT_SETTINGS.description,
-    favicons: {
-      svg: mapFavicon(settings?.favicons?.svg ?? null),
-      ico: mapFavicon(settings?.favicons?.ico ?? null),
-      png192: mapFavicon(settings?.favicons?.png192 ?? null),
-      png512: mapFavicon(settings?.favicons?.png512 ?? null),
-      appleTouch: mapFavicon(settings?.favicons?.appleTouch ?? null),
-    },
+    favicon: mapFavicon(settings?.favicon ?? null),
   };
 };
