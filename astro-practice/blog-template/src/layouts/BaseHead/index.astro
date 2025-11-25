@@ -1,7 +1,11 @@
 ---
+import { getCachedSiteSettings } from '@/utils';
+
+const siteSettings = await getCachedSiteSettings();
+
 const {
-  title = 'Blog Template',
-  description = 'A Foodie’s Guide to Europe: Best Culinary Experiences by Country',
+  title = siteSettings.title,
+  description = siteSettings.description,
   image = '/banner.webp',
 } = Astro.props;
 
@@ -14,6 +18,61 @@ const canonicalUrl = new URL(
   siteUrl,
 ).href;
 const url = canonicalUrl;
+
+type IconLink = {
+  rel: string;
+  href: string;
+  type?: string;
+  sizes?: string;
+};
+
+const defaultSvgIcon = {
+  href: '/favicon.svg',
+  type: 'image/svg+xml',
+};
+
+const favicons = siteSettings.favicons ?? {};
+
+const iconLinks: IconLink[] = [
+  {
+    rel: 'icon',
+    href: favicons.svg?.url ?? defaultSvgIcon.href,
+    type: favicons.svg?.type ?? defaultSvgIcon.type,
+  },
+];
+
+if (favicons.ico?.url) {
+  iconLinks.push({
+    rel: 'icon',
+    href: favicons.ico.url,
+    type: favicons.ico.type ?? 'image/x-icon',
+  });
+}
+
+if (favicons.png192?.url) {
+  iconLinks.push({
+    rel: 'icon',
+    href: favicons.png192.url,
+    type: favicons.png192.type ?? 'image/png',
+    sizes: '192x192',
+  });
+}
+
+if (favicons.png512?.url) {
+  iconLinks.push({
+    rel: 'icon',
+    href: favicons.png512.url,
+    type: favicons.png512.type ?? 'image/png',
+    sizes: '512x512',
+  });
+}
+
+const appleTouchIcon =
+  favicons.appleTouch?.url ??
+  favicons.png192?.url ??
+  favicons.png512?.url ??
+  favicons.svg?.url ??
+  defaultSvgIcon.href;
 ---
 
 <head>
@@ -42,5 +101,19 @@ const url = canonicalUrl;
   <meta name="twitter:image" content={image} />
 
   <!-- Icon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  {
+    iconLinks.map((link) => (
+      <link
+        rel={link.rel}
+        href={link.href}
+        type={link.type}
+        sizes={link.sizes}
+      />
+    ))
+  }
+  {
+    appleTouchIcon && (
+      <link rel="apple-touch-icon" href={appleTouchIcon} sizes="180x180" />
+    )
+  }
 </head>
