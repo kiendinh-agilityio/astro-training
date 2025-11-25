@@ -9,6 +9,7 @@
     "astro": "astro",
     "studio": "sanity dev",
     "studio:deploy": "sanity deploy",
+    "studio:build": "sanity build --env production",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
