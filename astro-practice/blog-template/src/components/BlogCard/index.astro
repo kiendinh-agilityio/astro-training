@@ -2,6 +2,7 @@
 import { Link, PortableText, LazyImage } from '@/components';
 import type { BlogPost } from '@/types';
 import { cn } from '@/utils';
+import './index.css';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -14,14 +15,14 @@ const { post, className } = Astro.props as BlogCardProps;
 <Link
   href={`/blog/${post.slug}`}
   className={cn(
-    'group block overflow-hidden rounded-xl transition-transform hover:scale-[1.02]',
+    'post-card group block overflow-hidden rounded-xl transition-transform hover:scale-[1.02]',
     className,
   )}
   aria-label={`Read article: ${post.title}`}
   target="_self"
 >
   <div
-    class="relative aspect-[387/343] w-full overflow-hidden rounded-xl 2xl:aspect-[433/384]"
+    class="post-card-image relative aspect-[387/343] w-full overflow-hidden rounded-xl 2xl:aspect-[433/384]"
   >
     <LazyImage
       src={post.image}
@@ -60,7 +61,7 @@ const { post, className } = Astro.props as BlogCardProps;
         value={post.date}
         fallback={post.date}
         blockKey={`blog-card-date-${post.id}`}
-        className="text-tertiary text-sm leading-4"
+        className="post-date text-tertiary text-sm leading-4"
       />
     </div>
   </>

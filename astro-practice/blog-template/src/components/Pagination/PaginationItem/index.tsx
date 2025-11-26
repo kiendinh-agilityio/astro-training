@@ -11,9 +11,10 @@ interface PaginationItemProps {
 const PaginationItem = ({ page, isActive, onClick }: PaginationItemProps) => {
   const handleClick = () => onClick(page);
 
-  const buttonClassName = isActive
-    ? 'bg-primary text-secondary cursor-default'
-    : 'text-primary hover:text-tertiary cursor-pointer';
+  // Active button styling based on theme
+  const activeButtonClassName = isActive
+    ? 'theme-pagination-active cursor-default'
+    : 'theme-pagination-inactive cursor-pointer';
 
   return (
     <button
@@ -23,7 +24,7 @@ const PaginationItem = ({ page, isActive, onClick }: PaginationItemProps) => {
       aria-current={isActive ? 'page' : undefined}
       className={cn(
         'flex h-10 w-10 items-center justify-center rounded text-base font-medium transition-colors',
-        buttonClassName,
+        activeButtonClassName,
       )}
     >
       {page}

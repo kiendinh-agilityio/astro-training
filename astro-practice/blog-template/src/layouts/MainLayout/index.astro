@@ -2,17 +2,36 @@
 import { Footer, Header } from '@/layouts';
 import BaseHead from '@/layouts/BaseHead/index.astro';
 import '@/styles/global.css';
+import {
+  getFinalTheme,
+  getCachedThemeSettings,
+  type Theme,
+} from '@/utils/theme';
 
-const headProps = Astro.props;
+interface MainLayoutProps {
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+  theme?: string | null;
+}
+
+const { theme: pageTheme, ...headProps } = Astro.props as MainLayoutProps;
+
+const themeSettings = await getCachedThemeSettings();
+const globalTheme = themeSettings.globalTheme;
+const finalTheme = getFinalTheme(globalTheme, pageTheme);
+const themeClass = `theme-${finalTheme}`;
+const bodyClass = finalTheme === 'christmas' ? 'christmas-mode' : '';
 ---
 
 <!doctype html>
 <html lang="en">
   <BaseHead {...headProps} />
 
-  <body>
+  <body class={bodyClass}>
     <Header />
-    <main class="min-h-screen">
+    <main class={`min-h-screen ${themeClass}`}>
       <slot />
     </main>
     <Footer />

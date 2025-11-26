@@ -1,4 +1,5 @@
 import { cn } from '@/utils';
+import './index.css';
 
 import PaginationItem from './PaginationItem';
 
@@ -27,7 +28,7 @@ const Pagination = ({
 
   return (
     <nav
-      className={cn('flex justify-center gap-2', className)}
+      className={cn('pagination-list flex justify-center gap-2', className)}
       aria-label="Pagination Navigation"
     >
       {pages.map((page) => (

@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+@layer components {
+  main.theme-christmas .trending-heading h2 {
+    color: #ffffff !important;
+    text-shadow: none;
+    font-family: var(--font-primary);
+  }
+}

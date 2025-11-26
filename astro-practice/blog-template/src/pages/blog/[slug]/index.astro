@@ -29,6 +29,7 @@ if (!post) {
   title={post.title ?? 'Blog Template'}
   description={post.introduction ?? 'Welcome to our blog'}
   url={Astro.url.href}
+  theme={post.theme}
 >
   <BlogSkeleton client:load>
     <BlogDetail post={post} />

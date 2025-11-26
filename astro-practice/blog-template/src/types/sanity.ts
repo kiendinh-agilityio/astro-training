@@ -25,6 +25,7 @@ export type SanityBlogPost = {
   content?: {
     sections?: SanityBlogSection[];
   };
+  theme?: string | null;
 };
 
 export type SanityFaviconAsset = {

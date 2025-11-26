@@ -18,7 +18,8 @@ export const BLOG_POST_FIELDS = groq`{
       country,
       listCountry
     }
-  }
+  },
+  theme
 }`;
 
 export const QUERY_ALL_POSTS = groq`

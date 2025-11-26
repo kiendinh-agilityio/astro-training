@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+import './index.css';
+
 import { AuthProvider } from '@/components';
 import { ROUTER } from '@/constants/router';
 import { useAuth } from '@/hooks/useAuth';
@@ -50,7 +52,7 @@ const NavbarContent = ({ items, className }: NavbarProps) => {
           ))}
         </ul>
         <button
-          className="bg-primary text-secondary w-32 cursor-pointer rounded px-3 py-2 text-sm font-medium hover:bg-neutral-700"
+          className="logout-button bg-primary text-secondary flex w-32 cursor-pointer items-center justify-center gap-2 rounded px-3 py-2 text-sm font-medium hover:bg-neutral-700"
           onClick={handleLogout}
           aria-label="Logout Button"
           disabled={isLoggingOut}
@@ -99,7 +101,7 @@ const NavbarContent = ({ items, className }: NavbarProps) => {
                 ))}
                 <li>
                   <button
-                    className="bg-primary text-secondary hover:bg-neutral-70 w-full cursor-pointer rounded px-3 py-2 text-center text-sm font-medium disabled:opacity-50"
+                    className="logout-button bg-primary text-secondary hover:bg-neutral-70 flex w-full cursor-pointer items-center justify-center gap-2 rounded px-3 py-2 text-center text-sm font-medium disabled:opacity-50"
                     onClick={handleLogout}
                     aria-label="Logout Button"
                     disabled={isLoggingOut}

@@ -32,4 +32,5 @@ export const transformSanityBlogPost = (doc: SanityBlogPost): BlogPost => ({
   },
   image: doc.image ?? doc.mainImage ?? null,
   featured: Boolean(doc.featured),
+  theme: doc.theme ?? null,
 });

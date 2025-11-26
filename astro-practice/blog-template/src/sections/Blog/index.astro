@@ -2,6 +2,7 @@
 import { LayoutContainer } from '@/layouts';
 import { PortableText, BlogCard, Paragraph, BlogList } from '@/components';
 import type { BlogPost } from '@/types';
+import './index.css';
 
 interface BlogSectionProps {
   posts?: BlogPost[];
@@ -15,7 +16,7 @@ const totalPosts = posts.length;
 
 <LayoutContainer className="py-8 lg:py-14">
   <section id="blog" class="w-full">
-    <div class="mb-8 text-center lg:mb-12">
+    <div class="trending-heading mb-8 text-center lg:mb-12">
       <PortableText
         value="Trending Post"
         fallback="Trending Post"

@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+@layer components {
+  main.theme-dark .theme-pagination-active,
+  main:not([class*='theme-']):not(.no-theme) .theme-pagination-active {
+    background-color: #f3f3f3 !important;
+    color: #212121 !important;
+  }
+
+  main.theme-dark .theme-pagination-inactive,
+  main:not([class*='theme-']):not(.no-theme) .theme-pagination-inactive {
+    color: var(--theme-text) !important;
+  }
+
+  main.theme-light .theme-pagination-active {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+  }
+
+  main.theme-light .theme-pagination-inactive {
+    color: var(--theme-text) !important;
+  }
+
+  main.theme-christmas .theme-pagination-active {
+    background-color: var(--theme-surface) !important;
+    color: #ffffff !important;
+  }
+
+  main.theme-christmas .theme-pagination-inactive {
+    color: var(--theme-text) !important;
+  }
+}
