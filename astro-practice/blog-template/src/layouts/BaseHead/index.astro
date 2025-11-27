@@ -6,7 +6,7 @@ const siteSettings = await getCachedSiteSettings();
 const {
   title = siteSettings.title,
   description = siteSettings.description,
-  image = '/banner.webp',
+  image = siteSettings.image,
 } = Astro.props;
 
 const siteUrl =

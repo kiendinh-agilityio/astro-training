@@ -22,6 +22,14 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'image',
+      title: 'Default Share Image',
+      type: 'image',
+      description:
+        'Used for Open Graph and Twitter sharing cards when a page does not provide a custom image.',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'favicon',
       title: 'Favicon (SVG)',
       type: 'file',

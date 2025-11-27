@@ -1,9 +1,11 @@
 ---
 import { Logo, Navbar } from '@/components';
 import { LayoutContainer } from '@/layouts';
-import { NAVBAR_ITEMS } from '@/constants';
+import { getCachedMainNavigation } from '@/utils';
 
 const { showNavbar = true } = Astro.props;
+const navigationItems = showNavbar ? await getCachedMainNavigation() : [];
+const shouldRenderNavbar = showNavbar && navigationItems.length > 0;
 ---
 
 <header class="sticky top-0 z-50 w-full bg-white shadow-lg">
@@ -12,7 +14,7 @@ const { showNavbar = true } = Astro.props;
       <h1 class="max-w-fit">
         <Logo />
       </h1>
-      {showNavbar && <Navbar client:load items={NAVBAR_ITEMS} />}
+      {shouldRenderNavbar && <Navbar client:load items={navigationItems} />}
     </div>
   </LayoutContainer>
 </header>
