@@ -6,7 +6,7 @@
     color: var(--christmas-text-light) !important;
     border: 2px solid var(--christmas-gold-highlight);
     @apply inline-flex items-center gap-1 transition duration-200;
-    width: 10rem;
+    width: 10rem !important;
   }
 
   body.christmas-mode .logout-button:hover {
