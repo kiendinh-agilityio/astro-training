@@ -18,7 +18,7 @@ export { default as Logo } from './Logo/index.astro';
 export { default as Navbar } from './Navbar/index';
 export { default as Pagination } from './Pagination/index';
 export { default as Paragraph } from './Paragraph/index.astro';
+export { default as PortableText } from './PortableText/index.astro';
 export { default as PostMeta } from './PostMeta/index.astro';
 export { default as ResponsiveImages } from './ResponsiveImages/index.astro';
 export { default as SocialList } from './SocialList/index.astro';
-export { default as PortableText } from './PortableText/index.astro';

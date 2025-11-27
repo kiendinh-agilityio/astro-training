@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+@layer components {
+  main.theme-christmas .post-card {
+    border: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.15);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  main.theme-christmas .post-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
+  }
+
+  main.theme-christmas .post-date {
+    color: var(--christmas-red-accent) !important;
+    font-weight: 600;
+  }
+
+  main.theme-christmas .post-card-image {
+    border: 3px solid var(--christmas-red-accent);
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+    box-shadow: 0 4px 14px rgba(183, 28, 28, 0.35);
+  }
+
+  main.theme-christmas .post-card:hover .post-card-image {
+    border-color: var(--christmas-gold-highlight);
+    box-shadow: 0 10px 22px rgba(255, 215, 0, 0.45);
+  }
+}

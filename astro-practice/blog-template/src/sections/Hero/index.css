@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+@layer components {
+  main.theme-christmas .featured-post-card {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+  }
+
+  main.theme-christmas .featured-post-title,
+  main.theme-light .featured-post-title {
+    color: #ffffff !important;
+    font-family: var(--font-primary);
+    text-shadow: none;
+  }
+
+  main.theme-light .featured-post-overlay,
+  main.theme-light .featured-post-overlay * {
+    color: #ffffff !important;
+  }
+}

@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+@layer components {
+  body.christmas-mode .logout-button {
+    background-color: var(--christmas-red-accent) !important;
+    color: var(--christmas-text-light) !important;
+    border: 2px solid var(--christmas-gold-highlight);
+    @apply inline-flex items-center gap-1 transition duration-200;
+    width: 10rem;
+  }
+
+  body.christmas-mode .logout-button:hover {
+    background-color: #a00000 !important;
+    transform: translateY(-1px);
+  }
+
+  body.christmas-mode .logout-button::before {
+    content: '🎅';
+    font-size: 1.1rem;
+  }
+}

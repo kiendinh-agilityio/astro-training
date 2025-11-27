@@ -70,5 +70,21 @@ export default defineType({
       type: 'blogContent',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'theme',
+      title: 'Page Theme (Override)',
+      type: 'string',
+      description:
+        'Theme specific to this blog site. Leave blank to use the Global Theme from Site Settings.',
+      options: {
+        list: [
+          { title: 'Use Global Theme', value: '' },
+          { title: 'Dark', value: 'dark' },
+          { title: 'Light', value: 'light' },
+          { title: 'Christmas', value: 'christmas' },
+        ],
+      },
+      initialValue: '',
+    }),
   ],
 });

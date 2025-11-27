@@ -1,13 +1,22 @@
 @import 'tailwindcss';
 
 @theme {
+  /* Default theme variables (Dark) */
   --color-primary: #212121;
   --color-secondary: #f4f4f4;
   --color-tertiary: #757575;
   --color-navy: #383838;
   --color-dark: #30333c;
-
   --color-gray-450: #a8a8a8;
+
+  /* Theme colors - will be overridden by theme classes */
+  --theme-bg: #1a1a1a;
+  --theme-surface: #2a2a2a;
+  --theme-surface-light: #3a3a3a;
+  --theme-text: #ffffff;
+  --theme-text-secondary: #a8a8a8;
+  --theme-primary: #5c6aff;
+  --theme-accent: #5c6aff;
 
   /* Font family */
   --font-primary: Montserrat, 'sans-serif';
@@ -17,6 +26,250 @@
 
   /* Box shadow */
   --shadow-base: 5px 5px 34px 0px rgba(0, 0, 0, 0.25);
+}
+
+:root {
+  --christmas-bg-dark: #1a321a;
+  --christmas-red-accent: #b71c1c;
+  --christmas-gold-highlight: #ffd700;
+  --christmas-text-light: #f0f0f0;
+  --christmas-silver-subtle: #c0c0c0;
+  --christmas-font-serif: 'Playfair Display', Lora, serif;
+}
+
+/* Dark Theme (Default) - Only apply to main content */
+/* Exclude main with no-theme class (login page) */
+main.theme-dark,
+main:not([class*='theme-']):not(.no-theme) {
+  --theme-bg: #1a1a1a;
+  --theme-surface: #2a2a2a;
+  --theme-surface-light: #3a3a3a;
+  --theme-text: #ffffff;
+  --theme-text-secondary: #a8a8a8;
+  --theme-primary: #5c6aff;
+  --theme-accent: #5c6aff;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+}
+
+/* Light Theme - Only apply to main content */
+main.theme-light {
+  --theme-bg: #ffffff;
+  --theme-surface: #f3f3f3;
+  --theme-surface-light: #e5e5e5;
+  --theme-text: #212121;
+  --theme-text-secondary: #757575;
+  --theme-primary: #1a73e8;
+  --theme-accent: #1a73e8;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+}
+
+/* Christmas Theme - Only apply to main content */
+main.theme-christmas {
+  --theme-bg: #0a2a0a;
+  --theme-surface: #145214;
+  --theme-surface-light: #1f7a1f;
+  --theme-text: #ffffff;
+  --theme-text-secondary: #a8d5a8;
+  --theme-primary: #d72638;
+  --theme-accent: #fff200;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  border-radius: 24px;
+  padding: 24px 0 48px;
+  background-image: radial-gradient(
+    circle at 25% 25%,
+    rgba(255, 255, 255, 0.08),
+    transparent 45%
+  );
+}
+
+/* Force text colors for all elements inside themed main */
+/* Exclude main with no-theme class (login page) */
+main.theme-dark,
+main.theme-dark *,
+main:not([class*='theme-']):not(.no-theme),
+main:not([class*='theme-']):not(.no-theme) * {
+  color: var(--theme-text) !important;
+}
+
+main.theme-light,
+main.theme-light * {
+  color: var(--theme-text) !important;
+}
+
+main.theme-christmas,
+main.theme-christmas * {
+  color: var(--theme-text) !important;
+}
+
+/* Override specific text utility classes within themed main */
+/* Exclude main with no-theme class (login page) */
+main.theme-dark .text-primary,
+main.theme-dark .text-dark,
+main:not([class*='theme-']):not(.no-theme) .text-primary,
+main:not([class*='theme-']):not(.no-theme) .text-dark {
+  color: var(--theme-text) !important;
+}
+
+main.theme-light .text-primary,
+main.theme-light .text-dark {
+  color: var(--theme-text) !important;
+}
+
+main.theme-christmas .text-primary,
+main.theme-christmas .text-dark {
+  color: var(--theme-text) !important;
+}
+
+/* Allow specific overrides for secondary text */
+/* Exclude main with no-theme class (login page) */
+main.theme-dark .text-tertiary,
+main.theme-dark .text-secondary,
+main:not([class*='theme-']):not(.no-theme) .text-tertiary,
+main:not([class*='theme-']):not(.no-theme) .text-secondary {
+  color: var(--theme-text-secondary) !important;
+}
+
+main.theme-light .text-tertiary,
+main.theme-light .text-secondary {
+  color: var(--theme-text-secondary) !important;
+}
+
+main.theme-christmas .text-tertiary,
+main.theme-christmas .text-secondary {
+  color: var(--theme-text-secondary) !important;
+}
+
+/* Christmas immersive styling */
+body.christmas-mode {
+  background-color: var(--christmas-bg-dark);
+  color: var(--christmas-text-light);
+}
+
+body.christmas-mode::before,
+body.christmas-mode::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      3px 3px at 10px 10px,
+      rgba(255, 255, 255, 0.7) 60%,
+      transparent 61%
+    ),
+    radial-gradient(
+      2px 2px at 25px 25px,
+      rgba(255, 255, 255, 0.45) 60%,
+      transparent 61%
+    ),
+    radial-gradient(
+      4px 4px at 50px 50px,
+      rgba(255, 255, 255, 0.8) 60%,
+      transparent 61%
+    );
+  background-size:
+    60px 60px,
+    90px 90px,
+    140px 140px;
+  animation: snowfall-fast 8s linear infinite;
+  opacity: 0.45;
+  z-index: 0;
+}
+
+body.christmas-mode::after {
+  background-image:
+    radial-gradient(
+      5px 5px at 30px 30px,
+      rgba(255, 255, 255, 0.8) 60%,
+      transparent 61%
+    ),
+    radial-gradient(
+      3px 3px at 60px 60px,
+      rgba(255, 255, 255, 0.5) 60%,
+      transparent 61%
+    ),
+    radial-gradient(
+      2px 2px at 90px 90px,
+      rgba(255, 255, 255, 0.35) 60%,
+      transparent 61%
+    );
+  background-size:
+    70px 70px,
+    110px 110px,
+    160px 160px;
+  animation: snowfall-slow 12s linear infinite;
+  opacity: 0.4;
+  filter: blur(0.4px);
+}
+
+@keyframes snowfall-fast {
+  0% {
+    transform: translateY(-5%);
+  }
+  100% {
+    transform: translateY(15%);
+  }
+}
+
+@keyframes snowfall-slow {
+  0% {
+    transform: translateY(-15%);
+  }
+  100% {
+    transform: translateY(20%);
+  }
+}
+
+main.theme-christmas .featured-post-card {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+  border: 3px solid rgba(255, 255, 255, 0.15);
+}
+
+main.theme-christmas .featured-post-title {
+  color: #ffffff !important;
+  font-family: var(--font-primary);
+  text-shadow: none;
+}
+
+main.theme-christmas .trending-heading h2 {
+  color: #ffffff !important;
+  text-shadow: none;
+  font-family: var(--font-primary);
+}
+
+main.theme-christmas .post-card {
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  background-color: rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+main.theme-christmas .post-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
+}
+
+main.theme-christmas .post-date {
+  color: var(--christmas-red-accent) !important;
+  font-weight: 600;
+}
+
+main.theme-christmas .post-card-image {
+  border: 3px solid var(--christmas-red-accent);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(183, 28, 28, 0.35);
+}
+
+main.theme-christmas .post-card:hover .post-card-image {
+  border-color: var(--christmas-gold-highlight);
+  box-shadow: 0 10px 22px rgba(255, 215, 0, 0.45);
 }
 
 /* MonaSans: 400 Regular, 500 Medium, 600 SemiBold, 700 Bold */
@@ -55,7 +308,6 @@
 @layer base {
   html {
     font-family: var(--font-primary);
-    color: var(--color-primary);
     scroll-behavior: smooth;
   }
 
@@ -64,5 +316,13 @@
     margin: 0;
     width: 100%;
     min-height: 100vh;
+    background-color: #ffffff; /* Default white background */
+  }
+
+  /* Header and Footer keep default styling - no theme */
+  header,
+  footer {
+    background-color: #ffffff;
+    color: #212121;
   }
 }

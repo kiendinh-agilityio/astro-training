@@ -8,3 +8,4 @@ export * from './loginSchema';
 export * from './session';
 export * from './site';
 export * from './skeleton';
+export * from './theme';

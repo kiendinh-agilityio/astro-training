@@ -55,6 +55,7 @@ export interface BlogPost {
   };
   conclusion?: string;
   featured?: boolean;
+  theme?: string | null;
 }
 
 export type BlogContent = BlogPost['content']['sections'][number];
