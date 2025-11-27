@@ -14,6 +14,8 @@ export const sanityClient = createClient({
   dataset,
   apiVersion,
   token,
-  useCdn: import.meta.env.PROD,
+  // Disable CDN to get fresh data immediately after publish
+  // In-memory cache in utils/blog.ts will still provide performance benefits
+  useCdn: false,
   perspective: 'published',
 });
