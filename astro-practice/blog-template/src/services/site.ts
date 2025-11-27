@@ -1,22 +1,26 @@
 import { QUERY_MAIN_NAVIGATION, QUERY_SITE_SETTINGS } from '@/queries/site';
-import type {
-  NavbarItem,
-  SanityFaviconAsset,
-  SanityMainNavigation,
-  SanityMainNavigationItem,
-  SanitySiteSettings,
-  SiteSettings,
+import {
+  DEFAULT_LANGUAGE,
+  type NavbarItem,
+  type SanityFaviconAsset,
+  type SanityMainNavigation,
+  type SanityMainNavigationItem,
+  type SanitySiteSettings,
+  type SiteSettings,
 } from '@/types';
 
 import { sanityClient } from './sanityClient';
 
-const DEFAULT_SETTINGS: Pick<SiteSettings, 'title' | 'description' | 'image'> =
-  {
-    title: 'Blog Template',
-    description:
-      'A Foodie’s Guide to Europe: Best Culinary Experiences by Country',
-    image: '/banner.webp',
-  };
+const DEFAULT_SETTINGS: Pick<
+  SiteSettings,
+  'title' | 'description' | 'image' | 'language'
+> = {
+  title: 'Blog Template',
+  description:
+    'A Foodie’s Guide to Europe: Best Culinary Experiences by Country',
+  image: '/banner.webp',
+  language: DEFAULT_LANGUAGE,
+};
 
 const mapFavicon = (favicon?: SanityFaviconAsset | null) =>
   favicon?.url
@@ -36,6 +40,7 @@ export const fetchSiteSettings = async (): Promise<SiteSettings> => {
     description: settings?.description ?? DEFAULT_SETTINGS.description,
     image: settings?.image ?? DEFAULT_SETTINGS.image,
     favicon: mapFavicon(settings?.favicon ?? null),
+    language: settings?.language ?? DEFAULT_SETTINGS.language,
   };
 };
 

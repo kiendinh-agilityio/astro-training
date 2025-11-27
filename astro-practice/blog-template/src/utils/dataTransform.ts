@@ -1,30 +1,76 @@
-import type { BlogPost, SanityBlogPost, SanityBlogSection } from '@/types';
+import type {
+  BlogPost,
+  LocalizedField,
+  SanityBlogPost,
+  SanityBlogSection,
+  SupportedLanguage,
+} from '@/types';
+import { SUPPORTED_LANGUAGES } from '@/types';
 import { formatDate } from '@/utils';
 
-export const transformBlogSections = (sections?: SanityBlogSection[]) =>
+const getLocalePriority = (language: SupportedLanguage) => [
+  language,
+  ...SUPPORTED_LANGUAGES.filter((locale) => locale !== language),
+];
+
+const resolveLocalizedString = (
+  field: LocalizedField<string> | undefined,
+  language: SupportedLanguage,
+) => {
+  const localeOrder = getLocalePriority(language);
+
+  for (const locale of localeOrder) {
+    const value = field?.[locale];
+    if (typeof value === 'string' && value.trim().length > 0) {
+      return value;
+    }
+  }
+
+  return undefined;
+};
+
+export const transformBlogSections = (
+  sections: SanityBlogSection[] | undefined,
+  language: SupportedLanguage,
+) =>
   Array.isArray(sections)
     ? sections
-        .filter((section) => section?.country)
-        .map((section) => ({
-          country: section.country ?? '',
-          listCountry: section.listCountry?.filter(Boolean) ?? [],
-        }))
+        .map((section) => {
+          const country = resolveLocalizedString(section?.country, language);
+          if (!country) return null;
+
+          const listCountry =
+            section.listCountry
+              ?.map((entry) => resolveLocalizedString(entry, language))
+              .filter((entry): entry is string => Boolean(entry)) ?? [];
+
+          return {
+            country,
+            listCountry,
+          };
+        })
+        .filter((section): section is BlogPost['content']['sections'][number] =>
+          Boolean(section),
+        )
     : [];
 
-export const transformSanityBlogPost = (doc: SanityBlogPost): BlogPost => ({
+export const transformSanityBlogPost = (
+  doc: SanityBlogPost,
+  language: SupportedLanguage,
+): BlogPost => ({
   id: doc._id,
   slug: doc.slug ?? '',
-  title: doc.title ?? 'Untitled',
-  readTime: doc.readTime ?? '',
+  title: resolveLocalizedString(doc.title, language) ?? 'Untitled',
+  readTime: resolveLocalizedString(doc.readTime, language) ?? '',
   date: formatDate(doc.publishedDate),
-  introduction: doc.introduction ?? '',
+  introduction: resolveLocalizedString(doc.introduction, language) ?? '',
   mainImage: doc.mainImage ?? doc.image ?? null,
-  subtitle: doc.subtitle ?? '',
+  subtitle: resolveLocalizedString(doc.subtitle, language) ?? '',
   content: {
     type: 'countries',
-    sections: transformBlogSections(doc.content?.sections),
+    sections: transformBlogSections(doc.content?.sections, language),
   },
-  conclusion: doc.conclusion ?? '',
+  conclusion: resolveLocalizedString(doc.conclusion, language) ?? '',
   author: {
     name: doc.author?.name ?? 'Unknown Author',
     avatar: doc.author?.avatar ?? null,

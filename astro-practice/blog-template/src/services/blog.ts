@@ -3,19 +3,22 @@ import {
   QUERY_ALL_SLUGS,
   QUERY_POST_BY_SLUG,
 } from '@/queries/blog';
-import type { BlogPost, SanityBlogPost } from '@/types';
+import type { BlogPost, SanityBlogPost, SupportedLanguage } from '@/types';
 import { transformSanityBlogPost } from '@/utils';
 
 import { sanityClient } from './sanityClient';
 
-export const fetchBlogPosts = async (): Promise<BlogPost[]> => {
+export const fetchBlogPosts = async (
+  language: SupportedLanguage,
+): Promise<BlogPost[]> => {
   const posts = await sanityClient.fetch<SanityBlogPost[]>(QUERY_ALL_POSTS);
 
-  return posts.map(transformSanityBlogPost);
+  return posts.map((post) => transformSanityBlogPost(post, language));
 };
 
 export const fetchBlogPostBySlug = async (
   slug: string,
+  language: SupportedLanguage,
 ): Promise<BlogPost | null> => {
   if (!slug) return null;
 
@@ -24,7 +27,7 @@ export const fetchBlogPostBySlug = async (
     { slug },
   );
 
-  return post ? transformSanityBlogPost(post) : null;
+  return post ? transformSanityBlogPost(post, language) : null;
 };
 
 export const fetchBlogSlugs = async (): Promise<string[]> => {

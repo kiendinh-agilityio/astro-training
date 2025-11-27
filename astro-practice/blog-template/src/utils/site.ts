@@ -1,5 +1,5 @@
 import { fetchMainNavigation, fetchSiteSettings } from '@/services/site';
-import type { NavbarItem, SiteSettings } from '@/types';
+import type { NavbarItem, SiteSettings, SupportedLanguage } from '@/types';
 
 let siteSettingsCache: SiteSettings | null = null;
 let navigationCache: NavbarItem[] | null = null;
@@ -23,3 +23,8 @@ export const getCachedMainNavigation = async (): Promise<NavbarItem[]> => {
 };
 
 export const invalidateMainNavigationCache = () => (navigationCache = null);
+
+export const getActiveSiteLanguage = async (): Promise<SupportedLanguage> => {
+  const settings = await getCachedSiteSettings();
+  return settings.language;
+};
