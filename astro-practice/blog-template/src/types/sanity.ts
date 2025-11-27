@@ -36,7 +36,20 @@ export type SanityFaviconAsset = {
 export type SanitySiteSettings = {
   title?: string;
   description?: string;
+  image?: string | null;
   favicon?: SanityFaviconAsset;
+};
+
+export type SanityMainNavigationItem = {
+  label?: string;
+  href?: string;
+  ariaLabel?: string;
+  isExternal?: boolean;
+  disabled?: boolean;
+};
+
+export type SanityMainNavigation = {
+  items?: SanityMainNavigationItem[];
 };
 
 export type SiteFaviconAsset = {
@@ -47,5 +60,6 @@ export type SiteFaviconAsset = {
 export type SiteSettings = {
   title: string;
   description: string;
+  image?: string;
   favicon?: SiteFaviconAsset;
 };
