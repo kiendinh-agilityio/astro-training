@@ -13,24 +13,16 @@ const getLocalePriority = (language: SupportedLanguage) => [
   ...SUPPORTED_LANGUAGES.filter((locale) => locale !== language),
 ];
 
-const resolveLocalizedString = (
+const getLocalizedValue = (
   field: LocalizedField<string> | string | undefined,
   language: SupportedLanguage,
-) => {
-  // Handle legacy string format (backward compatibility)
-  if (typeof field === 'string' && field.trim().length > 0) {
-    return field;
-  }
+): string | undefined => {
+  if (typeof field === 'string' && field.trim()) return field;
 
-  // Handle LocalizedField format
   if (field && typeof field === 'object') {
-    const localeOrder = getLocalePriority(language);
-
-    for (const locale of localeOrder) {
+    for (const locale of getLocalePriority(language)) {
       const value = field[locale];
-      if (typeof value === 'string' && value.trim().length > 0) {
-        return value;
-      }
+      if (typeof value === 'string' && value.trim()) return value;
     }
   }
 
@@ -40,27 +32,23 @@ const resolveLocalizedString = (
 export const transformBlogSections = (
   sections: SanityBlogSection[] | undefined,
   language: SupportedLanguage,
-) =>
-  Array.isArray(sections)
-    ? sections
-        .map((section) => {
-          const country = resolveLocalizedString(section?.country, language);
-          if (!country) return null;
+): BlogPost['content']['sections'] =>
+  sections
+    ?.map((section) => {
+      const country = getLocalizedValue(section?.country, language);
+      if (!country) return null;
 
-          const listCountry =
-            section.listCountry
-              ?.map((entry) => resolveLocalizedString(entry, language))
-              .filter((entry): entry is string => Boolean(entry)) ?? [];
+      const listCountry =
+        section.listCountry
+          ?.map((entry) => getLocalizedValue(entry, language))
+          .filter((entry): entry is string => Boolean(entry?.trim())) ?? [];
 
-          return {
-            country,
-            listCountry,
-          };
-        })
-        .filter((section): section is BlogPost['content']['sections'][number] =>
-          Boolean(section),
-        )
-    : [];
+      return { country, listCountry };
+    })
+    .filter(
+      (section): section is { country: string; listCountry: string[] } =>
+        section !== null,
+    ) ?? [];
 
 export const transformSanityBlogPost = (
   doc: SanityBlogPost,
@@ -68,22 +56,22 @@ export const transformSanityBlogPost = (
 ): BlogPost => ({
   id: doc._id,
   slug: doc.slug ?? '',
-  title: resolveLocalizedString(doc.title, language) ?? 'Untitled',
-  readTime: resolveLocalizedString(doc.readTime, language) ?? '',
+  title: getLocalizedValue(doc.title, language) ?? 'Untitled',
+  readTime: getLocalizedValue(doc.readTime, language),
   date: formatDate(doc.publishedDate, language),
-  introduction: resolveLocalizedString(doc.introduction, language) ?? '',
+  introduction: getLocalizedValue(doc.introduction, language) ?? '',
   mainImage: doc.mainImage ?? doc.image ?? null,
-  subtitle: resolveLocalizedString(doc.subtitle, language) ?? '',
+  subtitle: getLocalizedValue(doc.subtitle, language),
   content: {
     type: 'countries',
     sections: transformBlogSections(doc.content?.sections, language),
   },
-  conclusion: resolveLocalizedString(doc.conclusion, language) ?? '',
+  conclusion: getLocalizedValue(doc.conclusion, language),
   author: {
     name: doc.author?.name ?? 'Unknown Author',
     avatar: doc.author?.avatar ?? null,
     role:
-      resolveLocalizedString(doc.author?.role, language) ??
+      getLocalizedValue(doc.author?.role, language) ??
       (language === 'vi' ? 'Tác giả' : 'Author'),
   },
   image: doc.image ?? doc.mainImage ?? null,

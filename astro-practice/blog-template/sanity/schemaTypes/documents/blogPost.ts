@@ -34,11 +34,11 @@ export default defineType({
     defineField({
       name: 'readTime',
       type: 'localeString',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'introduction',
       type: 'localeText',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'subtitle',
@@ -60,6 +60,7 @@ export default defineType({
       title: 'Main Image',
       type: 'image',
       options: { hotspot: true },
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'author',

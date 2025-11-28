@@ -10,6 +10,11 @@ interface Props {
 }
 
 const { title, readTime, date, className }: Props = Astro.props;
+const normalizedReadTime =
+  typeof readTime === 'string' && readTime.trim().length > 0
+    ? readTime.trim()
+    : undefined;
+const hasReadTime = Boolean(normalizedReadTime);
 ---
 
 <div class={cn('flex-1 text-center', className)}>
@@ -23,17 +28,24 @@ const { title, readTime, date, className }: Props = Astro.props;
   <div
     class="text-tertiary flex flex-row items-center justify-center gap-6 font-medium"
   >
-    <div class="flex items-center gap-2">
-      <Icons.Book />
-      <PortableText
-        value={readTime || '—'}
-        fallback="—"
-        blockKey={`overview-readtime-${title}`}
-        className="text-sm leading-5 lg:text-base lg:leading-6"
-      />
-    </div>
-    <span class="h-[12px] w-[12px] rounded-full border-[#f2f2f2] bg-[#f2f2f2]"
-    ></span>
+    {
+      hasReadTime && normalizedReadTime && (
+        <div class="flex items-center gap-2">
+          <Icons.Book />
+          <PortableText
+            value={normalizedReadTime}
+            fallback={normalizedReadTime}
+            blockKey={`overview-readtime-${title}`}
+            className="text-sm leading-5 lg:text-base lg:leading-6"
+          />
+        </div>
+      )
+    }
+    {
+      hasReadTime && (
+        <span class="h-[12px] w-[12px] rounded-full border-[#f2f2f2] bg-[#f2f2f2]" />
+      )
+    }
     <div class="flex items-center gap-2">
       <Icons.Calendar />
       <PortableText
