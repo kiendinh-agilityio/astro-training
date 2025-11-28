@@ -1,31 +1,53 @@
 import { fetchBlogPostBySlug, fetchBlogPosts } from '@/services/blog';
-import type { BlogPost } from '@/types';
+import type { BlogPost, SupportedLanguage } from '@/types';
 
-let blogCache: BlogPost[] | null = null;
+import { getActiveSiteLanguage } from './site';
 
-const loadBlogPosts = async (): Promise<BlogPost[]> => {
-  if (import.meta.env.DEV || !blogCache) {
-    blogCache = await fetchBlogPosts();
-  }
+type BlogCache = Partial<Record<SupportedLanguage, BlogPost[]>>;
 
-  return blogCache;
+let blogCache: BlogCache = {};
+
+const resolveLanguage = async (
+  language?: SupportedLanguage,
+  cookies?: { get: (name: string) => { value: string } | undefined },
+): Promise<SupportedLanguage> => {
+  if (language) return language;
+  return getActiveSiteLanguage(cookies);
 };
 
-export const getCachedBlogPosts = async (): Promise<BlogPost[]> =>
-  loadBlogPosts();
+const loadBlogPosts = async (
+  language: SupportedLanguage,
+): Promise<BlogPost[]> => {
+  if (import.meta.env.DEV || !blogCache[language]) {
+    blogCache[language] = await fetchBlogPosts(language);
+  }
+
+  return blogCache[language] ?? [];
+};
+
+export const getCachedBlogPosts = async (
+  language?: SupportedLanguage,
+  cookies?: { get: (name: string) => { value: string } | undefined },
+): Promise<BlogPost[]> => {
+  const resolvedLang = await resolveLanguage(language, cookies);
+  return loadBlogPosts(resolvedLang);
+};
 
 export const getBlogPostBySlug = async (
   slug: string,
+  language?: SupportedLanguage,
+  cookies?: { get: (name: string) => { value: string } | undefined },
 ): Promise<BlogPost | null> => {
   if (!slug) return null;
 
-  const posts = await loadBlogPosts();
+  const resolvedLang = await resolveLanguage(language, cookies);
+  const posts = await loadBlogPosts(resolvedLang);
   const cached = posts.find((post) => post.slug === slug);
   if (cached) return cached;
 
-  return fetchBlogPostBySlug(slug);
+  return fetchBlogPostBySlug(slug, resolvedLang);
 };
 
 export const invalidateBlogCache = () => {
-  blogCache = null;
+  blogCache = {};
 };

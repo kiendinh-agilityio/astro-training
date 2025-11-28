@@ -2,6 +2,7 @@
 import { Footer, Header } from '@/layouts';
 import BaseHead from '@/layouts/BaseHead/index.astro';
 import '@/styles/global.css';
+import { getActiveSiteLanguage, getCachedSiteSettings } from '@/utils';
 import {
   getFinalTheme,
   getCachedThemeSettings,
@@ -18,15 +19,20 @@ interface MainLayoutProps {
 
 const { theme: pageTheme, ...headProps } = Astro.props as MainLayoutProps;
 
-const themeSettings = await getCachedThemeSettings();
+const activeLanguage = await getActiveSiteLanguage(Astro.cookies);
+const [themeSettings, siteSettings] = await Promise.all([
+  getCachedThemeSettings(),
+  getCachedSiteSettings(activeLanguage),
+]);
 const globalTheme = themeSettings.globalTheme;
 const finalTheme = getFinalTheme(globalTheme, pageTheme);
 const themeClass = `theme-${finalTheme}`;
 const bodyClass = finalTheme === 'christmas' ? 'christmas-mode' : '';
+const htmlLang = activeLanguage;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <BaseHead {...headProps} />
 
   <body class={bodyClass}>

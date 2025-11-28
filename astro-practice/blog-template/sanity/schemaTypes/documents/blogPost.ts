@@ -1,5 +1,7 @@
 import { defineField, defineType } from 'sanity';
 
+import type { SanityDocument } from 'sanity';
+
 export default defineType({
   name: 'blogPost',
   title: 'Blog Post',
@@ -7,13 +9,16 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      type: 'string',
+      type: 'localeString',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'slug',
       type: 'slug',
-      options: { source: 'title', maxLength: 96 },
+      options: {
+        source: (doc: SanityDocument) => (doc as any)?.title?.en ?? 'post',
+        maxLength: 96,
+      },
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -28,23 +33,20 @@ export default defineType({
     }),
     defineField({
       name: 'readTime',
-      type: 'string',
+      type: 'localeString',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'introduction',
-      type: 'text',
-      rows: 4,
+      type: 'localeText',
     }),
     defineField({
       name: 'subtitle',
-      type: 'text',
-      rows: 3,
+      type: 'localeText',
     }),
     defineField({
       name: 'conclusion',
-      type: 'text',
-      rows: 4,
+      type: 'localeText',
     }),
     defineField({
       name: 'thumbnail',
@@ -87,4 +89,18 @@ export default defineType({
       initialValue: '',
     }),
   ],
+  preview: {
+    select: {
+      titleEn: 'title.en',
+      titleVi: 'title.vi',
+      media: 'thumbnail',
+    },
+    prepare({ titleEn, titleVi, media }) {
+      return {
+        title: titleEn || titleVi || 'Untitled',
+        subtitle: titleVi && titleEn ? titleVi : undefined,
+        media,
+      };
+    },
+  },
 });

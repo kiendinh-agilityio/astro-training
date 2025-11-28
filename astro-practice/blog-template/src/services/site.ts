@@ -1,22 +1,29 @@
 import { QUERY_MAIN_NAVIGATION, QUERY_SITE_SETTINGS } from '@/queries/site';
-import type {
-  NavbarItem,
-  SanityFaviconAsset,
-  SanityMainNavigation,
-  SanityMainNavigationItem,
-  SanitySiteSettings,
-  SiteSettings,
+import {
+  DEFAULT_LANGUAGE,
+  type LocalizedField,
+  type NavbarItem,
+  SUPPORTED_LANGUAGES,
+  type SanityFaviconAsset,
+  type SanityMainNavigation,
+  type SanityMainNavigationItem,
+  type SanitySiteSettings,
+  type SiteSettings,
+  type SupportedLanguage,
 } from '@/types';
 
 import { sanityClient } from './sanityClient';
 
-const DEFAULT_SETTINGS: Pick<SiteSettings, 'title' | 'description' | 'image'> =
-  {
-    title: 'Blog Template',
-    description:
-      'A Foodie’s Guide to Europe: Best Culinary Experiences by Country',
-    image: '/banner.webp',
-  };
+const DEFAULT_SETTINGS: Pick<
+  SiteSettings,
+  'title' | 'description' | 'image' | 'language'
+> = {
+  title: 'Blog Template',
+  description:
+    'A Foodie’s Guide to Europe: Best Culinary Experiences by Country',
+  image: '/banner.webp',
+  language: DEFAULT_LANGUAGE,
+};
 
 const mapFavicon = (favicon?: SanityFaviconAsset | null) =>
   favicon?.url
@@ -26,16 +33,40 @@ const mapFavicon = (favicon?: SanityFaviconAsset | null) =>
       }
     : undefined;
 
-export const fetchSiteSettings = async (): Promise<SiteSettings> => {
+const resolveLocalizedString = (
+  field: LocalizedField<string> | undefined,
+  language: SupportedLanguage,
+): string | undefined => {
+  const localeOrder = [
+    language,
+    ...SUPPORTED_LANGUAGES.filter((locale) => locale !== language),
+  ];
+
+  for (const locale of localeOrder) {
+    const value = field?.[locale];
+    if (typeof value === 'string' && value.trim().length > 0) {
+      return value;
+    }
+  }
+
+  return undefined;
+};
+
+export const fetchSiteSettings = async (
+  language?: SupportedLanguage,
+): Promise<SiteSettings> => {
   const settings = await sanityClient.fetch<SanitySiteSettings | null>(
     QUERY_SITE_SETTINGS,
   );
+
+  const activeLanguage = language ?? settings?.language ?? DEFAULT_LANGUAGE;
 
   return {
     title: settings?.title ?? DEFAULT_SETTINGS.title,
     description: settings?.description ?? DEFAULT_SETTINGS.description,
     image: settings?.image ?? DEFAULT_SETTINGS.image,
     favicon: mapFavicon(settings?.favicon ?? null),
+    language: settings?.language ?? DEFAULT_SETTINGS.language,
   };
 };
 

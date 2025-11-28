@@ -1,5 +1,10 @@
 import { defineField, defineType } from 'sanity';
 
+import {
+  DEFAULT_SANITY_LANGUAGE,
+  SANITY_LANGUAGES,
+} from '../constants/languages';
+
 const faviconDescription =
   'Upload the favicon.svg file that should be used across the site.';
 
@@ -20,6 +25,21 @@ export default defineType({
       type: 'text',
       rows: 3,
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'language',
+      title: 'Site Language',
+      type: 'string',
+      description:
+        'Controls which locale the Astro site uses for content rendering.',
+      options: {
+        list: SANITY_LANGUAGES.map(({ title, id }) => ({
+          title,
+          value: id,
+        })),
+        layout: 'radio',
+      },
+      initialValue: DEFAULT_SANITY_LANGUAGE,
     }),
     defineField({
       name: 'image',

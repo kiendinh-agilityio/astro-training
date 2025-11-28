@@ -1,14 +1,23 @@
-const dateFormatter = new Intl.DateTimeFormat('en-US', {
-  month: 'short',
-  day: '2-digit',
-  year: 'numeric',
-});
+import type { SupportedLanguage } from '@/types';
 
-export const formatDate = (value?: string): string => {
+const getDateFormatter = (language: SupportedLanguage) => {
+  const locale = language === 'vi' ? 'vi-VN' : 'en-US';
+  return new Intl.DateTimeFormat(locale, {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+  });
+};
+
+export const formatDate = (
+  value?: string,
+  language: SupportedLanguage = 'en',
+): string => {
   if (!value) return '';
 
   try {
-    return dateFormatter.format(new Date(value));
+    const formatter = getDateFormatter(language);
+    return formatter.format(new Date(value));
   } catch {
     return value;
   }

@@ -1,11 +1,12 @@
 ---
-import { Logo, Navbar } from '@/components';
+import { LanguageSwitcher, Logo, Navbar } from '@/components';
 import { LayoutContainer } from '@/layouts';
-import { getCachedMainNavigation } from '@/utils';
+import { getActiveSiteLanguage, getCachedMainNavigation } from '@/utils';
 
 const { showNavbar = true } = Astro.props;
 const navigationItems = showNavbar ? await getCachedMainNavigation() : [];
 const shouldRenderNavbar = showNavbar && navigationItems.length > 0;
+const currentLanguage = await getActiveSiteLanguage(Astro.cookies);
 ---
 
 <header class="sticky top-0 z-50 w-full bg-white shadow-lg">
@@ -14,7 +15,10 @@ const shouldRenderNavbar = showNavbar && navigationItems.length > 0;
       <h1 class="max-w-fit">
         <Logo />
       </h1>
-      {shouldRenderNavbar && <Navbar client:load items={navigationItems} />}
+      <div class="flex items-center gap-4">
+        {shouldRenderNavbar && <Navbar client:load items={navigationItems} />}
+        <LanguageSwitcher client:load currentLanguage={currentLanguage} />
+      </div>
     </div>
   </LayoutContainer>
 </header>

@@ -1,31 +1,41 @@
+import type { SupportedLanguage } from './common';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
+export type LocalizedField<T = string> = Partial<
+  Record<SupportedLanguage, T | null | undefined>
+>;
+
 export type SanityBlogSection = {
-  country?: string;
-  listCountry?: string[];
+  country?: LocalizedField<string>;
+  listCountry?: LocalizedField<string>[];
 };
 
 export type SanityBlogPost = {
   _id: string;
-  title: string;
+  title?: LocalizedField<string>;
   slug?: string;
-  readTime?: string;
+  readTime?: LocalizedField<string>;
   featured?: boolean;
-  introduction?: string;
-  subtitle?: string;
-  conclusion?: string;
+  introduction?: LocalizedField<string>;
+  subtitle?: LocalizedField<string>;
+  conclusion?: LocalizedField<string>;
   publishedDate?: string;
   mainImage?: SanityImageSource;
   image?: SanityImageSource;
   author?: {
     name?: string;
-    role?: string;
+    role?: LocalizedField<string> | string; // Support both old string and new LocalizedField
     avatar?: SanityImageSource;
   };
   content?: {
     sections?: SanityBlogSection[];
   };
   theme?: string | null;
+};
+
+export type SanityBlogSectionSettings = {
+  trendingPostTitle?: LocalizedField<string>;
+  trendingPostDescription?: LocalizedField<string>;
 };
 
 export type SanityFaviconAsset = {
@@ -38,6 +48,7 @@ export type SanitySiteSettings = {
   description?: string;
   image?: string | null;
   favicon?: SanityFaviconAsset;
+  language?: SupportedLanguage;
 };
 
 export type SanityMainNavigationItem = {
@@ -62,4 +73,5 @@ export type SiteSettings = {
   description: string;
   image?: string;
   favicon?: SiteFaviconAsset;
+  language: SupportedLanguage;
 };

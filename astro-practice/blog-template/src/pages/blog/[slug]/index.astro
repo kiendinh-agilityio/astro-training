@@ -8,9 +8,12 @@ import { getBlogPostBySlug, getCachedBlogPosts } from '@/utils';
 import { ROUTER } from '@/constants';
 
 export const getStaticPaths = (async () => {
-  const posts = await getCachedBlogPosts();
+  // Generate paths for both languages
+  const postsEn = await getCachedBlogPosts('en');
+  const postsVi = await getCachedBlogPosts('vi');
+  const allPosts = [...postsEn, ...postsVi];
 
-  return posts
+  return allPosts
     .filter((post) => post.slug)
     .map((post) => ({
       params: { slug: post.slug },
@@ -18,7 +21,9 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const slug = Astro.params.slug;
-const post = slug ? await getBlogPostBySlug(slug) : null;
+const post = slug
+  ? await getBlogPostBySlug(slug, undefined, Astro.cookies)
+  : null;
 
 if (!post) {
   return Astro.redirect(ROUTER.HOME);

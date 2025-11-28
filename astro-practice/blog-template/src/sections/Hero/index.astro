@@ -40,14 +40,7 @@ const defaultHeroTitle = 'Stay tuned for our next story';
           />
           {
             heroPost && (
-              <PostMeta
-                date={heroPost.date}
-                author={{
-                  name: heroPost.author.name,
-                  avatar: heroPost.author.avatar,
-                  role: heroPost.author.role ?? 'Author',
-                }}
-              />
+              <PostMeta date={heroPost.date} author={heroPost.author} />
             )
           }
         </div>

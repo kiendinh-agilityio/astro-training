@@ -1,14 +1,31 @@
-import {
-  type StructureBuilder,
-  type StructureResolver,
-} from 'sanity/structure';
-
 const SETTINGS_SINGLETONS = [
   { id: 'siteSettings', title: 'Metadata' },
   { id: 'mainNavigation', title: 'Main Navigation' },
 ];
 
-export const blogStructure: StructureResolver = (S: StructureBuilder) =>
+export const blogStructure = (S: {
+  list: () => {
+    title: (title: string) => {
+      items: (items: unknown[]) => unknown;
+    };
+  };
+  listItem: () => {
+    title: (title: string) => {
+      child: (child: unknown) => unknown;
+    };
+  };
+  document: () => {
+    schemaType: (type: string) => {
+      documentId: (id: string) => unknown;
+    };
+  };
+  documentTypeList: (type: string) => {
+    title: (title: string) => unknown;
+  };
+  documentTypeListItems: () => Array<{
+    getId: () => string | null;
+  }>;
+}) =>
   S.list()
     .title('Content')
     .items([
@@ -25,10 +42,30 @@ export const blogStructure: StructureResolver = (S: StructureBuilder) =>
               ),
             ),
         ),
+      S.listItem()
+        .title('Blog Post')
+        .child(
+          S.list()
+            .title('Blog Post')
+            .items([
+              S.listItem()
+                .title('Blog Post Header')
+                .child(
+                  S.document()
+                    .schemaType('blogSectionSettings')
+                    .documentId('blogSectionSettings'),
+                ),
+              S.listItem()
+                .title('Blog Post Content')
+                .child(S.documentTypeList('blogPost').title('Posts')),
+            ]),
+        ),
       ...S.documentTypeListItems().filter(
         (listItem) =>
           !SETTINGS_SINGLETONS.some(
             (settingsItem) => settingsItem.id === listItem.getId(),
-          ),
+          ) &&
+          listItem.getId() !== 'blogPost' &&
+          listItem.getId() !== 'blogSectionSettings',
       ),
     ]);

@@ -1,6 +1,10 @@
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import type { ImageMetadata } from 'astro';
 
+export const SUPPORTED_LANGUAGES = ['en', 'vi'] as const;
+export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
+export const DEFAULT_LANGUAGE: SupportedLanguage = 'en';
+
 export type SupportedImageSource =
   | ImageMetadata
   | SanityImageSource
@@ -59,3 +63,19 @@ export interface BlogPost {
 }
 
 export type BlogContent = BlogPost['content']['sections'][number];
+
+export type SiteSettings = {
+  title: string;
+  description: string;
+  image?: string;
+  favicon?: {
+    url: string;
+    type?: string;
+  };
+  language: SupportedLanguage;
+};
+
+export type BlogSectionSettings = {
+  trendingPostTitle?: string;
+  trendingPostDescription?: string;
+};

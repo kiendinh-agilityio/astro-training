@@ -7,14 +7,14 @@ export default defineType({
   fields: [
     defineField({
       name: 'country',
-      type: 'string',
+      type: 'localeString',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'listCountry',
       title: 'Highlights',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'localeText' }],
       validation: (rule) => rule.min(1),
     }),
   ],
