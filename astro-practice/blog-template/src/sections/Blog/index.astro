@@ -7,27 +7,41 @@ import './index.css';
 interface BlogSectionProps {
   posts?: BlogPost[];
   postsPerPage?: number;
+  trendingPostTitle?: string;
+  trendingPostDescription?: string;
 }
 
-const { posts = [], postsPerPage = 6 } = Astro.props as BlogSectionProps;
+const {
+  posts = [],
+  postsPerPage = 6,
+  trendingPostTitle,
+  trendingPostDescription,
+} = Astro.props as BlogSectionProps;
 
 const totalPosts = posts.length;
+const hasTrendingHeading = trendingPostTitle || trendingPostDescription;
 ---
 
 <LayoutContainer className="py-8 lg:py-14">
   <section id="blog" class="w-full">
-    <div class="trending-heading mb-8 text-center lg:mb-12">
-      <PortableText
-        value="Trending Post"
-        fallback="Trending Post"
-        style="h2"
-        blockKey="blog-trending-heading"
-        className="text-primary mb-3 font-bold"
-      />
-      <Paragraph size="lg">
-        Discover how innovation and creativity drive meaningful change
-      </Paragraph>
-    </div>
+    {
+      hasTrendingHeading && (
+        <div class="trending-heading mb-8 text-center lg:mb-12">
+          {trendingPostTitle && (
+            <PortableText
+              value={trendingPostTitle}
+              fallback={trendingPostTitle}
+              style="h2"
+              blockKey="blog-trending-heading"
+              className="text-primary mb-3 font-bold"
+            />
+          )}
+          {trendingPostDescription && (
+            <Paragraph size="lg">{trendingPostDescription}</Paragraph>
+          )}
+        </div>
+      )
+    }
     {
       totalPosts > 0 ? (
         <>

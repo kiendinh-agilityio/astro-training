@@ -27,8 +27,8 @@ const { author, className }: Props = Astro.props;
     className="text-primary mt-3 mb-[2px] text-lg leading-6"
   />
   <PortableText
-    value={author.role ?? 'Author'}
-    fallback="Author"
+    value={author.role}
+    fallback={author.role || 'Author'}
     blockKey={`author-info-role-${author.name}`}
     className="text-tertiary text-base"
   />

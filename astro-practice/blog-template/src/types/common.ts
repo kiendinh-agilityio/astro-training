@@ -63,3 +63,19 @@ export interface BlogPost {
 }
 
 export type BlogContent = BlogPost['content']['sections'][number];
+
+export type SiteSettings = {
+  title: string;
+  description: string;
+  image?: string;
+  favicon?: {
+    url: string;
+    type?: string;
+  };
+  language: SupportedLanguage;
+};
+
+export type BlogSectionSettings = {
+  trendingPostTitle?: string;
+  trendingPostDescription?: string;
+};

@@ -9,9 +9,10 @@ let blogCache: BlogCache = {};
 
 const resolveLanguage = async (
   language?: SupportedLanguage,
+  cookies?: { get: (name: string) => { value: string } | undefined },
 ): Promise<SupportedLanguage> => {
   if (language) return language;
-  return getActiveSiteLanguage();
+  return getActiveSiteLanguage(cookies);
 };
 
 const loadBlogPosts = async (
@@ -26,18 +27,20 @@ const loadBlogPosts = async (
 
 export const getCachedBlogPosts = async (
   language?: SupportedLanguage,
+  cookies?: { get: (name: string) => { value: string } | undefined },
 ): Promise<BlogPost[]> => {
-  const resolvedLang = await resolveLanguage(language);
+  const resolvedLang = await resolveLanguage(language, cookies);
   return loadBlogPosts(resolvedLang);
 };
 
 export const getBlogPostBySlug = async (
   slug: string,
   language?: SupportedLanguage,
+  cookies?: { get: (name: string) => { value: string } | undefined },
 ): Promise<BlogPost | null> => {
   if (!slug) return null;
 
-  const resolvedLang = await resolveLanguage(language);
+  const resolvedLang = await resolveLanguage(language, cookies);
   const posts = await loadBlogPosts(resolvedLang);
   const cached = posts.find((post) => post.slug === slug);
   if (cached) return cached;

@@ -302,5 +302,82 @@ const Icons = {
       />
     </svg>
   ),
+
+  ChevronDown: (props: IconProps) => (
+    <svg
+      width={16}
+      height={16}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M4 6L8 10L12 6"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+
+  Checkmark: (props: IconProps) => (
+    <svg
+      width={16}
+      height={16}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M13.3333 4L6 11.3333L2.66667 8"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+
+  VietnamFlag: (props: IconProps) => (
+    <svg
+      width={24}
+      height={16}
+      viewBox="0 0 3 2"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <rect width={3} height={2} fill="#DA251D" />
+      <polygon
+        fill="#FF0"
+        points="     1.5,0.4      1.63,0.9      2.1,0.9      1.72,1.18      1.85,1.65      1.5,1.38      1.15,1.65      1.28,1.18      0.9,0.9      1.37,0.9"
+      />
+    </svg>
+  ),
+
+  EnglishFlag: (props: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" {...props}>
+      <clipPath id="s">
+        <path d="M0,0 v30 h60 v-30 z" />
+      </clipPath>
+      <clipPath id="t">
+        <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+      </clipPath>
+      <g clipPath="url(#s)">
+        <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth={6} />
+        <path
+          d="M0,0 L60,30 M60,0 L0,30"
+          stroke="#c8102e"
+          strokeWidth={4}
+          clipPath="url(#t)"
+        />
+        <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth={10} />
+        <path d="M30,0 v30 M0,15 h60" stroke="#c8102e" strokeWidth={6} />
+      </g>
+    </svg>
+  ),
 };
 export default Icons;

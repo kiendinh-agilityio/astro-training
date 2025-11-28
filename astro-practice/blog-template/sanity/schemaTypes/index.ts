@@ -1,5 +1,6 @@
 import author from './documents/author';
 import blogPost from './documents/blogPost';
+import blogSectionSettings from './documents/blogSectionSettings';
 import mainNavigation from './documents/mainNavigation';
 import siteSettings from './documents/siteSettings';
 import themeSettings from './documents/themeSettings';
@@ -13,6 +14,7 @@ export const schemaTypes = [
   siteSettings,
   mainNavigation,
   themeSettings,
+  blogSectionSettings,
   author,
   blogPost,
   blogContent,

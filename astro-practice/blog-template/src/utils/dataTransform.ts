@@ -14,15 +14,23 @@ const getLocalePriority = (language: SupportedLanguage) => [
 ];
 
 const resolveLocalizedString = (
-  field: LocalizedField<string> | undefined,
+  field: LocalizedField<string> | string | undefined,
   language: SupportedLanguage,
 ) => {
-  const localeOrder = getLocalePriority(language);
+  // Handle legacy string format (backward compatibility)
+  if (typeof field === 'string' && field.trim().length > 0) {
+    return field;
+  }
 
-  for (const locale of localeOrder) {
-    const value = field?.[locale];
-    if (typeof value === 'string' && value.trim().length > 0) {
-      return value;
+  // Handle LocalizedField format
+  if (field && typeof field === 'object') {
+    const localeOrder = getLocalePriority(language);
+
+    for (const locale of localeOrder) {
+      const value = field[locale];
+      if (typeof value === 'string' && value.trim().length > 0) {
+        return value;
+      }
     }
   }
 
@@ -62,7 +70,7 @@ export const transformSanityBlogPost = (
   slug: doc.slug ?? '',
   title: resolveLocalizedString(doc.title, language) ?? 'Untitled',
   readTime: resolveLocalizedString(doc.readTime, language) ?? '',
-  date: formatDate(doc.publishedDate),
+  date: formatDate(doc.publishedDate, language),
   introduction: resolveLocalizedString(doc.introduction, language) ?? '',
   mainImage: doc.mainImage ?? doc.image ?? null,
   subtitle: resolveLocalizedString(doc.subtitle, language) ?? '',
@@ -74,7 +82,9 @@ export const transformSanityBlogPost = (
   author: {
     name: doc.author?.name ?? 'Unknown Author',
     avatar: doc.author?.avatar ?? null,
-    role: doc.author?.role ?? 'Author',
+    role:
+      resolveLocalizedString(doc.author?.role, language) ??
+      (language === 'vi' ? 'Tác giả' : 'Author'),
   },
   image: doc.image ?? doc.mainImage ?? null,
   featured: Boolean(doc.featured),

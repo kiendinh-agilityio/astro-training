@@ -1,5 +1,7 @@
 import { defineField, defineType } from 'sanity';
 
+import type { SanityDocument } from 'sanity';
+
 export default defineType({
   name: 'blogPost',
   title: 'Blog Post',
@@ -14,7 +16,7 @@ export default defineType({
       name: 'slug',
       type: 'slug',
       options: {
-        source: (doc) => doc?.title?.en ?? 'post',
+        source: (doc: SanityDocument) => (doc as any)?.title?.en ?? 'post',
         maxLength: 96,
       },
       validation: (rule) => rule.required(),

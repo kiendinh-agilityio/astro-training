@@ -12,8 +12,8 @@ export default defineType({
     }),
     defineField({
       name: 'role',
-      type: 'string',
-      initialValue: 'Author',
+      type: 'localeString',
+      description: 'Author role (e.g., Author, Tác giả)',
     }),
     defineField({
       name: 'avatar',

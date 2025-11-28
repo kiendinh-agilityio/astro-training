@@ -36,8 +36,8 @@ const { date, author }: Props = Astro.props;
         className="text-sm leading-5 font-medium text-white lg:text-base lg:leading-6"
       />
       <PortableText
-        value={author.role ?? 'Author'}
-        fallback="Author"
+        value={author.role}
+        fallback={author.role || 'Author'}
         blockKey={`post-meta-role-${author.name}`}
         className="text-sm leading-5 text-white"
       />

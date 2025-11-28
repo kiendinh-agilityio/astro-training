@@ -24,13 +24,18 @@ export type SanityBlogPost = {
   image?: SanityImageSource;
   author?: {
     name?: string;
-    role?: string;
+    role?: LocalizedField<string> | string; // Support both old string and new LocalizedField
     avatar?: SanityImageSource;
   };
   content?: {
     sections?: SanityBlogSection[];
   };
   theme?: string | null;
+};
+
+export type SanityBlogSectionSettings = {
+  trendingPostTitle?: LocalizedField<string>;
+  trendingPostDescription?: LocalizedField<string>;
 };
 
 export type SanityFaviconAsset = {

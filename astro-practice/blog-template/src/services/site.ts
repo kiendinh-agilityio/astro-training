@@ -1,12 +1,15 @@
 import { QUERY_MAIN_NAVIGATION, QUERY_SITE_SETTINGS } from '@/queries/site';
 import {
   DEFAULT_LANGUAGE,
+  type LocalizedField,
   type NavbarItem,
+  SUPPORTED_LANGUAGES,
   type SanityFaviconAsset,
   type SanityMainNavigation,
   type SanityMainNavigationItem,
   type SanitySiteSettings,
   type SiteSettings,
+  type SupportedLanguage,
 } from '@/types';
 
 import { sanityClient } from './sanityClient';
@@ -30,10 +33,33 @@ const mapFavicon = (favicon?: SanityFaviconAsset | null) =>
       }
     : undefined;
 
-export const fetchSiteSettings = async (): Promise<SiteSettings> => {
+const resolveLocalizedString = (
+  field: LocalizedField<string> | undefined,
+  language: SupportedLanguage,
+): string | undefined => {
+  const localeOrder = [
+    language,
+    ...SUPPORTED_LANGUAGES.filter((locale) => locale !== language),
+  ];
+
+  for (const locale of localeOrder) {
+    const value = field?.[locale];
+    if (typeof value === 'string' && value.trim().length > 0) {
+      return value;
+    }
+  }
+
+  return undefined;
+};
+
+export const fetchSiteSettings = async (
+  language?: SupportedLanguage,
+): Promise<SiteSettings> => {
   const settings = await sanityClient.fetch<SanitySiteSettings | null>(
     QUERY_SITE_SETTINGS,
   );
+
+  const activeLanguage = language ?? settings?.language ?? DEFAULT_LANGUAGE;
 
   return {
     title: settings?.title ?? DEFAULT_SETTINGS.title,

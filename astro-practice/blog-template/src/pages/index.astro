@@ -2,9 +2,18 @@
 import { MainLayout } from '@/layouts';
 import { HomeSkeleton } from '@/components';
 import { Hero, Blog } from '@/sections';
-import { getCachedBlogPosts } from '@/utils';
+import {
+  getActiveSiteLanguage,
+  getCachedBlogPosts,
+  getCachedBlogSectionSettings,
+} from '@/utils';
 
-const posts = await getCachedBlogPosts();
+const activeLanguage = await getActiveSiteLanguage(Astro.cookies);
+const [posts, blogSectionSettings] = await Promise.all([
+  getCachedBlogPosts(undefined, Astro.cookies),
+  getCachedBlogSectionSettings(activeLanguage),
+]);
+
 const featuredPost = posts.find((post) => post.featured) ?? posts[0];
 const trendingPosts = featuredPost
   ? posts.filter((post) => post.slug !== featuredPost.slug)
@@ -14,6 +23,10 @@ const trendingPosts = featuredPost
 <MainLayout>
   <HomeSkeleton client:only="react">
     <Hero post={featuredPost} />
-    <Blog posts={trendingPosts} />
+    <Blog
+      posts={trendingPosts}
+      trendingPostTitle={blogSectionSettings.trendingPostTitle}
+      trendingPostDescription={blogSectionSettings.trendingPostDescription}
+    />
   </HomeSkeleton>
 </MainLayout>

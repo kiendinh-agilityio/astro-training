@@ -52,7 +52,7 @@ const NavbarContent = ({ items, className }: NavbarProps) => {
           ))}
         </ul>
         <button
-          className="logout-button bg-primary text-secondary flex w-32 cursor-pointer items-center justify-center gap-2 rounded px-3 py-2 text-sm font-medium hover:bg-neutral-700"
+          className="logout-button bg-primary text-secondary flex w-32 cursor-pointer items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-neutral-700"
           onClick={handleLogout}
           aria-label="Logout Button"
           disabled={isLoggingOut}
@@ -63,7 +63,7 @@ const NavbarContent = ({ items, className }: NavbarProps) => {
 
       {/* Mobile/Tablet Toggle */}
       <button
-        className="relative z-100 cursor-pointer p-2 lg:hidden"
+        className="relative z-100 cursor-pointer rounded-lg p-2 lg:hidden"
         onClick={toggleMenu}
         aria-label="Toggle navigation menu"
         aria-expanded={isMenuOpen}

@@ -7,3 +7,4 @@ export * from './method';
 export * from './public';
 export * from './router';
 export * from './session';
+export * from './language';
