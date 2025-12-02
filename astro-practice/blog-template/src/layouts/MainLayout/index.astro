@@ -1,13 +1,13 @@
 ---
+import { Snowfall } from '@/components';
 import { Footer, Header } from '@/layouts';
 import BaseHead from '@/layouts/BaseHead/index.astro';
 import '@/styles/global.css';
+import darkThemeHref from '@/styles/theme-dark.css?url';
+import lightThemeHref from '@/styles/theme-light.css?url';
+import christmasThemeHref from '@/styles/theme-christmas.css?url';
 import { getActiveSiteLanguage, getCachedSiteSettings } from '@/utils';
-import {
-  getFinalTheme,
-  getCachedThemeSettings,
-  type Theme,
-} from '@/utils/theme';
+import { getFinalTheme, getCachedThemeSettings } from '@/utils/theme';
 
 interface MainLayoutProps {
   title?: string;
@@ -29,11 +29,18 @@ const finalTheme = getFinalTheme(globalTheme, pageTheme);
 const themeClass = `theme-${finalTheme}`;
 const bodyClass = finalTheme === 'christmas' ? 'christmas-mode' : '';
 const htmlLang = activeLanguage;
+const themeHref =
+  finalTheme === 'light'
+    ? lightThemeHref
+    : finalTheme === 'christmas'
+      ? christmasThemeHref
+      : darkThemeHref;
 ---
 
 <!doctype html>
 <html lang={htmlLang}>
   <BaseHead {...headProps} />
+  <link rel="stylesheet" href={themeHref} />
 
   <body class={bodyClass}>
     <Header />
@@ -41,5 +48,7 @@ const htmlLang = activeLanguage;
       <slot />
     </main>
     <Footer />
+
+    {finalTheme === 'christmas' && <Snowfall client:load />}
   </body>
 </html>

@@ -2,15 +2,16 @@
 
 @layer components {
   body.christmas-mode .logout-button {
-    background-color: var(--christmas-red-accent) !important;
-    color: var(--christmas-text-light) !important;
-    border: 2px solid var(--christmas-gold-highlight);
+    background-color: #6fc4ff !important; /* light sky blue like background highlight */
+    color: #fff !important; /* deep blue text for contrast */
+    border: 2px solid rgba(255, 255, 255, 0.7);
     @apply inline-flex items-center gap-1 transition duration-200;
     width: 10rem !important;
   }
 
   body.christmas-mode .logout-button:hover {
-    background-color: #a00000 !important;
+    background-color: #8fd2ff !important;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.55);
     transform: translateY(-1px);
   }
 
