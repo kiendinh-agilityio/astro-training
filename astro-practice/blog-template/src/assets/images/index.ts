@@ -14,3 +14,4 @@ export { default as SophiaTurnerAvatar } from './avatar/sophia-turner.svg';
 export { default as EthanWalkerAvatar } from './avatar/ethan-walker.svg';
 export { default as LauraMartinezAvatar } from './avatar/laura-martinez.svg';
 export { default as LiamTaylorAvatar } from './avatar/liam-taylor.svg';
+export { default as ImagePlaceholder } from './image-fallback.png';

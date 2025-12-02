@@ -53,14 +53,12 @@ export default defineType({
       title: 'Thumbnail',
       type: 'image',
       options: { hotspot: true },
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'mainImage',
       title: 'Main Image',
       type: 'image',
       options: { hotspot: true },
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'author',
