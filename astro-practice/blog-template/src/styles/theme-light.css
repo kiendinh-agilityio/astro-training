@@ -1,0 +1,30 @@
+/* Light Theme - Only apply to main content */
+main.theme-light {
+  --theme-bg: #ffffff;
+  --theme-surface: #f3f3f3;
+  --theme-surface-light: #e5e5e5;
+  --theme-text: #212121;
+  --theme-text-secondary: #757575;
+  --theme-primary: #1a73e8;
+  --theme-accent: #1a73e8;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+}
+
+/* Force text colors for all elements inside themed main */
+main.theme-light,
+main.theme-light * {
+  color: var(--theme-text) !important;
+}
+
+/* Override specific text utility classes within themed main */
+main.theme-light .text-primary,
+main.theme-light .text-dark {
+  color: var(--theme-text) !important;
+}
+
+/* Allow specific overrides for secondary text */
+main.theme-light .text-tertiary,
+main.theme-light .text-secondary {
+  color: var(--theme-text-secondary) !important;
+}

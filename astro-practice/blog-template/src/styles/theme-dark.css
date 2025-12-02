@@ -1,0 +1,41 @@
+/* Dark Theme (Default) - Only apply to main content */
+/* Exclude main with no-theme class (login page) */
+main.theme-dark,
+main:not([class*='theme-']):not(.no-theme) {
+  --theme-bg: #1a1a1a;
+  --theme-surface: #2a2a2a;
+  --theme-surface-light: #3a3a3a;
+  --theme-text: #ffffff;
+  --theme-text-secondary: #a8a8a8;
+  --theme-primary: #5c6aff;
+  --theme-accent: #5c6aff;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+}
+
+/* Force text colors for all elements inside themed main */
+/* Exclude main with no-theme class (login page) */
+main.theme-dark,
+main.theme-dark *,
+main:not([class*='theme-']):not(.no-theme),
+main:not([class*='theme-']):not(.no-theme) * {
+  color: var(--theme-text) !important;
+}
+
+/* Override specific text utility classes within themed main */
+/* Exclude main with no-theme class (login page) */
+main.theme-dark .text-primary,
+main.theme-dark .text-dark,
+main:not([class*='theme-']):not(.no-theme) .text-primary,
+main:not([class*='theme-']):not(.no-theme) .text-dark {
+  color: var(--theme-text) !important;
+}
+
+/* Allow specific overrides for secondary text */
+/* Exclude main with no-theme class (login page) */
+main.theme-dark .text-tertiary,
+main.theme-dark .text-secondary,
+main:not([class*='theme-']):not(.no-theme) .text-tertiary,
+main:not([class*='theme-']):not(.no-theme) .text-secondary {
+  color: var(--theme-text-secondary) !important;
+}

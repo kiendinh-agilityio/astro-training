@@ -1,0 +1,99 @@
+/* Christmas Theme - Only apply to main content */
+main.theme-christmas {
+  /* Christmas ecommerce palette – frosty blue sky with warm red / gold accents */
+  --theme-bg: #0f4c9b; /* deep sky blue */
+  --theme-surface: #1e63c2; /* mid blue for surfaces */
+  --theme-surface-light: #2f7fd8; /* lighter blue for cards / hovers */
+  --theme-text: #ffffff;
+  --theme-text-secondary: #d6e7ff; /* soft icy text */
+  --theme-primary: #ff4b5c; /* sleigh red */
+  --theme-accent: #ffd75e; /* golden highlight */
+
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(255, 255, 255, 0.16),
+      transparent 52%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 255, 255, 0.12),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #3ea8ff 0%, #0f4c9b 55%, #052c5a 100%);
+  color: var(--theme-text);
+  padding: 24px 0 48px;
+}
+
+/* Force text colors for all elements inside themed main */
+main.theme-christmas,
+main.theme-christmas * {
+  color: var(--theme-text) !important;
+}
+
+/* Override specific text utility classes within themed main */
+main.theme-christmas .text-primary,
+main.theme-christmas .text-dark {
+  color: var(--theme-text) !important;
+}
+
+/* Allow specific overrides for secondary text */
+main.theme-christmas .text-tertiary,
+main.theme-christmas .text-secondary {
+  color: var(--theme-text-secondary) !important;
+}
+
+/* Christmas-specific card and list styling (kept identical to original) */
+main.theme-christmas .featured-post-card {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+  border: 3px solid rgba(255, 255, 255, 0.15);
+}
+
+main.theme-christmas .featured-post-title {
+  color: #ffffff !important;
+  font-family: var(--font-primary);
+  text-shadow: none;
+}
+
+main.theme-christmas .trending-heading h2 {
+  color: #ffffff !important;
+  text-shadow: none;
+  font-family: var(--font-primary);
+}
+
+main.theme-christmas .post-card {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px rgba(1, 22, 61, 0.55);
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 18px 20px 20px;
+  border-radius: 26px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+main.theme-christmas .post-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(1, 22, 61, 0.75);
+}
+
+main.theme-christmas .post-date {
+  color: var(--theme-text-secondary) !important;
+  font-weight: 500;
+}
+
+main.theme-christmas .post-card-image {
+  border: none;
+  border-radius: 20px;
+  display: block;
+  width: 100%;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(1, 22, 61, 0.45);
+}
+
+main.theme-christmas .post-card:hover .post-card-image {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(1, 22, 61, 0.7);
+}
