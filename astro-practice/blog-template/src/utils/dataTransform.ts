@@ -29,18 +29,35 @@ const getLocalizedValue = (
   return undefined;
 };
 
+// Strict version: only get value for current language, no fallback
+const getLocalizedValueStrict = (
+  field: LocalizedField<string> | string | undefined,
+  language: SupportedLanguage,
+): string | undefined => {
+  if (typeof field === 'string' && field.trim()) return field;
+
+  if (field && typeof field === 'object') {
+    const value = field[language];
+    if (typeof value === 'string' && value.trim()) return value;
+  }
+
+  return undefined;
+};
+
 export const transformBlogSections = (
   sections: SanityBlogSection[] | undefined,
   language: SupportedLanguage,
 ): BlogPost['content']['sections'] =>
   sections
     ?.map((section) => {
-      const country = getLocalizedValue(section?.country, language);
+      // Use strict version: only get country for current language, no fallback
+      const country = getLocalizedValueStrict(section?.country, language);
       if (!country) return null;
 
+      // Use strict version for listCountry as well
       const listCountry =
         section.listCountry
-          ?.map((entry) => getLocalizedValue(entry, language))
+          ?.map((entry) => getLocalizedValueStrict(entry, language))
           .filter((entry): entry is string => Boolean(entry?.trim())) ?? [];
 
       return { country, listCountry };
