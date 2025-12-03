@@ -9,19 +9,13 @@ main.theme-christmas {
   --theme-primary: #ff4b5c; /* sleigh red */
   --theme-accent: #ffd75e; /* golden highlight */
 
-  background:
-    radial-gradient(
-      circle at 0% 0%,
-      rgba(255, 255, 255, 0.16),
-      transparent 52%
-    ),
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(255, 255, 255, 0.12),
-      transparent 55%
-    ),
-    linear-gradient(180deg, #3ea8ff 0%, #0f4c9b 55%, #052c5a 100%);
-  color: var(--theme-text);
+  background-image: url('/theme-chrismats.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--christmas-text-light);
+  overflow-x: hidden;
   padding: 24px 0 48px;
 }
 
@@ -64,7 +58,7 @@ main.theme-christmas .trending-heading h2 {
 main.theme-christmas .post-card {
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 10px 30px rgba(1, 22, 61, 0.55);
-  background-color: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(135deg, #4a8dc8, #6ba8e0);
   padding: 18px 20px 20px;
   border-radius: 26px;
   transition:

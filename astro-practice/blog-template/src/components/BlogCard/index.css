@@ -4,7 +4,7 @@
   main.theme-christmas .post-card {
     border: none;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-    background-color: rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #4a8dc8, #6ba8e0);
     transition:
       transform 0.3s ease,
       box-shadow 0.3s ease;

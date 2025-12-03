@@ -3,7 +3,7 @@ import { LanguageSwitcher, Logo, Navbar } from '@/components';
 import { LayoutContainer } from '@/layouts';
 import { getActiveSiteLanguage, getCachedMainNavigation } from '@/utils';
 
-const { showNavbar = true } = Astro.props;
+const { showNavbar = true, showLanguageSwitcher = true } = Astro.props;
 const navigationItems = showNavbar ? await getCachedMainNavigation() : [];
 const shouldRenderNavbar = showNavbar && navigationItems.length > 0;
 const currentLanguage = await getActiveSiteLanguage(Astro.cookies);
@@ -17,7 +17,11 @@ const currentLanguage = await getActiveSiteLanguage(Astro.cookies);
       </h1>
       <div class="flex items-center gap-4">
         {shouldRenderNavbar && <Navbar client:load items={navigationItems} />}
-        <LanguageSwitcher client:load currentLanguage={currentLanguage} />
+        {
+          showLanguageSwitcher && (
+            <LanguageSwitcher client:load currentLanguage={currentLanguage} />
+          )
+        }
       </div>
     </div>
   </LayoutContainer>

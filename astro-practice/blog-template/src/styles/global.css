@@ -37,13 +37,6 @@
   --christmas-font-serif: 'Playfair Display', Lora, serif;
 }
 
-/* Christmas immersive styling (background only) */
-body.christmas-mode {
-  background: linear-gradient(135deg, #1b5e9a, #2d80c8);
-  color: var(--christmas-text-light);
-  overflow-x: hidden;
-}
-
 /* Winter Wonderland style snow - overlay container */
 #snowflakes {
   position: fixed;
